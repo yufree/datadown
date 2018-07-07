@@ -1,0 +1,56 @@
+# 探索性数据分析
+
+## ACES 模型
+
+Letter | Step | Notes
+------ | ---- | -----------
+A | Acquire the data and Assemble the data frame | Find data and import
+C | Clean the data frame | Identify and limit columns, rows, indices, dates, etc.
+E | Explore global properties | Visualize!  Basic plots and stats appropriate to the data set
+S | Subset comparisons | Look at (visualize!) initial emergenet variable relationships and subsets
+
+
+## 探索绘图原则
+
+- 表示可比的对比
+- 表示因果 解释 机制 系统结构
+- 表示多元变量（超过2）
+- 证据整合 目的驱动非工具驱动
+- 证据描述要标注限定恰当
+- 内容为王
+
+## 探索性绘图
+
+- 个人理解用
+- 不用过分关注细节
+- 基于问题或假设出发
+
+## 分层聚类
+
+- 找到最近的 聚到一起 找下个最近的
+- 给出距离范围与距离计算方法
+  - 欧氏距离 多维空间点距 开平方
+  - manhattan距离 出租车距离 绝对值
+- 给出变量间或样本间的关系
+- 图形可能不稳定 多少样本多少类
+- 结果是确定的
+- 选定cut点并不明显
+- 应该首先用来探索
+
+## k-means聚类
+
+- 固定聚类数 给出聚类中心 寻找最近的点 循环
+- 需要聚类数与聚类距离范围
+- 需要大量聚类 通过眼睛 交叉检验
+- k的经验数值$\sqrt{n/2}$  或者根据解释的变量变化多少来选取 
+- 结果不确定 根据聚类数与迭代次数而变化
+
+## 维度还原
+
+- 找到最不相关的数来解释整体方差（统计）在这些数中选取个数最少的来解释原始数据（压缩）
+- 不一定是真实向量的叠加
+- SVD是PCA的一种解法 UDV三个向量 其中U表示行变化模式 D表示方差 V表示列变换模式 这样有助于解释主成分变化
+- 标准化与否影响结果
+- 计算量大
+- 类似探索分析还有因子分析 独立成分分析 潜在语义分析
+- impute包可补充缺失值

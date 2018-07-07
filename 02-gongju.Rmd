@@ -1,0 +1,1270 @@
+# 数据分析工具
+
+## 基础知识
+
+- 层次：操作系统 - shell - 终端 - 命令行工具
+- 分类：可执行文件、shell 内置命令、脚本、shell 函数、宏
+
+## 命令行基础
+
+- name of root is represented by a slash: /
+- home directory is represented by a tilde: ~
+- pwd print working directory
+- recipe: command -flags arguments
+- clear: clear out the commands in your current CLI window
+- ls lists files and folders in the current directory
+    
+    -a lists hidden and unhidden files and folders
+    - al lists details for hidden and unhidden files and folders
+    
+- cd stands for "change directory"
+  
+    cd takes as an argument the directory you want to visit
+    
+    cd with no argument takes you to your home directory
+    
+    cd .. allows you to chnage directory to one level above your current directory
+    
+- mkdir stands for "make directory"
+- touch creates an empty file
+- cp stands for "copy"
+  
+    cp takes as its first argument a file, and as its second argument the path to where you want the file to be copied
+    
+    cp can also be used for copying the contents of directories, but you must use the -r flag
+  
+- rm stands for "remove"
+  
+    use rm to delete entire directories and their contents by using the -r flag
+    
+- mv stands for "move"
+  
+    move files between directories
+    
+    use mv to rename files
+  
+- echo will print whatever arguments you provide
+- date will print today's date
+
+## 版本控制
+
+~~~
+$ git config --global user.name "Your Name Here" # 输入用户名
+$ git config --global user.email "your_email@example.com" # 输入邮箱
+$ git config --list # 检查
+$ git init # 初始化目录
+$ git add . # 添加新文件
+$ git add -u # 更新改名或删除的文件
+$ git add -A|git add --all # 添加所有改动
+$ git commit -m "your message goes here" # 描述并缓存本地工作区改动到上一次commit
+$ git log # 查看commit记录 用Q退出
+$ git status # 查看状态
+$ git remote add # 添加服务器端地址
+$ git remote -v # 查看远端状态
+$ git push # 将本地commit推送到github服务器端
+$ git pull|fetch|merge|clone # 本地获取远端repo
+$ exit # 退出
+~~~
+
+  - Git = Local (on your computer); GitHub = Remote (on the web)
+
+## 数据获取
+
+- 复制：cp 或 scp（安全复制）
+> scp -i  mykey.pem ~/Desktop/logs.csv ubuntu@ec2-184-73-72-150.compute-1.amazonaws.com:data
+
+- 解压：unpack
+> unpack logs.tar.gz
+
+- 转化 excel 为csv：in2csv、csvcut、csvlook
+> in2csv data/imdb-250.xlsx | head | csvcut -c Title,Year,Rating | csvlook
+
+- 查询关系数据库：sql2csv
+> sql2csv --db 'sqlite:///data/iris.db' --query 'SELECT * FROM iris ' 'WHERE sepal_length > 7.5'
+
+- 互联网下载：curl -u 登录 -L 链接跳转 -I http头文件
+> curl -s http://www.gutenberg.org/cache/epub/76/pg76.txt | head -n 10
+> curl -u username:password ftp://host/file
+> curl -L j.mp/locatbbar 
+
+- API：curlicue 来进行认证
+
+## 高级命令
+
+- !! 可重复上次命令
+
+- chmod 增加权限
+
+- #!/usr/bin/env bash 增加状况说明
+
+- NUM_WORDS="$1" 增加参数                           
+
+## R
+
+### 语言导论
+
+- R语言是S语言的一种方言
+- 1976年S是John Chambers等在贝尔实验室作为Fortran的扩展库开发出来的
+- 1988年用C语言重写 S3方法 白皮书
+- 1993年StatSci从贝尔实验室获得S语言的独家开发售卖许可
+- 1998年S4方法 绿皮书 之后S语言稳定 获得Association for Computing Machinery’s Software System Award
+- 2004年Insightful（原StatSci）从Lucent收购了S语言
+- 2006年Alcatel收购了Lucent成立Alcatel-Lucent
+- 2008年TIBCO收购Insightful 之前Insightful开发并售卖S-PLUS
+- 1991年Ross Ihaka与Robert GentlemanNew在Zealand开发了R
+- 1993年发布R第一份许可
+- 1995年R作为自由软件发放GUN许可
+- 1996年R邮件列表创立
+- 1997年R Core成立 控制R源码
+- 2000年R version 1.0.0 放出
+- 2013年R version 3.0.2 放出
+- R由CRAN掌控的base包与其他包组成
+- 其余参考[R主页](http://www.r-project.org/)
+- [出色的R包](https://github.com/qinwf/awesome-R)
+
+### 获得帮助
+
+```{r,eval=FALSE}
+help()
+?command
+# 提问给出以下信息
+version
+str(.Platform)
+```
+
+### 数据类型及基本运算
+
+- 所有数据都是对象 所有对象都有类型
+- 基本类型包括：字符“” 数字 整数L 复数(`Re`实部 `Im`虚部) 逻辑
+- 向量储存同一类型数据
+- list存储不同类型数据 `[[*]]`引用相应向量 `unlist` 可用做紧凑输出
+- 对象可以有属性`attributes`
+- 对象赋值符号为 <- 赋值同时展示加括号或直接输入对象名 可累加赋值 `a <- b <- c`
+- `#`表示注释 不执行
+- `:` 用来产生整数序列 也可以用`seq`生成
+- 向量用`c`产生
+- 空向量用`vector()`函数建立
+- 向量中类型不同的对象元素会被强制转换为同一类型 字符优先级最高 其次数字 其次逻辑(0 or 1) 也可以用来串联字符
+- 可使用`as.*`来强制转化数据类型
+- 对象可以用`names`命名
+- 变量名开头不能是数字和. 大小写敏感 下划线不要出现在名字里 分割用. 变量名中不能有空格
+- 保留字符
+```{r,eval=FALSE}
+FALSE Inf NA NaN NULL TRUE break else for function if in next repeat while
+```
+- 清空`rm(list = ls())`
+- 矩阵
+  - 带有`dimension`属性的向量为矩阵 矩阵的生成次序为upper-left
+  - `matrix(1:6,nrow=2,ncol=3)`表示建一个2行3列矩阵 从1到6 先列后行赋值 可用 `byrow = T` 来更改
+  - 可用`c`给`dim`赋值行和列数 这样可把一个向量转为一个矩阵 `m<-1:6;dim(m)<-c(2,3)`
+  - 矩阵可以用`rbind`或`cbind`生成
+  - `t`对矩阵转置
+- 因子变量表示分类数据 用标签名区分 用`level`来命名排序 默认是字母排序 有些函数对顺序敏感可用 `levels = c()` 来命名 ( 例如低中高的排序 ) 数字表示 `drop = T` 表示显示截取数据的水平  `nlevels`给出个数
+- NaN表未定义或缺失值 NA表示无意义转换或缺失值 NaN可以是NA反之不可以 NA有数据类型 is.NaN与is.NA 可用来检验
+- 数据框
+  - 特殊list 每个元素长度相等
+  - 每一列类型相同 矩阵所有数据类型相同
+  - 特殊属性`row.names`
+  - 转为矩阵`data.matrix`
+  - 变量名自动转化 可以不同
+  - 因子变量保持为字符可以用 `I` `data.frame(x,y,I(c))`
+- 数组
+  - 表示更高维度的数据 
+  - `dim() = c(x,y,z)` 三维数组表示一组数 
+  - `dimnames` 给数组命名 
+  - 数组调用如果只有一行 需要`drop = F` 否则 不会按照数组分类
+- `ts` 产生时间序列对象
+- `.Last.value` 引用前一个数值
+- 取整数 用`round(x,n)` n表示保留几位小数
+- 截取整数 `trunc`
+- 开平方 `sqrt`
+- 绝对值 `abs`
+- 指数函数 `exp`
+- 自然对数函数 `log`
+- 以 10 为底的对数函数 `log10`
+- 三角函数 `sin cos tan asin acos atan`
+- 常用的逻辑运算符有: 大于 `>` 小于 `<` 等于 `==` 小于或等于 `<=` 大于或等于 `>=` 与 `&` 非 `!` 或`|`
+- 判断向量x中是否与y中元素相等 `x %in% y` 结果返回逻辑值
+- `sum` 求和 `prod` 求连乘
+- `range` 给极值范围
+- `duplicated` 给出有重复的值 
+- `unique` 给出无重复的值
+- 向量操作 `union` 并集 `intersect` 交集 `setdiff` 除了交集的部分
+- `rep` 用向量循环生成向量
+
+```{r,eval=FALSE}
+x <- 1:4 # puts c(1,2,3,4) into x
+i <- rep(2, 4) # puts c(2,2,2,2) into i
+y <- rep(x, 2) # puts c(1,2,3,4,1,2,3,4) into y
+z <- rep(x, i) # puts c(1,1,2,2,3,3,4,4) into z
+w <- rep(x, x) # puts c(1,2,2,3,3,3,4,4,4,4) into w
+```
+- 整型变量后面加上L x<-10L
+- Inf代表1/0 同样1/Inf运算结果为0
+
+### 环境／文件操作
+
+- `getwd()` `setwd()` 设置工作目录
+- `ls()` 列举环境中bianliang
+- `list.files()` 或 `dir()` 列举当前目录下文件
+- `args()` 列举函数默认变量
+- `dir.create()` 创建文件目录 加上`recursive=T`可创建多级目录
+- `file.create()` 创建文件
+- `file.exists()` 检查文件是否存在
+- `file.info()` 检查文件信息
+- `file.rename()` 文件重命名
+- `file.copy()` 文件复制
+- `file.path()` 文件路径 多个文件组成多级路径
+- `unlink()` 删除文件
+
+### 下载
+
+- 设定工作目录与数据存储目录
+
+```{r,eval=FALSE}
+if (!file.exists("data")) {
+    dir.create("data")
+}
+```
+
+- url下载与时间记录
+
+```{r,eval=FALSE}
+fileUrl <- "yoururl"
+download.file(fileUrl, destfile = "./data/XXX.csv", method = "curl")
+list.files("./data")
+dateDownloaded <- date()
+```
+
+
+### 截取数据
+
+- 可以用`[x,y]`提取特定数值
+- `[-1,-2]`可剔除第一行第二列
+- `[[]]`用来从list或者frame里提取元素 类型固定 可提取序列`x[[1]][[3]]` 可部分匹配  `exact=FALSE`
+- $用名字提取元素 可部分匹配
+- 提取矩阵时默认只能提取向量 但可以提取1*1矩阵`x[1,2,drop=FALSE]`
+- 先用`is.NA()`提取 用`!`排除 缺失值可用`is.element(x,y)`来处理很多表示NA值的数字 返回`x %in% y`的逻辑值
+- 用`complete.cases()`提取有效数据用`[]`提取可用数据
+- `head(x,n)` n表示从头截取多少行
+- `tail(x,n)` n表示从尾截取多少行
+- `subset(x,f)` x表示数据 f表示表达式
+- 条件筛选中获得一个变量多个数值的数据使用 `[is.element(x,c(' ',' ',' ')),]` 或者`[x%in%c(' ',' ',' '),]` 使用`x == c( ' ' , ' ' , ' ' )` 会报错 循环查找三个变量 
+- `x!='t'` 可能会把空白值输入 应该使用`is.element(x,'t')`
+- `ifelse(con,yes,no)` 利用条件筛选 返回yes 或者no 的值
+- 支持正则表达式
+- 增加行直接`$`
+- `seq`产生序列
+- 通过`[`按行 列或条件截取
+- `which`返回行号
+- 排序向量用`sort`
+- 排序数据框(多向量)用`order`
+- [plyl包](http://plyr.had.co.nz/09-user/)排序
+
+```{r eval=FALSE}
+library(plyr)
+arrange(X,var1)
+arrange(X,desc(var1))
+```
+
+
+### 读取数据
+
+- `read.table` `read.csv` 读取表格 反之`write.table`
+- `readLines` 读取文本行 反之`writeLines`
+- `source` 读取R代码 反之`dump`
+- `dget` 读取多个R代码 反之`dput`
+- `load` 读取保存的工作区 反之`save`
+- `unserialize` 读取二进制R对象 反之`serialize`
+- `?read.table` 
+- 大数据读取提速
+  - 计算内存
+  - `comment.char = ""` 不扫描注释
+  - 设定`nrows`
+  - 设定`colClasses`
+
+```{r,eval=FALSE}
+initial <- read.table("datatable.txt", nrows = 100)
+classes <- sapply(initial, class)
+tabAll <- read.table("datatable.txt",
+                     colClasses = classes)
+```
+- 使用`connections`与`file`等保存外部文件指向
+
+#### 读取本地文件
+
+- `read.table`
+- `read.csv` 默认`sep=",", header=TRUE`
+- `quote` 设定引用
+- `na.strings` 设定缺失值字符
+- `nrows` 设定读取字段
+- `skip` 跳过开始行数
+
+#### 读取excle文件
+
+- xlsx包
+
+```{r,eval=FALSE}
+library(xlsx)
+cameraData <- read.xlsx("./data/cameras.xlsx",sheetIndex=1,header=TRUE)
+head(cameraData)
+# read.xlsx2更快不过选行读取时会不稳定
+# 支持底层读取 如字体等
+```
+
+- XLConnect包
+
+```{r,eval=FALSE}
+library(XLConnect)
+wb <- loadWorkbook("XLConnectExample1.xlsx", create = TRUE)
+createSheet(wb, name = "chickSheet")
+writeWorksheet(wb, ChickWeight, sheet = "chickSheet", startRow = 3, startCol = 4)
+saveWorkbook(wb)
+# 支持区域操作 生成报告 图片等
+```
+
+#### 读取XML文件
+
+- 网页常用格式
+- 形式与内容分开
+- 形式包括标签 元素 属性等
+- XML包
+
+```{r eval=FALSE}
+library(XML)
+fileUrl <- "http://www.w3schools.com/xml/simple.xml"
+# 读取xml结构
+doc <- xmlTreeParse(fileUrl,useInternal=TRUE)
+# 提取节点
+rootNode <- xmlRoot(doc)
+# 提取根节点名
+xmlName(rootNode)
+# 提取子节点名
+names(rootNode) 
+# 提取节点数值
+xmlSApply(rootNode,xmlValue)
+```
+
+- XPath XML的一种查询语法
+  - /node 顶级节点
+  - //node 所有子节点
+  - node[@attr-name] 带属性名的节点
+  - node[@attr-name='bob'] 属性名为bob的节点
+
+```{r eval=FALSE}
+# 提取节点下属性名为name的数值
+xpathSApply(rootNode,"//name",xmlValue)
+```
+
+#### 读取json文件
+
+- js对象符号 结构化 常作为API输出格式
+- jsonlite包
+
+```{r eval=FALSE}
+library(jsonlite)
+# 读取json文件
+jsonData <- fromJSON("https://api.github.com/users/jtleek/repos")
+# 列出文件名
+names(jsonData)
+# 可嵌套截取
+jsonData$owner$login
+# 可将R对象写成json文件
+myjson <- toJSON(iris, pretty=TRUE)
+
+```
+
+#### 读取MySQL数据库
+
+- 网络应用常见数据库软件
+- 一行一记录
+- 数据库表间有index向量
+- [常见命令](http://www.pantz.org/software/mysql/mysqlcommands.html)
+- [指南](http://www.r-bloggers.com/mysql-and-r/)
+- RMySQL包
+
+```{r eval=FALSE}
+library(RMySQL)
+# 读取数据库
+ucscDb <- dbConnect(MySQL(),user="genome", 
+                    host="genome-mysql.cse.ucsc.edu")
+result <- dbGetQuery(ucscDb,"show databases;"); 
+# 断开链接
+dbDisconnect(ucscDb);
+# 读取指定数据库
+hg19 <- dbConnect(MySQL(),user="genome", db="hg19",
+                    host="genome-mysql.cse.ucsc.edu")
+allTables <- dbListTables(hg19)
+length(allTables)
+# mysql语句查询
+dbGetQuery(hg19, "select count(*) from affyU133Plus2")
+# 选择子集
+query <- dbSendQuery(hg19, "select * from affyU133Plus2 where misMatches between 1 and 3")
+affyMis <- fetch(query); quantile(affyMis$misMatches)
+```
+
+#### 读取HDF5数据
+
+- 分层分组读取大量数据的格式
+- rhdf5包
+
+```{r eval=FALSE}
+library(rhdf5)
+created = h5createFile("example.h5")
+created = h5createGroup("example.h5","foo")
+created = h5createGroup("example.h5","baa")
+created = h5createGroup("example.h5","foo/foobaa")
+h5ls("example.h5")
+A = matrix(1:10,nr=5,nc=2)
+h5write(A, "example.h5","foo/A")
+B = array(seq(0.1,2.0,by=0.1),dim=c(5,2,2))
+attr(B, "scale") <- "liter"
+h5write(B, "example.h5","foo/foobaa/B")
+h5ls("example.h5")
+df = data.frame(1L:5L,seq(0,1,length.out=5),
+  c("ab","cde","fghi","a","s"), stringsAsFactors=FALSE)
+h5write(df, "example.h5","df")
+h5ls("example.h5")
+readA = h5read("example.h5","foo/A")
+readB = h5read("example.h5","foo/foobaa/B")
+readdf= h5read("example.h5","df")
+```
+
+#### 读取网页数据
+
+- 网页抓取HTML数据
+- 读完了一定关链接
+- httr包
+
+```{r eval=FALSE}
+con = url("http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en")
+htmlCode = readLines(con)
+close(con)
+htmlCode
+library(XML)
+url <- "http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en"
+html <- htmlTreeParse(url, useInternalNodes=T)
+xpathSApply(html, "//title", xmlValue)
+library(httr)
+html2 = GET(url)
+content2 = content(html2,as="text")
+parsedHtml = htmlParse(content2,asText=TRUE)
+xpathSApply(parsedHtml, "//title", xmlValue)
+GET("http://httpbin.org/basic-auth/user/passwd")
+GET("http://httpbin.org/basic-auth/user/passwd",
+    authenticate("user","passwd"))
+google = handle("http://google.com")
+pg1 = GET(handle=google,path="/")
+pg2 = GET(handle=google,path="search")
+```
+
+#### 读取API
+
+- 通过接口授权后调用数据
+- httr包
+
+```{r eval=FALSE}
+myapp = oauth_app("twitter",
+                   key="yourConsumerKeyHere",secret="yourConsumerSecretHere")
+sig = sign_oauth1.0(myapp,
+                     token = "yourTokenHere",
+                      token_secret = "yourTokenSecretHere")
+homeTL = GET("https://api.twitter.com/1.1/statuses/home_timeline.json", sig)
+json1 = content(homeTL)
+json2 = jsonlite::fromJSON(toJSON(json1))
+```
+
+#### 读取其他资源
+
+- 图片
+  - [jpeg](http://cran.r-project.org/web/packages/jpeg/index.html)
+  - [readbitmap](http://cran.r-project.org/web/packages/readbitmap/index.html)
+  - [png](http://cran.r-project.org/web/packages/png/index.html)
+  - [EBImage (Bioconductor)](http://www.bioconductor.org/packages/2.13/bioc/html/EBImage.html)
+
+- GIS
+  - [rdgal](http://cran.r-project.org/web/packages/rgdal/index.html)
+  - [rgeos](http://cran.r-project.org/web/packages/rgeos/index.html)
+  - [raster](http://cran.r-project.org/web/packages/raster/index.html)
+
+- 声音
+  - [tuneR](http://cran.r-project.org/web/packages/tuneR/)
+  - [seewave](http://rug.mnhn.fr/seewave/)
+
+### 数据总结
+
+- `head` `tail`查看数据
+- `summary` `str`总结数据
+- `quantile` 按分位数总结向量
+- `table` 按向量元素频数总结
+- `sum(is.na(data))` `any(is.na(data))` `all(data$x > 0)` 异常值总结
+- `colSums(is.na(data))` 行列求和
+- `table(data$x %in% c("21212"))`特定数值计数总结
+- `xtabs` `ftable` 创建列联表
+- `print(object.size(fakeData),units="Mb")` 现实数据大小
+- `cut` 通过设置`breaks`产生分类变量
+- Hmisc包
+
+```{r eval=FALSE}
+library(Hmisc)
+data$zipGroups = cut2(data$zipCode,g=4)
+table(data$zipGroups)
+library(plyr)
+# mutate进行数据替换或生成
+data2 = mutate(data,zipGroups=cut2(zipCode,g=4))
+table(data2$zipGroups)
+```
+
+### 数据整理
+
+> Raw data -> Processing script -> tidy data
+
+- 前期需求
+  - 原始数据
+  - 干净数据
+  - code book
+  - 详尽的处理步骤记录
+- 原始数据要求
+  - 未经处理
+  - 未经修改
+  - 未经去除异常值
+  - 未经总结
+- 干净数据
+  - 每个变量一列
+  - 同一变量不同样本不在一行
+  - 一种变量一个表
+  - 多张表要有一列可以相互链接
+  - 有表头
+  - 变量名要有意义
+  - 一个文件一张表
+- code book
+  - 变量信息
+  - 总结方式
+  - 实验设计
+  - 文本文件
+  - 包含研究设计与变量信息的章节
+- 处理步骤记录
+  - 脚本文件
+  - 输入为原始数据
+  - 输出为处理过数据
+  - 脚本中无特定参数
+
+- 每一列一个变量
+- 每一行一个样本
+- 每个文件存储一类样本
+- `melt`进行数据融合
+- [`reshape2`包](http://www.slideshare.net/jeffreybreen/reshaping-data-in-r)
+- `dcast`分组汇总数据框
+- `acast`分组汇总向量数组
+- `arrange`指定变量名排序
+- `merge`按照指定向量合并数据
+- plyr包的`join`函数也可实现合并
+
+### [*数据操作data.table包*](https://github.com/raphg/Biostat-578/blob/master/Advanced_data_manipulation.Rpres)
+
+- 基本兼容`data.frame`
+- 速度更快
+- 通过`key`可指定因子变量并快速提取分组的行
+- 可在第二个参数是R表达式
+
+```{r eval=FALSE}
+DT[,list(mean(x),sum(z))]
+DT[,table(y)]
+```
+
+- 可用`:`生成新变量 进行简单计算
+
+```{r eval=FALSE}
+DT[,w:=z^2]
+DT[,m:= {tmp <- (x+z); log2(tmp+5)}]
+```
+
+- 进行数据条件截取
+
+```{r eval=FALSE}
+DT[,a:=x>0]
+DT[,b:= mean(x+w),by=a]
+```
+
+- 进行计数
+
+```{r eval=FALSE}
+DT <- data.table(x=sample(letters[1:3], 1E5, TRUE))
+DT[, .N, by=x]
+```
+
+### 文本处理
+
+- 处理大小写`tolower` `toupper`
+- 处理变量名`strsplit`
+
+```{r eval=FALSE}
+firstElement <- function(x){x[1]}
+sapply(splitNames,firstElement)
+```
+
+- 字符替换`sub` `gsub`
+- 寻找变量`grep`(返回行号) `grepl`(返回逻辑值)
+- stringr包 `stringr` 
+- `paste0` 不带空格
+- `str_trim` 去除空格
+- 命名原则
+  - 变量名小写
+  - 描述性
+  - 无重复
+  - 变量名不要符号分割
+  - Names of variables should be
+- 正则表达式
+  - 文字处理格式
+  - `^` 匹配开头
+  - `$` 匹配结尾
+  - `[]` 匹配大小写 `^`在开头表示非
+  - `.` 匹配任意字符
+  - `|` 匹配或
+  - `()` 匹配与
+  - `?` 匹配可选择
+  - `*` 匹配任意
+  - `+` 匹配至少一个
+  - `{}` 匹配其中最小最大 一个值表示精确匹配 `m,`表示至少m次匹配
+  - `\1` 匹配前面指代
+
+### 控制结构
+
+- `if else` 条件
+
+```{r,eval=FALSE}
+if(<condition>) {
+        ## do something
+} else {
+        ## do something else
+}
+if(<condition1>) {
+        ## do something
+} else if(<condition2>)  {
+        ## do something different
+} else {
+        ## do something different
+}
+```
+
+- `for‵ 执行固定次数的循环 嵌套不超过2层
+
+```{r,eval=FALSE}
+for(i in 1:10) {
+        print(i)
+}
+```
+
+- `while` 条件为真执行循环 条件从左到右执行
+
+```{r,eval=FALSE}
+count <- 0
+while(count < 10) {
+        print(count)
+        count <- count + 1
+}
+```
+
+- `repeat` 执行无限循环 配合`break` 中断并跳出循环
+- `next` 跳出当前循环继续执行
+
+```{r,eval=FALSE}
+for(i in 1:100) {
+        if(i <= 20) {
+                ## Skip the first 20 iterations
+                next 
+        }
+        ## Do something here
+}
+```
+- `return` 退出函数
+- 避免使用无限循环 可用`apply`替代
+
+### 函数
+
+```{r,eval=FALSE}
+f <- function(<arguments>) {
+        ## Do something interesting
+}
+```
+- 函数中参数默认值可用`formals()`显示
+- 参数匹配
+  - 先检查命名参数
+  - 然后检查部分匹配
+  - 最后检查位置匹配
+- 定义函数时可以定义默认值或者设为`NULL`
+- 懒惰执行：只执行需要执行的语句
+- `...` 向其他函数传参 之后参数不可部分匹配
+
+### 编程标准
+
+- 使用文本文档与文本编辑器
+- 使用缩进
+- 限制代码行宽 80为宜
+- 限制单个函数长度
+
+### 范围规则
+
+- 自由变量采用静态搜索
+- 环境是由数值符号对组成 每个环境都有母环境
+- 函数与环境组成环境闭包
+- 首先从函数环境中寻找变量
+- 之后搜索母环境
+- 最高层为工作区
+- 之后按搜寻列表从扩展包中寻找变量
+- 最后为空环境 之后报错
+- 可以函数内定义函数
+- S都存在工作区 函数定义一致 R存在内存 可根据需要调用函数环境
+
+### 向量化操作
+
+- 向量操作针对元素
+- 矩阵操作也针对元素 `%*%` 表示矩阵操作
+
+### 绘图系统
+
+#### 基础绘图
+
+- 艺术家绘画模式
+- graphics 包括基础包的绘图函数如plot, hist, boxplot
+- grDevices 包括执行调用绘图设备函数如X11, PDF, PostScript, PNG
+- 叠加函数 高度自由度
+- 初始化新图 然后标注
+- 以下命令熟记
+  - pch: the plotting symbol (default is open circle)
+  - lty: the line type (default is solid line), can be dashed, dotted, etc.
+  - lwd: the line width, specified as an integer multiple
+  - col: the plotting color, specified as a number, string, or hex code; the colors() function gives you a vector of colors by name
+  - xlab: character string for the x-axis label
+  - ylab: character string for the y-axis label
+  - `par()`:查找做图的画布参数 具体如下
+  - las: the orientation of the axis labels on the plot
+  - bg: the background color
+  - mar: the margin size
+  - oma: the outer margin size (default is 0 for all sides)
+  - mfrow: number of plots per row, column (plots are filled row-wise)
+  - mfcol: number of plots per row, column (plots are filled column-wise)
+  - plot: make a scatterplot, or other type of plot depending on the class of the object being plotted
+  - lines: add lines to a plot, given a vector x values and a corresponding vector of y values (or a 2-column matrix); this function just connects the dots
+  - points: add points to a plot
+  - text: add text labels to a plot using specified x, y coordinates
+  - title: add annotations to x, y axis labels, title, subtitle, outer margin
+  - mtext: add arbitrary text to the margins (inner or outer) of the plot
+  - axis: adding axis ticks/labels
+- 图形设备
+  - 图像一定要有设备
+  - 屏幕设备 Mac `quartz()` windows `windows()` Unix/linux `x11()`
+  - 先调用后用`dev.off()`关闭设备
+  - 矢量图设备 保真放大 元素过多体积庞大 `pdf()` `svg()` `winmetafile()` `postscript()`
+  - 位图设备 放大失真 基于像素 `png()` `jpeg()` `tiff()` `bmp()`
+  - 当前设备`dev.cur()` 
+  - 设置设备`dev.set(<integer>)`
+  - 设备转移`dev.copy` `dev.copy2pdf`
+
+#### lattice
+
+- 一站式解决
+- lattice 包括框架图函数如xyplot, bwplot, levelplot
+- grid 包括独立于基础绘图系统的网格绘图系统
+- 一个函数解决问题 默认自定义空间少
+- 返回`trellis`类型对象 可单独存储
+- 界面调整使用`panel`选项
+- 以下为常见函数
+  - xyplot: this is the main function for creating scatterplots
+  - bwplot: box-and-whiskers plots (“boxplots”)
+  - histogram: histograms
+  - stripplot: like a boxplot but with actual points
+  - dotplot: plot dots on "violin strings"
+  - splom: scatterplot matrix; like pairs in base plotting system
+  - levelplot, contourplot: for plotting "image" data
+- 基本格式
+  - `xyplot(y ~ x | f * g, data)`
+  - 可同时展示分组信息及交互作用
+  
+#### ggplot2
+
+- 基于图形语法理念
+- 图形属性映射数据问题
+- 自动处理界面 允许后期添加 结合base与lattice
+- 默认友好
+- 基础绘图`qplot()`
+- `ggplot()` 通过叠加元素出图
+- 细节调整`xlab()`, `ylab()`, `labs()`, `ggtitle()`
+- 主题调整`theme()`
+- 做图需求
+  - 数据框 data.frame
+  - 属性映射 asethetic mappling
+  - 几何对象 geoms
+  - 条件 facets
+  - 统计转换 stats
+  - 范围量表 scales
+  - 坐标轴系统 coordinate system
+
+#### 数学绘图
+
+- Tex语法
+- 使用`expression()`
+- `?plotmath`
+
+#### 色彩管理
+
+- `colorRamp` 返回01间数值 表示颜色过度
+- `colorRampPalette` 返回8位颜色代码调色盘
+- `colors` 返回可用颜色
+- RColorBrewer包 含有预先配色信息 序列 无序 两级
+- `rgb`产生三原色颜色 `alpha` 控制透明度
+- 绘图时用`col`调用调色盘颜色
+```{r}
+pal <- colorRamp(c("red", "blue"))
+pal(0)
+pal(1)
+pal(0.5)
+#####
+pal <- colorRampPalette(c("red", "yellow"))
+pal(2)
+pal(10)
+#####
+library(RColorBrewer)
+cols <- brewer.pal(3, "BuGn")
+```
+
+
+### 日期与时间
+
+- 日期以`data`类型存储
+- 时间以`POSIXct` 或 `POSIXlt` 类型存储
+- 数字上是从1970-01-01以来的天数或秒数
+- `POSIXct`以整数存储时间
+- `POSIXlt`以年月日时分秒等信息存储时间
+- `strptime` `as.Date` `as.POSIXlt` `as.POSIXct`用来更改字符为时间
+- `formate`处理日期格式
+  - `%d` 日 
+  - `%a` 周缩写
+  - `%A` 周
+  - `%m` 月
+  - `%b` 月缩写
+  - `%B` 月全名
+  - `%y` 2位年
+  - `%Y` 4位年
+- `weekdays` 显示星期
+- `months` 显示月份
+- `julian` 显示70年以来的日期
+- [lubridate包](http://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html)
+  - `ymd`
+  - `mdy`
+  - `dmy`
+  - `ymd_hms`
+  - `Sys.timezone`
+
+### 循环
+
+#### `lapply`
+
+- 对列表对象元素应用函数
+- 可配合匿名函数使用
+
+```{r}
+x <- list(a = 1:5, b = rnorm(10))
+lapply(x, mean)
+
+x <- 1:4
+lapply(x, runif, min = 0, max = 10)
+
+x <- list(a = matrix(1:4, 2, 2), b = matrix(1:6, 3, 2))
+lapply(x, function(elt) elt[,1])
+```
+
+#### `sapply`
+
+- `lapply`的精简版 
+- 如果结果是单元素列表 转化为向量
+- 如果结果是等长向量 转化为矩阵
+- 否则输出依旧为列表
+
+```{r}
+x <- list(a = 1:4, b = rnorm(10), c = rnorm(20, 1), d = rnorm(100, 5))
+sapply(x, mean)
+```
+
+#### `vapply`
+
+- 类似`lapply`可用更复杂函数 返回矩阵
+
+#### `replicate`
+
+- 用于将函数循环使用 如返回随机矩阵
+
+#### `rapply`
+
+- 用`how`来调整输出方法 如选取某列表中类型数据进行迭代
+
+#### `apply`
+
+- 数组边际函数 常用于矩阵的行列处理
+- 行为1，列为2
+- 可用`rowSums` `rowMeans` `colSums` `colMeans` 来替代 大数据量更快
+
+```{r}
+x <- matrix(rnorm(50), 10, 5)
+apply(x, 1, quantile, probs = c(0.25, 0.75))
+
+a <- array(rnorm(2 * 2 * 10), c(2, 2, 10))
+apply(a, c(1, 2), mean)
+```
+
+#### `tapply`
+
+- 对数据子集（因子变量区分）向量应用函数
+
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10)
+tapply(x, f, mean)
+```
+
+#### `by`
+
+- 对数据按照因子变量应用函数 类似`tapply` 
+- 按照某个分类变量a分类求均值 `by(x[,-a],a,mean)`
+
+#### `split`
+
+- 将数据按因子分割为列表 常配合`lapply`使用
+- 类似`tapply`
+- 可用来生成分组 用`drop`来删除空分组
+
+```{r}
+x <- c(rnorm(10), runif(10), rnorm(10, 1))
+f <- gl(3, 10)
+lapply(split(x, f), mean)
+
+x <- rnorm(10)
+f1 <- gl(2, 5)
+f2 <- gl(5, 2)
+str(split(x, list(f1, f2), drop = TRUE))
+```
+
+#### `mapply`
+
+- 多变量版`apply` 从多个参数范围取值 并用函数得到结果
+
+```{r}
+noise <- function(n, mean, sd) {
+  rnorm(n, mean, sd)
+}
+mapply(noise, 1:5, 1:5, 2)
+
+#等同于如下循环
+
+#list(noise(1, 1, 2), noise(2, 2, 2),
+#    noise(3, 3, 2), noise(4, 4, 2),
+#    noise(5, 5, 2))
+```
+
+#### `eapply`
+
+- 对环境变量应用函数 用于包
+
+### 模拟
+
+- 在某分布下产生随机数
+  - d 分布概率密度
+  - r 分布随机数
+  - p 分布累计概率
+  - q 分布分位数
+  
+```{r,eval=FALSE}
+dnorm(x, mean = 0, sd = 1, log = FALSE)
+pnorm(q, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)
+qnorm(p, mean = 0, sd = 1, lower.tail = TRUE, log.p = FALSE)
+rnorm(n, mean = 0, sd = 1)
+```
+
+- `set.seed`保证重现性
+- `sample`对数据采样
+
+### 调试
+
+- 三种提示 `message` `warning` `error` 只有`error`致命
+- 关注重现性
+- 调试工具 `traceback` `debug` `browser` `trace` `recover`
+- 三思而行
+
+### 分析代码
+
+- 先设计 后优化
+- `system.time` 计算代码运行时间 返回对象类型`proc_time`
+  - ‵user time` 执行代码用时
+  - `system time` CPU时间
+  - `elapsed time` 实际用时
+  - 在多核或并行条件下实际用时可以短于执行代码用时
+  - 明确知道耗时较长的函数时使用
+- `Rprof` R代码要支持分析函数
+  - `summaryRprof`可使结果易读
+  - 不要与`system.time`混用
+  - 0.02s记录一次执行函数
+  - `by.total` 记录单个函数用时
+  - `by.self` 记录函数执行时被调用函数用时
+
+### 包开发
+
+- `DESCRIPTION` 指明包内容
+  - `Package` 包名字
+  - `Title` 全名
+  - `Description` 一句话描述
+  - `Version` 版本号
+  - `Author` 作者
+  - `Maintainer` 维护者
+  - `License` 许可协议
+  - `Depends` 依赖
+  - `Suggests` 建议
+  - `Date` 发布日期 YYYY-MM-DD 格式
+  - `URL` 项目主页
+- `R` 源码
+- `Documentation` 文档 `Rd`文件
+- `NAMESPACE` 关键词 输入输出的函数及类型
+- `R CMD build/check newpackage` 构建 检查包
+- `roxygen2` 源文件注释文档
+
+### 方法与类型
+
+- R 面向对象编程
+- 对象用`setClass`指定类型 用`setMethod`指定处理类型的方法
+- 对象一般指新的数据类型
+- S3函数对象不算严格 `generic`处理对象 开放 没有指定类型就用通用方法
+- S4函数对象定义严格 只处理指定类型对象 不可直接调用方法 针对性强
+- `stats4` 有很多针对性的极大似然估计的对象定义与方法
+
+
+## Python
+
+- 基础数据类型 NULL
+- 数值类型
+    - int
+    - float
+    - bool(逻辑运算)
+- 列表
+    - 从0开始
+    - 元素可变
+    - ()赋值为Tuples类型 元素不可变 
+- 字符串
+    - 文本处理
+    - python专长
+- 字典
+    - {}包含
+    - : 指定属性值
+- python中对象均有类型 可自定义
+
+### 工具包
+
+- Numpy 数值计算包
+- Pandas 数据清洗 缺失值 切分
+- MatPlotLib 数据可视化
+- sklearn 机器学习包
+
+## Tex
+
+### 语言基础
+
+- 作者 Donald Knuth
+
+- `tex` 排版引擎 圆周率
+
+- `metafont` 处理字体 自然对数的底数
+
+- 控制序列 钩子为`\` 
+
+- 宏包 对控制序列打包 钩子为`\ `
+
+    - `Lamport`
+
+    - `latex` 宏包 分部分处理文档 打包了大量命令
+
+    - `latex 2e` 后基本停止
+
+    - Hans 对 `latex` 不满 认为可定制性不够 遂进行二次开发 有了 `context`
+
+- 引擎 处理控制序列 进行排版
+
+    - `pdftex` 可解决文档直接输出为PDF的问题 避免产生dvi
+
+    - 早期不支持unicode 对多国语言只能通过调用宏包来实现字符与图形对应 `cjk` `ctt` `ctex` 等都是此类宏包 需要安装字体
+
+    - `xetex` 可原生支持unicode的引擎并调用系统字体 支持plain tex xelatex 可支持latex宏包
+
+    - `luatex` 合并`metapost` 可直接绘图 可直接调用字体 可脱离宏包调用程序 现与 `context` 结合紧密
+
+- `tex`格式 Knuth为原始300个控制序列写的宏包 有600命令 这900个合称`plain tex`
+
+- 将引擎 宏包 格式 辅助程序等打包即为发行版
+
+    - `miktex` `texlive` `mactex`
+
+    - `context` `minimals` 只有自己的引擎与宏包
+
+- 字体 最早是栅格 后来是矢量 
+
+    - type I 是最早的矢量
+
+    - truetype 是type I 的竞争对手
+
+    - opentype 是基于truetype的进化版
+
+    - 最早格式为DVI 为字体准备了字形盒子 可通过上面编码调用字库显示 之后出现了PS与PDF
+
+    - 原来要编译多次 现在只需要用`xetex`或`luatex`引擎就可以了 他们内置了库来实现字形盒子与字体的联系 这个库有cache功能
+
+- 字体分类
+
+    - 衬线体 起笔落笔有差异 横竖粗细各不同 易于识别 宋体
+
+    - 非衬线体 笔画粗细一致 无装饰 醒目 黑体
+
+    - 等宽体 每个字宽窄相同 汉字 编程
+
+### 关于`xetex`
+
+- `xeCJK` 使用`xelatex`引擎的中文宏包 纠正了`xelatex`一些缩进等的不美观
+
+- `ctex` 包含早期`CTT` `CJK` 及 `xeCJK` 可用`\setCJKmainfont{SimSun}` 来调用系统字体 下面是底层调用中英文混排
+
+#### 实例讲解
+
+```
+\documentclass[12pt,a4paper]{article}
+\usepackage{xltxtra,fontspec,xunicode}
+\usepackage[slantfont,boldfont]{xeCJK} % 允许斜体和粗体
+\setCJKmainfont{FZJingLeiS-R-GB}   % 设置缺省中文字体 
+\setCJKmonofont{SimSun}   % 设置等宽字体
+\setmainfont{TeX Gyre Pagella} % 英文衬线字体
+\setmonofont{Monaco} % 英文等宽字体
+\setsansfont{Trebuchet MS} % 英文无衬线字体
+```
+
+### 常见问题
+
+- 空白 tab与多个空白认为是一个空白 空行表示段落结束
+
+- 保留字符 `# $ % ^ & _ { } ~ \` 可使用`\#` `\$` `\%` `\^{}` `\&` `\_` `\{` `\}` `\~{}` 来表示 `\\` 表示断行  `$\backslash$`生成反斜杠
+
+- `latex`命令 `\tex{}` 后面加空格防止命令延长  `{}`中为命令参数
+
+- `%` 表示注释掉一行 也可使用`\usepackage{verbatim}` 中的`comment`环境
+
+- 源文件结构
+
+    - `\documentclass[]{...}` 声明文档类型`[]`中为选项 包括字体 纸张 公式对齐 等文档格式
+
+    - `\usepackage[]{...}` 加入需要的宏包`[]`中为触发功能的关键词
+
+    - 以上为导言区
+
+    - `\begin{document}`开始正文
+
+    - `\end{document}`结束文档
+
+- 页面样式`\pagestyle{style}` 不同页眉页脚样式
+
+- `\include{ﬁlename}` 用来包含文档 多用于大型文档 在新页包含 连续可用`\input{ﬁlename}`
+
+- `\includeonly{ﬁlename,ﬁlename,. . .}` 导言区包含文档 在所有`\include`文档中 只有`\includeonly`中的会被处理
+
+- 语法检查`\usepackage{syntonly}` `\syntaxonly`
+
+- `\hyphenation{word list}` 给出断字列表 完整的不允许断 有-的表示允许的唯一断字点 在文档中\-表示唯一允许断字的地方
+
+- `mbox` `fbox` 不允许断字的地方 后者给出一个方框 `mbox`可用来分割连字
+
+- 特殊字符 
+
+    - `‘`输入两个表示双引号 
+    
+    - `-`输入1个连字号 2个短破折 3个长破折 网址中波浪号用`$\sim$` 而不是`\~`表示 
+    
+    - 摄氏度用`$-30\,^{\circ}\mathrm{C}$`表示 
+    
+    - `\ldots`表示省略号 bable宏包可处理多种非中文语言
+
+- `~`用来强制取消大写字母后空格多出的一点 `\@`用来表示大写字母作为最后一个词后句号的处理 一般`latex`不会处理大写字母后的句号（加入多一点空格）认为是缩写
+
+- `\frontmatter` 应接着命令 `\begin{document}` 使用 它把页码更换为罗马数字
+
+- 正文前的内容普遍使用带星的命令（例如，`\chapter*{Preface}`） 以阻止 `latex` 对它们排序
+
+- `\mainmatter` 应出现在书的第一章紧前面 它打开阿拉伯页码计数器并对页码从新计数
+
+- `\appendix` 标志书中附录材料的开始 该命令后的各章序号改用字母标记
+
+- `\backmatter` 应该插入与书中最后一部分内容的紧前面 如参考文献和索引 在标准文档类型中它对页面没有什么效果
+
+- 交叉引用  `\label{marker}`引用点 `\ref{marker}`引用  `\pageref{marker}` 引用点页码交叉引用
+
+- 产生脚注 `\footnote{footnote text}`
+
+- 强调 `\underline{text}` 下划线 `\emph{text}` 斜体 强调中强调会切换字体
+
+- 环境
+
+    - `itemize` 环境用于简单的列表 `enumerate` 环境用于带序号的列表 `description` 环境用于带描述的列表
+    
+    - `flushleft` 和 `flushright` 环境分别产生靠左排列和靠右排列的段落
+
+    - `center` 环境产生居中的文本 如果你不输入命令 `\\` 指定断行点 `latex` 将自行决定
+
+    - `quote` 环境对重要断语和例子的引用很重要
+
+    - `quotation` 环境用于超过几段的较长引用，因为它对段落进行缩进
+
+    - `verse` 环境用于诗歌，在诗歌中断行很重要。在一行的末尾用 `\\` 断行，在每一段后留一空行
+
+    - `verbatim` 环境直接输出其中内容 可用断字表示 可表示空格 较短的用`\verb*|like this :-) |`
+
+    - `\begin{tabular}{table spec}` 用来生成表格
+
+    - `\begin{figure}[placement speciﬁer]` or `\begin{table}[placement speciﬁer]` 表示浮动体
+
+    - `\caption{caption text}` 给浮动体加标签
+
+    - `\listoffigures` 与 `\listoftables` 生成图表目录
+
+- 数学公式
+
+    - 段落中放于 `\(` 和 `\)` `$` 和 `$` 或者 `\begin{math}` 和 `\end{math}` 
+    
+    - 单独一行可放于 `\[` 和 `\]` 或 `\begin{displaymath}` 和 `\end{displaymath}`
+    
+    - 带编号可放于`equation`数学环境中
+
+    - 空格和分行都将被忽略 所有的空格或是由数学表达式逻辑的衍生 或是由特殊的命令如 `\` `\quad` 或 `\qquad` 来得到
+
+    - 不允许有空行 每个公式中只能有一个段落
+
+    - 每个字符都将被看作是一个变量名并以此来排版 如果你希望在公式中出现普通的文本（使用正体字并可以有空格），那么你必须使用命令 `\textrm{...}` 来输入这些文本
+
+- `\newtheorem{name}[counter]{text}[section]`定理环境 `name` 是短关键字，用于标识“定理”。`text` 定义“定理”的真实名称，会在最终文件中打印出来。
+
+- 建立新命令
+
+    - `\newcommand{name}[num]{deﬁnition}`
+    
+    - 第一个参数 `name` 是你想要建立的命令的名称
+    
+    - 第二个参数 `deﬁnition` 是命令的定义 
+    
+    - 第三个参数 `num` 是可选的 用于指定命令所需的参数数目（命令最多可以有9个参数）如果不给出这个参数 那么新建的命令将不接受任何参数
+    
+    - `num` 可用来传参，`\renewcommand` 可用来建立与原命令名称相同的命令
+
+- 建立新环境 `\newenvironment{name}[num]{before}{after}`
+
+- 建立新宏包 `\ProvidesPackage{package name}`命令环境打包起名字保存为`sty` 可直接调用 其实就是打包导言区
+
+- 行距`\linespread{factor}`
+
+- 首行缩进与段落间距 `\setlength{\parindent}{0pt}` `\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}`
+
+- 水平距离`\hspace{length}` 橡皮擦 `\stretch{n} x\hspace{\stretch{3}}x`
+
+- 垂直距离`\vspace{length}`
+
+- `\sum\limits_{k=1}^n k^2` 使求和符号上下标真正出现在上下位

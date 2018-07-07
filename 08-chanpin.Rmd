@@ -1,0 +1,102 @@
+# 开发数据产品
+
+## shiny
+
+- 源自 R-studio
+- 动态网络应用
+- 入门版 [OpenCPU](https://www.opencpu.org/)
+- 高级版 [Manipulate](https://support.rstudio.com/hc/en-us/articles/200551906-Interactive-Plotting-with-Manipulate)
+- `install.packages("shiny");libray(shiny)`
+- `ui.R` 控制外观 `sever.R` 控制计算
+- `runApp()` 启动应用
+- `sever.R` 中 `shinyServer` 之前的代码只在启动应用时执行一次 适合读入数据
+- `shinyServer(function(input, output){` 之内的非互动函数只被每个用户执行一次
+- `Render*` 为互动函数 数值改变就执行一次
+- `runApp(display.mode='showcase')` 可用来同时高亮显示执行代码
+- `reactive` 用来加速互动函数外的信息交换
+- `actionButton` 用来一次提交输入数据 `if (input$goButton == 1){ Conditional statements }` 用来定义条件语句
+- `cat` `browser()` 调试
+- `fluidRow` 产生表格
+
+## rCharts
+
+- [主页](http://ramnathv.github.io/rCharts/)
+- 动态交互可视化工具
+- `require(devtools);install_github('rCharts', 'ramnathv')`
+
+## GoogleVis
+
+- [主页](https://developers.google.com/chart/interactive/docs/gallery)
+- R 代码产生图表 生成html
+- `install.packages('googleVis');library(googleVis)` 
+- [教程](http://decastillo.github.io/googleVis_Tutorial/)
+
+## Slidify
+
+- [主页](slidify.org)
+- html5 幻灯片
+- `install.packages("devtools");library(devtools);install_github('slidify', 'ramnathv');install_github('slidifyLibraries', 'ramnathv');library(slidify)`
+- `author("yufree")`
+- `YAML` 配置幻灯片结构
+- `##` 幻灯片开始 `---` 加空行表结束 `.class #id` 自定义css文件id
+- `slidify("index.Rmd")` 生成 `browseURL("index.html")` 观看
+- `publish_github(user, repo)` github发布
+
+## yhat
+
+- [主页](https://yhathq.com/)
+- 本地提交算法或模型 生成可调用API 支持R与python
+
+## 案例
+
+- [算法先发现女儿怀孕](https://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/#304228956668)
+
+- [netflix为什么不用获奖算法](https://www.techdirt.com/articles/20120409/03412518422/why-netflix-never-implemented-algorithm-that-won-netflix-1-million-challenge.shtml)
+
+- [伪装品酒师](http://www.onthelambda.com/2014/02/20/how-to-fake-a-sophisticated-knowledge-of-wine-with-markov-chains/)
+
+- [facebook 算法压抑多样性](https://medium.com/message/how-facebook-s-algorithm-suppresses-content-diversity-modestly-how-the-newsfeed-rules-the-clicks-b5f8a4bb7bab)
+
+- [利用点评数据预测经济发展可能比政府数据更新更及时，也更准确，刚搜了一下发现淘宝就有卖这类数据的…](http://voxeu.org/article/measuring-local-economy-yelp-data)
+
+- [#biorxiv 京都大学的一篇预印本论文基于深度神经网络与功能性核磁共振技术重构了视觉图像，看来读心术跟梦境重现术用不了多久就能见到产品了](https://www.biorxiv.org/content/early/2017/12/30/240317)
+
+- [#qz 茶是一种很特殊的跨国交易品，Nikhil Sonnad 发现丝绸之路上国家对茶的发音接近 cha，而地理大发现后沿岸（大概可理解为海上丝绸之路）上国家对茶的发音接近 tea（闽南语的茶），这种利用特产发音研究贸易史的方法很有启发性](https://qz.com/1176962/map-how-the-word-tea-spread-over-land-and-sea-to-conquer-the-world/)
+
+- [飓风玛丽亚的官方死亡人数是64，但纽约时报对比了往年数据认为应该是1052，这个往年对比对方法对灾害评价更有意义，可以发现一些非灾害直接导致但潜在相关的死亡现象](https://www.nytimes.com/interactive/2017/12/08/us/puerto-rico-hurricane-maria-death-toll.html?_r=0)
+
+- [某数据科学家收集并可视化了17年的买菜收据研究其购买行为的潜在模式，很神奇地发现他每次买东西的顺序都是相似的，然而后来被证明是电脑根据货物分类的默认排序](http://sketches.christianlaesser.com/2018-01-08-shopping-pattern/)
+
+- [写一个markdown编译器](https://blog.beezwax.net/2017/07/07/writing-a-markdown-compiler/)
+
+- [facebook 与普林斯顿的互掐](https://www.facebook.com/notes/mike-develin/debunking-princeton/10151947421191849)
+
+- [船跟教堂都曾是很直观的测量单位](http://longstreet.typepad.com/thesciencebookstore/2016/03/measuring-things-with-ships.html)
+
+- [twitter上喝酒的性别分析](https://qz.com/486704/this-is-how-men-and-women-drink-according-to-twitter/)
+
+- [美国各地对饮料的提法，南部人说coke，东北与西海岸说soda，其余地方说pop](http://popvssoda.com/)
+
+- [百度指数抓取](https://mp.weixin.qq.com/s/b3g-VycUoLaZgTWkgznU9g)
+
+- [twitter 上数据现实真相传播速度比谣言要慢，机器传播真假速率一致，人的传播起主要作用](http://science.sciencemag.org/content/359/6380/1146)
+
+- [#科学美国人 雪花的生长模拟与分类，脑洞很大，这是我头一次看到有人把 t-sne 跟 rnn 算法用到科普里](https://blogs.scientificamerican.com/sa-visual/in-silico-flurries/)
+
+- [地震记录可视化](https://geovisualist.com/2015/06/22/visualizing-100-years-of-earthquakes/)
+
+- [国际象棋生存概率](https://www.quora.com/What-are-the-chances-of-survival-of-individual-chess-pieces-in-average-games)
+
+
+- [各国人民想买什么](https://www.fixr.com/blog/2015/04/17/world-of-obsessions/)
+
+
+- [如何修厕所跟如何用筷子具有搜索相关性 很有画面感](http://how-to-fix-a-toilet.com/)
+- [09-17年推特的语义幸福度走势图，这两天因枪击达到了历史最低点，整体呈现出了6-7年的周期性，目前处于下行大趋势](http://hedonometer.org/index.html?from=2008-09-10)
+- [谷歌新闻实验室出品的可视化图形、书籍及工具的流行趋势，可作为入门可视化的“光环效应”指南，没想到甘特图排那么靠前，另外漏掉了今年的新秀joyplot](http://visualizationuniverse.com/)
+
+- [新西兰的新生儿名字在最近50年里呈现了长尾化，父母在给孩子起名字时有了更强的多样性，要知道在1850年英国新生儿里有13.7%的William和14.6%的Mary，突然想明白了为啥有个历史悠久的威廉玛丽学院了…](https://www.statschat.org.nz/2018/01/08/long-tail-of-baby-names/)
+
+
+
+
