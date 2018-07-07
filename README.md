@@ -1,1 +1,5 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "Get Started" at https://bookdown.org/ for how to compile this example.
+一本关于数据分析的电子书
+
+在线预览：https://yufree.github.io/datadown/
+
+Bookdown：https://bookdown.org/yufree/datadown/
