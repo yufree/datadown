@@ -100,7 +100,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
+<li><a href="./">数据分析残卷</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序</a></li>
@@ -488,12 +488,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="15.3" data-path="section-15.html"><a href="section-15.html#section-15.3"><i class="fa fa-check"></i><b>15.3</b> 收益</a></li>
 <li class="chapter" data-level="15.4" data-path="section-15.html"><a href="section-15.html#section-15.4"><i class="fa fa-check"></i><b>15.4</b> 一般性投资</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="e58f82e88083e69687e78cae.html"><a href="e58f82e88083e69687e78cae.html"><i class="fa fa-check"></i>参考文献</a></li>
 <li class="chapter" data-level="16" data-path="section-16.html"><a href="section-16.html"><i class="fa fa-check"></i><b>16</b> 自然语言处理</a><ul>
 <li class="chapter" data-level="16.1" data-path="section-16.html"><a href="section-16.html#section-16.1"><i class="fa fa-check"></i><b>16.1</b> 《数学之美》</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="e58f82e88083e69687e78cae.html"><a href="e58f82e88083e69687e78cae.html"><i class="fa fa-check"></i>参考文献</a></li>
 <li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/yufree/datadown" target="blank">Github Repo</a></li>
 
 </ul>
 
@@ -557,7 +557,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>肺癌：工业革命后的肺癌发病率很高，普遍认为是工厂公路导致，但后续研究表明吸烟可能是主要因素，该研究促进了病例对照研究的发展</li>
 <li><a href="http://www.framinghamheartstudy.org/">佛雷明翰心脏病研究</a>：48年起追踪心脏病研究，已持续三代人</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_History/Framingham1.jpg&#39;</span>)</code></pre></div>
 <p><img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_History/Framingham1.jpg" /><!-- --></p>
 </div>
 <div id="section-13.5" class="section level2">
@@ -610,15 +609,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li>流行曲线：横轴日期，纵轴新增病例
 <ul>
-<li>点源爆发：单峰，潜伏期相对一致</li>
+<li>点源爆发：单峰，潜伏期相对一致 <img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/epidemic%20curve.jpg" /><!-- --></li>
+<li>持续源爆发：单峰，潜伏期持续出现 <img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Cholera.gif" /><!-- --></li>
+<li>逐步流行：多峰，存在人对人传染 <img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Measles.gif" /><!-- --></li>
 </ul></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/epidemic%20curve.jpg&#39;</span>)</code></pre></div>
-<p><img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/epidemic%20curve.jpg" /><!-- --> - 持续源爆发：单峰，潜伏期持续出现</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Cholera.gif&#39;</span>)</code></pre></div>
-<p><img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Cholera.gif" /><!-- --> - 逐步流行：多峰，存在人对人传染</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Measles.gif&#39;</span>)</code></pre></div>
-<p><img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Measles.gif" /><!-- --></p>
 <div id="section-13.6.1" class="section level3">
 <h3><span class="header-section-number">13.6.1</span> 疾病爆发的研究步骤</h3>
 <ul>
@@ -676,7 +671,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>临床实验：风险因子由研究人员指定</li>
 <li>病例对照研究：不用来研究发病率，侧重风险比，不追踪，根据已有状况回溯，对幸存者采样，适合稀有病症的研究</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_AnalyticOverview/paste_image47.jpg&#39;</span>)</code></pre></div>
 <p><img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_AnalyticOverview/paste_image47.jpg" /><!-- --></p>
 <ul>
 <li>判断流程
@@ -720,7 +714,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><span class="math display">\[prevalence = \frac{affected individuals}{total individuals in the population}\]</span></p>
 <p>举例：患病率0.25表示人群中有25%的人在指定的时间段里受某种健康效应影响</p>
 <p>经常会导致因果推断不准，因为影响因素产生的效应被本来的效应覆盖了</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DiseaseFrequency/paste_image18.jpg&#39;</span>)</code></pre></div>
 <p><img src="http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DiseaseFrequency/paste_image18.jpg" /><!-- --></p>
 </div>
 <div id="risk" class="section level3">
@@ -1297,11 +1290,11 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
-"twitter": true,
+"facebook": false,
+"twitter": false,
 "google": false,
 "linkedin": false,
-"weibo": false,
+"weibo": true,
 "instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
@@ -1312,10 +1305,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/yufree/datadown/edit/master/13-liubing.Rmd",
+"text": "Edit"
 },
-"download": ["datadown.pdf", "datadown.epub"],
+"download": ["datadown.pdf", "datadown.epub", "datadown.mobi"],
 "toc": {
 "collapse": "subsection"
 }
