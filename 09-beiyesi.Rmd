@@ -1397,3 +1397,4 @@ sim_replication_prop_tests %>%
 ## 网络资源 {#bayeslink}
 
 - [贝叶斯方法](http://mindhacks.cn/2008/09/21/the-magical-bayesian-method/)
+- [贝叶斯镜像](https://github.com/mavelli/rocker-bayesian)

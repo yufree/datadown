@@ -132,6 +132,7 @@
 - 生成Bootstrap Percentile置信区间
 - 适用于独立样本，样本间有相关如时间序列数据可采用block法分组屏蔽掉进行bootstrap
 - 因为存在重复，使用bootstrap建立训练集与预测集会有非独立样本，造成检验集模型方差的低估，去掉重复使模型复杂，不如交叉检验对检验集误差估计的准
+- [slipper 包](https://github.com/jtleek/slipper)
 
 ## `caret` 包
 
@@ -576,7 +577,7 @@
 
 - [RNN神经网络算法](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
 - [LSTM神经网络算法](http://livefreeordichotomize.com/2017/11/08/lstm-neural-nets-as-told-by-baseball/)
-- [tensorflow与深度学习](https://rstd.io/ml-with-tensorflow-and-r/)
+- [tensorflow keras与深度学习](https://rstd.io/ml-with-tensorflow-and-r/)
 - [通过正交变量监督黑箱模型的敏感度](http://blog.fastforwardlabs.com/2017/03/09/fairml-auditing-black-box-predictive-models.html)
 
 ## 模型联合

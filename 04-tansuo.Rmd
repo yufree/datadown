@@ -54,3 +54,10 @@ S | Subset comparisons | Look at (visualize!) initial emergenet variable relatio
 - 计算量大
 - 类似探索分析还有因子分析 独立成分分析 潜在语义分析
 - impute包可补充缺失值
+
+## 可视化图形
+
+- [动态可视化](https://github.com/thomasp85/tweenr)
+- [弦图](https://github.com/jokergoo/circlize)
+- [示意地图](https://github.com/hafen/geofacet)
+- [变形地图绘制](https://github.com/sjewo/cartogram)

@@ -169,3 +169,7 @@ knitr::include_graphics('http://yufree.github.io/blogcn/figure/researchpipeline.
 - 设定基于证据研究的路线图
 - 减少研究人员的自由度
 - 提出区域研究范式
+
+## 结果可解释
+
+- [结果可解释模型](https://github.com/jsugarelli/xplain)

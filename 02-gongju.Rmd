@@ -121,6 +121,7 @@ $ exit # 退出
 - R由CRAN掌控的base包与其他包组成
 - 其余参考[R主页](http://www.r-project.org/)
 - [出色的R包](https://github.com/qinwf/awesome-R)
+- [过时的R包](http://kbroman.org/hipsteR/)
 
 ### 获得帮助
 
@@ -1035,6 +1036,17 @@ rnorm(n, mean = 0, sd = 1)
 - S4函数对象定义严格 只处理指定类型对象 不可直接调用方法 针对性强
 - `stats4` 有很多针对性的极大似然估计的对象定义与方法
 
+### 分布式计算
+
+- Sparkly
+
+### 异常值监测
+
+- [twitter的断点检测](https://github.com/twitter/BreakoutDetection)
+
+### 图片处理
+
+- [imager](https://github.com/dahtah/imager)
 
 ## Python
 

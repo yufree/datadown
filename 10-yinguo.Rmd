@@ -82,3 +82,4 @@
 
 ## 链接 {#yinguolink}
 - [因果推断](https://cosx.org/2012/03/causality1-simpson-paradox)
+- [Google的因果分析包](https://github.com/google/CausalImpact)

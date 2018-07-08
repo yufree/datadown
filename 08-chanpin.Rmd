@@ -17,6 +17,10 @@
 - `actionButton` 用来一次提交输入数据 `if (input$goButton == 1){ Conditional statements }` 用来定义条件语句
 - `cat` `browser()` 调试
 - `fluidRow` 产生表格
+- shinydashboard 
+- flexdashboard
+- docker image
+- [prettydoc](https://github.com/yixuan/prettydoc)
 
 ## rCharts
 

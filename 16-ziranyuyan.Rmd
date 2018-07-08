@@ -1,7 +1,5 @@
 # 自然语言处理
 
-##《数学之美》
-
 早期依赖语言学家的文法，后来依赖统计模型，基础是语料库语言模型。n元语料库，一般是三元模型，计算当前词与前面两个词同时出现的及自己单独出现的概率。这个概率可以统计很多文章，通过tf-idf加权矩阵来计算每个词的加权概率。
 
 为了防止出现零概率，可以用古德-图灵估计里为零概率的词赋很小的概率，这个概率来自低词频贡献，词频越低，对其他零词频词的概率贡献越多。也就是设定一个词频阈值，阈值之上不对概率扣减，阈值之下概率进行古德-图灵估计，零概率的均分前面打折省下来的概率。另一个思路是低元模型对高元模型的线性插值。
@@ -35,3 +33,6 @@
 如果关系是无向的贝叶斯网络那就是条件随机场，可用来解决句法分析问题
 
 - [NLP词向量法来快速线性搜索相关词](https://juliasilge.com/blog/tidy-word-vectors/)
+- [tidytext包](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html)
+- [quanteda包](http://docs.quanteda.io/index.html)
+- [jieba中文分词](https://github.com/qinwf/jiebaR)
