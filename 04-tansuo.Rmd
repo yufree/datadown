@@ -61,3 +61,5 @@ S | Subset comparisons | Look at (visualize!) initial emergenet variable relatio
 - [弦图](https://github.com/jokergoo/circlize)
 - [示意地图](https://github.com/hafen/geofacet)
 - [变形地图绘制](https://github.com/sjewo/cartogram)
+- [重复模式可视化](https://flowingdata.com/2018/07/09/how-to-visualize-recurring-patterns/)
+- [不确定性可视化](https://flowingdata.com/2018/01/08/visualizing-the-uncertainty-in-data/)

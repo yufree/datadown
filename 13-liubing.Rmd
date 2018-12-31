@@ -38,7 +38,7 @@ knitr::opts_chunk$set(echo = F)
 - [佛雷明翰心脏病研究](http://www.framinghamheartstudy.org/)：48年起追踪心脏病研究，已持续三代人
 
 ```{r}
-knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_History/Framingham1.jpg')
+knitr::include_graphics('images/Framingham1.jpg')
 ```
 
 ## 流行病学基本概念
@@ -68,15 +68,15 @@ knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_His
 - 流行曲线：横轴日期，纵轴新增病例
     - 点源爆发：单峰，潜伏期相对一致
 ```{r}
-knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/epidemic%20curve.jpg')
+knitr::include_graphics('images/epidemic%20curve.jpg')
 ```
     - 持续源爆发：单峰，潜伏期持续出现
 ```{r}
-knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Cholera.gif')
+knitr::include_graphics('images/EpidemicCurve_Cholera.png')
 ```
     - 逐步流行：多峰，存在人对人传染
 ```{r}
-knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DescriptiveEpi/EpidemicCurve_Measles.gif')
+knitr::include_graphics('images/EpidemicCurve_Measles.png')
 ```    
 
 ### 疾病爆发的研究步骤
@@ -123,7 +123,7 @@ knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_Des
 - 病例对照研究：不用来研究发病率，侧重风险比，不追踪，根据已有状况回溯，对幸存者采样，适合稀有病症的研究
 
 ```{r}
-knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_AnalyticOverview/paste_image47.jpg')
+knitr::include_graphics('images/paste_image47.jpg')
 ```
 
 - 判断流程
@@ -165,7 +165,7 @@ $$prevalence = \frac{affected individuals}{total individuals in the population}$
 经常会导致因果推断不准，因为影响因素产生的效应被本来的效应覆盖了
 
 ```{r}
-knitr::include_graphics('http://sphweb.bumc.bu.edu/otlt/MPH-Modules/EP/EP713_DiseaseFrequency/paste_image18.jpg')
+knitr::include_graphics("images/paste_image18.jpg")
 ```
 
 ### 风险（risk）

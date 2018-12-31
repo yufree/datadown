@@ -51,6 +51,11 @@
 - [主页](https://yhathq.com/)
 - 本地提交算法或模型 生成可调用API 支持R与python
 
+## swagger
+
+- [主页](https://swagger.io/)
+- 生产API
+
 ## 案例
 
 - [算法先发现女儿怀孕](https://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/#304228956668)
@@ -101,6 +106,6 @@
 
 - [新西兰的新生儿名字在最近50年里呈现了长尾化，父母在给孩子起名字时有了更强的多样性，要知道在1850年英国新生儿里有13.7%的William和14.6%的Mary，突然想明白了为啥有个历史悠久的威廉玛丽学院了…](https://www.statschat.org.nz/2018/01/08/long-tail-of-baby-names/)
 
+- [图解机器学习系列](http://www.r2d3.us/%E5%9B%BE%E8%A7%A3%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/)
 
-
-
+- [训练一个种族歧视的AI](https://notstatschat.rbind.io/2018/09/27/how-to-write-a-racist-ai-in-r-without-really-trying/)

@@ -46,7 +46,7 @@
 
 #### Ignorability
 
-- $(Y_1,Y_0) \upmodels T$ $Y_1$ and $Y_0$ must be jointly independent  of the treatment assignment
+- $(Y_1,Y_0) \upmodels T$, $Y_1$ and $Y_0$ must be jointly independent  of the treatment assignment
 - $(Y_1,Y_0) \upmodels T|X$ for realobservational studies, conditional on variables X, $Y_1$, and $Y_0$ are jointly independent of T, the assignment mechanism
 - $ACE|X = E[Y_1|X] - E[Y_0|X] = E[Y_1|T=1,X] - E[Y_0|􏰀T = 0,X] = E[Y|􏰀T = 1,X] - E[Y|􏰀T =0,X] = S|􏰀X$
 

@@ -63,14 +63,13 @@
   - $E[aX + b] = a E[X] + b$
   - $E[X + Y] = E[X] + E[Y]$
 - 样本均值是总体均值$\mu$的无偏估计的证明
-$$
+
   \begin{eqnarray*}
     E\left[ \frac{1}{n}\sum_{i=1}^n X_i\right]
     & = & \frac{1}{n} E\left[\sum_{i=1}^n X_i\right] \\
     & = & \frac{1}{n} \sum_{i=1}^n E\left[X_i\right] \\
     & = & \frac{1}{n} \sum_{i=1}^n \mu =  \mu.
   \end{eqnarray*}
-$$
 
 ## 方差
 
@@ -107,15 +106,15 @@ $$
   - $\{X_i\}_{i=1}^n$ 是一组随机变量 当 $\{X_i\}$ 不相关时 $Var\left(\sum_{i=1}^n a_i X_i + b\right) = \sum_{i=1}^n a_i^2 Var(X_i)$
   - 如果一组随机变量$\{X_i\}$不相关 方差的和等于和的方差 非标准差
 - 样本均值方差的推导
-$$
-\begin{eqnarray*}
+
+  \begin{eqnarray*}
     Var(\bar X) & = & Var \left( \frac{1}{n}\sum_{i=1}^n X_i \right)\\ \\
     & = & \frac{1}{n^2} Var\left(\sum_{i=1}^n X_i \right)\\ \\
     & = & \frac{1}{n^2} \sum_{i=1}^n Var(X_i) \\ \\
     & = & \frac{1}{n^2} \times n\sigma^2 \\ \\
     & = & \frac{\sigma^2}{n}
   \end{eqnarray*}
-$$
+
   - 当 $X_i$ 独立且方差为 $Var(\bar X) = \frac{\sigma^2}{n}$
   - $\sigma/\sqrt{n}$ 为样本均值的标准误
   - 样本均值的标准误就是样本均值分布的标准差
@@ -127,7 +126,7 @@ $$
   - 计算 $\sum_{i=1}^n (X_i - \bar X)^2 = \sum_{i=1}^n X_i^2 - n \bar X^2$
   - 均值偏差平方的均值
   - 样本方差是总体方差的无偏估计
-$$
+
   \begin{eqnarray*}
     E\left[\sum_{i=1}^n (X_i - \bar X)^2\right] & = & \sum_{i=1}^n E\left[X_i^2\right] - n E\left[\bar X^2\right] \\ \\
     & = & \sum_{i=1}^n \left\{Var(X_i) + \mu^2\right\} - n \left\{Var(\bar X) + \mu^2\right\} \\ \\
@@ -135,7 +134,7 @@ $$
     & = & n \sigma^2 + n \mu ^ 2 - \sigma^2 - n \mu^2 \\ \\
     & = & (n - 1) \sigma^2
   \end{eqnarray*}
-$$
+
 - 澄清
   - 假定 $X_i$ 是 iid 均值 $\mu$ 方差 $\sigma^2$
   - $S^2$ 估计 $\sigma^2$
@@ -157,7 +156,7 @@ $$
 - 2*2 列联表 - 诊断测试
 
 ```{r echo=F}
-knitr::include_graphics("http://yufree.github.io/blogcn/figure/error.png")
+knitr::include_graphics("images/error.png")
 ```
 
 ## 常见分布
@@ -231,13 +230,13 @@ $$
   - 不对称分布
   - 均值是自由度 方差是两倍的自由度
   - 方差的置信区间
-$$
+
 \begin{eqnarray*}
   1 - \alpha & = & P \left( \chi^2_{n-1, \alpha/2} \leq  \frac{(n - 1) S^2}{\sigma^2} \leq  \chi^2_{n-1,1 - \alpha/2} \right) \\ \\
 & = &  P\left(\frac{(n-1)S^2}{\chi^2_{n-1,1-\alpha/2}} \leq \sigma^2 \leq 
 \frac{(n-1)S^2}{\chi^2_{n-1,\alpha/2}} \right) \\
 \end{eqnarray*}
-$$
+
   - $\left[\frac{(n-1)S^2}{\chi^2_{n-1,1-\alpha/2}}, \frac{(n-1)S^2}{\chi^2_{n-1,\alpha/2}}\right]$ 是 $\sigma^2$ 的 $100(1-\alpha)\%$ 置信区间
   - 依赖正态性假设 开方后得到 $\sigma$ 的置信区间
 - Gosset的 t 分布
@@ -252,14 +251,14 @@ $$
 $$
   服从自由度$n-1$的$t$分布
   - 均值的置信区间
-$$
+
   \begin{eqnarray*}
 &   & 1 - \alpha \\
 & = & P\left(-t_{n-1,1-\alpha/2} \leq \frac{\bar X - \mu}{S/\sqrt{n}} \leq t_{n-1,1-\alpha/2}\right) \\ \\
 & = & P\left(\bar X - t_{n-1,1-\alpha/2} S / \sqrt{n} \leq \mu  
       \leq \bar X + t_{n-1,1-\alpha/2}S /\sqrt{n}\right)
   \end{eqnarray*}
-$$
+
   $t_{df,\alpha}$ 是t分布的 $\alpha^{th}$ 分位数 自由度 $df$
   - t检验不适合有偏分布 置信区间中心也不在均值上
   
@@ -278,23 +277,27 @@ $$
 - 先验beta分布
   - 01之间
   - 依赖 $\alpha$ $\beta$ 的概率密度函数
+  
 $$
 \frac{\Gamma(\alpha +  \beta)}{\Gamma(\alpha)\Gamma(\beta)}
  p ^ {\alpha - 1} (1 - p) ^ {\beta - 1} ~~~~\mbox{for} ~~ 0 \leq p \leq 1
 $$
+  
   - 均值 $\alpha / (\alpha + \beta)$
   - 方差 $\frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}$
   - $\alpha = \beta = 1$ 为均匀分布
 - 后验beta分布
   - 参数$\tilde \alpha = x + \alpha$ $\tilde \beta = n - x + \beta$ 的beta分布
-$$
+
+
 \begin{align}
 \mbox{Posterior} &\propto  p^x(1 - p)^{n-x} \times p^{\alpha -1} (1 - p)^{\beta - 1} \\
                  &  =      p^{x + \alpha - 1} (1 - p)^{n - x + \beta - 1}
 \end{align}
-$$
+
+
   - 后验均值
-$$
+
 \begin{align}
 E[p ~|~ X] & =   \frac{\tilde \alpha}{\tilde \alpha + \tilde \beta}\\ \\
 & =  \frac{x + \alpha}{x + \alpha + n - x + \beta}\\ \\
@@ -302,7 +305,7 @@ E[p ~|~ X] & =   \frac{\tilde \alpha}{\tilde \alpha + \tilde \beta}\\ \\
 & =  \frac{x}{n} \times \frac{n}{n + \alpha + \beta} + \frac{\alpha}{\alpha + \beta} \times \frac{\alpha + \beta}{n + \alpha + \beta} \\ \\
 & =  \mbox{MLE} \times \pi + \mbox{Prior Mean} \times (1 - \pi)
 \end{align}
-$$
+
 - 后验均值是先验均值与最大似然估计的混合
 - 当 $n$ 变大  $\pi$ 接近 $1$ 先验作用小
 - 当 $n$ 很小 先验作用大
@@ -320,21 +323,21 @@ $$
 - 根据均值与方差的线性组合 有 $\bar Y - \bar X$ 也是正态 均值 $\mu_y - \mu_x$ 方差 $\sigma^2 (\frac{1}{n_x} + \frac{1}{n_y})$
 - 混合方差为 $S_p^2 = \{(n_x - 1) S_x^2 + (n_y - 1) S_y^2\}/(n_x + n_y - 2)$ 为$\sigma^2$的良好估计
 - 该估计为无偏估计
-$$
+
     \begin{eqnarray*}
     E[S_p^2] & = & \frac{(n_x - 1) E[S_x^2] + (n_y - 1) E[S_y^2]}{n_x + n_y - 2}\\
             & = & \frac{(n_x - 1)\sigma^2 + (n_y - 1)\sigma^2}{n_x + n_y - 2}
     \end{eqnarray*}
-$$
+
 - 该估计独立于 $\bar Y - \bar X$ 因为方差独立于均值
 - 两个独立的卡方变量之和是自由度之和的卡方值
-$$
+
     \begin{eqnarray*}
       (n_x + n_y - 2) S_p^2 / \sigma^2 & = & (n_x - 1)S_x^2 /\sigma^2 + (n_y - 1)S_y^2/\sigma^2 \\ \\
       & = & \chi^2_{n_x - 1} + \chi^2_{n_y-1} \\ \\
       & = & \chi^2_{n_x + n_y - 2}
     \end{eqnarray*}
-$$
+
 - 构建统计量
 $$
     \frac{\frac{\bar Y - \bar X - (\mu_y - \mu_x)}{\sigma \left(\frac{1}{n_x} + \frac{1}{n_y}\right)^{1/2}}}{\sqrt{\frac{(n_x + n_y - 2) S_p^2}{(n_x + n_y - 2)\sigma^2}}}
@@ -404,7 +407,7 @@ $H_a$ | $H_0$ | Type II error |
 - 错误拒绝空假设的概率为功效（power）
 - Power  $= 1 - \beta$ 对 Type II error 的控制
 - 正态分布假设下的推导
-$$
+
 \begin{align}
 1 -\beta & = 
 P\left(\frac{\bar X - 30}{\sigma /\sqrt{n}} > z_{1-\alpha} ~|~ \mu = \mu_a \right)\\
@@ -412,7 +415,7 @@ P\left(\frac{\bar X - 30}{\sigma /\sqrt{n}} > z_{1-\alpha} ~|~ \mu = \mu_a \righ
 & = P\left(\frac{\bar X - \mu_a}{\sigma /\sqrt{n}} > z_{1-\alpha} - \frac{\mu_a - 30}{\sigma /\sqrt{n}} ~|~ \mu = \mu_a \right)\\ \\
 & = P\left(Z > z_{1-\alpha} - \frac{\mu_a - 30}{\sigma /\sqrt{n}} ~|~ \mu = \mu_a \right)\\ \\
 \end{align}
-$$
+
 ```{r power}
 sigma <- 10; mu_0 = 0; mu_a = 2; n <- 100; alpha = .05
 plot(c(-3, 6),c(0, dnorm(0)), type = "n", frame = F, xlab = "Z value", ylab = "")
@@ -440,10 +443,11 @@ $1 - \beta = P\left(Z > z_{1-\alpha} - \frac{\mu_a - \mu_0}{\sigma /\sqrt{n}} ~|
 - False positive rate 错误结果是显著的比率 $\alpha$ 样本数增大错误增加
 - Family wise error rate (FWER) 所有比较中至少一个假阳性比率
   - Bonferroni correction
-  - 假设你进行m次测试 控制 $\alpha$ 在某水平 计算所有测试的 $p$ 值 将 $\alpha$ 设为 $ \alpha/m$ 所有测试都在这个置信度下进行 
+  - 假设你进行m次测试 控制 $\alpha$ 在某水平 计算所有测试的 $p$ 值 将 $\alpha$ 设为 $\frac{\alpha}{m}$ 所有测试都在这个置信度下进行 
   - 容易计算 过于保守
 - False discovery rate (FDR) 声称显著是错误的概率
-  - $m$ 次测试 水平 $\alpha$ 计算 $p$ 值 排序 $P_{(i)} \leq \alpha \times \frac{i}{m}$ 为显著
+  - $m$ 次测试 水平 $\alpha$ 计算 $p$ 值 
+  - 排序 $P_{(i)} \leq \alpha \times \frac{i}{m}$ 为显著
   - 相对容易计算 不保守 允许一定的假阳性
 - 调节p值
   - $P_i^{fwer} = \max{m \times P_i,1}$ 类似FWER处理 $\alpha$ 的方式处理 $p$ 按照正常 $\alpha$ 检测

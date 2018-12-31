@@ -8,7 +8,6 @@
   - 最小二乘统计学意义是平均值
   - 可用不等式解 也可用求导方法解
 
-$$ 
 \begin{align} 
 \sum_{i=1}^n (Y_i - \mu)^2 & = \
 \sum_{i=1}^n (Y_i - \bar Y + \bar Y - \mu)^2 \\ 
@@ -24,7 +23,6 @@ $$
 & = \sum_{i=1}^n (Y_i - \bar Y)^2 + \sum_{i=1}^n (\bar Y - \mu)^2\\ 
 & \geq \sum_{i=1}^n (Y_i - \bar Y)^2 \
 \end{align} 
-$$
 
 - 通过原点的回归
   - 最小化$\sum_{i=1}^n (Y_i - X_i \beta)^2$
@@ -60,11 +58,11 @@ $$
 - 如果定义 $\mu_i = X_i \beta_1$ $\hat \beta_1 = \frac{\sum_{i=1^n} Y_i X_i}{\sum_{i=1}^n X_i^2}$ 如果考虑过原点线的回归 斜率如上
 - 如果考虑 $\mu_i = \beta_0 + \beta_1 X_i$ 
 
-$$\begin{align} \
+\begin{align} \
 \sum_{i=1}^n (Y_i - \hat \mu_i) (\hat \mu_i - \mu_i) 
 = & \sum_{i=1}^n (Y_i - \hat\beta_0 - \hat\beta_1 X_i) (\hat \beta_0 + \hat \beta_1 X_i - \beta_0 - \beta_1 X_i) \\
 = & (\hat \beta_0 - \beta_0) \sum_{i=1}^n (Y_i - \hat\beta_0 - \hat \beta_1 X_i) + (\beta_1 - \beta_1)\sum_{i=1}^n (Y_i - \hat\beta_0 - \hat \beta_1 X_i)X_i\\
-\end{align} $$
+\end{align}
 
 - 解为$\hat \beta_1 = Cor(Y, X) \frac{Sd(Y)}{Sd(X)} ~~~ \hat \beta_0 = \bar Y - \hat \beta_1 \bar X$
 - 如果标准化数据 $\{ \frac{X_i - \bar X}{Sd(X)}, \frac{Y_i - \bar Y}{Sd(Y)}\}$ 解为$Cor(Y, X)$
@@ -97,7 +95,6 @@ $$\begin{align} \
 - 残差波动 $\sigma^2$ 的极大似然估计为 $\frac{1}{n}\sum_{i=1}^n e_i^2$
 - $\hat \sigma^2 = \frac{1}{n-2}\sum_{i=1}^n e_i^2$ 为无偏估计
 
-$$
 \begin{align}
 \sum_{i=1}^n (Y_i - \bar Y)^2 
 & = \sum_{i=1}^n (Y_i - \hat Y_i + \hat Y_i - \bar Y)^2 \\
@@ -105,7 +102,6 @@ $$
 2 \sum_{i=1}^n  (Y_i - \hat Y_i)(\hat Y_i - \bar Y) + 
 \sum_{i=1}^n  (\hat Y_i - \bar Y)^2 \\
 \end{align}
-$$
 
 - 其中 $(Y_i - \hat Y_i) = \{Y_i - (\bar Y - \hat \beta_1 \bar X) - \hat \beta_1 X_i\} = (Y_i - \bar Y) - \hat \beta_1 (X_i - \bar X)$
 - $(\hat Y_i - \bar Y) = (\bar Y - \hat \beta_1 \bar X - \hat \beta_1 X_i - \bar Y )= \hat \beta_1  (X_i - \bar X)$
@@ -118,7 +114,6 @@ $$
 - $R^2$ 会伴随样本数增加而增加 会因删除异常值而增加
 - `data(anscombe);example(anscombe)`
 - [小恐龙变换](https://www.autodeskresearch.com/publications/samestats)
-![](https://d2f99xq7vri1nk.cloudfront.net/DinoSequentialSmaller.gif)
 
 ## 回归推断
 
@@ -126,7 +121,6 @@ $$
 - 假设检验 $H_0 : \theta = \theta_0$ 与 $H_a : \theta >, <, \neq \theta_0$
 - 置信区间 $\theta$ 通过 $\hat \theta \pm Q_{1-\alpha/2} \hat \sigma_{\hat \theta}$ 构建
 
-$$
 \begin{align}
 Var(\hat \beta_1) & =
 Var\left(\frac{\sum_{i=1}^n (Y_i - \bar Y) (X_i - \bar X)}{\sum_{i=1}^n (X_i - \bar X)^2}\right) \\
@@ -134,7 +128,6 @@ Var\left(\frac{\sum_{i=1}^n (Y_i - \bar Y) (X_i - \bar X)}{\sum_{i=1}^n (X_i - \
 & = \frac{\sum_{i=1}^n \sigma^2(X_i - \bar X)^2}{\left(\sum_{i=1}^n (X_i - \bar X)^2 \right)^2} \\
 & = \frac{\sigma^2}{\sum_{i=1}^n (X_i - \bar X)^2} \\
 \end{align}
-$$
 
 - $\sigma_{\hat \beta_1}^2 = Var(\hat \beta_1) = \sigma^2 / \sum_{i=1}^n (X_i - \bar X)^2$
 - $\sigma_{\hat \beta_0}^2 = Var(\hat \beta_0)  = \left(\frac{1}{n} + \frac{\bar X^2}{\sum_{i=1}^n (X_i - \bar X)^2 }\right)\sigma^2$
