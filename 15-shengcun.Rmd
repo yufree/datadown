@@ -1,4 +1,4 @@
-# 生存分析
+# 生存分析 {#surv}
 
 ```{r include=FALSE}
 library(knitr)

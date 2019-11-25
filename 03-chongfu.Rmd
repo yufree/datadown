@@ -1,4 +1,4 @@
-# 可复算性研究
+# 可复算性研究 {#repro}
 
 ## Replication
 

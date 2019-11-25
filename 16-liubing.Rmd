@@ -1,4 +1,4 @@
-# 流行病学
+# 流行病学 {#epid}
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo = F)
 ```

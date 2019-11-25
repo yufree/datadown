@@ -13,10 +13,12 @@ bookdown::gitbook:
       weibo: yes
       twitter: no
       facebook: no
+  md_extensions: -ascii_identifiers
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-bookdown::epub_book: default
+bookdown::epub_book:
+  md_extensions: -ascii_identifiers

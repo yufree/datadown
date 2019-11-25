@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>第14章 生物信息 | 数据分析残卷</title>
+  <meta name="description" content="数据分析世界的清明上河图" />
+  <meta name="generator" content="bookdown 0.15 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="第14章 生物信息 | 数据分析残卷" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="数据分析世界的清明上河图" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="第14章 生物信息 | 数据分析残卷" />
+  
+  <meta name="twitter:description" content="数据分析世界的清明上河图" />
+  
+
+<meta name="author" content="于淼" />
+
+
+<meta name="date" content="2019-11-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="game.html"/>
+<link rel="next" href="surv.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">数据分析残卷</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#数据科学"><i class="fa fa-check"></i><b>1.1</b> 数据科学</a></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#基本问题"><i class="fa fa-check"></i><b>1.2</b> 基本问题</a></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#工作流程"><i class="fa fa-check"></i><b>1.3</b> 工作流程</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#概率与分布"><i class="fa fa-check"></i><b>1.4</b> 概率与分布</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#统计量"><i class="fa fa-check"></i><b>1.5</b> 统计量</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#si"><i class="fa fa-check"></i><b>1.6</b> 统计推断</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#sm"><i class="fa fa-check"></i><b>1.7</b> 统计模型</a></li>
+<li class="chapter" data-level="1.8" data-path="intro.html"><a href="intro.html#其他主题"><i class="fa fa-check"></i><b>1.8</b> 其他主题</a></li>
+<li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#应用"><i class="fa fa-check"></i><b>1.9</b> 应用</a></li>
+<li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#链接"><i class="fa fa-check"></i><b>1.10</b> 链接</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="tool.html"><a href="tool.html"><i class="fa fa-check"></i><b>2</b> 数据分析工具</a><ul>
+<li class="chapter" data-level="2.1" data-path="tool.html"><a href="tool.html#基础知识"><i class="fa fa-check"></i><b>2.1</b> 基础知识</a></li>
+<li class="chapter" data-level="2.2" data-path="tool.html"><a href="tool.html#命令行基础"><i class="fa fa-check"></i><b>2.2</b> 命令行基础</a></li>
+<li class="chapter" data-level="2.3" data-path="tool.html"><a href="tool.html#版本控制"><i class="fa fa-check"></i><b>2.3</b> 版本控制</a></li>
+<li class="chapter" data-level="2.4" data-path="tool.html"><a href="tool.html#数据获取"><i class="fa fa-check"></i><b>2.4</b> 数据获取</a></li>
+<li class="chapter" data-level="2.5" data-path="tool.html"><a href="tool.html#远程控制"><i class="fa fa-check"></i><b>2.5</b> 远程控制</a></li>
+<li class="chapter" data-level="2.6" data-path="tool.html"><a href="tool.html#高级命令"><i class="fa fa-check"></i><b>2.6</b> 高级命令</a></li>
+<li class="chapter" data-level="2.7" data-path="tool.html"><a href="tool.html#r"><i class="fa fa-check"></i><b>2.7</b> R</a><ul>
+<li class="chapter" data-level="2.7.1" data-path="tool.html"><a href="tool.html#语言导论"><i class="fa fa-check"></i><b>2.7.1</b> 语言导论</a></li>
+<li class="chapter" data-level="2.7.2" data-path="tool.html"><a href="tool.html#获得帮助"><i class="fa fa-check"></i><b>2.7.2</b> 获得帮助</a></li>
+<li class="chapter" data-level="2.7.3" data-path="tool.html"><a href="tool.html#数据类型及基本运算"><i class="fa fa-check"></i><b>2.7.3</b> 数据类型及基本运算</a></li>
+<li class="chapter" data-level="2.7.4" data-path="tool.html"><a href="tool.html#环境文件操作"><i class="fa fa-check"></i><b>2.7.4</b> 环境／文件操作</a></li>
+<li class="chapter" data-level="2.7.5" data-path="tool.html"><a href="tool.html#下载"><i class="fa fa-check"></i><b>2.7.5</b> 下载</a></li>
+<li class="chapter" data-level="2.7.6" data-path="tool.html"><a href="tool.html#截取数据"><i class="fa fa-check"></i><b>2.7.6</b> 截取数据</a></li>
+<li class="chapter" data-level="2.7.7" data-path="tool.html"><a href="tool.html#读取数据"><i class="fa fa-check"></i><b>2.7.7</b> 读取数据</a></li>
+<li class="chapter" data-level="2.7.8" data-path="tool.html"><a href="tool.html#数据总结"><i class="fa fa-check"></i><b>2.7.8</b> 数据总结</a></li>
+<li class="chapter" data-level="2.7.9" data-path="tool.html"><a href="tool.html#数据整理"><i class="fa fa-check"></i><b>2.7.9</b> 数据整理</a></li>
+<li class="chapter" data-level="2.7.10" data-path="tool.html"><a href="tool.html#数据操作data.table包"><i class="fa fa-check"></i><b>2.7.10</b> <span><em>数据操作data.table包</em></span></a></li>
+<li class="chapter" data-level="2.7.11" data-path="tool.html"><a href="tool.html#文本处理"><i class="fa fa-check"></i><b>2.7.11</b> 文本处理</a></li>
+<li class="chapter" data-level="2.7.12" data-path="tool.html"><a href="tool.html#控制结构"><i class="fa fa-check"></i><b>2.7.12</b> 控制结构</a></li>
+<li class="chapter" data-level="2.7.13" data-path="tool.html"><a href="tool.html#函数"><i class="fa fa-check"></i><b>2.7.13</b> 函数</a></li>
+<li class="chapter" data-level="2.7.14" data-path="tool.html"><a href="tool.html#编程标准"><i class="fa fa-check"></i><b>2.7.14</b> 编程标准</a></li>
+<li class="chapter" data-level="2.7.15" data-path="tool.html"><a href="tool.html#范围规则"><i class="fa fa-check"></i><b>2.7.15</b> 范围规则</a></li>
+<li class="chapter" data-level="2.7.16" data-path="tool.html"><a href="tool.html#向量化操作"><i class="fa fa-check"></i><b>2.7.16</b> 向量化操作</a></li>
+<li class="chapter" data-level="2.7.17" data-path="tool.html"><a href="tool.html#绘图系统"><i class="fa fa-check"></i><b>2.7.17</b> 绘图系统</a></li>
+<li class="chapter" data-level="2.7.18" data-path="tool.html"><a href="tool.html#日期与时间"><i class="fa fa-check"></i><b>2.7.18</b> 日期与时间</a></li>
+<li class="chapter" data-level="2.7.19" data-path="tool.html"><a href="tool.html#循环"><i class="fa fa-check"></i><b>2.7.19</b> 循环</a></li>
+<li class="chapter" data-level="2.7.20" data-path="tool.html"><a href="tool.html#模拟"><i class="fa fa-check"></i><b>2.7.20</b> 模拟</a></li>
+<li class="chapter" data-level="2.7.21" data-path="tool.html"><a href="tool.html#调试"><i class="fa fa-check"></i><b>2.7.21</b> 调试</a></li>
+<li class="chapter" data-level="2.7.22" data-path="tool.html"><a href="tool.html#分析代码"><i class="fa fa-check"></i><b>2.7.22</b> 分析代码</a></li>
+<li class="chapter" data-level="2.7.23" data-path="tool.html"><a href="tool.html#包开发"><i class="fa fa-check"></i><b>2.7.23</b> 包开发</a></li>
+<li class="chapter" data-level="2.7.24" data-path="tool.html"><a href="tool.html#方法与类型"><i class="fa fa-check"></i><b>2.7.24</b> 方法与类型</a></li>
+<li class="chapter" data-level="2.7.25" data-path="tool.html"><a href="tool.html#并行计算"><i class="fa fa-check"></i><b>2.7.25</b> 并行计算</a></li>
+<li class="chapter" data-level="2.7.26" data-path="tool.html"><a href="tool.html#分布式计算"><i class="fa fa-check"></i><b>2.7.26</b> 分布式计算</a></li>
+<li class="chapter" data-level="2.7.27" data-path="tool.html"><a href="tool.html#异常值监测"><i class="fa fa-check"></i><b>2.7.27</b> 异常值监测</a></li>
+<li class="chapter" data-level="2.7.28" data-path="tool.html"><a href="tool.html#图片处理"><i class="fa fa-check"></i><b>2.7.28</b> 图片处理</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="tool.html"><a href="tool.html#python"><i class="fa fa-check"></i><b>2.8</b> Python</a><ul>
+<li class="chapter" data-level="2.8.1" data-path="tool.html"><a href="tool.html#工具包"><i class="fa fa-check"></i><b>2.8.1</b> 工具包</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="tool.html"><a href="tool.html#tex"><i class="fa fa-check"></i><b>2.9</b> Tex</a><ul>
+<li class="chapter" data-level="2.9.1" data-path="tool.html"><a href="tool.html#语言基础"><i class="fa fa-check"></i><b>2.9.1</b> 语言基础</a></li>
+<li class="chapter" data-level="2.9.2" data-path="tool.html"><a href="tool.html#关于xetex"><i class="fa fa-check"></i><b>2.9.2</b> 关于<code>xetex</code></a></li>
+<li class="chapter" data-level="2.9.3" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>2.9.3</b> 常见问题</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="repro.html"><a href="repro.html"><i class="fa fa-check"></i><b>3</b> 可复算性研究</a><ul>
+<li class="chapter" data-level="3.1" data-path="repro.html"><a href="repro.html#replication"><i class="fa fa-check"></i><b>3.1</b> Replication</a></li>
+<li class="chapter" data-level="3.2" data-path="repro.html"><a href="repro.html#reproducible"><i class="fa fa-check"></i><b>3.2</b> Reproducible</a></li>
+<li class="chapter" data-level="3.3" data-path="repro.html"><a href="repro.html#研究流程"><i class="fa fa-check"></i><b>3.3</b> 研究流程</a></li>
+<li class="chapter" data-level="3.4" data-path="repro.html"><a href="repro.html#数据分析步骤"><i class="fa fa-check"></i><b>3.4</b> 数据分析步骤</a></li>
+<li class="chapter" data-level="3.5" data-path="repro.html"><a href="repro.html#数据分析文件结构"><i class="fa fa-check"></i><b>3.5</b> 数据分析文件结构</a></li>
+<li class="chapter" data-level="3.6" data-path="repro.html"><a href="repro.html#文本化统计编程-knitr"><i class="fa fa-check"></i><b>3.6</b> 文本化统计编程-Knitr</a></li>
+<li class="chapter" data-level="3.7" data-path="repro.html"><a href="repro.html#结果通讯"><i class="fa fa-check"></i><b>3.7</b> 结果通讯</a></li>
+<li class="chapter" data-level="3.8" data-path="repro.html"><a href="repro.html#检查列表"><i class="fa fa-check"></i><b>3.8</b> 检查列表</a></li>
+<li class="chapter" data-level="3.9" data-path="repro.html"><a href="repro.html#基于证据的数据分析"><i class="fa fa-check"></i><b>3.9</b> 基于证据的数据分析</a></li>
+<li class="chapter" data-level="3.10" data-path="repro.html"><a href="repro.html#结果可解释"><i class="fa fa-check"></i><b>3.10</b> 结果可解释</a></li>
+<li class="chapter" data-level="3.11" data-path="repro.html"><a href="repro.html#数据分析的理论"><i class="fa fa-check"></i><b>3.11</b> 数据分析的理论</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>4</b> 探索性数据分析</a><ul>
+<li class="chapter" data-level="4.1" data-path="exp.html"><a href="exp.html#aces-模型"><i class="fa fa-check"></i><b>4.1</b> ACES 模型</a></li>
+<li class="chapter" data-level="4.2" data-path="exp.html"><a href="exp.html#探索绘图原则"><i class="fa fa-check"></i><b>4.2</b> 探索绘图原则</a></li>
+<li class="chapter" data-level="4.3" data-path="exp.html"><a href="exp.html#探索性绘图"><i class="fa fa-check"></i><b>4.3</b> 探索性绘图</a></li>
+<li class="chapter" data-level="4.4" data-path="exp.html"><a href="exp.html#分层聚类"><i class="fa fa-check"></i><b>4.4</b> 分层聚类</a></li>
+<li class="chapter" data-level="4.5" data-path="exp.html"><a href="exp.html#k-means聚类"><i class="fa fa-check"></i><b>4.5</b> k-means聚类</a></li>
+<li class="chapter" data-level="4.6" data-path="exp.html"><a href="exp.html#维度还原"><i class="fa fa-check"></i><b>4.6</b> 维度还原</a></li>
+<li class="chapter" data-level="4.7" data-path="exp.html"><a href="exp.html#可视化图形"><i class="fa fa-check"></i><b>4.7</b> 可视化图形</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="infer.html"><a href="infer.html"><i class="fa fa-check"></i><b>5</b> 统计推断</a><ul>
+<li class="chapter" data-level="5.1" data-path="infer.html"><a href="infer.html#导论"><i class="fa fa-check"></i><b>5.1</b> 导论</a></li>
+<li class="chapter" data-level="5.2" data-path="infer.html"><a href="infer.html#概率"><i class="fa fa-check"></i><b>5.2</b> 概率</a></li>
+<li class="chapter" data-level="5.3" data-path="infer.html"><a href="infer.html#期望"><i class="fa fa-check"></i><b>5.3</b> 期望</a></li>
+<li class="chapter" data-level="5.4" data-path="infer.html"><a href="infer.html#方差"><i class="fa fa-check"></i><b>5.4</b> 方差</a></li>
+<li class="chapter" data-level="5.5" data-path="infer.html"><a href="infer.html#独立性"><i class="fa fa-check"></i><b>5.5</b> 独立性</a></li>
+<li class="chapter" data-level="5.6" data-path="infer.html"><a href="infer.html#条件概率"><i class="fa fa-check"></i><b>5.6</b> 条件概率</a></li>
+<li class="chapter" data-level="5.7" data-path="infer.html"><a href="infer.html#贝叶斯定理"><i class="fa fa-check"></i><b>5.7</b> 贝叶斯定理</a></li>
+<li class="chapter" data-level="5.8" data-path="infer.html"><a href="infer.html#常见分布"><i class="fa fa-check"></i><b>5.8</b> 常见分布</a></li>
+<li class="chapter" data-level="5.9" data-path="infer.html"><a href="infer.html#渐进"><i class="fa fa-check"></i><b>5.9</b> 渐进</a></li>
+<li class="chapter" data-level="5.10" data-path="infer.html"><a href="infer.html#置信区间"><i class="fa fa-check"></i><b>5.10</b> 置信区间</a></li>
+<li class="chapter" data-level="5.11" data-path="infer.html"><a href="infer.html#似然函数"><i class="fa fa-check"></i><b>5.11</b> 似然函数</a></li>
+<li class="chapter" data-level="5.12" data-path="infer.html"><a href="infer.html#贝叶斯推断"><i class="fa fa-check"></i><b>5.12</b> 贝叶斯推断</a></li>
+<li class="chapter" data-level="5.13" data-path="infer.html"><a href="infer.html#两独立样本t检验"><i class="fa fa-check"></i><b>5.13</b> 两独立样本t检验</a></li>
+<li class="chapter" data-level="5.14" data-path="infer.html"><a href="infer.html#假设检验"><i class="fa fa-check"></i><b>5.14</b> 假设检验</a></li>
+<li class="chapter" data-level="5.15" data-path="infer.html"><a href="infer.html#p值"><i class="fa fa-check"></i><b>5.15</b> P值</a></li>
+<li class="chapter" data-level="5.16" data-path="infer.html"><a href="infer.html#功效"><i class="fa fa-check"></i><b>5.16</b> 功效</a></li>
+<li class="chapter" data-level="5.17" data-path="infer.html"><a href="infer.html#多重比较"><i class="fa fa-check"></i><b>5.17</b> 多重比较</a></li>
+<li class="chapter" data-level="5.18" data-path="infer.html"><a href="infer.html#重采样推断"><i class="fa fa-check"></i><b>5.18</b> 重采样推断</a></li>
+<li class="chapter" data-level="5.19" data-path="infer.html"><a href="infer.html#概念可视化"><i class="fa fa-check"></i><b>5.19</b> 概念可视化</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="reg.html"><a href="reg.html"><i class="fa fa-check"></i><b>6</b> 回归模型</a><ul>
+<li class="chapter" data-level="6.1" data-path="reg.html"><a href="reg.html#回归模型导论"><i class="fa fa-check"></i><b>6.1</b> 回归模型导论</a></li>
+<li class="chapter" data-level="6.2" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>6.2</b> 术语</a></li>
+<li class="chapter" data-level="6.3" data-path="reg.html"><a href="reg.html#回归线的最小二乘回归"><i class="fa fa-check"></i><b>6.3</b> 回归线的最小二乘回归</a></li>
+<li class="chapter" data-level="6.4" data-path="reg.html"><a href="reg.html#统计线性回归模型"><i class="fa fa-check"></i><b>6.4</b> 统计线性回归模型</a></li>
+<li class="chapter" data-level="6.5" data-path="reg.html"><a href="reg.html#残差"><i class="fa fa-check"></i><b>6.5</b> 残差</a></li>
+<li class="chapter" data-level="6.6" data-path="reg.html"><a href="reg.html#回归推断"><i class="fa fa-check"></i><b>6.6</b> 回归推断</a></li>
+<li class="chapter" data-level="6.7" data-path="reg.html"><a href="reg.html#多元回归"><i class="fa fa-check"></i><b>6.7</b> 多元回归</a></li>
+<li class="chapter" data-level="6.8" data-path="reg.html"><a href="reg.html#模型诊断与选择"><i class="fa fa-check"></i><b>6.8</b> 模型诊断与选择</a></li>
+<li class="chapter" data-level="6.9" data-path="reg.html"><a href="reg.html#广义线性模型"><i class="fa fa-check"></i><b>6.9</b> 广义线性模型</a></li>
+<li class="chapter" data-level="6.10" data-path="reg.html"><a href="reg.html#二元响应"><i class="fa fa-check"></i><b>6.10</b> 二元响应</a></li>
+<li class="chapter" data-level="6.11" data-path="reg.html"><a href="reg.html#计数或速率响应"><i class="fa fa-check"></i><b>6.11</b> 计数或速率响应</a></li>
+<li class="chapter" data-level="6.12" data-path="reg.html"><a href="reg.html#分段平滑"><i class="fa fa-check"></i><b>6.12</b> 分段平滑</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a><ul>
+<li class="chapter" data-level="7.1" data-path="opt.html"><a href="opt.html#数学本质"><i class="fa fa-check"></i><b>7.1</b> 数学本质</a></li>
+<li class="chapter" data-level="7.2" data-path="opt.html"><a href="opt.html#简史"><i class="fa fa-check"></i><b>7.2</b> 简史</a></li>
+<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#凸集"><i class="fa fa-check"></i><b>7.3</b> 凸集</a></li>
+<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.4</b> 最小二乘法</a></li>
+<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.5</b> 线性规划</a></li>
+<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.6</b> 凸优化</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a><ul>
+<li class="chapter" data-level="8.1" data-path="mlsl.html"><a href="mlsl.html#统计学习概论"><i class="fa fa-check"></i><b>8.1</b> 统计学习概论</a></li>
+<li class="chapter" data-level="8.2" data-path="mlsl.html"><a href="mlsl.html#统计学习简史"><i class="fa fa-check"></i><b>8.2</b> 统计学习简史</a></li>
+<li class="chapter" data-level="8.3" data-path="mlsl.html"><a href="mlsl.html#统计学习定义"><i class="fa fa-check"></i><b>8.3</b> 统计学习定义</a></li>
+<li class="chapter" data-level="8.4" data-path="mlsl.html"><a href="mlsl.html#预测"><i class="fa fa-check"></i><b>8.4</b> 预测</a></li>
+<li class="chapter" data-level="8.5" data-path="mlsl.html"><a href="mlsl.html#推断"><i class="fa fa-check"></i><b>8.5</b> 推断</a></li>
+<li class="chapter" data-level="8.6" data-path="mlsl.html"><a href="mlsl.html#估计模型"><i class="fa fa-check"></i><b>8.6</b> 估计模型</a></li>
+<li class="chapter" data-level="8.7" data-path="mlsl.html"><a href="mlsl.html#评价模型"><i class="fa fa-check"></i><b>8.7</b> 评价模型</a><ul>
+<li class="chapter" data-level="8.7.1" data-path="mlsl.html"><a href="mlsl.html#拟合质量测量"><i class="fa fa-check"></i><b>8.7.1</b> 拟合质量测量</a></li>
+<li class="chapter" data-level="8.7.2" data-path="mlsl.html"><a href="mlsl.html#聚类评价"><i class="fa fa-check"></i><b>8.7.2</b> 聚类评价</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="mlsl.html"><a href="mlsl.html#研究设计"><i class="fa fa-check"></i><b>8.8</b> 研究设计</a></li>
+<li class="chapter" data-level="8.9" data-path="mlsl.html"><a href="mlsl.html#错误率"><i class="fa fa-check"></i><b>8.9</b> 错误率</a></li>
+<li class="chapter" data-level="8.10" data-path="mlsl.html"><a href="mlsl.html#roc-曲线"><i class="fa fa-check"></i><b>8.10</b> ROC 曲线</a></li>
+<li class="chapter" data-level="8.11" data-path="mlsl.html"><a href="mlsl.html#重采样技术"><i class="fa fa-check"></i><b>8.11</b> 重采样技术</a><ul>
+<li class="chapter" data-level="8.11.1" data-path="mlsl.html"><a href="mlsl.html#交叉检验"><i class="fa fa-check"></i><b>8.11.1</b> 交叉检验</a></li>
+<li class="chapter" data-level="8.11.2" data-path="mlsl.html"><a href="mlsl.html#bootstrap"><i class="fa fa-check"></i><b>8.11.2</b> bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="8.12" data-path="mlsl.html"><a href="mlsl.html#caret-包"><i class="fa fa-check"></i><b>8.12</b> <code>caret</code> 包</a></li>
+<li class="chapter" data-level="8.13" data-path="mlsl.html"><a href="mlsl.html#数据分割"><i class="fa fa-check"></i><b>8.13</b> 数据分割</a></li>
+<li class="chapter" data-level="8.14" data-path="mlsl.html"><a href="mlsl.html#训练选项"><i class="fa fa-check"></i><b>8.14</b> 训练选项</a></li>
+<li class="chapter" data-level="8.15" data-path="mlsl.html"><a href="mlsl.html#预测变量作图"><i class="fa fa-check"></i><b>8.15</b> 预测变量作图</a></li>
+<li class="chapter" data-level="8.16" data-path="mlsl.html"><a href="mlsl.html#数据预处理"><i class="fa fa-check"></i><b>8.16</b> 数据预处理</a></li>
+<li class="chapter" data-level="8.17" data-path="mlsl.html"><a href="mlsl.html#协变量生成"><i class="fa fa-check"></i><b>8.17</b> 协变量生成</a></li>
+<li class="chapter" data-level="8.18" data-path="mlsl.html"><a href="mlsl.html#线性回归多元线性回归"><i class="fa fa-check"></i><b>8.18</b> 线性回归&amp;多元线性回归</a><ul>
+<li class="chapter" data-level="8.18.1" data-path="mlsl.html"><a href="mlsl.html#简单线性回归"><i class="fa fa-check"></i><b>8.18.1</b> 简单线性回归</a></li>
+<li class="chapter" data-level="8.18.2" data-path="mlsl.html"><a href="mlsl.html#多元线性回归"><i class="fa fa-check"></i><b>8.18.2</b> 多元线性回归</a></li>
+<li class="chapter" data-level="8.18.3" data-path="mlsl.html"><a href="mlsl.html#线性模型延拓"><i class="fa fa-check"></i><b>8.18.3</b> 线性模型延拓</a></li>
+<li class="chapter" data-level="8.18.4" data-path="mlsl.html"><a href="mlsl.html#常见问题-1"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
+<li class="chapter" data-level="8.18.5" data-path="mlsl.html"><a href="mlsl.html#线性回归与kmeans算法比较"><i class="fa fa-check"></i><b>8.18.5</b> 线性回归与kmeans算法比较</a></li>
+<li class="chapter" data-level="8.18.6" data-path="mlsl.html"><a href="mlsl.html#logistic回归"><i class="fa fa-check"></i><b>8.18.6</b> logistic回归</a></li>
+<li class="chapter" data-level="8.18.7" data-path="mlsl.html"><a href="mlsl.html#线性判别分析"><i class="fa fa-check"></i><b>8.18.7</b> 线性判别分析</a></li>
+<li class="chapter" data-level="8.18.8" data-path="mlsl.html"><a href="mlsl.html#二次判别分析qda及其它"><i class="fa fa-check"></i><b>8.18.8</b> 二次判别分析（QDA）及其它</a></li>
+<li class="chapter" data-level="8.18.9" data-path="mlsl.html"><a href="mlsl.html#线性模型选择与正则化"><i class="fa fa-check"></i><b>8.18.9</b> 线性模型选择与正则化</a></li>
+</ul></li>
+<li class="chapter" data-level="8.19" data-path="mlsl.html"><a href="mlsl.html#非线性"><i class="fa fa-check"></i><b>8.19</b> 非线性</a><ul>
+<li class="chapter" data-level="8.19.1" data-path="mlsl.html"><a href="mlsl.html#多项式回归"><i class="fa fa-check"></i><b>8.19.1</b> 多项式回归</a></li>
+<li class="chapter" data-level="8.19.2" data-path="mlsl.html"><a href="mlsl.html#阶梯函数"><i class="fa fa-check"></i><b>8.19.2</b> 阶梯函数</a></li>
+<li class="chapter" data-level="8.19.3" data-path="mlsl.html"><a href="mlsl.html#基函数"><i class="fa fa-check"></i><b>8.19.3</b> 基函数</a></li>
+<li class="chapter" data-level="8.19.4" data-path="mlsl.html"><a href="mlsl.html#回归样条"><i class="fa fa-check"></i><b>8.19.4</b> 回归样条</a></li>
+<li class="chapter" data-level="8.19.5" data-path="mlsl.html"><a href="mlsl.html#平滑样条"><i class="fa fa-check"></i><b>8.19.5</b> 平滑样条</a></li>
+<li class="chapter" data-level="8.19.6" data-path="mlsl.html"><a href="mlsl.html#本地回归"><i class="fa fa-check"></i><b>8.19.6</b> 本地回归</a></li>
+<li class="chapter" data-level="8.19.7" data-path="mlsl.html"><a href="mlsl.html#广义加性模型"><i class="fa fa-check"></i><b>8.19.7</b> 广义加性模型</a></li>
+</ul></li>
+<li class="chapter" data-level="8.20" data-path="mlsl.html"><a href="mlsl.html#树"><i class="fa fa-check"></i><b>8.20</b> 树</a><ul>
+<li class="chapter" data-level="8.20.1" data-path="mlsl.html"><a href="mlsl.html#回归树"><i class="fa fa-check"></i><b>8.20.1</b> 回归树</a></li>
+<li class="chapter" data-level="8.20.2" data-path="mlsl.html"><a href="mlsl.html#分类树"><i class="fa fa-check"></i><b>8.20.2</b> 分类树</a></li>
+<li class="chapter" data-level="8.20.3" data-path="mlsl.html"><a href="mlsl.html#bagging"><i class="fa fa-check"></i><b>8.20.3</b> Bagging</a></li>
+<li class="chapter" data-level="8.20.4" data-path="mlsl.html"><a href="mlsl.html#随机森林"><i class="fa fa-check"></i><b>8.20.4</b> 随机森林</a></li>
+<li class="chapter" data-level="8.20.5" data-path="mlsl.html"><a href="mlsl.html#boosting"><i class="fa fa-check"></i><b>8.20.5</b> Boosting</a></li>
+</ul></li>
+<li class="chapter" data-level="8.21" data-path="mlsl.html"><a href="mlsl.html#支持向量机"><i class="fa fa-check"></i><b>8.21</b> 支持向量机</a><ul>
+<li class="chapter" data-level="8.21.1" data-path="mlsl.html"><a href="mlsl.html#最大边界分类器"><i class="fa fa-check"></i><b>8.21.1</b> 最大边界分类器</a></li>
+<li class="chapter" data-level="8.21.2" data-path="mlsl.html"><a href="mlsl.html#支持向量分类器"><i class="fa fa-check"></i><b>8.21.2</b> 支持向量分类器</a></li>
+<li class="chapter" data-level="8.21.3" data-path="mlsl.html"><a href="mlsl.html#支持向量机原理"><i class="fa fa-check"></i><b>8.21.3</b> 支持向量机原理</a></li>
+<li class="chapter" data-level="8.21.4" data-path="mlsl.html"><a href="mlsl.html#svm与logistic回归关系"><i class="fa fa-check"></i><b>8.21.4</b> svm与logistic回归关系</a></li>
+</ul></li>
+<li class="chapter" data-level="8.22" data-path="mlsl.html"><a href="mlsl.html#无监督学习"><i class="fa fa-check"></i><b>8.22</b> 无监督学习</a><ul>
+<li class="chapter" data-level="8.22.1" data-path="mlsl.html"><a href="mlsl.html#主成分分析"><i class="fa fa-check"></i><b>8.22.1</b> 主成分分析</a></li>
+<li class="chapter" data-level="8.22.2" data-path="mlsl.html"><a href="mlsl.html#聚类方法"><i class="fa fa-check"></i><b>8.22.2</b> 聚类方法</a></li>
+</ul></li>
+<li class="chapter" data-level="8.23" data-path="mlsl.html"><a href="mlsl.html#人工神经网络"><i class="fa fa-check"></i><b>8.23</b> 人工神经网络</a></li>
+<li class="chapter" data-level="8.24" data-path="mlsl.html"><a href="mlsl.html#模型联合"><i class="fa fa-check"></i><b>8.24</b> 模型联合</a></li>
+<li class="chapter" data-level="8.25" data-path="mlsl.html"><a href="mlsl.html#无监督预测"><i class="fa fa-check"></i><b>8.25</b> 无监督预测</a></li>
+<li class="chapter" data-level="8.26" data-path="mlsl.html"><a href="mlsl.html#模型预测"><i class="fa fa-check"></i><b>8.26</b> 模型预测</a></li>
+<li class="chapter" data-level="8.27" data-path="mlsl.html"><a href="mlsl.html#模型可视化"><i class="fa fa-check"></i><b>8.27</b> 模型可视化</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="product.html"><a href="product.html"><i class="fa fa-check"></i><b>9</b> 开发数据产品</a><ul>
+<li class="chapter" data-level="9.1" data-path="product.html"><a href="product.html#shiny"><i class="fa fa-check"></i><b>9.1</b> shiny</a></li>
+<li class="chapter" data-level="9.2" data-path="product.html"><a href="product.html#rcharts"><i class="fa fa-check"></i><b>9.2</b> rCharts</a></li>
+<li class="chapter" data-level="9.3" data-path="product.html"><a href="product.html#googlevis"><i class="fa fa-check"></i><b>9.3</b> GoogleVis</a></li>
+<li class="chapter" data-level="9.4" data-path="product.html"><a href="product.html#slidify"><i class="fa fa-check"></i><b>9.4</b> Slidify</a></li>
+<li class="chapter" data-level="9.5" data-path="product.html"><a href="product.html#yhat"><i class="fa fa-check"></i><b>9.5</b> yhat</a></li>
+<li class="chapter" data-level="9.6" data-path="product.html"><a href="product.html#swagger"><i class="fa fa-check"></i><b>9.6</b> swagger</a></li>
+<li class="chapter" data-level="9.7" data-path="product.html"><a href="product.html#案例"><i class="fa fa-check"></i><b>9.7</b> 案例</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>10</b> 贝叶斯统计</a><ul>
+<li class="chapter" data-level="10.1" data-path="bayes.html"><a href="bayes.html#贝塔分布"><i class="fa fa-check"></i><b>10.1</b> 贝塔分布</a></li>
+<li class="chapter" data-level="10.2" data-path="bayes.html"><a href="bayes.html#为什么击球的概率分布符合贝塔分布"><i class="fa fa-check"></i><b>10.2</b> 为什么击球的概率分布符合贝塔分布？</a></li>
+<li class="chapter" data-level="10.3" data-path="bayes.html"><a href="bayes.html#先验与后验"><i class="fa fa-check"></i><b>10.3</b> 先验与后验</a></li>
+<li class="chapter" data-level="10.4" data-path="bayes.html"><a href="bayes.html#经验贝叶斯"><i class="fa fa-check"></i><b>10.4</b> 经验贝叶斯</a></li>
+<li class="chapter" data-level="10.5" data-path="bayes.html"><a href="bayes.html#从整体到个人"><i class="fa fa-check"></i><b>10.5</b> 从整体到个人</a></li>
+<li class="chapter" data-level="10.6" data-path="bayes.html"><a href="bayes.html#可信区间与置信区间"><i class="fa fa-check"></i><b>10.6</b> 可信区间与置信区间</a></li>
+<li class="chapter" data-level="10.7" data-path="bayes.html"><a href="bayes.html#后验错误率"><i class="fa fa-check"></i><b>10.7</b> 后验错误率</a></li>
+<li class="chapter" data-level="10.8" data-path="bayes.html"><a href="bayes.html#错误发现率"><i class="fa fa-check"></i><b>10.8</b> 错误发现率</a></li>
+<li class="chapter" data-level="10.9" data-path="bayes.html"><a href="bayes.html#q值"><i class="fa fa-check"></i><b>10.9</b> q值</a></li>
+<li class="chapter" data-level="10.10" data-path="bayes.html"><a href="bayes.html#贝叶斯视角的假设检验"><i class="fa fa-check"></i><b>10.10</b> 贝叶斯视角的假设检验</a><ul>
+<li class="chapter" data-level="10.10.1" data-path="bayes.html"><a href="bayes.html#模拟验证"><i class="fa fa-check"></i><b>10.10.1</b> 模拟验证</a></li>
+<li class="chapter" data-level="10.10.2" data-path="bayes.html"><a href="bayes.html#数值积分"><i class="fa fa-check"></i><b>10.10.2</b> 数值积分</a></li>
+<li class="chapter" data-level="10.10.3" data-path="bayes.html"><a href="bayes.html#解析解"><i class="fa fa-check"></i><b>10.10.3</b> 解析解</a></li>
+<li class="chapter" data-level="10.10.4" data-path="bayes.html"><a href="bayes.html#正态近似求解"><i class="fa fa-check"></i><b>10.10.4</b> 正态近似求解</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="bayes.html"><a href="bayes.html#比例检验"><i class="fa fa-check"></i><b>10.11</b> 比例检验</a></li>
+<li class="chapter" data-level="10.12" data-path="bayes.html"><a href="bayes.html#错误率控制"><i class="fa fa-check"></i><b>10.12</b> 错误率控制</a></li>
+<li class="chapter" data-level="10.13" data-path="bayes.html"><a href="bayes.html#影响因子"><i class="fa fa-check"></i><b>10.13</b> 影响因子</a><ul>
+<li class="chapter" data-level="10.13.1" data-path="bayes.html"><a href="bayes.html#拟合模型"><i class="fa fa-check"></i><b>10.13.1</b> 拟合模型</a></li>
+<li class="chapter" data-level="10.13.2" data-path="bayes.html"><a href="bayes.html#求后验概率"><i class="fa fa-check"></i><b>10.13.2</b> 求后验概率</a></li>
+<li class="chapter" data-level="10.13.3" data-path="bayes.html"><a href="bayes.html#考虑更多因素"><i class="fa fa-check"></i><b>10.13.3</b> 考虑更多因素</a></li>
+</ul></li>
+<li class="chapter" data-level="10.14" data-path="bayes.html"><a href="bayes.html#混合概率模型"><i class="fa fa-check"></i><b>10.14</b> 混合概率模型</a><ul>
+<li class="chapter" data-level="10.14.1" data-path="bayes.html"><a href="bayes.html#期望最大算法"><i class="fa fa-check"></i><b>10.14.1</b> 期望最大算法</a></li>
+<li class="chapter" data-level="10.14.2" data-path="bayes.html"><a href="bayes.html#分配"><i class="fa fa-check"></i><b>10.14.2</b> 分配</a></li>
+<li class="chapter" data-level="10.14.3" data-path="bayes.html"><a href="bayes.html#经验贝叶斯收缩"><i class="fa fa-check"></i><b>10.14.3</b> 经验贝叶斯收缩</a></li>
+</ul></li>
+<li class="chapter" data-level="10.15" data-path="bayes.html"><a href="bayes.html#模拟验证结果"><i class="fa fa-check"></i><b>10.15</b> 模拟验证结果</a><ul>
+<li class="chapter" data-level="10.15.1" data-path="bayes.html"><a href="bayes.html#模拟对分布参数的估计"><i class="fa fa-check"></i><b>10.15.1</b> 模拟对分布参数的估计</a></li>
+<li class="chapter" data-level="10.15.2" data-path="bayes.html"><a href="bayes.html#区间估计"><i class="fa fa-check"></i><b>10.15.2</b> 区间估计</a></li>
+<li class="chapter" data-level="10.15.3" data-path="bayes.html"><a href="bayes.html#错误发现率-1"><i class="fa fa-check"></i><b>10.15.3</b> 错误发现率</a></li>
+<li class="chapter" data-level="10.15.4" data-path="bayes.html"><a href="bayes.html#贝塔二项回归"><i class="fa fa-check"></i><b>10.15.4</b> 贝塔二项回归</a></li>
+<li class="chapter" data-level="10.15.5" data-path="bayes.html"><a href="bayes.html#重复模拟"><i class="fa fa-check"></i><b>10.15.5</b> 重复模拟</a></li>
+</ul></li>
+<li class="chapter" data-level="10.16" data-path="bayes.html"><a href="bayes.html#bayeslink"><i class="fa fa-check"></i><b>10.16</b> 网络资源</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="why.html"><a href="why.html"><i class="fa fa-check"></i><b>11</b> 因果分析</a><ul>
+<li class="chapter" data-level="11.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="why.html"><a href="why.html#causal-information"><i class="fa fa-check"></i><b>11.2</b> Causal Information</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="why.html"><a href="why.html#target"><i class="fa fa-check"></i><b>11.2.1</b> Target</a></li>
+<li class="chapter" data-level="11.2.2" data-path="why.html"><a href="why.html#causal-sources"><i class="fa fa-check"></i><b>11.2.2</b> Causal sources</a></li>
+<li class="chapter" data-level="11.2.3" data-path="why.html"><a href="why.html#identification-and-estimation-process"><i class="fa fa-check"></i><b>11.2.3</b> Identification and Estimation Process</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="why.html"><a href="why.html#theoretical-background"><i class="fa fa-check"></i><b>11.3</b> Theoretical Background</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="why.html"><a href="why.html#potential-outcomes-framework"><i class="fa fa-check"></i><b>11.3.1</b> Potential Outcomes Framework</a></li>
+<li class="chapter" data-level="11.3.2" data-path="why.html"><a href="why.html#causal-identification"><i class="fa fa-check"></i><b>11.3.2</b> Causal Identification</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="why.html"><a href="why.html#methods-for-identification-and-estimation"><i class="fa fa-check"></i><b>11.4</b> Methods for Identification and Estimation</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="why.html"><a href="why.html#directed-acyclic-graphsdag-for-identification"><i class="fa fa-check"></i><b>11.4.1</b> Directed Acyclic Graphs(DAG) for Identification</a></li>
+<li class="chapter" data-level="11.4.2" data-path="why.html"><a href="why.html#indirect-connection"><i class="fa fa-check"></i><b>11.4.2</b> Indirect Connection</a></li>
+<li class="chapter" data-level="11.4.3" data-path="why.html"><a href="why.html#common-cause"><i class="fa fa-check"></i><b>11.4.3</b> Common Cause</a></li>
+<li class="chapter" data-level="11.4.4" data-path="why.html"><a href="why.html#common-effect"><i class="fa fa-check"></i><b>11.4.4</b> Common Effect</a></li>
+<li class="chapter" data-level="11.4.5" data-path="why.html"><a href="why.html#example-simpsons-paradox"><i class="fa fa-check"></i><b>11.4.5</b> Example: Simpson’s Paradox</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="why.html"><a href="why.html#yinguolink"><i class="fa fa-check"></i><b>11.5</b> 链接</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a><ul>
+<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#图论"><i class="fa fa-check"></i><b>12.1</b> 图论</a></li>
+<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.2</b> 随机网络模型</a></li>
+<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.3</b> 无尺度网络</a></li>
+<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.4</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
+<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.5</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
+<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#度相关"><i class="fa fa-check"></i><b>12.6</b> 度相关</a></li>
+<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.7</b> 网络稳健性</a></li>
+<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.8</b> 网络集群</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a><ul>
+<li class="chapter" data-level="13.1" data-path="game.html"><a href="game.html#术语-1"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
+<li class="chapter" data-level="13.2" data-path="game.html"><a href="game.html#支配策略dominate-strategy"><i class="fa fa-check"></i><b>13.2</b> 支配策略（dominate strategy）</a></li>
+<li class="chapter" data-level="13.3" data-path="game.html"><a href="game.html#最佳回应best-respinse"><i class="fa fa-check"></i><b>13.3</b> 最佳回应（Best respinse）</a></li>
+<li class="chapter" data-level="13.4" data-path="game.html"><a href="game.html#纳什均衡nash-equilibrium"><i class="fa fa-check"></i><b>13.4</b> 纳什均衡（Nash Equilibrium）</a></li>
+<li class="chapter" data-level="13.5" data-path="game.html"><a href="game.html#帕累托最优pareto-optimality"><i class="fa fa-check"></i><b>13.5</b> 帕累托最优（Pareto Optimality）</a></li>
+<li class="chapter" data-level="13.6" data-path="game.html"><a href="game.html#混合策略mixed-stratergies"><i class="fa fa-check"></i><b>13.6</b> 混合策略（Mixed stratergies）</a></li>
+<li class="chapter" data-level="13.7" data-path="game.html"><a href="game.html#寻找纳什均衡"><i class="fa fa-check"></i><b>13.7</b> 寻找纳什均衡</a></li>
+<li class="chapter" data-level="13.8" data-path="game.html"><a href="game.html#被支配策略dominated-strategy"><i class="fa fa-check"></i><b>13.8</b> 被支配策略（dominated strategy）</a></li>
+<li class="chapter" data-level="13.9" data-path="game.html"><a href="game.html#最大最小策略maxmin-strategies"><i class="fa fa-check"></i><b>13.9</b> 最大最小策略（Maxmin strategies）</a></li>
+<li class="chapter" data-level="13.10" data-path="game.html"><a href="game.html#扩展形式博弈"><i class="fa fa-check"></i><b>13.10</b> 扩展形式博弈</a></li>
+<li class="chapter" data-level="13.11" data-path="game.html"><a href="game.html#完美子博弈"><i class="fa fa-check"></i><b>13.11</b> 完美子博弈</a></li>
+<li class="chapter" data-level="13.12" data-path="game.html"><a href="game.html#信息不对称扩展形式博弈"><i class="fa fa-check"></i><b>13.12</b> 信息不对称扩展形式博弈</a></li>
+<li class="chapter" data-level="13.13" data-path="game.html"><a href="game.html#混合与行为策略"><i class="fa fa-check"></i><b>13.13</b> 混合与行为策略</a></li>
+<li class="chapter" data-level="13.14" data-path="game.html"><a href="game.html#重复博弈"><i class="fa fa-check"></i><b>13.14</b> 重复博弈</a></li>
+<li class="chapter" data-level="13.15" data-path="game.html"><a href="game.html#随机博弈stochastic-game"><i class="fa fa-check"></i><b>13.15</b> 随机博弈（stochastic game）</a></li>
+<li class="chapter" data-level="13.16" data-path="game.html"><a href="game.html#虚拟行动fictitious-play"><i class="fa fa-check"></i><b>13.16</b> 虚拟行动（fictitious play）</a></li>
+<li class="chapter" data-level="13.17" data-path="game.html"><a href="game.html#无悔学习no-regret-learning"><i class="fa fa-check"></i><b>13.17</b> 无悔学习（No-regret learning）</a></li>
+<li class="chapter" data-level="13.18" data-path="game.html"><a href="game.html#无限重复博弈的平衡"><i class="fa fa-check"></i><b>13.18</b> 无限重复博弈的平衡</a></li>
+<li class="chapter" data-level="13.19" data-path="game.html"><a href="game.html#贝叶斯博弈"><i class="fa fa-check"></i><b>13.19</b> 贝叶斯博弈</a></li>
+<li class="chapter" data-level="13.20" data-path="game.html"><a href="game.html#联盟博弈"><i class="fa fa-check"></i><b>13.20</b> 联盟博弈</a></li>
+<li class="chapter" data-level="13.21" data-path="game.html"><a href="game.html#夏普利值shapley-value"><i class="fa fa-check"></i><b>13.21</b> 夏普利值（Shapley Value）</a></li>
+<li class="chapter" data-level="13.22" data-path="game.html"><a href="game.html#核心"><i class="fa fa-check"></i><b>13.22</b> 核心</a></li>
+<li class="chapter" data-level="13.23" data-path="game.html"><a href="game.html#选举"><i class="fa fa-check"></i><b>13.23</b> 选举</a></li>
+<li class="chapter" data-level="13.24" data-path="game.html"><a href="game.html#机制设计"><i class="fa fa-check"></i><b>13.24</b> 机制设计</a></li>
+<li class="chapter" data-level="13.25" data-path="game.html"><a href="game.html#vcg机制"><i class="fa fa-check"></i><b>13.25</b> VCG机制</a></li>
+<li class="chapter" data-level="13.26" data-path="game.html"><a href="game.html#拍卖"><i class="fa fa-check"></i><b>13.26</b> 拍卖</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bios.html"><a href="bios.html"><i class="fa fa-check"></i><b>14</b> 生物信息</a><ul>
+<li class="chapter" data-level="14.1" data-path="bios.html"><a href="bios.html#数据结构"><i class="fa fa-check"></i><b>14.1</b> 数据结构</a></li>
+<li class="chapter" data-level="14.2" data-path="bios.html"><a href="bios.html#pubmed-搜索"><i class="fa fa-check"></i><b>14.2</b> Pubmed 搜索</a></li>
+<li class="chapter" data-level="14.3" data-path="bios.html"><a href="bios.html#动态规划"><i class="fa fa-check"></i><b>14.3</b> 动态规划</a></li>
+<li class="chapter" data-level="14.4" data-path="bios.html"><a href="bios.html#得分矩阵"><i class="fa fa-check"></i><b>14.4</b> 得分矩阵</a></li>
+<li class="chapter" data-level="14.5" data-path="bios.html"><a href="bios.html#e-值"><i class="fa fa-check"></i><b>14.5</b> E 值</a></li>
+<li class="chapter" data-level="14.6" data-path="bios.html"><a href="bios.html#psi-blast"><i class="fa fa-check"></i><b>14.6</b> PSI-BLAST</a></li>
+<li class="chapter" data-level="14.7" data-path="bios.html"><a href="bios.html#蛋白"><i class="fa fa-check"></i><b>14.7</b> 蛋白</a></li>
+<li class="chapter" data-level="14.8" data-path="bios.html"><a href="bios.html#蛋白结构预测"><i class="fa fa-check"></i><b>14.8</b> 蛋白结构预测</a></li>
+<li class="chapter" data-level="14.9" data-path="bios.html"><a href="bios.html#细菌基因组"><i class="fa fa-check"></i><b>14.9</b> 细菌基因组</a></li>
+<li class="chapter" data-level="14.10" data-path="bios.html"><a href="bios.html#病毒"><i class="fa fa-check"></i><b>14.10</b> 病毒</a></li>
+<li class="chapter" data-level="14.11" data-path="bios.html"><a href="bios.html#单核苷酸多态性snp"><i class="fa fa-check"></i><b>14.11</b> 单核苷酸多态性（SNP）</a></li>
+<li class="chapter" data-level="14.12" data-path="bios.html"><a href="bios.html#真核基因预测"><i class="fa fa-check"></i><b>14.12</b> 真核基因预测</a></li>
+<li class="chapter" data-level="14.13" data-path="bios.html"><a href="bios.html#dna指纹"><i class="fa fa-check"></i><b>14.13</b> DNA指纹</a></li>
+<li class="chapter" data-level="14.14" data-path="bios.html"><a href="bios.html#ensembl"><i class="fa fa-check"></i><b>14.14</b> Ensembl</a></li>
+<li class="chapter" data-level="14.15" data-path="bios.html"><a href="bios.html#基因组学数据分析"><i class="fa fa-check"></i><b>14.15</b> 基因组学数据分析</a><ul>
+<li class="chapter" data-level="14.15.1" data-path="bios.html"><a href="bios.html#microarrays"><i class="fa fa-check"></i><b>14.15.1</b> microarrays</a></li>
+<li class="chapter" data-level="14.15.2" data-path="bios.html"><a href="bios.html#ngs"><i class="fa fa-check"></i><b>14.15.2</b> NGS</a></li>
+<li class="chapter" data-level="14.15.3" data-path="bios.html"><a href="bios.html#数据分析应用背景"><i class="fa fa-check"></i><b>14.15.3</b> 数据分析应用背景</a></li>
+<li class="chapter" data-level="14.15.4" data-path="bios.html"><a href="bios.html#bioconductor"><i class="fa fa-check"></i><b>14.15.4</b> Bioconductor</a></li>
+<li class="chapter" data-level="14.15.5" data-path="bios.html"><a href="bios.html#示例甲基化数据分析"><i class="fa fa-check"></i><b>14.15.5</b> 示例：甲基化数据分析</a></li>
+</ul></li>
+<li class="chapter" data-level="14.16" data-path="bios.html"><a href="bios.html#biolink"><i class="fa fa-check"></i><b>14.16</b> 链接</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="surv.html"><a href="surv.html"><i class="fa fa-check"></i><b>15</b> 生存分析</a><ul>
+<li class="chapter" data-level="15.1" data-path="surv.html"><a href="surv.html#concepts"><i class="fa fa-check"></i><b>15.1</b> Concepts</a></li>
+<li class="chapter" data-level="15.2" data-path="surv.html"><a href="surv.html#notation"><i class="fa fa-check"></i><b>15.2</b> Notation</a></li>
+<li class="chapter" data-level="15.3" data-path="surv.html"><a href="surv.html#cox-proportional-hazards-regression-model"><i class="fa fa-check"></i><b>15.3</b> Cox proportional-hazards regression model</a></li>
+<li class="chapter" data-level="15.4" data-path="surv.html"><a href="surv.html#case-recidivism"><i class="fa fa-check"></i><b>15.4</b> Case: Recidivism</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="surv.html"><a href="surv.html#result"><i class="fa fa-check"></i><b>15.4.1</b> result</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="surv.html"><a href="surv.html#further"><i class="fa fa-check"></i><b>15.5</b> further</a></li>
+<li class="chapter" data-level="15.6" data-path="surv.html"><a href="surv.html#time-dependent-covariates"><i class="fa fa-check"></i><b>15.6</b> Time-Dependent Covariates</a></li>
+<li class="chapter" data-level="15.7" data-path="surv.html"><a href="surv.html#model-diagnostics"><i class="fa fa-check"></i><b>15.7</b> Model Diagnostics</a></li>
+<li class="chapter" data-level="15.8" data-path="surv.html"><a href="surv.html#reference"><i class="fa fa-check"></i><b>15.8</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="epid.html"><a href="epid.html"><i class="fa fa-check"></i><b>16</b> 流行病学</a><ul>
+<li class="chapter" data-level="16.1" data-path="epid.html"><a href="epid.html#声明"><i class="fa fa-check"></i><b>16.1</b> 声明</a></li>
+<li class="chapter" data-level="16.2" data-path="epid.html"><a href="epid.html#早期疾病的概念"><i class="fa fa-check"></i><b>16.2</b> 早期疾病的概念</a></li>
+<li class="chapter" data-level="16.3" data-path="epid.html"><a href="epid.html#近代流行病学关键人物"><i class="fa fa-check"></i><b>16.3</b> 近代流行病学关键人物</a></li>
+<li class="chapter" data-level="16.4" data-path="epid.html"><a href="epid.html#现代慢性病流行病学"><i class="fa fa-check"></i><b>16.4</b> 现代慢性病流行病学</a></li>
+<li class="chapter" data-level="16.5" data-path="epid.html"><a href="epid.html#流行病学基本概念"><i class="fa fa-check"></i><b>16.5</b> 流行病学基本概念</a><ul>
+<li class="chapter" data-level="16.5.1" data-path="epid.html"><a href="epid.html#基本假设"><i class="fa fa-check"></i><b>16.5.1</b> 基本假设</a></li>
+<li class="chapter" data-level="16.5.2" data-path="epid.html"><a href="epid.html#定义"><i class="fa fa-check"></i><b>16.5.2</b> 定义</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="epid.html"><a href="epid.html#描述性流行病学"><i class="fa fa-check"></i><b>16.6</b> 描述性流行病学</a><ul>
+<li class="chapter" data-level="16.6.1" data-path="epid.html"><a href="epid.html#疾病爆发的研究步骤"><i class="fa fa-check"></i><b>16.6.1</b> 疾病爆发的研究步骤</a></li>
+<li class="chapter" data-level="16.6.2" data-path="epid.html"><a href="epid.html#慢性病的描述性流行病学"><i class="fa fa-check"></i><b>16.6.2</b> 慢性病的描述性流行病学</a></li>
+<li class="chapter" data-level="16.6.3" data-path="epid.html"><a href="epid.html#描述流行病学分类"><i class="fa fa-check"></i><b>16.6.3</b> 描述流行病学分类</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="epid.html"><a href="epid.html#分析流行病学"><i class="fa fa-check"></i><b>16.7</b> 分析流行病学</a></li>
+<li class="chapter" data-level="16.8" data-path="epid.html"><a href="epid.html#疾病监控"><i class="fa fa-check"></i><b>16.8</b> 疾病监控</a></li>
+<li class="chapter" data-level="16.9" data-path="epid.html"><a href="epid.html#疾病频率的测量"><i class="fa fa-check"></i><b>16.9</b> 疾病频率的测量</a><ul>
+<li class="chapter" data-level="16.9.1" data-path="epid.html"><a href="epid.html#人群"><i class="fa fa-check"></i><b>16.9.1</b> 人群</a></li>
+<li class="chapter" data-level="16.9.2" data-path="epid.html"><a href="epid.html#患病率prevalence"><i class="fa fa-check"></i><b>16.9.2</b> 患病率（prevalence）</a></li>
+<li class="chapter" data-level="16.9.3" data-path="epid.html"><a href="epid.html#风险risk"><i class="fa fa-check"></i><b>16.9.3</b> 风险（risk）</a></li>
+<li class="chapter" data-level="16.9.4" data-path="epid.html"><a href="epid.html#比率rate"><i class="fa fa-check"></i><b>16.9.4</b> 比率（rate）</a></li>
+<li class="chapter" data-level="16.9.5" data-path="epid.html"><a href="epid.html#其他频率测量"><i class="fa fa-check"></i><b>16.9.5</b> 其他频率测量</a></li>
+</ul></li>
+<li class="chapter" data-level="16.10" data-path="epid.html"><a href="epid.html#联系测量"><i class="fa fa-check"></i><b>16.10</b> 联系测量</a><ul>
+<li class="chapter" data-level="16.10.1" data-path="epid.html"><a href="epid.html#风险比与比率比risk-ratio-rate-ratio"><i class="fa fa-check"></i><b>16.10.1</b> 风险比与比率比（risk ratio rate ratio）</a></li>
+<li class="chapter" data-level="16.10.2" data-path="epid.html"><a href="epid.html#对照组"><i class="fa fa-check"></i><b>16.10.2</b> 对照组</a></li>
+<li class="chapter" data-level="16.10.3" data-path="epid.html"><a href="epid.html#风险差risk-difference"><i class="fa fa-check"></i><b>16.10.3</b> 风险差（risk difference）</a></li>
+<li class="chapter" data-level="16.10.4" data-path="epid.html"><a href="epid.html#归因比例attributable-proportion-among-the-exposed"><i class="fa fa-check"></i><b>16.10.4</b> 归因比例（Attributable Proportion Among the Exposed）</a></li>
+<li class="chapter" data-level="16.10.5" data-path="epid.html"><a href="epid.html#人群归因比例population-attributable-fraction"><i class="fa fa-check"></i><b>16.10.5</b> 人群归因比例（Population Attributable Fraction）</a></li>
+<li class="chapter" data-level="16.10.6" data-path="epid.html"><a href="epid.html#胜率比odds-ratio"><i class="fa fa-check"></i><b>16.10.6</b> 胜率比（odds ratio）</a></li>
+</ul></li>
+<li class="chapter" data-level="16.11" data-path="epid.html"><a href="epid.html#随机误差"><i class="fa fa-check"></i><b>16.11</b> 随机误差</a></li>
+<li class="chapter" data-level="16.12" data-path="epid.html"><a href="epid.html#研究道德"><i class="fa fa-check"></i><b>16.12</b> 研究道德</a></li>
+<li class="chapter" data-level="16.13" data-path="epid.html"><a href="epid.html#临床实验"><i class="fa fa-check"></i><b>16.13</b> 临床实验</a><ul>
+<li class="chapter" data-level="16.13.1" data-path="epid.html"><a href="epid.html#研究对象"><i class="fa fa-check"></i><b>16.13.1</b> 研究对象</a></li>
+<li class="chapter" data-level="16.13.2" data-path="epid.html"><a href="epid.html#对照组与控制组"><i class="fa fa-check"></i><b>16.13.2</b> 对照组与控制组</a></li>
+<li class="chapter" data-level="16.13.3" data-path="epid.html"><a href="epid.html#临床分析中的问题"><i class="fa fa-check"></i><b>16.13.3</b> 临床分析中的问题</a></li>
+</ul></li>
+<li class="chapter" data-level="16.14" data-path="epid.html"><a href="epid.html#队列研究"><i class="fa fa-check"></i><b>16.14</b> 队列研究</a><ul>
+<li class="chapter" data-level="16.14.1" data-path="epid.html"><a href="epid.html#前瞻性队列研究"><i class="fa fa-check"></i><b>16.14.1</b> 前瞻性队列研究</a></li>
+<li class="chapter" data-level="16.14.2" data-path="epid.html"><a href="epid.html#回顾性队列研究"><i class="fa fa-check"></i><b>16.14.2</b> 回顾性队列研究</a></li>
+<li class="chapter" data-level="16.14.3" data-path="epid.html"><a href="epid.html#双向队列研究"><i class="fa fa-check"></i><b>16.14.3</b> 双向队列研究</a></li>
+<li class="chapter" data-level="16.14.4" data-path="epid.html"><a href="epid.html#固定队列与开放队列"><i class="fa fa-check"></i><b>16.14.4</b> 固定队列与开放队列</a></li>
+<li class="chapter" data-level="16.14.5" data-path="epid.html"><a href="epid.html#研究对象-1"><i class="fa fa-check"></i><b>16.14.5</b> 研究对象</a></li>
+<li class="chapter" data-level="16.14.6" data-path="epid.html"><a href="epid.html#队列追踪"><i class="fa fa-check"></i><b>16.14.6</b> 队列追踪</a></li>
+<li class="chapter" data-level="16.14.7" data-path="epid.html"><a href="epid.html#优点"><i class="fa fa-check"></i><b>16.14.7</b> 优点</a></li>
+<li class="chapter" data-level="16.14.8" data-path="epid.html"><a href="epid.html#前瞻性队列研究缺点"><i class="fa fa-check"></i><b>16.14.8</b> 前瞻性队列研究缺点</a></li>
+<li class="chapter" data-level="16.14.9" data-path="epid.html"><a href="epid.html#回顾性队列研究缺点"><i class="fa fa-check"></i><b>16.14.9</b> 回顾性队列研究缺点</a></li>
+<li class="chapter" data-level="16.14.10" data-path="epid.html"><a href="epid.html#偏误"><i class="fa fa-check"></i><b>16.14.10</b> 偏误</a></li>
+</ul></li>
+<li class="chapter" data-level="16.15" data-path="epid.html"><a href="epid.html#病例对照研究"><i class="fa fa-check"></i><b>16.15</b> 病例对照研究</a></li>
+<li class="chapter" data-level="16.16" data-path="epid.html"><a href="epid.html#标准化"><i class="fa fa-check"></i><b>16.16</b> 标准化</a></li>
+<li class="chapter" data-level="16.17" data-path="epid.html"><a href="epid.html#混杂"><i class="fa fa-check"></i><b>16.17</b> 混杂</a></li>
+<li class="chapter" data-level="16.18" data-path="epid.html"><a href="epid.html#效应修饰emm"><i class="fa fa-check"></i><b>16.18</b> 效应修饰（EMM）</a></li>
+<li class="chapter" data-level="16.19" data-path="epid.html"><a href="epid.html#多变量方法"><i class="fa fa-check"></i><b>16.19</b> 多变量方法</a></li>
+<li class="chapter" data-level="16.20" data-path="epid.html"><a href="epid.html#筛选"><i class="fa fa-check"></i><b>16.20</b> 筛选</a></li>
+<li class="chapter" data-level="16.21" data-path="epid.html"><a href="epid.html#因果推断"><i class="fa fa-check"></i><b>16.21</b> 因果推断</a><ul>
+<li class="chapter" data-level="16.21.1" data-path="epid.html"><a href="epid.html#hill-因果标准"><i class="fa fa-check"></i><b>16.21.1</b> Hill 因果标准</a></li>
+<li class="chapter" data-level="16.21.2" data-path="epid.html"><a href="epid.html#部分原因理论"><i class="fa fa-check"></i><b>16.21.2</b> 部分原因理论</a></li>
+<li class="chapter" data-level="16.21.3" data-path="epid.html"><a href="epid.html#逆向模型counterfactual-models"><i class="fa fa-check"></i><b>16.21.3</b> 逆向模型（Counterfactual models）</a></li>
+<li class="chapter" data-level="16.21.4" data-path="epid.html"><a href="epid.html#有向无环图dags"><i class="fa fa-check"></i><b>16.21.4</b> 有向无环图（DAGs）</a></li>
+</ul></li>
+<li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a><ul>
+<li class="chapter" data-level="16.22.1" data-path="epid.html"><a href="epid.html#introduction-1"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.22.2" data-path="epid.html"><a href="epid.html#methods"><i class="fa fa-check"></i><b>16.22.2</b> Methods</a></li>
+<li class="chapter" data-level="16.22.3" data-path="epid.html"><a href="epid.html#results"><i class="fa fa-check"></i><b>16.22.3</b> Results</a></li>
+<li class="chapter" data-level="16.22.4" data-path="epid.html"><a href="epid.html#discussion"><i class="fa fa-check"></i><b>16.22.4</b> Discussion</a></li>
+<li class="chapter" data-level="16.22.5" data-path="epid.html"><a href="epid.html#conclusion"><i class="fa fa-check"></i><b>16.22.5</b> Conclusion</a></li>
+<li class="chapter" data-level="16.22.6" data-path="epid.html"><a href="epid.html#clinical-trial"><i class="fa fa-check"></i><b>16.22.6</b> Clinical Trial</a></li>
+<li class="chapter" data-level="16.22.7" data-path="epid.html"><a href="epid.html#cohort-study"><i class="fa fa-check"></i><b>16.22.7</b> Cohort Study</a></li>
+<li class="chapter" data-level="16.22.8" data-path="epid.html"><a href="epid.html#case-control-study"><i class="fa fa-check"></i><b>16.22.8</b> Case-Control Study</a></li>
+<li class="chapter" data-level="16.22.9" data-path="epid.html"><a href="epid.html#screening-test"><i class="fa fa-check"></i><b>16.22.9</b> Screening Test</a></li>
+<li class="chapter" data-level="16.22.10" data-path="epid.html"><a href="epid.html#additional-considerations"><i class="fa fa-check"></i><b>16.22.10</b> Additional Considerations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>17</b> 自然语言处理</a></li>
+<li class="chapter" data-level="18" data-path="qi.html"><a href="qi.html"><i class="fa fa-check"></i><b>18</b> 量化投资</a><ul>
+<li class="chapter" data-level="18.1" data-path="qi.html"><a href="qi.html#股票收益模型"><i class="fa fa-check"></i><b>18.1</b> 股票收益模型</a></li>
+<li class="chapter" data-level="18.2" data-path="qi.html"><a href="qi.html#风险"><i class="fa fa-check"></i><b>18.2</b> 风险</a></li>
+<li class="chapter" data-level="18.3" data-path="qi.html"><a href="qi.html#收益"><i class="fa fa-check"></i><b>18.3</b> 收益</a></li>
+<li class="chapter" data-level="18.4" data-path="qi.html"><a href="qi.html#一般性投资"><i class="fa fa-check"></i><b>18.4</b> 一般性投资</a></li>
+<li class="chapter" data-level="18.5" data-path="qi.html"><a href="qi.html#风险管理原理"><i class="fa fa-check"></i><b>18.5</b> 风险管理原理</a></li>
+<li class="chapter" data-level="18.6" data-path="qi.html"><a href="qi.html#金融技术与发明"><i class="fa fa-check"></i><b>18.6</b> 金融技术与发明</a></li>
+<li class="chapter" data-level="18.7" data-path="qi.html"><a href="qi.html#投资组合"><i class="fa fa-check"></i><b>18.7</b> 投资组合</a></li>
+<li class="chapter" data-level="18.8" data-path="qi.html"><a href="qi.html#保险"><i class="fa fa-check"></i><b>18.8</b> 保险</a></li>
+<li class="chapter" data-level="18.9" data-path="qi.html"><a href="qi.html#有效市场假说"><i class="fa fa-check"></i><b>18.9</b> 有效市场假说</a></li>
+<li class="chapter" data-level="18.10" data-path="qi.html"><a href="qi.html#行为经济学"><i class="fa fa-check"></i><b>18.10</b> 行为经济学</a></li>
+<li class="chapter" data-level="18.11" data-path="qi.html"><a href="qi.html#债券"><i class="fa fa-check"></i><b>18.11</b> 债券</a></li>
+<li class="chapter" data-level="18.12" data-path="qi.html"><a href="qi.html#银行"><i class="fa fa-check"></i><b>18.12</b> 银行</a></li>
+<li class="chapter" data-level="18.13" data-path="qi.html"><a href="qi.html#金融监管"><i class="fa fa-check"></i><b>18.13</b> 金融监管</a></li>
+<li class="chapter" data-level="18.14" data-path="qi.html"><a href="qi.html#信用评级"><i class="fa fa-check"></i><b>18.14</b> 信用评级</a></li>
+<li class="chapter" data-level="18.15" data-path="qi.html"><a href="qi.html#投行"><i class="fa fa-check"></i><b>18.15</b> 投行</a></li>
+<li class="chapter" data-level="18.16" data-path="qi.html"><a href="qi.html#股票"><i class="fa fa-check"></i><b>18.16</b> 股票</a></li>
+<li class="chapter" data-level="18.17" data-path="qi.html"><a href="qi.html#房产"><i class="fa fa-check"></i><b>18.17</b> 房产</a></li>
+<li class="chapter" data-level="18.18" data-path="qi.html"><a href="qi.html#期货"><i class="fa fa-check"></i><b>18.18</b> 期货</a></li>
+<li class="chapter" data-level="18.19" data-path="qi.html"><a href="qi.html#期权"><i class="fa fa-check"></i><b>18.19</b> 期权</a></li>
+<li class="chapter" data-level="18.20" data-path="qi.html"><a href="qi.html#金融民主化"><i class="fa fa-check"></i><b>18.20</b> 金融民主化</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/yufree/datadown" target="blank">Github Repo</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">数据分析残卷</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="bios" class="section level1">
+<h1><span class="header-section-number">第14章</span> 生物信息</h1>
+<div id="数据结构" class="section level2">
+<h2><span class="header-section-number">14.1</span> 数据结构</h2>
+<ul>
+<li>列代表特征 行代表条目</li>
+<li>每个条目有一个唯一性特征</li>
+<li>数据表可通过列链接成为关系数据库</li>
+</ul>
+</div>
+<div id="pubmed-搜索" class="section level2">
+<h2><span class="header-section-number">14.2</span> Pubmed 搜索</h2>
+<ul>
+<li>PubMed search tags
+<ul>
+<li>[AD] – Affiliation (company or school)</li>
+<li>[ALL] – All fields (eliminates defaults)</li>
+<li>[AU] or [AUTH] – Author</li>
+<li>[1AU] – First author</li>
+<li>[ECNO] – Enzyme Commission Numbers</li>
+<li>[EDAT] – Entry date (YYYY/MM/DD)</li>
+<li>[ISS] - Issue # of journal</li>
+<li>[JOUR] - Journal (Title, Abbreviation , ISSN)</li>
+<li>[LA] – Language</li>
+<li>[PDAT] – Publication date (YYYY/MM/DD)</li>
+<li>[PT] – Publication type</li>
+<li>[SUBS] – Substance name</li>
+<li>[TIAB] – Title/Abstract</li>
+<li>[TW] – Text words</li>
+<li>[UID] – Unique identifiers (primary keys)</li>
+<li>[VOL] or [VI] – Volume of journal</li>
+</ul></li>
+<li>MeSH terms [MH][MAJR][SH]
+<ul>
+<li>被 MeSH 索引的关系数据库</li>
+<li>保守性检索 有层级关系</li>
+</ul></li>
+<li>时间段搜索 冒号分割 YYYY/MM/DD:YYYY/MM/DD</li>
+<li>序列长度搜索 [SLEN] 可以是蛋白 可以是核酸</li>
+<li>蛋白分子量搜索 [MOLWT]</li>
+<li>物种搜索 [ORGN]</li>
+<li>Nucleotide 序列蛋白数据库</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/structure/">MMDB</a> 3D结构数据库</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/genome/">Genome</a> 基因组数据库</li>
+<li><a href="http://omim.org/">OMIM</a> 人类孟德尔遗传数据库 用来探索等位基因问题</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/taxonomy">分类数据库</a> 用来界定分类</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/geo/">GEO</a> 基因芯片的实验数据</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/snp/">SNP</a> 基因指纹数据库</li>
+</ul>
+</div>
+<div id="动态规划" class="section level2">
+<h2><span class="header-section-number">14.3</span> 动态规划</h2>
+<ul>
+<li>用于序列比对</li>
+<li>对角线得分 按总分评价比对结果</li>
+<li>可全局 可局部</li>
+<li>序列比对指标是特异性与相似性</li>
+<li>特异性指精确匹配比率</li>
+<li>相似性指精确匹配加化学相似性比率 结构相近则相似</li>
+<li>FASTA 慢准 BLAST 快</li>
+<li>三种情况 匹配 不匹配 间隔</li>
+<li>间隔罚分</li>
+</ul>
+</div>
+<div id="得分矩阵" class="section level2">
+<h2><span class="header-section-number">14.4</span> 得分矩阵</h2>
+<ul>
+<li>考虑突变的比对</li>
+<li>蛋白的自然突变率矩阵PM1</li>
+<li>矩阵自相乘得到外推矩阵 PM10 PM250 取对数为打分矩阵</li>
+<li>取不同矩阵源于研究目的对多样性的判断</li>
+</ul>
+</div>
+<div id="e-值" class="section level2">
+<h2><span class="header-section-number">14.5</span> E 值</h2>
+<ul>
+<li>表示序列的同源性 比对得分的稀有性</li>
+<li>两个参数 数据库大小(N) 比对得分(S) E = N/S</li>
+<li>数据库越大越可能随机碰到相同序列 得分越高越可能同源</li>
+<li>E值很小说明同源性很高 E值很大什么说明不了</li>
+<li>一般阈值1e-04</li>
+</ul>
+</div>
+<div id="psi-blast" class="section level2">
+<h2><span class="header-section-number">14.6</span> PSI-BLAST</h2>
+<ul>
+<li>先用BLAST在一定E值上建库</li>
+<li>计算新库的氨基酸概率 再与全库比对得分 得到统计显著性</li>
+<li>可以发现BLAST未发现的序列 建立蛋白家族</li>
+</ul>
+</div>
+<div id="蛋白" class="section level2">
+<h2><span class="header-section-number">14.7</span> 蛋白</h2>
+<ul>
+<li>Profiles 定量描述</li>
+<li>Patterns 定性描述</li>
+<li>Signature 蛋白保守序列</li>
+<li>motif 少于20个氨基酸 指示二级结构</li>
+<li>Domains 超过40个氨基酸 蛋白的球状区</li>
+<li>共同点 保守</li>
+<li>正则表达式表示保守区
+<ul>
+<li>E-X(2,4)-[FHM]-X(4)-{P}-L</li>
+<li>E后随意两个，三个，四个然后FHM其中一个，然后随意四个，然后一个不是P，最后为L</li>
+<li>可以精确可以模糊</li>
+<li>没有E值</li>
+</ul></li>
+</ul>
+</div>
+<div id="蛋白结构预测" class="section level2">
+<h2><span class="header-section-number">14.8</span> 蛋白结构预测</h2>
+<ul>
+<li>分子量 道尔顿（Da）描述质量</li>
+<li>等电点 蛋白不带电的pH值
+<ul>
+<li>小于7 酸性 中性带负电</li>
+<li>大于7 碱性 中性带正点</li>
+</ul></li>
+<li>网站<a href="http://web.expasy.org/compute_pi/">计算</a></li>
+<li>蛋白定位 分泌 胞内 核内
+<ul>
+<li>MITOPRED 预测线粒体蛋白</li>
+</ul></li>
+</ul>
+</div>
+<div id="细菌基因组" class="section level2">
+<h2><span class="header-section-number">14.9</span> 细菌基因组</h2>
+<ul>
+<li>细菌是环形DNA 真核是线性染色体</li>
+<li>细菌不加工mRNA</li>
+<li>细菌一段mRNA上有多个顺反子 也就是多个编码DNA序列</li>
+<li>操纵子在mRNA编码的上游或下游调控转录</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/genomes/MICROBES/glimmer_3.cgi">GLIMMER</a>与<a href="http://www.softberry.com/berry.phtml?topic=fgenesb&amp;group=programs&amp;subgroup=gfindb">FGENESB</a>用来预测一段序列的转录情况</li>
+</ul>
+</div>
+<div id="病毒" class="section level2">
+<h2><span class="header-section-number">14.10</span> 病毒</h2>
+<ul>
+<li>三种 RNA DNA 逆转录病毒 突变快</li>
+<li>RNA病毒三种 双链 正链 负链</li>
+<li>逆转录基因组简单 Gag Pol Env</li>
+<li>凝集素等决定病毒亚型</li>
+</ul>
+</div>
+<div id="单核苷酸多态性snp" class="section level2">
+<h2><span class="header-section-number">14.11</span> 单核苷酸多态性（SNP）</h2>
+<ul>
+<li>至少1%种群中存在的DNA单核苷酸变化</li>
+<li>后果
+<ul>
+<li>编码区改变影响表型</li>
+<li>不改变蛋白序列的编码区可能影响mRNA加工</li>
+<li>启动子或调控区可能影响表达</li>
+<li>其他区没有影响 可作为染色体标记- 类型</li>
+<li>不改变氨基酸</li>
+<li>改变氨基酸</li>
+<li>非编码区</li>
+</ul></li>
+<li>数据库
+<ul>
+<li><a href="http://www.ncbi.nlm.nih.gov/SNP/">dbSNP</a></li>
+<li><a href="http://snpeffect.switchlab.org/">SNPEffect</a> SNPs对蛋白的影响</li>
+<li><a href="http://www.snpedia.com/index.php/SNPedia">SNPedia</a> SNPs的临床效应</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/pubmed/23128226">1000 基因组外显子计划</a> 第二代测序的发展</li>
+</ul></li>
+</ul>
+</div>
+<div id="真核基因预测" class="section level2">
+<h2><span class="header-section-number">14.12</span> 真核基因预测</h2>
+<ul>
+<li>CDS是mRNA的子集</li>
+<li>CDS可能比mRNA外显子少</li>
+<li>基因预测只能发现编码区外显子</li>
+<li>有些转录变化不改变蛋白序列：UTR区与同义密码子</li>
+</ul>
+</div>
+<div id="dna指纹" class="section level2">
+<h2><span class="header-section-number">14.13</span> DNA指纹</h2>
+<ul>
+<li>重复 突变会影响限制性片段长度</li>
+<li>VNTR 用来排除嫌犯</li>
+<li>PCR 用来扩增相关片段</li>
+<li><a href="http://www.fbi.gov/about-us/lab/biometric-analysis/codis">CODIS</a> 区域在美国用来鉴定身份</li>
+</ul>
+</div>
+<div id="ensembl" class="section level2">
+<h2><span class="header-section-number">14.14</span> Ensembl</h2>
+<ul>
+<li>外显子基因组学<a href="ensembl.org">数据库</a></li>
+<li>可选择人类 鼠 斑马鱼等常见物种</li>
+</ul>
+</div>
+<div id="基因组学数据分析" class="section level2">
+<h2><span class="header-section-number">14.15</span> 基因组学数据分析</h2>
+<ul>
+<li><a href="http://genomicsclass.github.io/book/">主页</a></li>
+</ul>
+<div id="microarrays" class="section level3">
+<h3><span class="header-section-number">14.15.1</span> microarrays</h3>
+<div id="原理" class="section level4">
+<h4><span class="header-section-number">14.15.1.1</span> 原理</h4>
+<ul>
+<li>生成互补DNA探针</li>
+<li>标记样品中的DNA单链 可以对不同样品标记不同颜色</li>
+<li>特异性互补反应</li>
+<li>测定标记物光信号</li>
+</ul>
+</div>
+<div id="应用-1" class="section level4">
+<h4><span class="header-section-number">14.15.1.2</span> 应用</h4>
+<ul>
+<li><p>测定基因表达</p>
+<ul>
+<li>已知序列</li>
+<li>3’端（降解从5’端开始）选取11个片段作为探针</li>
+<li>样品对11个片段都是高表达则基因高表达</li>
+</ul></li>
+<li><p>寻找SNP</p>
+<ul>
+<li>SNP 单核苷酸多态性 用来探索基因型</li>
+<li>合成SNP探针</li>
+<li>测定对不同探针的响应判断AA AG GG类型</li>
+</ul></li>
+<li><p>寻找转录因子结合位点</p>
+<ul>
+<li>样品处理为含蛋白与不含蛋白两份 去除蛋白后扩增</li>
+<li>探针是基因组感兴趣的片段</li>
+<li>瓦片分析可知探针与含转录因子DNA结合位点</li>
+<li>总DNA作为对照</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="ngs" class="section level3">
+<h3><span class="header-section-number">14.15.2</span> NGS</h3>
+<div id="原理-1" class="section level4">
+<h4><span class="header-section-number">14.15.2.1</span> 原理</h4>
+<ul>
+<li>DNA打成50~70片段 一个样品片段上亿</li>
+<li>加上adaptor 固定在板上后原位扩增成束</li>
+<li>使用标记过的单核苷酸逐碱基对测光强 同时测序大量片段</li>
+<li>得到测序结果与强度</li>
+</ul>
+</div>
+<div id="应用-2" class="section level4">
+<h4><span class="header-section-number">14.15.2.2</span> 应用</h4>
+<ul>
+<li>寻找SNP</li>
+<li>RNA-seq 测定RNA表达量</li>
+<li>寻找结合位点 表达量</li>
+</ul>
+</div>
+</div>
+<div id="数据分析应用背景" class="section level3">
+<h3><span class="header-section-number">14.15.3</span> 数据分析应用背景</h3>
+<div id="dna-甲基化" class="section level4">
+<h4><span class="header-section-number">14.15.3.1</span> DNA 甲基化</h4>
+<ul>
+<li>CpG 5’端到3‘端 CG</li>
+<li>C上甲基化 复制时该特性会保留</li>
+<li>临近CpG位点的基因不会被表达</li>
+<li>CpG 成簇存在 称为CpG islands</li>
+<li>bisulfite treatment 可以用来测定CpG是否被甲基化 通过将未甲基化的CpG中的C改为T</li>
+<li>测序中测定改变率就可知CpG位点甲基化程度与位置</li>
+</ul>
+</div>
+<div id="chip-seq" class="section level4">
+<h4><span class="header-section-number">14.15.3.2</span> CHIP-SEQ</h4>
+<ul>
+<li>蛋白结合后固定，洗掉其余片段，然后洗掉蛋白，对序列片段测序得到结合位点</li>
+</ul>
+</div>
+<div id="rna-测序" class="section level4">
+<h4><span class="header-section-number">14.15.3.3</span> RNA 测序</h4>
+<ul>
+<li>RNA反转录为cDNA测序</li>
+<li>只有外显子</li>
+<li>同一基因多种RNA片段</li>
+<li>均值与方差有相关性 需要进行log变换后分析</li>
+</ul>
+</div>
+</div>
+<div id="bioconductor" class="section level3">
+<h3><span class="header-section-number">14.15.4</span> Bioconductor</h3>
+<ul>
+<li><a href="http://bioconductor.org/install/">官方说明</a></li>
+<li>使用<code>biocLite()</code>安装，安装后仍需要<code>library()</code>才能使用</li>
+</ul>
+<pre><code>source(&quot;http://bioconductor.org/biocLite.R&quot;)
+biocLite()</code></pre>
+<div id="数据结构-1" class="section level4">
+<h4><span class="header-section-number">14.15.4.1</span> 数据结构</h4>
+<div id="分析数据" class="section level5">
+<h5><span class="header-section-number">14.15.4.1.1</span> 分析数据</h5>
+<ul>
+<li>F 行 S 列 F代表芯片特征数，S代表样本数</li>
+</ul>
+</div>
+<div id="表型数据" class="section level5">
+<h5><span class="header-section-number">14.15.4.1.2</span> 表型数据</h5>
+<ul>
+<li>S 行 V 列 V代表样本特征，为分类或连续变量</li>
+<li>如果表型数据解释不清，可以建立一个解释样本特征的labelDescription数据框，通过<code>phenoData &lt;- new(&quot;AnnotatedDataFrame&quot;,data=pData, varMetadata=metadata)</code> 建立AnnotatedDataFrame类型数据</li>
+</ul>
+</div>
+<div id="实验描述" class="section level5">
+<h5><span class="header-section-number">14.15.4.1.3</span> 实验描述</h5>
+<ul>
+<li>MIAME 类型对象</li>
+<li>描述实验参数</li>
+</ul>
+</div>
+<div id="组装数据" class="section level5">
+<h5><span class="header-section-number">14.15.4.1.4</span> 组装数据</h5>
+<ul>
+<li>将分析数据，表型数据，实验描述组装为一个ExpressionSet类型的对象</li>
+<li><code>exampleSet &lt;- ExpressionSet(assayData=exprs,phenoData=phenoData,experimentData=experimentData,annotation=&quot;hgu95av2&quot;)</code></li>
+<li>annotation代表了一组相似实验设计的芯片数据的代号，通过相关代号可以索引到芯片特征信息并将其与其他数据如基因型，染色体位置等连接以便于分析</li>
+<li>从ExpressionSet里可以按照表型数据提取子集，也就是对 S 截取 V 中特定子集 <code>exampleSet[ , exampleSet$gender == &quot;Male&quot;]</code></li>
+<li><code>esApply</code> 用来针对ExpressionSet应用函数</li>
+</ul>
+</div>
+<div id="数据集应用" class="section level5">
+<h5><span class="header-section-number">14.15.4.1.5</span> 数据集应用</h5>
+<ul>
+<li><code>library(Biobase)</code></li>
+<li><code>library(GEOquery)</code></li>
+<li><code>geoq &lt;- getGEO(&quot;GSE9514&quot;)</code> 从基因表达精选集（GEO）上得到数据表达集</li>
+<li><code>names(geoq)</code> 得到文件名</li>
+<li><code>e &lt;- geoq[[1]]</code> 得到数据集</li>
+<li><code>dim(e)</code> 查看表达集维度 给出样本数与特征值，也就是测定序列数</li>
+<li><code>dim(exprs(e))</code> 与上面等同，给出基因分析数据</li>
+<li><code>dim(pData(e))</code> 给出8个样本的信息，信息头用<code>names(pData(e))</code>给出</li>
+<li><code>dim(fData(e))</code> 给出特征与信息头列表</li>
+<li>exprs为特征数×样本数矩阵 pdata为样本数×信息头 fdata为特征数×信息</li>
+<li>experimentData(e) 给出实验信息</li>
+<li>annotation(e) 特征注释</li>
+<li>exptData(se)$MIAME 给出实验相关关键信息</li>
+<li>Y &lt;- log2(exprs(bottomly.eset) + 0.5) 对NGS数据加0.5取2为底的对数（防0）得-1，排除掉0后可得MAplot观察数值分布，一般为均值小差异大，均值大相对稳定</li>
+<li>formula 用来定义公式</li>
+<li>model.matrix 用定义的公式生成矩阵</li>
+<li>rowttests(y[, smallset], group[smallset]) 定义分组，设定模型可进行t-test，用火山图来表示</li>
+</ul>
+<div id="iranges" class="section level6">
+<h6><span class="header-section-number">14.15.4.1.5.1</span> Iranges</h6>
+<ul>
+<li><code>library(IRanges)</code> 序列范围</li>
+<li><code>ir &lt;- IRanges(start = c(3, 5, 17), end = c(10, 8, 20))</code> 定义序列</li>
+<li><code>IRanges(5, 10)</code> 表示5到10这6个碱基对，可以shift</li>
+<li><code>range(ir)</code> 表示存在ir中序列的起止范围</li>
+<li><code>gaps(ir)</code> 表示寻找ir中间隔片段</li>
+<li><code>disjoin(ir)</code> 表示将ir中序列碎片化后互不重叠的片段</li>
+</ul>
+</div>
+<div id="granges-and-grangeslist" class="section level6">
+<h6><span class="header-section-number">14.15.4.1.5.2</span> GRanges and GRangesList</h6>
+<ul>
+<li><code>library(GenomicRanges)</code> 基因范围</li>
+<li><code>gr &lt;- GRanges(&quot;chrZ&quot;, IRanges(start = c(5, 10), end = c(35, 45)), strand = &quot;+&quot;, seqlengths = c(chrZ = 100L))</code> 定义位于染色体chrZ上几个序列范围，认为这些范围共同定义一个基因</li>
+<li>可以shift，可以定义长度后trim</li>
+<li><code>mcols(gr)$value &lt;- c(-1, 4)</code> 定义该基因类型中的列并赋值</li>
+<li><code>grl &lt;- GRangesList(gr, gr2)</code> 多个Granges定义一个基因库</li>
+<li><code>length(grl)</code> 给出基因库里基因个数</li>
+<li><code>mcols(grl)$value &lt;- c(5, 7)</code> 定义该基因库类型中的列并赋值</li>
+</ul>
+</div>
+<div id="findoverlaps" class="section level6">
+<h6><span class="header-section-number">14.15.4.1.5.3</span> findOverlaps</h6>
+<ul>
+<li>gr1 gr2 为两个基因范围对象</li>
+<li><code>fo &lt;- findOverlaps(gr1, gr2)</code> 寻找两个基因重叠序列</li>
+<li><code>queryHits(fo)</code> 与 <code>subjectHits(fo)</code> 提取两个基因重叠序号 成对出现</li>
+<li><code>gr1[gr1 %over% gr2]</code> 提取对应序列范围</li>
+</ul>
+</div>
+<div id="rle" class="section level6">
+<h6><span class="header-section-number">14.15.4.1.5.4</span> Rle</h6>
+<ul>
+<li><code>Rle(c(1, 1, 1, 0, 0, -2, -2, -2, rep(-1, 20)))</code> 表示4组处理，每组各有 3 2 3 20 个重复</li>
+<li>Rle是一种压缩存储实验设计的方式，可以用<code>as.numeric()</code>提取原始数据</li>
+<li><code>Views(r, start = c(4, 2), end = c(7, 6)</code> 提取对应实验组</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="数据读取" class="section level4">
+<h4><span class="header-section-number">14.15.4.2</span> 数据读取</h4>
+<ul>
+<li>microarray 或 NGS 数据由芯片厂商提供，常见读取原始信息的包有affyPLM、affy、 oligo、limma</li>
+<li>在Bioconductor里，这些原始数据要转为ExpressionSet格式</li>
+</ul>
+<div id="affymterix-cel-files" class="section level5">
+<h5><span class="header-section-number">14.15.4.2.1</span> Affymterix CEL files</h5>
+<ul>
+<li><code>library(affy)</code></li>
+<li><code>tab &lt;- read.delim(&quot;sampleinfo.txt&quot;, check.names = FALSE, as.is = TRUE)</code> 读取样本信息</li>
+<li><code>ab &lt;- ReadAffy(phenoData = tab)</code> 读取样本数据，探针层次</li>
+<li><code>ejust &lt;- justRMA(filenames = tab[, 1], phenoData = tab)</code> 直接读取为基因层数据</li>
+<li><code>e &lt;- rma(ab)</code> 对样本进行背景校正与正则化，从探针层转化为基因层数据</li>
+</ul>
+</div>
+<div id="背景干扰" class="section level5">
+<h5><span class="header-section-number">14.15.4.2.2</span> 背景干扰</h5>
+<ul>
+<li>spikein方法 梯度加入已知浓度的基因片段 阵列上进行shift 类似拉丁方设计</li>
+<li>可以看到同一基因不同片段大致符合先平后增模式 开始阶段是噪声主导 后面是浓度主导</li>
+<li>使用类似基因模拟噪声主导 相减后得到去干扰浓度效应 但低值部分会导致方差过大</li>
+<li>也可以使用统计建模方法模拟背景值与响应 得到还原度更高的信号</li>
+</ul>
+</div>
+<div id="正则化" class="section level5">
+<h5><span class="header-section-number">14.15.4.2.3</span> 正则化</h5>
+<ul>
+<li>基因组数据大多数为0 加标样品变化 正则化是为了还原这一结果</li>
+<li>分位数正则化</li>
+<li>局部回归正则化</li>
+<li>稳方差正则化</li>
+<li>当重复实验时 直接用分位数正则会掩盖样品差异 可以考虑只对加标基因正则化 然后推广到全局</li>
+</ul>
+</div>
+<div id="探索分析作图" class="section level5">
+<h5><span class="header-section-number">14.15.4.2.4</span> 探索分析作图</h5>
+<div id="ma-plot" class="section level6">
+<h6><span class="header-section-number">14.15.4.2.4.1</span> MA-plot</h6>
+<ul>
+<li>x轴为两组基因组的均值，y轴为两组基因组的均值差</li>
+<li>用来表示两组平行间的差异</li>
+</ul>
+</div>
+<div id="volcano-plot" class="section level6">
+<h6><span class="header-section-number">14.15.4.2.4.2</span> Volcano plot</h6>
+<ul>
+<li>横坐标为处理间基因表达差异，纵坐标为差异的<code>-log10(p.value)</code></li>
+<li>一般为火山喷发状，差异越大，p值越小</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="示例甲基化数据分析" class="section level3">
+<h3><span class="header-section-number">14.15.5</span> 示例：甲基化数据分析</h3>
+<div id="读取数据-1" class="section level4">
+<h4><span class="header-section-number">14.15.5.1</span> 读取数据</h4>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;coloncancermeth&quot;</span>,<span class="st">&quot;genomicsclass&quot;</span>)</a>
+<a class="sourceLine" id="cb183-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb183-3" data-line-number="3"><span class="kw">library</span>(coloncancermeth)</a>
+<a class="sourceLine" id="cb183-4" data-line-number="4"><span class="kw">data</span>(coloncancermeth)</a></code></pre></div>
+<p>该数据集为结肠癌病人与对照的DNA甲基化数据集。</p>
+</div>
+<div id="数据说明" class="section level4">
+<h4><span class="header-section-number">14.15.5.2</span> 数据说明</h4>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">dim</span>(meth)</a>
+<a class="sourceLine" id="cb184-2" data-line-number="2"><span class="kw">dim</span>(pd)</a>
+<a class="sourceLine" id="cb184-3" data-line-number="3"><span class="kw">length</span>(gr)</a></code></pre></div>
+<p>meth为测序数据，pd为样本信息，gr测序片段信息。</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">colnames</span>(pd)</a>
+<a class="sourceLine" id="cb185-2" data-line-number="2"><span class="kw">table</span>(pd<span class="op">$</span>Status)</a>
+<a class="sourceLine" id="cb185-3" data-line-number="3">X =<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span>pd<span class="op">$</span>Status)</a></code></pre></div>
+<p>查看病患与正常人的分组并构建模型。</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1">chr =<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">seqnames</span>(gr))</a>
+<a class="sourceLine" id="cb186-2" data-line-number="2">pos =<span class="st"> </span><span class="kw">start</span>(gr)</a>
+<a class="sourceLine" id="cb186-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb186-4" data-line-number="4"><span class="kw">library</span>(bumphunter)</a>
+<a class="sourceLine" id="cb186-5" data-line-number="5">cl =<span class="st"> </span><span class="kw">clusterMaker</span>(chr,pos,<span class="dt">maxGap=</span><span class="dv">500</span>)</a>
+<a class="sourceLine" id="cb186-6" data-line-number="6">res =<span class="st"> </span><span class="kw">bumphunter</span>(meth,X,<span class="dt">chr=</span>chr,<span class="dt">pos=</span>pos,<span class="dt">cluster=</span>cl,<span class="dt">cutoff=</span><span class="fl">0.1</span>,<span class="dt">B=</span><span class="dv">0</span>)</a></code></pre></div>
+<p>按染色体生成因子变量，找出基因起始位点，然后利用bumphunter包寻找甲基化数据中某个阈值（0.1）下甲基化基因聚类的后出现的位置，聚类号，聚类相关性等信息寻找问题基因，可从中提取相关信息</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">cols=<span class="kw">ifelse</span>(pd<span class="op">$</span>Status<span class="op">==</span><span class="st">&quot;normal&quot;</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb187-2" data-line-number="2">Index=(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">7</span>]<span class="op">-</span><span class="dv">3</span>)<span class="op">:</span>(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">8</span>]<span class="op">+</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb187-3" data-line-number="3"><span class="kw">matplot</span>(pos[Index],meth[Index,,<span class="dt">drop=</span><span class="ot">TRUE</span>],<span class="dt">col=</span>cols,<span class="dt">pch=</span><span class="dv">1</span>,<span class="dt">xlab=</span><span class="st">&quot;genomic location&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Methylation&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb187-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb187-5" data-line-number="5">Index=(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">7</span>])<span class="op">:</span>(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb187-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb187-7" data-line-number="7">test &lt;-<span class="st"> </span>meth[Index,,drop=T]</a>
+<a class="sourceLine" id="cb187-8" data-line-number="8"><span class="kw">colnames</span>(test) &lt;-<span class="st"> </span>pd<span class="op">$</span>bcr_patient_barcode</a>
+<a class="sourceLine" id="cb187-9" data-line-number="9">test1 &lt;-<span class="st"> </span>test[,cols<span class="op">==</span><span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb187-10" data-line-number="10">test2 &lt;-<span class="st"> </span>test[,cols<span class="op">==</span><span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb187-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb187-12" data-line-number="12">test3 &lt;-<span class="st"> </span><span class="kw">apply</span>(test2, <span class="dv">2</span>, mean)</a>
+<a class="sourceLine" id="cb187-13" data-line-number="13"><span class="kw">apply</span>(matrix, <span class="dv">1</span>, rank)</a></code></pre></div>
+<p>从上面可以得到有差异的甲基化数据所在的基因位置并提取相关样本数据信息。可根据差异作图，得到两组数据甲基化水平差异所在的基因位置。可对差异进行平滑操作，得到位置。这样就可以知道甲基化发生的序列位置与水平差异的信息了。</p>
+<hr />
+<p>下面的例子是用人类基因组数据探索潜在的CpG岛。</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="kw">library</span>(BSgenome.Hsapiens.UCSC.hg19)</a>
+<a class="sourceLine" id="cb188-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb188-3" data-line-number="3">Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]</a>
+<a class="sourceLine" id="cb188-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb188-5" data-line-number="5"><span class="co"># 计算某染色体上潜在位点个数</span></a>
+<a class="sourceLine" id="cb188-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb188-7" data-line-number="7"><span class="kw">countPattern</span>(<span class="st">&#39;CG&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]) </a>
+<a class="sourceLine" id="cb188-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb188-9" data-line-number="9"><span class="co"># 计算某染色体上特定序列比例 观察与期望出现的比例</span></a>
+<a class="sourceLine" id="cb188-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb188-11" data-line-number="11">CG &lt;-<span class="st"> </span><span class="kw">countPattern</span>(<span class="st">&#39;CG&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])<span class="op">/</span><span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</a>
+<a class="sourceLine" id="cb188-12" data-line-number="12">GC &lt;-<span class="st"> </span><span class="kw">countPattern</span>(<span class="st">&#39;GC&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])<span class="op">/</span><span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</a>
+<a class="sourceLine" id="cb188-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb188-14" data-line-number="14">table &lt;-<span class="st"> </span><span class="kw">alphabetFrequency</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</a>
+<a class="sourceLine" id="cb188-15" data-line-number="15">expect &lt;-<span class="st"> </span>table[<span class="st">&#39;C&#39;</span>]<span class="op">%*%</span>table[<span class="st">&#39;G&#39;</span>]<span class="op">/</span>(<span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]))<span class="op">^</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb188-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb188-17" data-line-number="17">CG<span class="op">/</span>expect</a></code></pre></div>
+</div>
+</div>
+</div>
+<div id="biolink" class="section level2">
+<h2><span class="header-section-number">14.16</span> 链接</h2>
+<ul>
+<li><a href="https://biodatascience.github.io/compbio/">Michael Love的教案</a></li>
+<li><a href="http://www.gettinggeneticsdone.com/2017/02/staying-current-in-bioinformatics-genomics-2017.html">生信前沿信息集</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="game.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="surv.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": true,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/yufree/datadown/edit/master/14-shengxin.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["datadown.pdf", "datadown.epub", "datadown.mobi"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

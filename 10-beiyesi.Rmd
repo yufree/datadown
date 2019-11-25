@@ -1,4 +1,4 @@
-# 贝叶斯统计
+# 贝叶斯统计 {#bayes}
 
 ```{r include=FALSE}
 library(knitr)
@@ -965,13 +965,14 @@ fit_iterations %>%
 
 ```{r assign}
 # 找6个击球数100的选手进行分配
-batter_100 <- career %>%
+batter100 <- career %>%
   filter(AB == 100) %>%
   arrange(average)
-batter_100
+batter100
 # 前面算法得到的最终结果
+fit_iterations
 final_parameters <- fit_iterations %>%
-  filter(iteration == max(iteration))
+  filter(iteration == 1)
 
 final_parameters
 # 观察球员位置
@@ -980,8 +981,8 @@ final_parameters %>%
   mutate(density = prior * VGAM::dbetabinom.ab(x, 100, alpha, beta)) %>%
   ggplot(aes(x, density)) +
   geom_line(aes(color = cluster)) +
-  geom_vline(aes(xintercept = H), data = batter_100, lty = 2) +
-  geom_text(aes(x = H, y = -.022, label = name), data = batter_100, hjust = 1, vjust = 1, angle = 270) +
+  geom_vline(aes(xintercept = H), data = batter100, lty = 2) +
+  geom_text(aes(x = H, y = -.022, label = name), data = batter100, hjust = 1, vjust = 1, angle = 270) +
   labs(x = "H (out of 100 at-bats)",
        y = "Likelihood of this H out of 100 hits")
 
@@ -991,14 +992,14 @@ final_parameters %>%
   crossing(H = 1:40) %>%
   transmute(H, cluster, likelihood = prior * VGAM::dbetabinom.ab(H, 100, alpha, beta)) %>%
   spread(cluster, likelihood) %>%
-  mutate(probability_A = A / (A + B)) %>%
-  ggplot(aes(H, probability_A)) +
+  mutate(probabilityA = A /(A + B)) %>%
+  ggplot(aes(H, probabilityA)) +
   geom_line() +
-  geom_vline(aes(xintercept = H), data = batter_100, lty = 2) +
-  geom_text(aes(x = H, y = 0, label = name), data = batter_100, hjust = 1, vjust = 1, angle = 270) +
+  geom_vline(aes(xintercept = H), data = batter100, lty = 2) +
+  geom_text(aes(x = H, y = 0, label = name), data = batter100, hjust = 1, vjust = 1, angle = 270) +
   labs(x = "H (out of 100 at-bats)",
-       y = "(Likelihood if pitcher) / (Likelihood if pitcher + Likelihood if not)",
-       title = "Posterior probability a player is in the pitcher cluster")
+        y = "(Likelihood if pitcher) / (Likelihood if pitcher + Likelihood if not)",
+        title = "Posterior probability a player is in the pitcher cluster")
 ```
 
 - 通过构建后验概率，我们可以直接对结果基于概率进行分组
@@ -1176,7 +1177,8 @@ career_sim_gathered %>%
   mutate(AB = 10 ^ (round(log10(AB)))) %>%
   filter(AB > 1) %>%
   nest(-type, -AB) %>%
-  unnest(map(data, ~ tidy(lm(estimate ~ p, .)))) %>%
+  mutate(model=map(data, ~ tidy(lm(estimate ~ p, .)))) %>%
+  unnest(model) %>%
   filter(term == "p") %>%
   ggplot(aes(AB, estimate, color = type)) +
   geom_line() +
@@ -1218,7 +1220,8 @@ career_sim_eb %>%
 ```{r simmint}
 sim_prior <- ebb_fit_prior(career_sim, H, AB)
 estimate_by_cred_level <- data_frame(level = seq(.5, .98, .02)) %>%
-  unnest(map(level, ~ augment(sim_prior, career_sim, cred_level = .)))
+  mutate(model=map(level, ~ augment(sim_prior, career_sim, cred_level = .))) %>%
+  unnest(model)
 
 estimate_by_cred_level %>%
   group_by(level) %>%
@@ -1287,7 +1290,8 @@ career_flat_prior <- career_sim_ab %>%
 
 data_frame(method = c("Flat prior", "Prior depending on AB"),
            model = list(career_flat_prior, career_ab_prior)) %>%
-  unnest(map(model, augment, data = career_sim_ab)) %>%
+  mutate(model=map(model, augment, data = career_sim_ab)) %>%
+  unnest(model) %>%
   ggplot(aes(p, .fitted, color = AB)) +
   geom_point() +
   scale_color_continuous(trans = "log") +
@@ -1301,8 +1305,8 @@ data_frame(method = c("Flat prior", "Prior depending on AB"),
 
 - 为防止意外或运气可以重复模拟看看
 
-```{r simrep}
-set.seed(2017)
+```{r simrep,eval=FALSE}
+set.seed(2019)
 
 sim_replications <- career %>%
   crossing(replication = 1:50) %>%
@@ -1313,11 +1317,13 @@ sim_replications
 
 sim_replication_models <- sim_replications %>%
   nest(-replication) %>%
-  mutate(prior = map(data, ~ ebb_fit_prior(., H, AB)))
+  mutate(prior = purrr::map(data, ~ ebb_fit_prior(., H, AB)))
 
 # 估计参数
 sim_replication_priors <- sim_replication_models %>%
-  unnest(map(prior, tidy), .drop = TRUE)
+  mutate(model= map(prior, tidy)) %>%
+  dplyr::select(-c(data,prior)) %>%
+  unnest(model)
 
 sim_replication_priors
 
@@ -1339,7 +1345,8 @@ sim_replication_priors %>%
 
 ## 估计均方误
 sim_replication_au <- sim_replication_models %>%
-  unnest(map2(prior, data, augment))
+  mutate(model=map2(prior, data, augment)) %>%
+  unnest(model)
 
 sim_replication_mse <- sim_replication_au %>%
   rename(Raw = .raw, Shrunken = .fitted) %>%
@@ -1361,8 +1368,9 @@ sim_replication_au %>%
        title = "95% credible interval is well calibrated across replications")
 
 sim_replication_intervals <- sim_replication_models %>%
-  crossing(cred_level = c(seq(.5, .9, .05), .95)) %>%
-  unnest(pmap(list(prior, data, cred_level = cred_level), augment)) %>%
+  expand_grid(cred_level = c(seq(.5, .9, .05), .95)) %>%
+  mutate(model=pmap(list(prior, data, cred_level = cred_level), augment)) %>%
+  unnest(model) %>%
   dplyr::select(replication, cred_level, p, .low, .high)
 
 sim_replication_intervals %>%
@@ -1377,21 +1385,22 @@ sim_replication_intervals %>%
        title = "Credible intervals are well calibrated across 50 replications",
        subtitle = "Red line is x = y")
 
-## q值的稳定性
+# q值的稳定性
 
 sim_replication_prop_tests <- sim_replication_au %>%
-  nest(-replication) %>%
-  unnest(map(data, add_ebb_prop_test, threshold = .3, sort = TRUE))
+   nest(-replication) %>%
+   mutate(model=map(data, add_ebb_prop_test, threshold = .3, sort = TRUE)) %>%
+   unnest(model)
 
 sim_replication_prop_tests %>%
-  group_by(replication) %>%
-  mutate(fdr = cummean(p < .3)) %>%
-  ggplot(aes(.qvalue, fdr, group = replication)) +
-  geom_line(alpha = .3) +
-  geom_abline(color = "red") +
-  labs(x = "Q-value threshold",
-       y = "Proportion of false discoveries below this threshold",
-       title = "Q-value successfully controls FDR across 50 replications")
+   group_by(replication) %>%
+   mutate(fdr = cummean(p < .3)) %>%
+   ggplot(aes(.qvalue, fdr, group = replication)) +
+   geom_line(alpha = .3) +
+   geom_abline(color = "red") +
+   labs(x = "Q-value threshold",
+        y = "Proportion of false discoveries below this threshold",
+        title = "Q-value successfully controls FDR across 50 replications")
 ```
 
 ## 网络资源 {#bayeslink}
