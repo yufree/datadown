@@ -89,6 +89,14 @@ $ exit # 退出
 
 - API：curlicue 来进行认证
 
+## 远程控制
+
+- ssh 远程登录22端口
+- scp 对服务器拷贝 scp -r local/data host:/data/
+- screen 远程登陆时防止长时间操作断连 c+a d 断开 c+a k 中止 screen -r 续连
+- df 查看磁盘分区使用状况 df -h
+- du 查看磁盘使用状况 du -h
+
 ## 高级命令
 
 - !! 可重复上次命令

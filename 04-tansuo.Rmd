@@ -54,6 +54,7 @@ S | Subset comparisons | Look at (visualize!) initial emergenet variable relatio
 - 计算量大
 - 类似探索分析还有因子分析 独立成分分析 潜在语义分析
 - impute包可补充缺失值
+- t-sne
 
 ## 可视化图形
 
@@ -63,3 +64,5 @@ S | Subset comparisons | Look at (visualize!) initial emergenet variable relatio
 - [变形地图绘制](https://github.com/sjewo/cartogram)
 - [重复模式可视化](https://flowingdata.com/2018/07/09/how-to-visualize-recurring-patterns/)
 - [不确定性可视化](https://flowingdata.com/2018/01/08/visualizing-the-uncertainty-in-data/)
+- 周期性作图需要画两个周期来观察其变化 相关
+- [生物数据可视化](https://www.nature.com/articles/nbt.1567) 
