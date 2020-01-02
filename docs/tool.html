@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第2章 数据分析工具 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.15 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第2章 数据分析工具 | 数据分析残卷" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2019-11-25" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1437,15 +1437,15 @@ $ exit # 退出</code></pre>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0  255</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">pal</span>(<span class="fl">0.5</span>)</a></code></pre></div>
-<pre><code>##       [,1] [,2]  [,3]
-## [1,] 127.5    0 127.5</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]  128    0  128</code></pre>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co">#####</span></a>
 <a class="sourceLine" id="cb35-2" data-line-number="2">pal &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</a>
 <a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw">pal</span>(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;#FF0000&quot; &quot;#FFFF00&quot;</code></pre>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">pal</span>(<span class="dv">10</span>)</a></code></pre></div>
-<pre><code>##  [1] &quot;#FF0000&quot; &quot;#FF1C00&quot; &quot;#FF3800&quot; &quot;#FF5500&quot; &quot;#FF7100&quot; &quot;#FF8D00&quot; &quot;#FFAA00&quot;
-##  [8] &quot;#FFC600&quot; &quot;#FFE200&quot; &quot;#FFFF00&quot;</code></pre>
+<pre><code>##  [1] &quot;#FF0000&quot; &quot;#FF1C00&quot; &quot;#FF3800&quot; &quot;#FF5500&quot; &quot;#FF7100&quot; &quot;#FF8D00&quot; &quot;#FFAA00&quot; &quot;#FFC600&quot; &quot;#FFE200&quot;
+## [10] &quot;#FFFF00&quot;</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co">#####</span></a>
 <a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">library</span>(RColorBrewer)</a>
 <a class="sourceLine" id="cb39-3" data-line-number="3">cols &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>, <span class="st">&quot;BuGn&quot;</span>)</a></code></pre></div>
@@ -1498,20 +1498,20 @@ $ exit # 退出</code></pre>
 ## [1] 3
 ## 
 ## $b
-## [1] -0.4796514</code></pre>
+## [1] -0.514</code></pre>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span></a>
 <a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">lapply</span>(x, runif, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## [[1]]
-## [1] 1.634938
+## [1] 7.59
 ## 
 ## [[2]]
-## [1] 5.506747 7.805103
+## [1] 4.86 2.90
 ## 
 ## [[3]]
-## [1] 6.991477 9.060021 4.887227
+## [1] 4.66 5.02 6.88
 ## 
 ## [[4]]
-## [1] 5.141237 3.939155 9.416173 7.373117</code></pre>
+## [1] 8.61 1.22 2.55 5.65</code></pre>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">b =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">lapply</span>(x, <span class="cf">function</span>(elt) elt[,<span class="dv">1</span>])</a></code></pre></div>
 <pre><code>## $a
@@ -1530,8 +1530,8 @@ $ exit # 退出</code></pre>
 </ul>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>), <span class="dt">d =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>))</a>
 <a class="sourceLine" id="cb46-2" data-line-number="2"><span class="kw">sapply</span>(x, mean)</a></code></pre></div>
-<pre><code>##         a         b         c         d 
-##  2.500000 -0.027785  1.245709  4.873430</code></pre>
+<pre><code>##      a      b      c      d 
+##  2.500 -0.305  1.025  5.038</code></pre>
 </div>
 <div id="vapply" class="section level4">
 <h4><span class="header-section-number">2.7.19.3</span> <code>vapply</code></h4>
@@ -1560,17 +1560,14 @@ $ exit # 退出</code></pre>
 </ul>
 <div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">50</span>), <span class="dv">10</span>, <span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">apply</span>(x, <span class="dv">1</span>, quantile, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</a></code></pre></div>
-<pre><code>##          [,1]        [,2]       [,3]       [,4]       [,5]        [,6]
-## 25% 0.1788077 -0.96921538 -0.5698778 -0.5881116 -0.2421302 -0.60770758
-## 75% 1.8609482  0.08260106  0.2471463  0.5745987  0.6481516  0.06070504
-##           [,7]        [,8]        [,9]      [,10]
-## 25% -0.1662103 -0.94004815 -1.03529452 -0.5333827
-## 75%  0.9672575 -0.07445675  0.09281537 -0.2966075</code></pre>
+<pre><code>##       [,1]   [,2]   [,3]   [,4]  [,5]  [,6]  [,7]  [,8]   [,9]  [,10]
+## 25% -0.326 0.0426 -0.331 -0.220 0.202 0.164 0.311 0.379 0.0184 -0.353
+## 75%  0.714 0.5073 -0.223  0.131 0.849 0.524 1.351 0.710 1.0490  0.216</code></pre>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">rnorm</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>))</a>
 <a class="sourceLine" id="cb50-2" data-line-number="2"><span class="kw">apply</span>(a, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), mean)</a></code></pre></div>
-<pre><code>##             [,1]        [,2]
-## [1,] -0.15186543 -0.13742330
-## [2,]  0.05190582  0.04637121</code></pre>
+<pre><code>##         [,1]   [,2]
+## [1,] -0.0237 -0.115
+## [2,] -0.3981 -0.453</code></pre>
 </div>
 <div id="tapply" class="section level4">
 <h4><span class="header-section-number">2.7.19.7</span> <code>tapply</code></h4>
@@ -1580,8 +1577,8 @@ $ exit # 退出</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="kw">runif</span>(<span class="dv">10</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</a>
 <a class="sourceLine" id="cb52-2" data-line-number="2">f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb52-3" data-line-number="3"><span class="kw">tapply</span>(x, f, mean)</a></code></pre></div>
-<pre><code>##         1         2         3 
-## 0.1587014 0.6354912 1.5098595</code></pre>
+<pre><code>##     1     2     3 
+## 0.274 0.512 1.332</code></pre>
 </div>
 <div id="by" class="section level4">
 <h4><span class="header-section-number">2.7.19.8</span> <code>by</code></h4>
@@ -1601,24 +1598,24 @@ $ exit # 退出</code></pre>
 <a class="sourceLine" id="cb54-2" data-line-number="2">f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb54-3" data-line-number="3"><span class="kw">lapply</span>(<span class="kw">split</span>(x, f), mean)</a></code></pre></div>
 <pre><code>## $`1`
-## [1] -0.2615808
+## [1] -0.259
 ## 
 ## $`2`
-## [1] 0.5758261
+## [1] 0.413
 ## 
 ## $`3`
-## [1] 1.580444</code></pre>
+## [1] 1.29</code></pre>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</a>
 <a class="sourceLine" id="cb56-2" data-line-number="2">f1 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">2</span>, <span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb56-3" data-line-number="3">f2 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">5</span>, <span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb56-4" data-line-number="4"><span class="kw">str</span>(<span class="kw">split</span>(x, <span class="kw">list</span>(f1, f2), <span class="dt">drop =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## List of 6
-##  $ 1.1: num [1:2] 0.24 -0.028
-##  $ 1.2: num [1:2] 1.5 2.45
-##  $ 1.3: num 1.72
-##  $ 2.3: num 0.954
-##  $ 2.4: num [1:2] 0.963 1.993
-##  $ 2.5: num [1:2] 0.946 0.866</code></pre>
+##  $ 1.1: num [1:2] -0.187 1.554
+##  $ 1.2: num [1:2] 0.584 -0.215
+##  $ 1.3: num 1.15
+##  $ 2.3: num -0.26
+##  $ 2.4: num [1:2] 0.0881 -0.9575
+##  $ 2.5: num [1:2] -0.397 -1.117</code></pre>
 </div>
 <div id="mapply" class="section level4">
 <h4><span class="header-section-number">2.7.19.10</span> <code>mapply</code></h4>
@@ -1630,19 +1627,19 @@ $ exit # 退出</code></pre>
 <a class="sourceLine" id="cb58-3" data-line-number="3">}</a>
 <a class="sourceLine" id="cb58-4" data-line-number="4"><span class="kw">mapply</span>(noise, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [[1]]
-## [1] -0.6970946
+## [1] 1.14
 ## 
 ## [[2]]
-## [1] 1.240874 4.781319
+## [1] 2.06 4.97
 ## 
 ## [[3]]
-## [1] 3.003128 4.536959 3.284051
+## [1]  4.565  2.052 -0.154
 ## 
 ## [[4]]
-## [1] 3.958929 1.366003 5.723135 5.106267
+## [1] 4.86 6.32 7.47 4.50
 ## 
 ## [[5]]
-## [1] 5.902193 6.950610 3.210783 3.048545 6.516599</code></pre>
+## [1] 6.77 6.70 6.60 5.57 4.86</code></pre>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co">#等同于如下循环</span></a>
 <a class="sourceLine" id="cb60-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb60-3" data-line-number="3"><span class="co">#list(noise(1, 1, 2), noise(2, 2, 2),</span></a>
@@ -1985,6 +1982,7 @@ $ exit # 退出</code></pre>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": false,
 "twitter": false,
 "linkedin": false,
@@ -2006,7 +2004,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["datadown.pdf", "datadown.epub", "datadown.mobi"],
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datadown.pdf", "datadown.epub"],
 "toc": {
 "collapse": "subsection"
 }

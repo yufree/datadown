@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第15章 生存分析 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.15 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第15章 生存分析 | 数据分析残卷" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2019-11-25" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -624,48 +624,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb189-2" data-line-number="2"><span class="kw">library</span>(car)</a>
 <a class="sourceLine" id="cb189-3" data-line-number="3"><span class="co"># perform survival analysis</span></a>
 <a class="sourceLine" id="cb189-4" data-line-number="4">Rossi &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&#39;http://ftp.auckland.ac.nz/software/CRAN/doc/contrib/Fox-Companion/Rossi.txt&#39;</span>, <span class="dt">header=</span>T)</a>
-<a class="sourceLine" id="cb189-5" data-line-number="5">Rossi[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
-<pre><code>##   week arrest fin age race wexp mar paro prio educ
-## 1   20      1   0  27    1    0   0    1    3    3
-## 2   17      1   0  18    1    0   0    1    8    4
-## 3   25      1   0  19    0    1   0    1   13    3
-## 4   52      0   1  23    1    1   1    1    1    5
-## 5   52      0   0  19    0    1   0    1    3    3</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1">mod.allison &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(week, arrest) <span class="op">~</span><span class="st"> </span>fin <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>wexp <span class="op">+</span><span class="st"> </span>mar <span class="op">+</span><span class="st"> </span>paro <span class="op">+</span><span class="st"> </span>prio, <span class="dt">data=</span>Rossi)</a>
-<a class="sourceLine" id="cb191-2" data-line-number="2"><span class="kw">summary</span>(mod.allison)</a></code></pre></div>
-<pre><code>## Call:
-## coxph(formula = Surv(week, arrest) ~ fin + age + race + wexp + 
-##     mar + paro + prio, data = Rossi)
-## 
-##   n= 432, number of events= 114 
-## 
-##         coef exp(coef) se(coef)     z Pr(&gt;|z|)   
-## fin  -0.3794    0.6843   0.1914 -1.98   0.0474 * 
-## age  -0.0574    0.9442   0.0220 -2.61   0.0090 **
-## race  0.3139    1.3688   0.3080  1.02   0.3081   
-## wexp -0.1498    0.8609   0.2122 -0.71   0.4803   
-## mar  -0.4337    0.6481   0.3819 -1.14   0.2561   
-## paro -0.0849    0.9186   0.1958 -0.43   0.6646   
-## prio  0.0915    1.0958   0.0286  3.19   0.0014 **
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-##      exp(coef) exp(-coef) lower .95 upper .95
-## fin      0.684      1.461     0.470     0.996
-## age      0.944      1.059     0.904     0.986
-## race     1.369      0.731     0.748     2.503
-## wexp     0.861      1.162     0.568     1.305
-## mar      0.648      1.543     0.307     1.370
-## paro     0.919      1.089     0.626     1.348
-## prio     1.096      0.913     1.036     1.159
-## 
-## Concordance= 0.64  (se = 0.027 )
-## Likelihood ratio test= 33.3  on 7 df,   p=2e-05
-## Wald test            = 32.1  on 7 df,   p=4e-05
-## Score (logrank) test = 33.5  on 7 df,   p=2e-05</code></pre>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1"><span class="co"># plot time vs survival prob</span></a>
-<a class="sourceLine" id="cb193-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">survfit</span>(mod.allison), <span class="dt">ylim=</span><span class="kw">c</span>(.<span class="dv">7</span>, <span class="dv">1</span>), <span class="dt">xlab=</span><span class="st">&#39;Weeks&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Proportion Not Rearrested&#39;</span>)</a></code></pre></div>
-<p><img src="datadown_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<a class="sourceLine" id="cb189-5" data-line-number="5">Rossi[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a>
+<a class="sourceLine" id="cb189-6" data-line-number="6">mod.allison &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(week, arrest) <span class="op">~</span><span class="st"> </span>fin <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>wexp <span class="op">+</span><span class="st"> </span>mar <span class="op">+</span><span class="st"> </span>paro <span class="op">+</span><span class="st"> </span>prio, <span class="dt">data=</span>Rossi)</a>
+<a class="sourceLine" id="cb189-7" data-line-number="7"><span class="kw">summary</span>(mod.allison)</a>
+<a class="sourceLine" id="cb189-8" data-line-number="8"><span class="co"># plot time vs survival prob</span></a>
+<a class="sourceLine" id="cb189-9" data-line-number="9"><span class="kw">plot</span>(<span class="kw">survfit</span>(mod.allison), <span class="dt">ylim=</span><span class="kw">c</span>(.<span class="dv">7</span>, <span class="dv">1</span>), <span class="dt">xlab=</span><span class="st">&#39;Weeks&#39;</span>, <span class="dt">ylab=</span><span class="st">&#39;Proportion Not Rearrested&#39;</span>)</a></code></pre></div>
 <div id="result" class="section level3">
 <h3><span class="header-section-number">15.4.1</span> result</h3>
 <ul>
@@ -681,12 +644,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>assess the impact of financial aid on rearrest</li>
 <li>new data frame with two rows, one for each value of fin; the other covariates are fixed to their average values</li>
 </ul>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="kw">attach</span>(Rossi)</a>
-<a class="sourceLine" id="cb194-2" data-line-number="2">Rossi.fin &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">fin=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">age=</span><span class="kw">rep</span>(<span class="kw">mean</span>(age),<span class="dv">2</span>), <span class="dt">race=</span><span class="kw">rep</span>(<span class="kw">mean</span>(race),<span class="dv">2</span>), <span class="dt">wexp=</span><span class="kw">rep</span>(<span class="kw">mean</span>(wexp),<span class="dv">2</span>), <span class="dt">mar=</span><span class="kw">rep</span>(<span class="kw">mean</span>(mar),<span class="dv">2</span>), <span class="dt">paro=</span><span class="kw">rep</span>(<span class="kw">mean</span>(paro),<span class="dv">2</span>), <span class="dt">prio=</span><span class="kw">rep</span>(<span class="kw">mean</span>(prio),<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb194-3" data-line-number="3"><span class="kw">detach</span>()</a>
-<a class="sourceLine" id="cb194-4" data-line-number="4"><span class="kw">plot</span>(<span class="kw">survfit</span>(mod.allison, <span class="dt">newdata=</span>Rossi.fin), <span class="dt">conf.int=</span>T, <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">ylim=</span><span class="kw">c</span>(.<span class="dv">6</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb194-5" data-line-number="5"><span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&#39;fin = 0&#39;</span>, <span class="st">&#39;fin = 1&#39;</span>), <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a></code></pre></div>
-<p><img src="datadown_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="kw">attach</span>(Rossi)</a>
+<a class="sourceLine" id="cb190-2" data-line-number="2">Rossi.fin &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">fin=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">age=</span><span class="kw">rep</span>(<span class="kw">mean</span>(age),<span class="dv">2</span>), <span class="dt">race=</span><span class="kw">rep</span>(<span class="kw">mean</span>(race),<span class="dv">2</span>), <span class="dt">wexp=</span><span class="kw">rep</span>(<span class="kw">mean</span>(wexp),<span class="dv">2</span>), <span class="dt">mar=</span><span class="kw">rep</span>(<span class="kw">mean</span>(mar),<span class="dv">2</span>), <span class="dt">paro=</span><span class="kw">rep</span>(<span class="kw">mean</span>(paro),<span class="dv">2</span>), <span class="dt">prio=</span><span class="kw">rep</span>(<span class="kw">mean</span>(prio),<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb190-3" data-line-number="3"><span class="kw">detach</span>()</a>
+<a class="sourceLine" id="cb190-4" data-line-number="4"><span class="kw">plot</span>(<span class="kw">survfit</span>(mod.allison, <span class="dt">newdata=</span>Rossi.fin), <span class="dt">conf.int=</span>T, <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="dt">ylim=</span><span class="kw">c</span>(.<span class="dv">6</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb190-5" data-line-number="5"><span class="kw">legend</span>(<span class="st">&quot;bottomleft&quot;</span>, <span class="dt">legend=</span><span class="kw">c</span>(<span class="st">&#39;fin = 0&#39;</span>, <span class="st">&#39;fin = 1&#39;</span>), <span class="dt">lty=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a></code></pre></div>
 <ul>
 <li>the higher estimated ‘survival’ of those receiving financial aid, but the two confidence envelopes overlap substantially, even after 52 weeks</li>
 </ul>
@@ -696,104 +658,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>treat the employed variable as a tim-dependent covariates with 52 weeks’ record</li>
 </ul>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1"><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(Rossi[,<span class="dv">11</span><span class="op">:</span><span class="dv">62</span>])) <span class="co"># record count</span></a></code></pre></div>
-<pre><code>## [1] 19809</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1">Rossi2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">19809</span>, <span class="dv">14</span>) <span class="co"># to hold new data set</span></a>
-<a class="sourceLine" id="cb197-2" data-line-number="2"><span class="kw">colnames</span>(Rossi2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;start&#39;</span>, <span class="st">&#39;stop&#39;</span>, <span class="st">&#39;arresttime&#39;</span>, <span class="kw">names</span>(Rossi)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], <span class="st">&#39;employed&#39;</span>)</a>
-<a class="sourceLine" id="cb197-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb197-4" data-line-number="4">row&lt;-<span class="dv">0</span></a>
-<a class="sourceLine" id="cb197-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(Rossi)) { </a>
-<a class="sourceLine" id="cb197-6" data-line-number="6">    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">11</span><span class="op">:</span><span class="dv">62</span>) { </a>
-<a class="sourceLine" id="cb197-7" data-line-number="7">        <span class="cf">if</span> (<span class="kw">is.na</span>(Rossi[i, j])) <span class="cf">next</span></a>
-<a class="sourceLine" id="cb197-8" data-line-number="8">        <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb197-9" data-line-number="9">            row &lt;-<span class="st"> </span>row <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># increment row counter</span></a>
-<a class="sourceLine" id="cb197-10" data-line-number="10">            start &lt;-<span class="st"> </span>j <span class="op">-</span><span class="st"> </span><span class="dv">11</span> <span class="co"># start time (previous week)</span></a>
-<a class="sourceLine" id="cb197-11" data-line-number="11">            stop &lt;-<span class="st"> </span>start <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># stop time (current week)</span></a>
-<a class="sourceLine" id="cb197-12" data-line-number="12">            arresttime &lt;-<span class="st"> </span><span class="cf">if</span> (stop <span class="op">==</span><span class="st"> </span>Rossi[i, <span class="dv">1</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>Rossi[i, <span class="dv">2</span>] <span class="op">==</span><span class="dv">1</span>) <span class="dv">1</span> <span class="cf">else</span> <span class="dv">0</span></a>
-<a class="sourceLine" id="cb197-13" data-line-number="13">            Rossi2[row,] &lt;-<span class="st"> </span><span class="kw">c</span>(start, stop, arresttime, <span class="kw">unlist</span>(Rossi[i, <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, j)]))</a>
-<a class="sourceLine" id="cb197-14" data-line-number="14">            }</a>
-<a class="sourceLine" id="cb197-15" data-line-number="15">        }</a>
-<a class="sourceLine" id="cb197-16" data-line-number="16">}</a>
-<a class="sourceLine" id="cb197-17" data-line-number="17">Rossi2 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Rossi2)</a>
-<a class="sourceLine" id="cb197-18" data-line-number="18"><span class="kw">remove</span>(i, j, row, start, stop, arresttime)</a>
-<a class="sourceLine" id="cb197-19" data-line-number="19">modallison2 &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(start, stop, arresttime) <span class="op">~</span><span class="st"> </span>fin <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>wexp <span class="op">+</span><span class="st"> </span>mar <span class="op">+</span><span class="st"> </span>paro <span class="op">+</span><span class="st"> </span>prio <span class="op">+</span><span class="st"> </span>employed, <span class="dt">data=</span>Rossi2)</a>
-<a class="sourceLine" id="cb197-20" data-line-number="20"><span class="kw">summary</span>(modallison2)</a></code></pre></div>
-<pre><code>## Call:
-## coxph(formula = Surv(start, stop, arresttime) ~ fin + age + race + 
-##     wexp + mar + paro + prio + employed, data = Rossi2)
-## 
-##   n= 19809, number of events= 114 
-## 
-##             coef exp(coef) se(coef)     z Pr(&gt;|z|)    
-## fin      -0.3567    0.7000   0.1911 -1.87   0.0620 .  
-## age      -0.0463    0.9547   0.0217 -2.13   0.0330 *  
-## race      0.3387    1.4031   0.3096  1.09   0.2740    
-## wexp     -0.0256    0.9748   0.2114 -0.12   0.9038    
-## mar      -0.2937    0.7455   0.3830 -0.77   0.4431    
-## paro     -0.0642    0.9378   0.1947 -0.33   0.7416    
-## prio      0.0851    1.0889   0.0290  2.94   0.0033 ** 
-## employed -1.3283    0.2649   0.2507 -5.30  1.2e-07 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-##          exp(coef) exp(-coef) lower .95 upper .95
-## fin          0.700      1.429     0.481     1.018
-## age          0.955      1.047     0.915     0.996
-## race         1.403      0.713     0.765     2.574
-## wexp         0.975      1.026     0.644     1.475
-## mar          0.745      1.341     0.352     1.579
-## paro         0.938      1.066     0.640     1.374
-## prio         1.089      0.918     1.029     1.152
-## employed     0.265      3.775     0.162     0.433
-## 
-## Concordance= 0.708  (se = 0.023 )
-## Likelihood ratio test= 68.7  on 8 df,   p=9e-12
-## Wald test            = 56.1  on 8 df,   p=3e-09
-## Score (logrank) test = 64.5  on 8 df,   p=6e-11</code></pre>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="kw">sum</span>(<span class="op">!</span><span class="kw">is.na</span>(Rossi[,<span class="dv">11</span><span class="op">:</span><span class="dv">62</span>])) <span class="co"># record count</span></a>
+<a class="sourceLine" id="cb191-2" data-line-number="2">Rossi2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">19809</span>, <span class="dv">14</span>) <span class="co"># to hold new data set</span></a>
+<a class="sourceLine" id="cb191-3" data-line-number="3"><span class="kw">colnames</span>(Rossi2) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;start&#39;</span>, <span class="st">&#39;stop&#39;</span>, <span class="st">&#39;arresttime&#39;</span>, <span class="kw">names</span>(Rossi)[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>], <span class="st">&#39;employed&#39;</span>)</a>
+<a class="sourceLine" id="cb191-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb191-5" data-line-number="5">row&lt;-<span class="dv">0</span></a>
+<a class="sourceLine" id="cb191-6" data-line-number="6"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(Rossi)) { </a>
+<a class="sourceLine" id="cb191-7" data-line-number="7">    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">11</span><span class="op">:</span><span class="dv">62</span>) { </a>
+<a class="sourceLine" id="cb191-8" data-line-number="8">        <span class="cf">if</span> (<span class="kw">is.na</span>(Rossi[i, j])) <span class="cf">next</span></a>
+<a class="sourceLine" id="cb191-9" data-line-number="9">        <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb191-10" data-line-number="10">            row &lt;-<span class="st"> </span>row <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># increment row counter</span></a>
+<a class="sourceLine" id="cb191-11" data-line-number="11">            start &lt;-<span class="st"> </span>j <span class="op">-</span><span class="st"> </span><span class="dv">11</span> <span class="co"># start time (previous week)</span></a>
+<a class="sourceLine" id="cb191-12" data-line-number="12">            stop &lt;-<span class="st"> </span>start <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="co"># stop time (current week)</span></a>
+<a class="sourceLine" id="cb191-13" data-line-number="13">            arresttime &lt;-<span class="st"> </span><span class="cf">if</span> (stop <span class="op">==</span><span class="st"> </span>Rossi[i, <span class="dv">1</span>] <span class="op">&amp;&amp;</span><span class="st"> </span>Rossi[i, <span class="dv">2</span>] <span class="op">==</span><span class="dv">1</span>) <span class="dv">1</span> <span class="cf">else</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb191-14" data-line-number="14">            Rossi2[row,] &lt;-<span class="st"> </span><span class="kw">c</span>(start, stop, arresttime, <span class="kw">unlist</span>(Rossi[i, <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, j)]))</a>
+<a class="sourceLine" id="cb191-15" data-line-number="15">            }</a>
+<a class="sourceLine" id="cb191-16" data-line-number="16">        }</a>
+<a class="sourceLine" id="cb191-17" data-line-number="17">}</a>
+<a class="sourceLine" id="cb191-18" data-line-number="18">Rossi2 &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(Rossi2)</a>
+<a class="sourceLine" id="cb191-19" data-line-number="19"><span class="kw">remove</span>(i, j, row, start, stop, arresttime)</a>
+<a class="sourceLine" id="cb191-20" data-line-number="20">modallison2 &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(start, stop, arresttime) <span class="op">~</span><span class="st"> </span>fin <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>race <span class="op">+</span><span class="st"> </span>wexp <span class="op">+</span><span class="st"> </span>mar <span class="op">+</span><span class="st"> </span>paro <span class="op">+</span><span class="st"> </span>prio <span class="op">+</span><span class="st"> </span>employed, <span class="dt">data=</span>Rossi2)</a>
+<a class="sourceLine" id="cb191-21" data-line-number="21"><span class="kw">summary</span>(modallison2)</a></code></pre></div>
 </div>
 <div id="model-diagnostics" class="section level2">
 <h2><span class="header-section-number">15.7</span> Model Diagnostics</h2>
 <ul>
 <li>Checking Proportional Hazards</li>
 </ul>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1">modallison3 &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(week, arrest) <span class="op">~</span><span class="st"> </span>fin <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>prio, <span class="dt">data=</span>Rossi)</a>
-<a class="sourceLine" id="cb199-2" data-line-number="2">modallison3</a></code></pre></div>
-<pre><code>## Call:
-## coxph(formula = Surv(week, arrest) ~ fin + age + prio, data = Rossi)
-## 
-##       coef exp(coef) se(coef)  z     p
-## fin  -0.35      0.71     0.19 -2 0.068
-## age  -0.07      0.94     0.02 -3 0.001
-## prio  0.10      1.10     0.03  4 4e-04
-## 
-## Likelihood ratio test=29  on 3 df, p=2e-06
-## n= 432, number of events= 114</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="kw">cox.zph</span>(modallison3)</a></code></pre></div>
-<pre><code>##         chisq df     p
-## fin    0.0638  1 0.801
-## age    6.3255  1 0.012
-## prio   0.5187  1 0.471
-## GLOBAL 7.1367  3 0.068</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">cox.zph</span>(modallison3))</a></code></pre></div>
-<p><img src="datadown_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">modallison3 &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(week, arrest) <span class="op">~</span><span class="st"> </span>fin <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>prio, <span class="dt">data=</span>Rossi)</a>
+<a class="sourceLine" id="cb192-2" data-line-number="2">modallison3</a>
+<a class="sourceLine" id="cb192-3" data-line-number="3"><span class="kw">cox.zph</span>(modallison3)</a>
+<a class="sourceLine" id="cb192-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb192-5" data-line-number="5"><span class="kw">plot</span>(<span class="kw">cox.zph</span>(modallison3))</a></code></pre></div>
 <ul>
 <li>there appears to be a trend in the plot for age, with the age effect declining with time</li>
 </ul>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1">modallison4 &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(start,stop,arresttime)<span class="op">~</span>fin<span class="op">+</span>age<span class="op">+</span>age<span class="op">:</span>stop<span class="op">:</span>stop<span class="op">+</span>prio, <span class="dt">data =</span> Rossi2)</a>
-<a class="sourceLine" id="cb204-2" data-line-number="2">modallison4</a></code></pre></div>
-<pre><code>## Call:
-## coxph(formula = Surv(start, stop, arresttime) ~ fin + age + age:stop:stop + 
-##     prio, data = Rossi2)
-## 
-##            coef exp(coef) se(coef)    z     p
-## fin      -0.349     0.706    0.190 -1.8 0.067
-## age       0.032     1.033    0.039  0.8 0.413
-## prio      0.098     1.103    0.027  3.6 3e-04
-## age:stop -0.004     0.996    0.001 -2.6 0.009
-## 
-## Likelihood ratio test=36  on 4 df, p=3e-07
-## n= 19809, number of events= 114</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1">modallison4 &lt;-<span class="st"> </span><span class="kw">coxph</span>(<span class="kw">Surv</span>(start,stop,arresttime)<span class="op">~</span>fin<span class="op">+</span>age<span class="op">+</span>age<span class="op">:</span>stop<span class="op">:</span>stop<span class="op">+</span>prio, <span class="dt">data =</span> Rossi2)</a>
+<a class="sourceLine" id="cb193-2" data-line-number="2">modallison4</a></code></pre></div>
 <ul>
 <li><p>the coefficient for the interaction is negative and highly statistically significant: The effect of age declines with time</p></li>
 <li><p>use residual to find influential observations</p></li>
@@ -830,6 +731,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": false,
 "twitter": false,
 "linkedin": false,
@@ -851,7 +753,11 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["datadown.pdf", "datadown.epub", "datadown.mobi"],
+"view": {
+"link": null,
+"text": null
+},
+"download": ["datadown.pdf", "datadown.epub"],
 "toc": {
 "collapse": "subsection"
 }
