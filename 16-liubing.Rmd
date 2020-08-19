@@ -1,7 +1,4 @@
 # 流行病学 {#epid}
-```{r include=FALSE}
-knitr::opts_chunk$set(echo = F)
-```
 
 ## 声明
 
@@ -68,7 +65,7 @@ knitr::include_graphics('images/Framingham1.jpg')
 - 流行曲线：横轴日期，纵轴新增病例
     - 点源爆发：单峰，潜伏期相对一致
 ```{r}
-knitr::include_graphics('images/epidemic%20curve.jpg')
+knitr::include_graphics('images/epidemiccurve.jpg')
 ```
     - 持续源爆发：单峰，潜伏期持续出现
 ```{r}

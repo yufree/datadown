@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第8章 统计模型 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第8章 统计模型 | 数据分析残卷" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2020-01-02" />
+<meta name="date" content="2020-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -250,10 +253,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a><ul>
 <li class="chapter" data-level="7.1" data-path="opt.html"><a href="opt.html#数学本质"><i class="fa fa-check"></i><b>7.1</b> 数学本质</a></li>
 <li class="chapter" data-level="7.2" data-path="opt.html"><a href="opt.html#简史"><i class="fa fa-check"></i><b>7.2</b> 简史</a></li>
-<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#凸集"><i class="fa fa-check"></i><b>7.3</b> 凸集</a></li>
-<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.4</b> 最小二乘法</a></li>
-<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.5</b> 线性规划</a></li>
-<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.6</b> 凸优化</a></li>
+<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.3</b> 最小二乘法</a></li>
+<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.4</b> 线性规划</a></li>
+<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.5</b> 凸优化</a></li>
+<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#仿射集"><i class="fa fa-check"></i><b>7.6</b> 仿射集</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a><ul>
 <li class="chapter" data-level="8.1" data-path="mlsl.html"><a href="mlsl.html#统计学习概论"><i class="fa fa-check"></i><b>8.1</b> 统计学习概论</a></li>
@@ -283,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.18.1" data-path="mlsl.html"><a href="mlsl.html#简单线性回归"><i class="fa fa-check"></i><b>8.18.1</b> 简单线性回归</a></li>
 <li class="chapter" data-level="8.18.2" data-path="mlsl.html"><a href="mlsl.html#多元线性回归"><i class="fa fa-check"></i><b>8.18.2</b> 多元线性回归</a></li>
 <li class="chapter" data-level="8.18.3" data-path="mlsl.html"><a href="mlsl.html#线性模型延拓"><i class="fa fa-check"></i><b>8.18.3</b> 线性模型延拓</a></li>
-<li class="chapter" data-level="8.18.4" data-path="mlsl.html"><a href="mlsl.html#常见问题-1"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
+<li class="chapter" data-level="8.18.4" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
 <li class="chapter" data-level="8.18.5" data-path="mlsl.html"><a href="mlsl.html#线性回归与kmeans算法比较"><i class="fa fa-check"></i><b>8.18.5</b> 线性回归与kmeans算法比较</a></li>
 <li class="chapter" data-level="8.18.6" data-path="mlsl.html"><a href="mlsl.html#logistic回归"><i class="fa fa-check"></i><b>8.18.6</b> logistic回归</a></li>
 <li class="chapter" data-level="8.18.7" data-path="mlsl.html"><a href="mlsl.html#线性判别分析"><i class="fa fa-check"></i><b>8.18.7</b> 线性判别分析</a></li>
@@ -389,17 +392,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="why.html"><a href="why.html#yinguolink"><i class="fa fa-check"></i><b>11.5</b> 链接</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a><ul>
-<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#图论"><i class="fa fa-check"></i><b>12.1</b> 图论</a></li>
-<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.2</b> 随机网络模型</a></li>
-<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.3</b> 无尺度网络</a></li>
-<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.4</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
-<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.5</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
-<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#度相关"><i class="fa fa-check"></i><b>12.6</b> 度相关</a></li>
-<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.7</b> 网络稳健性</a></li>
-<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.8</b> 网络集群</a></li>
+<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#节点属性"><i class="fa fa-check"></i><b>12.1</b> 节点属性</a></li>
+<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.2</b> 网络集群</a></li>
+<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.3</b> 随机网络模型</a></li>
+<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.4</b> 无尺度网络</a></li>
+<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.5</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
+<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.6</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
+<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#度相关现象"><i class="fa fa-check"></i><b>12.7</b> 度相关现象</a></li>
+<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.8</b> 网络稳健性</a></li>
+<li class="chapter" data-level="12.9" data-path="neta.html"><a href="neta.html#网络回归"><i class="fa fa-check"></i><b>12.9</b> 网络回归</a></li>
+<li class="chapter" data-level="12.10" data-path="neta.html"><a href="neta.html#网络扩散行为"><i class="fa fa-check"></i><b>12.10</b> 网络扩散行为</a></li>
+<li class="chapter" data-level="12.11" data-path="neta.html"><a href="neta.html#网络可视化"><i class="fa fa-check"></i><b>12.11</b> 网络可视化</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a><ul>
-<li class="chapter" data-level="13.1" data-path="game.html"><a href="game.html#术语-1"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
+<li class="chapter" data-level="13.1" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
 <li class="chapter" data-level="13.2" data-path="game.html"><a href="game.html#支配策略dominate-strategy"><i class="fa fa-check"></i><b>13.2</b> 支配策略（dominate strategy）</a></li>
 <li class="chapter" data-level="13.3" data-path="game.html"><a href="game.html#最佳回应best-respinse"><i class="fa fa-check"></i><b>13.3</b> 最佳回应（Best respinse）</a></li>
 <li class="chapter" data-level="13.4" data-path="game.html"><a href="game.html#纳什均衡nash-equilibrium"><i class="fa fa-check"></i><b>13.4</b> 纳什均衡（Nash Equilibrium）</a></li>
@@ -525,7 +531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.21.4" data-path="epid.html"><a href="epid.html#有向无环图dags"><i class="fa fa-check"></i><b>16.21.4</b> 有向无环图（DAGs）</a></li>
 </ul></li>
 <li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a><ul>
-<li class="chapter" data-level="16.22.1" data-path="epid.html"><a href="epid.html#introduction-1"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.22.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.22.2" data-path="epid.html"><a href="epid.html#methods"><i class="fa fa-check"></i><b>16.22.2</b> Methods</a></li>
 <li class="chapter" data-level="16.22.3" data-path="epid.html"><a href="epid.html#results"><i class="fa fa-check"></i><b>16.22.3</b> Results</a></li>
 <li class="chapter" data-level="16.22.4" data-path="epid.html"><a href="epid.html#discussion"><i class="fa fa-check"></i><b>16.22.4</b> Discussion</a></li>
@@ -634,7 +640,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>使用训练集与验证集</li>
 <li>参数方法与非参数方法</li>
-<li>模型的欠拟合与过拟合</li>
+<li>模型的欠拟合与过拟合，回归模型低方差高偏差，邻近聚类高方差低偏差</li>
 <li>权衡模型的准确性（预测）与可解释性（推断）</li>
 <li>模型的奥卡姆剃刀与黑箱</li>
 </ul>
@@ -652,8 +658,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="聚类评价" class="section level3">
 <h3><span class="header-section-number">8.7.2</span> 聚类评价</h3>
 <ul>
-<li>错误率 <span class="math inline">\(Err_{Te} = Ave_{i \in Te}I[y_i \neq \hat C(x_i)]\)</span></li>
-<li>贝叶斯分类器：错误率最小的分类器，使x属于某个分类的概率最大</li>
+<li><p>错误率 <span class="math inline">\(Err_{Te} = Ave_{i \in Te}I[y_i \neq \hat C(x_i)]\)</span></p></li>
+<li><p>贝叶斯分类器：错误率最小的分类器，使x属于某个分类的概率最大</p></li>
 <li><p>k临近值聚类：距离最小的k个为一类所产生的分类器</p></li>
 <li><p>问题 -&gt; 数据 -&gt; 特征 -&gt; 算法 -&gt; 参数 -&gt; 评价</p></li>
 </ul>
@@ -712,23 +718,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="交叉检验" class="section level3">
 <h3><span class="header-section-number">8.11.1</span> 交叉检验</h3>
 <ul>
-<li>训练集上的操作</li>
-<li>训练集上再分为训练集与测试集</li>
-<li>在测试集上评价 重复并平均化测试集错误</li>
-<li>用来进行变量 模型 参数选择</li>
-<li>随机 分组 留一</li>
-<li>分组多方差大 分组少有偏差</li>
+<li><p>训练集上的操作</p></li>
+<li><p>训练集上再分为训练集与测试集</p></li>
+<li><p>在测试集上评价 重复并平均化测试集错误</p></li>
+<li><p>用来进行变量 模型 参数选择</p></li>
+<li><p>随机 分组 留一</p></li>
+<li><p>分组多方差大 分组少有偏差</p></li>
 <li><p>有放回的为bootstrap 不建议用</p></li>
-<li>核心思想：通过保留一部份训练集数据作为检验集来估计真实检验集的错误率与模型拟合效果</li>
-<li>验证集方法：将训练集数据分为两部分，一部份拟合模型，一部份检验模型，这样得到的错误率为真实检验集的一个估计，选取错误率较低的模型建模</li>
-<li>验证集方法缺点：错误率依赖于采样变动较大，训练集少，高估了错误率</li>
-<li>留一法(LOOCV)：每次建模留一个数据点作为验证集，<span class="math inline">\(MSE_i = (y_i - \hat y_i)^2\)</span>重复n次，得到一个CV值作为对错误率的估计:<span class="math inline">\(CV_{(n)} = \frac{1}{n} \sum_{i = 1}^{n} MSE_i\)</span></li>
-<li>留一法优点：使用数据量大，偏差小；结果唯一，不受随机化影响</li>
-<li>留一法缺点：计算量大，公式插入杠杆统计量调节杠杆点对方程拟合的影响，得到<span class="math inline">\(CV_{(n)} = \frac{1}{n} \sum_{i = 1}^{n} (\frac{y_i - \hat y_i}{1 - h_i})^2\)</span></li>
-<li>k叠交叉检验：将训练集分为k叠，每次建模用(k-1)叠，用1叠检验</li>
-<li>k叠交叉检验优点：计算量小，结果与留一法相差不多- 交叉检验的结果用来寻找<span class="math inline">\(CV\)</span>值最小的点来选择模型，通常与真实检验集最小点结果相差不大乎，但交叉检验给出的<span class="math inline">\(MSE\)</span>会偏低</li>
-<li>偏差方差权衡：使用的训练集数据越多，估计偏差越小，方差越大（相关性越高的方差越大）</li>
-<li>分类问题使用错误率计算<span class="math inline">\(CV\)</span>：<span class="math inline">\(CV{(n)} = \frac{1}{n} \sum_{i = 1}^{n} Err_{i}\)</span></li>
+<li><p>核心思想：通过保留一部份训练集数据作为检验集来估计真实检验集的错误率与模型拟合效果</p></li>
+<li><p>验证集方法：将训练集数据分为两部分，一部份拟合模型，一部份检验模型，这样得到的错误率为真实检验集的一个估计，选取错误率较低的模型建模</p></li>
+<li><p>验证集方法缺点：错误率依赖于采样变动较大，训练集少，高估了错误率</p></li>
+<li><p>留一法(LOOCV)：每次建模留一个数据点作为验证集，<span class="math inline">\(MSE_i = (y_i - \hat y_i)^2\)</span>重复n次，得到一个CV值作为对错误率的估计:<span class="math inline">\(CV_{(n)} = \frac{1}{n} \sum_{i = 1}^{n} MSE_i\)</span></p></li>
+<li><p>留一法优点：使用数据量大，偏差小；结果唯一，不受随机化影响</p></li>
+<li><p>留一法缺点：计算量大，公式插入杠杆统计量调节杠杆点对方程拟合的影响，得到<span class="math inline">\(CV_{(n)} = \frac{1}{n} \sum_{i = 1}^{n} (\frac{y_i - \hat y_i}{1 - h_i})^2\)</span></p></li>
+<li><p>k叠交叉检验：将训练集分为k叠，每次建模用(k-1)叠，用1叠检验</p></li>
+<li><p>k叠交叉检验优点：计算量小，结果与留一法相差不多- 交叉检验的结果用来寻找<span class="math inline">\(CV\)</span>值最小的点来选择模型，通常与真实检验集最小点结果相差不大乎，但交叉检验给出的<span class="math inline">\(MSE\)</span>会偏低</p></li>
+<li><p>偏差方差权衡：使用的训练集数据越多，估计偏差越小，方差越大（相关性越高的方差越大）</p></li>
+<li><p>分类问题使用错误率计算<span class="math inline">\(CV\)</span>：<span class="math inline">\(CV{(n)} = \frac{1}{n} \sum_{i = 1}^{n} Err_{i}\)</span></p></li>
 <li><p><em>少n多p问题上使用交叉检验，不可先进行全模型变量选择再交叉检验，应该对整个过程交叉检验</em></p></li>
 </ul>
 </div>
@@ -779,10 +785,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="数据预处理" class="section level2">
 <h2><span class="header-section-number">8.16</span> 数据预处理</h2>
 <ul>
-<li><code>train</code> 中的 <code>preProcess=c(&quot;center&quot;,&quot;scale&quot;)</code> 标准化</li>
+<li><code>train</code> 中的 <code>preProcess=c("center","scale")</code> 标准化</li>
 <li><code>spatialSign</code> 该转化可提高计算效率 有偏</li>
-<li><code>preProcess(training[,-58],method=c(&quot;BoxCox&quot;))</code> 正态化转化</li>
-<li><code>method=&quot;knnImpute&quot;</code> 用最小邻近法填补缺失值</li>
+<li><code>preProcess(training[,-58],method=c("BoxCox"))</code> 正态化转化</li>
+<li><code>method="knnImpute"</code> 用最小邻近法填补缺失值</li>
 <li><code>nearZeroVar</code> 去除零方差变量</li>
 <li><code>findCorrelation</code> 去除相关变量</li>
 <li><code>findLinearCombos</code> 去除线性组合变量</li>
@@ -845,7 +851,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>去掉线性：多项式回归</li>
 </ul>
 </div>
-<div id="常见问题-1" class="section level3">
+<div id="常见问题" class="section level3">
 <h3><span class="header-section-number">8.18.4</span> 常见问题</h3>
 <ul>
 <li>关系非线性：残差图判断</li>
@@ -1088,18 +1094,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="bagging" class="section level3">
 <h3><span class="header-section-number">8.20.3</span> Bagging</h3>
 <ul>
-<li>决策树方法相比线性回归模型方差很大</li>
-<li>引入Bootstrap，通过平均构建低方差模型</li>
-<li><span class="math inline">\(\hat f_{avg}(x) = \frac{1}{B} \sum_{b = 1}^B \hat f^{*b}(x)\)</span></li>
-<li>不修剪，通过平均降低方差</li>
-<li>对于分类变量，通过投票，少数服从多数得到答案</li>
-<li>误差估计通过包外样本（OOB）进行交叉检验并进行树的选择，降低计算成本</li>
-<li>变量权重在Bagging中不易衡量，可通过衡量每棵树的RSS或者Gini系数在进行一次变量分割后RSS下降程度并进行排序取得</li>
+<li><p>决策树方法相比线性回归模型方差很大</p></li>
+<li><p>引入Bootstrap，通过平均构建低方差模型</p></li>
+<li><p><span class="math inline">\(\hat f_{avg}(x) = \frac{1}{B} \sum_{b = 1}^B \hat f^{*b}(x)\)</span></p></li>
+<li><p>不修剪，通过平均降低方差</p></li>
+<li><p>对于分类变量，通过投票，少数服从多数得到答案</p></li>
+<li><p>误差估计通过包外样本（OOB）进行交叉检验并进行树的选择，降低计算成本</p></li>
+<li><p>变量权重在Bagging中不易衡量，可通过衡量每棵树的RSS或者Gini系数在进行一次变量分割后RSS下降程度并进行排序取得</p></li>
 <li><p>该方法可应用于其他统计模型</p></li>
-<li>重采样 重新计算预测值</li>
-<li>平均或投票给出结果</li>
-<li>减少方差 偏差类似 适用于非线性过程</li>
-<li>bagged trees
+<li><p>重采样 重新计算预测值</p></li>
+<li><p>平均或投票给出结果</p></li>
+<li><p>减少方差 偏差类似 适用于非线性过程</p></li>
+<li><p>bagged trees</p>
 <ul>
 <li>重采样</li>
 <li>重建树</li>
@@ -1125,17 +1131,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="boosting" class="section level3">
 <h3><span class="header-section-number">8.20.5</span> Boosting</h3>
 <ul>
-<li>通用的统计学习方法</li>
-<li>树生长基于先前的树，不使用bootstrap，使用修改过的原始数据</li>
-<li>先生成有d个节点的树，之后通过加入收缩的新树来拟合残差，收缩因子为<span class="math inline">\(\lambda\)</span>，呈现层级模式，最后模型为<span class="math inline">\(\hat f(x) = \sum_{b = 1}^B \lambda \hat f^b(x)\)</span></li>
-<li>boosting学习缓慢，一般学习较慢的学习效果更好</li>
-<li>三个参数：树个数B（交叉检验），收缩因子<span class="math inline">\(\lambda\)</span>（控制学习速率），树节点数（一般为1，为交互作用深度，控制涉及变量）</li>
-<li>深度d为1时是加性模型</li>
+<li><p>通用的统计学习方法</p></li>
+<li><p>树生长基于先前的树，不使用bootstrap，使用修改过的原始数据</p></li>
+<li><p>先生成有d个节点的树，之后通过加入收缩的新树来拟合残差，收缩因子为<span class="math inline">\(\lambda\)</span>，呈现层级模式，最后模型为<span class="math inline">\(\hat f(x) = \sum_{b = 1}^B \lambda \hat f^b(x)\)</span></p></li>
+<li><p>boosting学习缓慢，一般学习较慢的学习效果更好</p></li>
+<li><p>三个参数：树个数B（交叉检验），收缩因子<span class="math inline">\(\lambda\)</span>（控制学习速率），树节点数（一般为1，为交互作用深度，控制涉及变量）</p></li>
+<li><p>深度d为1时是加性模型</p></li>
 <li><p>随机森林与Boosting产生的模型都不好解释</p></li>
-<li>迭代分割变量</li>
-<li>在最大化预测时分割</li>
-<li>评估分支的同质性</li>
-<li>多个树的预测更好
+<li><p>迭代分割变量</p></li>
+<li><p>在最大化预测时分割</p></li>
+<li><p>评估分支的同质性</p></li>
+<li><p>多个树的预测更好</p>
 <ul>
 <li>优点 容易解释应用 可用在神经网络上</li>
 <li>缺点 不容易交叉验证 不确定性不宜估计 结果可能变化
@@ -1148,12 +1154,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>节点纯度用 Gini 系数或 交叉墒来衡量</li>
 </ul></li>
-<li><code>rattle</code> 包的 <code>fancyRpartPlot</code> 出图漂亮</li>
+<li><p><code>rattle</code> 包的 <code>fancyRpartPlot</code> 出图漂亮</p></li>
 <li><p>可用来处理非线性模型与变量选择</p></li>
-<li>弱预测变量加权后构建强预测变量</li>
-<li>从一组预测变量开始</li>
-<li>添加有惩罚项的预测变量来训练模型</li>
-<li>以降低训练集误差为目的</li>
+<li><p>弱预测变量加权后构建强预测变量</p></li>
+<li><p>从一组预测变量开始</p></li>
+<li><p>添加有惩罚项的预测变量来训练模型</p></li>
+<li><p>以降低训练集误差为目的</p></li>
 <li><p>通用方法</p></li>
 </ul>
 </div>
@@ -1266,7 +1272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>先对所有样本随机分类，然后每种分类取中心，选取里中心距离最近的点重新分类，重新计算中心，迭代得到聚类结果</li>
 </ul>
 </div>
-<div id="分层聚类-1" class="section level4">
+<div id="分层聚类" class="section level4">
 <h4><span class="header-section-number">8.22.2.2</span> 分层聚类</h4>
 <ul>
 <li>不需要指定先前聚类数，形成冰柱图</li>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第2章 数据分析工具 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第2章 数据分析工具 | 数据分析残卷" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2020-01-02" />
+<meta name="date" content="2020-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -250,10 +253,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a><ul>
 <li class="chapter" data-level="7.1" data-path="opt.html"><a href="opt.html#数学本质"><i class="fa fa-check"></i><b>7.1</b> 数学本质</a></li>
 <li class="chapter" data-level="7.2" data-path="opt.html"><a href="opt.html#简史"><i class="fa fa-check"></i><b>7.2</b> 简史</a></li>
-<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#凸集"><i class="fa fa-check"></i><b>7.3</b> 凸集</a></li>
-<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.4</b> 最小二乘法</a></li>
-<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.5</b> 线性规划</a></li>
-<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.6</b> 凸优化</a></li>
+<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.3</b> 最小二乘法</a></li>
+<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.4</b> 线性规划</a></li>
+<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.5</b> 凸优化</a></li>
+<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#仿射集"><i class="fa fa-check"></i><b>7.6</b> 仿射集</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a><ul>
 <li class="chapter" data-level="8.1" data-path="mlsl.html"><a href="mlsl.html#统计学习概论"><i class="fa fa-check"></i><b>8.1</b> 统计学习概论</a></li>
@@ -283,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.18.1" data-path="mlsl.html"><a href="mlsl.html#简单线性回归"><i class="fa fa-check"></i><b>8.18.1</b> 简单线性回归</a></li>
 <li class="chapter" data-level="8.18.2" data-path="mlsl.html"><a href="mlsl.html#多元线性回归"><i class="fa fa-check"></i><b>8.18.2</b> 多元线性回归</a></li>
 <li class="chapter" data-level="8.18.3" data-path="mlsl.html"><a href="mlsl.html#线性模型延拓"><i class="fa fa-check"></i><b>8.18.3</b> 线性模型延拓</a></li>
-<li class="chapter" data-level="8.18.4" data-path="mlsl.html"><a href="mlsl.html#常见问题-1"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
+<li class="chapter" data-level="8.18.4" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
 <li class="chapter" data-level="8.18.5" data-path="mlsl.html"><a href="mlsl.html#线性回归与kmeans算法比较"><i class="fa fa-check"></i><b>8.18.5</b> 线性回归与kmeans算法比较</a></li>
 <li class="chapter" data-level="8.18.6" data-path="mlsl.html"><a href="mlsl.html#logistic回归"><i class="fa fa-check"></i><b>8.18.6</b> logistic回归</a></li>
 <li class="chapter" data-level="8.18.7" data-path="mlsl.html"><a href="mlsl.html#线性判别分析"><i class="fa fa-check"></i><b>8.18.7</b> 线性判别分析</a></li>
@@ -389,17 +392,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="why.html"><a href="why.html#yinguolink"><i class="fa fa-check"></i><b>11.5</b> 链接</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a><ul>
-<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#图论"><i class="fa fa-check"></i><b>12.1</b> 图论</a></li>
-<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.2</b> 随机网络模型</a></li>
-<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.3</b> 无尺度网络</a></li>
-<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.4</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
-<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.5</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
-<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#度相关"><i class="fa fa-check"></i><b>12.6</b> 度相关</a></li>
-<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.7</b> 网络稳健性</a></li>
-<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.8</b> 网络集群</a></li>
+<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#节点属性"><i class="fa fa-check"></i><b>12.1</b> 节点属性</a></li>
+<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.2</b> 网络集群</a></li>
+<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.3</b> 随机网络模型</a></li>
+<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.4</b> 无尺度网络</a></li>
+<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.5</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
+<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.6</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
+<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#度相关现象"><i class="fa fa-check"></i><b>12.7</b> 度相关现象</a></li>
+<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.8</b> 网络稳健性</a></li>
+<li class="chapter" data-level="12.9" data-path="neta.html"><a href="neta.html#网络回归"><i class="fa fa-check"></i><b>12.9</b> 网络回归</a></li>
+<li class="chapter" data-level="12.10" data-path="neta.html"><a href="neta.html#网络扩散行为"><i class="fa fa-check"></i><b>12.10</b> 网络扩散行为</a></li>
+<li class="chapter" data-level="12.11" data-path="neta.html"><a href="neta.html#网络可视化"><i class="fa fa-check"></i><b>12.11</b> 网络可视化</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a><ul>
-<li class="chapter" data-level="13.1" data-path="game.html"><a href="game.html#术语-1"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
+<li class="chapter" data-level="13.1" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
 <li class="chapter" data-level="13.2" data-path="game.html"><a href="game.html#支配策略dominate-strategy"><i class="fa fa-check"></i><b>13.2</b> 支配策略（dominate strategy）</a></li>
 <li class="chapter" data-level="13.3" data-path="game.html"><a href="game.html#最佳回应best-respinse"><i class="fa fa-check"></i><b>13.3</b> 最佳回应（Best respinse）</a></li>
 <li class="chapter" data-level="13.4" data-path="game.html"><a href="game.html#纳什均衡nash-equilibrium"><i class="fa fa-check"></i><b>13.4</b> 纳什均衡（Nash Equilibrium）</a></li>
@@ -525,7 +531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.21.4" data-path="epid.html"><a href="epid.html#有向无环图dags"><i class="fa fa-check"></i><b>16.21.4</b> 有向无环图（DAGs）</a></li>
 </ul></li>
 <li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a><ul>
-<li class="chapter" data-level="16.22.1" data-path="epid.html"><a href="epid.html#introduction-1"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.22.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.22.2" data-path="epid.html"><a href="epid.html#methods"><i class="fa fa-check"></i><b>16.22.2</b> Methods</a></li>
 <li class="chapter" data-level="16.22.3" data-path="epid.html"><a href="epid.html#results"><i class="fa fa-check"></i><b>16.22.3</b> Results</a></li>
 <li class="chapter" data-level="16.22.4" data-path="epid.html"><a href="epid.html#discussion"><i class="fa fa-check"></i><b>16.22.4</b> Discussion</a></li>
@@ -592,13 +598,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="命令行基础" class="section level2">
 <h2><span class="header-section-number">2.2</span> 命令行基础</h2>
 <ul>
-<li>name of root is represented by a slash: /</li>
-<li>home directory is represented by a tilde: ~</li>
-<li>pwd print working directory</li>
-<li>recipe: command -flags arguments</li>
-<li>clear: clear out the commands in your current CLI window</li>
+<li><p>name of root is represented by a slash: /</p></li>
+<li><p>home directory is represented by a tilde: ~</p></li>
+<li><p>pwd print working directory</p></li>
+<li><p>recipe: command -flags arguments</p></li>
+<li><p>clear: clear out the commands in your current CLI window</p></li>
 <li><p>ls lists files and folders in the current directory</p>
--a lists hidden and unhidden files and folders
+<p>-a lists hidden and unhidden files and folders</p>
 <ul>
 <li>al lists details for hidden and unhidden files and folders</li>
 </ul></li>
@@ -606,8 +612,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>cd takes as an argument the directory you want to visit</p>
 <p>cd with no argument takes you to your home directory</p>
 <p>cd .. allows you to chnage directory to one level above your current directory</p></li>
-<li>mkdir stands for “make directory”</li>
-<li>touch creates an empty file</li>
+<li><p>mkdir stands for “make directory”</p></li>
+<li><p>touch creates an empty file</p></li>
 <li><p>cp stands for “copy”</p>
 <p>cp takes as its first argument a file, and as its second argument the path to where you want the file to be copied</p>
 <p>cp can also be used for copying the contents of directories, but you must use the -r flag</p></li>
@@ -616,7 +622,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>mv stands for “move”</p>
 <p>move files between directories</p>
 <p>use mv to rename files</p></li>
-<li>echo will print whatever arguments you provide</li>
+<li><p>echo will print whatever arguments you provide</p></li>
 <li><p>date will print today’s date</p></li>
 </ul>
 </div>
@@ -706,11 +712,11 @@ $ exit # 退出</code></pre>
 </div>
 <div id="获得帮助" class="section level3">
 <h3><span class="header-section-number">2.7.2</span> 获得帮助</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">help</span>()</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">?command</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co"># 提问给出以下信息</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">version</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">str</span>(.Platform)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tool.html#cb2-1"></a><span class="kw">help</span>()</span>
+<span id="cb2-2"><a href="tool.html#cb2-2"></a>?command</span>
+<span id="cb2-3"><a href="tool.html#cb2-3"></a><span class="co"># 提问给出以下信息</span></span>
+<span id="cb2-4"><a href="tool.html#cb2-4"></a>version</span>
+<span id="cb2-5"><a href="tool.html#cb2-5"></a><span class="kw">str</span>(.Platform)</span></code></pre></div>
 </div>
 <div id="数据类型及基本运算" class="section level3">
 <h3><span class="header-section-number">2.7.3</span> 数据类型及基本运算</h3>
@@ -731,7 +737,7 @@ $ exit # 退出</code></pre>
 <li>变量名开头不能是数字和. 大小写敏感 下划线不要出现在名字里 分割用. 变量名中不能有空格</li>
 <li>保留字符</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ot">FALSE</span> <span class="ot">Inf</span> <span class="ot">NA</span> <span class="ot">NaN</span> <span class="ot">NULL</span> <span class="ot">TRUE</span> <span class="cf">break</span> <span class="cf">else</span> <span class="cf">for</span> <span class="cf">function</span> <span class="cf">if</span> <span class="cf">in</span> <span class="cf">next</span> <span class="cf">repeat</span> <span class="cf">while</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="tool.html#cb3-1"></a><span class="ot">FALSE</span> <span class="ot">Inf</span> <span class="ot">NA</span> <span class="ot">NaN</span> <span class="ot">NULL</span> <span class="ot">TRUE</span> <span class="cf">break</span> <span class="cf">else</span> <span class="cf">for</span> <span class="cf">function</span> <span class="cf">if</span> <span class="cf">in</span> <span class="cf">next</span> <span class="cf">repeat</span> <span class="cf">while</span></span></code></pre></div>
 <ul>
 <li>清空<code>rm(list = ls())</code></li>
 <li>矩阵
@@ -779,11 +785,11 @@ $ exit # 退出</code></pre>
 <li>向量操作 <code>union</code> 并集 <code>intersect</code> 交集 <code>setdiff</code> 除了交集的部分</li>
 <li><code>rep</code> 用向量循环生成向量</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span> <span class="co"># puts c(1,2,3,4) into x</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">i &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">4</span>) <span class="co"># puts c(2,2,2,2) into i</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">y &lt;-<span class="st"> </span><span class="kw">rep</span>(x, <span class="dv">2</span>) <span class="co"># puts c(1,2,3,4,1,2,3,4) into y</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">z &lt;-<span class="st"> </span><span class="kw">rep</span>(x, i) <span class="co"># puts c(1,1,2,2,3,3,4,4) into z</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">w &lt;-<span class="st"> </span><span class="kw">rep</span>(x, x) <span class="co"># puts c(1,2,2,3,3,3,4,4,4,4) into w</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tool.html#cb4-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span> <span class="co"># puts c(1,2,3,4) into x</span></span>
+<span id="cb4-2"><a href="tool.html#cb4-2"></a>i &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">4</span>) <span class="co"># puts c(2,2,2,2) into i</span></span>
+<span id="cb4-3"><a href="tool.html#cb4-3"></a>y &lt;-<span class="st"> </span><span class="kw">rep</span>(x, <span class="dv">2</span>) <span class="co"># puts c(1,2,3,4,1,2,3,4) into y</span></span>
+<span id="cb4-4"><a href="tool.html#cb4-4"></a>z &lt;-<span class="st"> </span><span class="kw">rep</span>(x, i) <span class="co"># puts c(1,1,2,2,3,3,4,4) into z</span></span>
+<span id="cb4-5"><a href="tool.html#cb4-5"></a>w &lt;-<span class="st"> </span><span class="kw">rep</span>(x, x) <span class="co"># puts c(1,2,2,3,3,3,4,4,4,4) into w</span></span></code></pre></div>
 <ul>
 <li>整型变量后面加上L x&lt;-10L</li>
 <li>Inf代表1/0 同样1/Inf运算结果为0</li>
@@ -811,16 +817,16 @@ $ exit # 退出</code></pre>
 <ul>
 <li>设定工作目录与数据存储目录</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;data&quot;</span>)) {</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">    <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="tool.html#cb5-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;data&quot;</span>)) {</span>
+<span id="cb5-2"><a href="tool.html#cb5-2"></a>    <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span>
+<span id="cb5-3"><a href="tool.html#cb5-3"></a>}</span></code></pre></div>
 <ul>
 <li>url下载与时间记录</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">fileUrl &lt;-<span class="st"> &quot;yoururl&quot;</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">download.file</span>(fileUrl, <span class="dt">destfile =</span> <span class="st">&quot;./data/XXX.csv&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;curl&quot;</span>)</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">list.files</span>(<span class="st">&quot;./data&quot;</span>)</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">dateDownloaded &lt;-<span class="st"> </span><span class="kw">date</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="tool.html#cb6-1"></a>fileUrl &lt;-<span class="st"> &quot;yoururl&quot;</span></span>
+<span id="cb6-2"><a href="tool.html#cb6-2"></a><span class="kw">download.file</span>(fileUrl, <span class="dt">destfile =</span> <span class="st">&quot;./data/XXX.csv&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;curl&quot;</span>)</span>
+<span id="cb6-3"><a href="tool.html#cb6-3"></a><span class="kw">list.files</span>(<span class="st">&quot;./data&quot;</span>)</span>
+<span id="cb6-4"><a href="tool.html#cb6-4"></a>dateDownloaded &lt;-<span class="st"> </span><span class="kw">date</span>()</span></code></pre></div>
 </div>
 <div id="截取数据" class="section level3">
 <h3><span class="header-section-number">2.7.6</span> 截取数据</h3>
@@ -847,9 +853,9 @@ $ exit # 退出</code></pre>
 <li>排序数据框(多向量)用<code>order</code></li>
 <li><a href="http://plyr.had.co.nz/09-user/">plyl包</a>排序</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">library</span>(plyr)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">arrange</span>(X,var1)</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="kw">arrange</span>(X,<span class="kw">desc</span>(var1))</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="tool.html#cb7-1"></a><span class="kw">library</span>(plyr)</span>
+<span id="cb7-2"><a href="tool.html#cb7-2"></a><span class="kw">arrange</span>(X,var1)</span>
+<span id="cb7-3"><a href="tool.html#cb7-3"></a><span class="kw">arrange</span>(X,<span class="kw">desc</span>(var1))</span></code></pre></div>
 </div>
 <div id="读取数据" class="section level3">
 <h3><span class="header-section-number">2.7.7</span> 读取数据</h3>
@@ -864,15 +870,15 @@ $ exit # 退出</code></pre>
 <li>大数据读取提速
 <ul>
 <li>计算内存</li>
-<li><code>comment.char = &quot;&quot;</code> 不扫描注释</li>
+<li><code>comment.char = ""</code> 不扫描注释</li>
 <li>设定<code>nrows</code></li>
 <li>设定<code>colClasses</code></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">initial &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>, <span class="dt">nrows =</span> <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">classes &lt;-<span class="st"> </span><span class="kw">sapply</span>(initial, class)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">tabAll &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>,</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">                     <span class="dt">colClasses =</span> classes)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="tool.html#cb8-1"></a>initial &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>, <span class="dt">nrows =</span> <span class="dv">100</span>)</span>
+<span id="cb8-2"><a href="tool.html#cb8-2"></a>classes &lt;-<span class="st"> </span><span class="kw">sapply</span>(initial, class)</span>
+<span id="cb8-3"><a href="tool.html#cb8-3"></a>tabAll &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>,</span>
+<span id="cb8-4"><a href="tool.html#cb8-4"></a>                     <span class="dt">colClasses =</span> classes)</span></code></pre></div>
 <ul>
 <li>使用<code>connections</code>与<code>file</code>等保存外部文件指向</li>
 </ul>
@@ -880,7 +886,7 @@ $ exit # 退出</code></pre>
 <h4><span class="header-section-number">2.7.7.1</span> 读取本地文件</h4>
 <ul>
 <li><code>read.table</code></li>
-<li><code>read.csv</code> 默认<code>sep=&quot;,&quot;, header=TRUE</code></li>
+<li><code>read.csv</code> 默认<code>sep=",", header=TRUE</code></li>
 <li><code>quote</code> 设定引用</li>
 <li><code>na.strings</code> 设定缺失值字符</li>
 <li><code>nrows</code> 设定读取字段</li>
@@ -892,20 +898,20 @@ $ exit # 退出</code></pre>
 <ul>
 <li>xlsx包</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">library</span>(xlsx)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">cameraData &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&quot;./data/cameras.xlsx&quot;</span>,<span class="dt">sheetIndex=</span><span class="dv">1</span>,<span class="dt">header=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw">head</span>(cameraData)</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co"># read.xlsx2更快不过选行读取时会不稳定</span></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co"># 支持底层读取 如字体等</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="tool.html#cb9-1"></a><span class="kw">library</span>(xlsx)</span>
+<span id="cb9-2"><a href="tool.html#cb9-2"></a>cameraData &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&quot;./data/cameras.xlsx&quot;</span>,<span class="dt">sheetIndex=</span><span class="dv">1</span>,<span class="dt">header=</span><span class="ot">TRUE</span>)</span>
+<span id="cb9-3"><a href="tool.html#cb9-3"></a><span class="kw">head</span>(cameraData)</span>
+<span id="cb9-4"><a href="tool.html#cb9-4"></a><span class="co"># read.xlsx2更快不过选行读取时会不稳定</span></span>
+<span id="cb9-5"><a href="tool.html#cb9-5"></a><span class="co"># 支持底层读取 如字体等</span></span></code></pre></div>
 <ul>
 <li>XLConnect包</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(XLConnect)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">wb &lt;-<span class="st"> </span><span class="kw">loadWorkbook</span>(<span class="st">&quot;XLConnectExample1.xlsx&quot;</span>, <span class="dt">create =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="kw">createSheet</span>(wb, <span class="dt">name =</span> <span class="st">&quot;chickSheet&quot;</span>)</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="kw">writeWorksheet</span>(wb, ChickWeight, <span class="dt">sheet =</span> <span class="st">&quot;chickSheet&quot;</span>, <span class="dt">startRow =</span> <span class="dv">3</span>, <span class="dt">startCol =</span> <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw">saveWorkbook</span>(wb)</a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co"># 支持区域操作 生成报告 图片等</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="tool.html#cb10-1"></a><span class="kw">library</span>(XLConnect)</span>
+<span id="cb10-2"><a href="tool.html#cb10-2"></a>wb &lt;-<span class="st"> </span><span class="kw">loadWorkbook</span>(<span class="st">&quot;XLConnectExample1.xlsx&quot;</span>, <span class="dt">create =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb10-3"><a href="tool.html#cb10-3"></a><span class="kw">createSheet</span>(wb, <span class="dt">name =</span> <span class="st">&quot;chickSheet&quot;</span>)</span>
+<span id="cb10-4"><a href="tool.html#cb10-4"></a><span class="kw">writeWorksheet</span>(wb, ChickWeight, <span class="dt">sheet =</span> <span class="st">&quot;chickSheet&quot;</span>, <span class="dt">startRow =</span> <span class="dv">3</span>, <span class="dt">startCol =</span> <span class="dv">4</span>)</span>
+<span id="cb10-5"><a href="tool.html#cb10-5"></a><span class="kw">saveWorkbook</span>(wb)</span>
+<span id="cb10-6"><a href="tool.html#cb10-6"></a><span class="co"># 支持区域操作 生成报告 图片等</span></span></code></pre></div>
 </div>
 <div id="读取xml文件" class="section level4">
 <h4><span class="header-section-number">2.7.7.3</span> 读取XML文件</h4>
@@ -915,18 +921,18 @@ $ exit # 退出</code></pre>
 <li>形式包括标签 元素 属性等</li>
 <li>XML包</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(XML)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">fileUrl &lt;-<span class="st"> &quot;http://www.w3schools.com/xml/simple.xml&quot;</span></a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="co"># 读取xml结构</span></a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">doc &lt;-<span class="st"> </span><span class="kw">xmlTreeParse</span>(fileUrl,<span class="dt">useInternal=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co"># 提取节点</span></a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">rootNode &lt;-<span class="st"> </span><span class="kw">xmlRoot</span>(doc)</a>
-<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co"># 提取根节点名</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="kw">xmlName</span>(rootNode)</a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co"># 提取子节点名</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="kw">names</span>(rootNode) </a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co"># 提取节点数值</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="kw">xmlSApply</span>(rootNode,xmlValue)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="tool.html#cb11-1"></a><span class="kw">library</span>(XML)</span>
+<span id="cb11-2"><a href="tool.html#cb11-2"></a>fileUrl &lt;-<span class="st"> &quot;http://www.w3schools.com/xml/simple.xml&quot;</span></span>
+<span id="cb11-3"><a href="tool.html#cb11-3"></a><span class="co"># 读取xml结构</span></span>
+<span id="cb11-4"><a href="tool.html#cb11-4"></a>doc &lt;-<span class="st"> </span><span class="kw">xmlTreeParse</span>(fileUrl,<span class="dt">useInternal=</span><span class="ot">TRUE</span>)</span>
+<span id="cb11-5"><a href="tool.html#cb11-5"></a><span class="co"># 提取节点</span></span>
+<span id="cb11-6"><a href="tool.html#cb11-6"></a>rootNode &lt;-<span class="st"> </span><span class="kw">xmlRoot</span>(doc)</span>
+<span id="cb11-7"><a href="tool.html#cb11-7"></a><span class="co"># 提取根节点名</span></span>
+<span id="cb11-8"><a href="tool.html#cb11-8"></a><span class="kw">xmlName</span>(rootNode)</span>
+<span id="cb11-9"><a href="tool.html#cb11-9"></a><span class="co"># 提取子节点名</span></span>
+<span id="cb11-10"><a href="tool.html#cb11-10"></a><span class="kw">names</span>(rootNode) </span>
+<span id="cb11-11"><a href="tool.html#cb11-11"></a><span class="co"># 提取节点数值</span></span>
+<span id="cb11-12"><a href="tool.html#cb11-12"></a><span class="kw">xmlSApply</span>(rootNode,xmlValue)</span></code></pre></div>
 <ul>
 <li>XPath XML的一种查询语法
 <ul>
@@ -936,8 +942,8 @@ $ exit # 退出</code></pre>
 <li>node<span class="citation">[@attr-name='bob']</span> 属性名为bob的节点</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># 提取节点下属性名为name的数值</span></a>
-<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">xpathSApply</span>(rootNode,<span class="st">&quot;//name&quot;</span>,xmlValue)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="tool.html#cb12-1"></a><span class="co"># 提取节点下属性名为name的数值</span></span>
+<span id="cb12-2"><a href="tool.html#cb12-2"></a><span class="kw">xpathSApply</span>(rootNode,<span class="st">&quot;//name&quot;</span>,xmlValue)</span></code></pre></div>
 </div>
 <div id="读取json文件" class="section level4">
 <h4><span class="header-section-number">2.7.7.4</span> 读取json文件</h4>
@@ -945,15 +951,15 @@ $ exit # 退出</code></pre>
 <li>js对象符号 结构化 常作为API输出格式</li>
 <li>jsonlite包</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">library</span>(jsonlite)</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co"># 读取json文件</span></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">jsonData &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(<span class="st">&quot;https://api.github.com/users/jtleek/repos&quot;</span>)</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="co"># 列出文件名</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="kw">names</span>(jsonData)</a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"><span class="co"># 可嵌套截取</span></a>
-<a class="sourceLine" id="cb13-7" data-line-number="7">jsonData<span class="op">$</span>owner<span class="op">$</span>login</a>
-<a class="sourceLine" id="cb13-8" data-line-number="8"><span class="co"># 可将R对象写成json文件</span></a>
-<a class="sourceLine" id="cb13-9" data-line-number="9">myjson &lt;-<span class="st"> </span><span class="kw">toJSON</span>(iris, <span class="dt">pretty=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tool.html#cb13-1"></a><span class="kw">library</span>(jsonlite)</span>
+<span id="cb13-2"><a href="tool.html#cb13-2"></a><span class="co"># 读取json文件</span></span>
+<span id="cb13-3"><a href="tool.html#cb13-3"></a>jsonData &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(<span class="st">&quot;https://api.github.com/users/jtleek/repos&quot;</span>)</span>
+<span id="cb13-4"><a href="tool.html#cb13-4"></a><span class="co"># 列出文件名</span></span>
+<span id="cb13-5"><a href="tool.html#cb13-5"></a><span class="kw">names</span>(jsonData)</span>
+<span id="cb13-6"><a href="tool.html#cb13-6"></a><span class="co"># 可嵌套截取</span></span>
+<span id="cb13-7"><a href="tool.html#cb13-7"></a>jsonData<span class="op">$</span>owner<span class="op">$</span>login</span>
+<span id="cb13-8"><a href="tool.html#cb13-8"></a><span class="co"># 可将R对象写成json文件</span></span>
+<span id="cb13-9"><a href="tool.html#cb13-9"></a>myjson &lt;-<span class="st"> </span><span class="kw">toJSON</span>(iris, <span class="dt">pretty=</span><span class="ot">TRUE</span>)</span></code></pre></div>
 </div>
 <div id="读取mysql数据库" class="section level4">
 <h4><span class="header-section-number">2.7.7.5</span> 读取MySQL数据库</h4>
@@ -965,23 +971,23 @@ $ exit # 退出</code></pre>
 <li><a href="http://www.r-bloggers.com/mysql-and-r/">指南</a></li>
 <li>RMySQL包</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(RMySQL)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># 读取数据库</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">ucscDb &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">MySQL</span>(),<span class="dt">user=</span><span class="st">&quot;genome&quot;</span>, </a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">                    <span class="dt">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">result &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(ucscDb,<span class="st">&quot;show databases;&quot;</span>); </a>
-<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co"># 断开链接</span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="kw">dbDisconnect</span>(ucscDb);</a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co"># 读取指定数据库</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9">hg19 &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">MySQL</span>(),<span class="dt">user=</span><span class="st">&quot;genome&quot;</span>, <span class="dt">db=</span><span class="st">&quot;hg19&quot;</span>,</a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">                    <span class="dt">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</a>
-<a class="sourceLine" id="cb14-11" data-line-number="11">allTables &lt;-<span class="st"> </span><span class="kw">dbListTables</span>(hg19)</a>
-<a class="sourceLine" id="cb14-12" data-line-number="12"><span class="kw">length</span>(allTables)</a>
-<a class="sourceLine" id="cb14-13" data-line-number="13"><span class="co"># mysql语句查询</span></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="kw">dbGetQuery</span>(hg19, <span class="st">&quot;select count(*) from affyU133Plus2&quot;</span>)</a>
-<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co"># 选择子集</span></a>
-<a class="sourceLine" id="cb14-16" data-line-number="16">query &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(hg19, <span class="st">&quot;select * from affyU133Plus2 where misMatches between 1 and 3&quot;</span>)</a>
-<a class="sourceLine" id="cb14-17" data-line-number="17">affyMis &lt;-<span class="st"> </span><span class="kw">fetch</span>(query); <span class="kw">quantile</span>(affyMis<span class="op">$</span>misMatches)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="tool.html#cb14-1"></a><span class="kw">library</span>(RMySQL)</span>
+<span id="cb14-2"><a href="tool.html#cb14-2"></a><span class="co"># 读取数据库</span></span>
+<span id="cb14-3"><a href="tool.html#cb14-3"></a>ucscDb &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">MySQL</span>(),<span class="dt">user=</span><span class="st">&quot;genome&quot;</span>, </span>
+<span id="cb14-4"><a href="tool.html#cb14-4"></a>                    <span class="dt">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</span>
+<span id="cb14-5"><a href="tool.html#cb14-5"></a>result &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(ucscDb,<span class="st">&quot;show databases;&quot;</span>); </span>
+<span id="cb14-6"><a href="tool.html#cb14-6"></a><span class="co"># 断开链接</span></span>
+<span id="cb14-7"><a href="tool.html#cb14-7"></a><span class="kw">dbDisconnect</span>(ucscDb);</span>
+<span id="cb14-8"><a href="tool.html#cb14-8"></a><span class="co"># 读取指定数据库</span></span>
+<span id="cb14-9"><a href="tool.html#cb14-9"></a>hg19 &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">MySQL</span>(),<span class="dt">user=</span><span class="st">&quot;genome&quot;</span>, <span class="dt">db=</span><span class="st">&quot;hg19&quot;</span>,</span>
+<span id="cb14-10"><a href="tool.html#cb14-10"></a>                    <span class="dt">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</span>
+<span id="cb14-11"><a href="tool.html#cb14-11"></a>allTables &lt;-<span class="st"> </span><span class="kw">dbListTables</span>(hg19)</span>
+<span id="cb14-12"><a href="tool.html#cb14-12"></a><span class="kw">length</span>(allTables)</span>
+<span id="cb14-13"><a href="tool.html#cb14-13"></a><span class="co"># mysql语句查询</span></span>
+<span id="cb14-14"><a href="tool.html#cb14-14"></a><span class="kw">dbGetQuery</span>(hg19, <span class="st">&quot;select count(*) from affyU133Plus2&quot;</span>)</span>
+<span id="cb14-15"><a href="tool.html#cb14-15"></a><span class="co"># 选择子集</span></span>
+<span id="cb14-16"><a href="tool.html#cb14-16"></a>query &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(hg19, <span class="st">&quot;select * from affyU133Plus2 where misMatches between 1 and 3&quot;</span>)</span>
+<span id="cb14-17"><a href="tool.html#cb14-17"></a>affyMis &lt;-<span class="st"> </span><span class="kw">fetch</span>(query); <span class="kw">quantile</span>(affyMis<span class="op">$</span>misMatches)</span></code></pre></div>
 </div>
 <div id="读取hdf5数据" class="section level4">
 <h4><span class="header-section-number">2.7.7.6</span> 读取HDF5数据</h4>
@@ -989,25 +995,25 @@ $ exit # 退出</code></pre>
 <li>分层分组读取大量数据的格式</li>
 <li>rhdf5包</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(rhdf5)</a>
-<a class="sourceLine" id="cb15-2" data-line-number="2">created =<span class="st"> </span><span class="kw">h5createFile</span>(<span class="st">&quot;example.h5&quot;</span>)</a>
-<a class="sourceLine" id="cb15-3" data-line-number="3">created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo&quot;</span>)</a>
-<a class="sourceLine" id="cb15-4" data-line-number="4">created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;baa&quot;</span>)</a>
-<a class="sourceLine" id="cb15-5" data-line-number="5">created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa&quot;</span>)</a>
-<a class="sourceLine" id="cb15-6" data-line-number="6"><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</a>
-<a class="sourceLine" id="cb15-7" data-line-number="7">A =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dt">nr=</span><span class="dv">5</span>,<span class="dt">nc=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="kw">h5write</span>(A, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</a>
-<a class="sourceLine" id="cb15-9" data-line-number="9">B =<span class="st"> </span><span class="kw">array</span>(<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">2.0</span>,<span class="dt">by=</span><span class="fl">0.1</span>),<span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb15-10" data-line-number="10"><span class="kw">attr</span>(B, <span class="st">&quot;scale&quot;</span>) &lt;-<span class="st"> &quot;liter&quot;</span></a>
-<a class="sourceLine" id="cb15-11" data-line-number="11"><span class="kw">h5write</span>(B, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</a>
-<a class="sourceLine" id="cb15-12" data-line-number="12"><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</a>
-<a class="sourceLine" id="cb15-13" data-line-number="13">df =<span class="st"> </span><span class="kw">data.frame</span>(1L<span class="op">:</span>5L,<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">length.out=</span><span class="dv">5</span>),</a>
-<a class="sourceLine" id="cb15-14" data-line-number="14">  <span class="kw">c</span>(<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;cde&quot;</span>,<span class="st">&quot;fghi&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;s&quot;</span>), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb15-15" data-line-number="15"><span class="kw">h5write</span>(df, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</a>
-<a class="sourceLine" id="cb15-16" data-line-number="16"><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</a>
-<a class="sourceLine" id="cb15-17" data-line-number="17">readA =<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</a>
-<a class="sourceLine" id="cb15-18" data-line-number="18">readB =<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</a>
-<a class="sourceLine" id="cb15-19" data-line-number="19">readdf=<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="tool.html#cb15-1"></a><span class="kw">library</span>(rhdf5)</span>
+<span id="cb15-2"><a href="tool.html#cb15-2"></a>created =<span class="st"> </span><span class="kw">h5createFile</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb15-3"><a href="tool.html#cb15-3"></a>created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo&quot;</span>)</span>
+<span id="cb15-4"><a href="tool.html#cb15-4"></a>created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;baa&quot;</span>)</span>
+<span id="cb15-5"><a href="tool.html#cb15-5"></a>created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa&quot;</span>)</span>
+<span id="cb15-6"><a href="tool.html#cb15-6"></a><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb15-7"><a href="tool.html#cb15-7"></a>A =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dt">nr=</span><span class="dv">5</span>,<span class="dt">nc=</span><span class="dv">2</span>)</span>
+<span id="cb15-8"><a href="tool.html#cb15-8"></a><span class="kw">h5write</span>(A, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</span>
+<span id="cb15-9"><a href="tool.html#cb15-9"></a>B =<span class="st"> </span><span class="kw">array</span>(<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">2.0</span>,<span class="dt">by=</span><span class="fl">0.1</span>),<span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb15-10"><a href="tool.html#cb15-10"></a><span class="kw">attr</span>(B, <span class="st">&quot;scale&quot;</span>) &lt;-<span class="st"> &quot;liter&quot;</span></span>
+<span id="cb15-11"><a href="tool.html#cb15-11"></a><span class="kw">h5write</span>(B, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</span>
+<span id="cb15-12"><a href="tool.html#cb15-12"></a><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb15-13"><a href="tool.html#cb15-13"></a>df =<span class="st"> </span><span class="kw">data.frame</span>(1L<span class="op">:</span>5L,<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">length.out=</span><span class="dv">5</span>),</span>
+<span id="cb15-14"><a href="tool.html#cb15-14"></a>  <span class="kw">c</span>(<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;cde&quot;</span>,<span class="st">&quot;fghi&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;s&quot;</span>), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span>
+<span id="cb15-15"><a href="tool.html#cb15-15"></a><span class="kw">h5write</span>(df, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</span>
+<span id="cb15-16"><a href="tool.html#cb15-16"></a><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb15-17"><a href="tool.html#cb15-17"></a>readA =<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</span>
+<span id="cb15-18"><a href="tool.html#cb15-18"></a>readB =<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</span>
+<span id="cb15-19"><a href="tool.html#cb15-19"></a>readdf=<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</span></code></pre></div>
 </div>
 <div id="读取网页数据" class="section level4">
 <h4><span class="header-section-number">2.7.7.7</span> 读取网页数据</h4>
@@ -1016,25 +1022,25 @@ $ exit # 退出</code></pre>
 <li>读完了一定关链接</li>
 <li>httr包</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">con =<span class="st"> </span><span class="kw">url</span>(<span class="st">&quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span>)</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2">htmlCode =<span class="st"> </span><span class="kw">readLines</span>(con)</a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="kw">close</span>(con)</a>
-<a class="sourceLine" id="cb16-4" data-line-number="4">htmlCode</a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="kw">library</span>(XML)</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6">url &lt;-<span class="st"> &quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span></a>
-<a class="sourceLine" id="cb16-7" data-line-number="7">html &lt;-<span class="st"> </span><span class="kw">htmlTreeParse</span>(url, <span class="dt">useInternalNodes=</span>T)</a>
-<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="kw">xpathSApply</span>(html, <span class="st">&quot;//title&quot;</span>, xmlValue)</a>
-<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="kw">library</span>(httr)</a>
-<a class="sourceLine" id="cb16-10" data-line-number="10">html2 =<span class="st"> </span><span class="kw">GET</span>(url)</a>
-<a class="sourceLine" id="cb16-11" data-line-number="11">content2 =<span class="st"> </span><span class="kw">content</span>(html2,<span class="dt">as=</span><span class="st">&quot;text&quot;</span>)</a>
-<a class="sourceLine" id="cb16-12" data-line-number="12">parsedHtml =<span class="st"> </span><span class="kw">htmlParse</span>(content2,<span class="dt">asText=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb16-13" data-line-number="13"><span class="kw">xpathSApply</span>(parsedHtml, <span class="st">&quot;//title&quot;</span>, xmlValue)</a>
-<a class="sourceLine" id="cb16-14" data-line-number="14"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>)</a>
-<a class="sourceLine" id="cb16-15" data-line-number="15"><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>,</a>
-<a class="sourceLine" id="cb16-16" data-line-number="16">    <span class="kw">authenticate</span>(<span class="st">&quot;user&quot;</span>,<span class="st">&quot;passwd&quot;</span>))</a>
-<a class="sourceLine" id="cb16-17" data-line-number="17">google =<span class="st"> </span><span class="kw">handle</span>(<span class="st">&quot;http://google.com&quot;</span>)</a>
-<a class="sourceLine" id="cb16-18" data-line-number="18">pg1 =<span class="st"> </span><span class="kw">GET</span>(<span class="dt">handle=</span>google,<span class="dt">path=</span><span class="st">&quot;/&quot;</span>)</a>
-<a class="sourceLine" id="cb16-19" data-line-number="19">pg2 =<span class="st"> </span><span class="kw">GET</span>(<span class="dt">handle=</span>google,<span class="dt">path=</span><span class="st">&quot;search&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="tool.html#cb16-1"></a>con =<span class="st"> </span><span class="kw">url</span>(<span class="st">&quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span>)</span>
+<span id="cb16-2"><a href="tool.html#cb16-2"></a>htmlCode =<span class="st"> </span><span class="kw">readLines</span>(con)</span>
+<span id="cb16-3"><a href="tool.html#cb16-3"></a><span class="kw">close</span>(con)</span>
+<span id="cb16-4"><a href="tool.html#cb16-4"></a>htmlCode</span>
+<span id="cb16-5"><a href="tool.html#cb16-5"></a><span class="kw">library</span>(XML)</span>
+<span id="cb16-6"><a href="tool.html#cb16-6"></a>url &lt;-<span class="st"> &quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span></span>
+<span id="cb16-7"><a href="tool.html#cb16-7"></a>html &lt;-<span class="st"> </span><span class="kw">htmlTreeParse</span>(url, <span class="dt">useInternalNodes=</span>T)</span>
+<span id="cb16-8"><a href="tool.html#cb16-8"></a><span class="kw">xpathSApply</span>(html, <span class="st">&quot;//title&quot;</span>, xmlValue)</span>
+<span id="cb16-9"><a href="tool.html#cb16-9"></a><span class="kw">library</span>(httr)</span>
+<span id="cb16-10"><a href="tool.html#cb16-10"></a>html2 =<span class="st"> </span><span class="kw">GET</span>(url)</span>
+<span id="cb16-11"><a href="tool.html#cb16-11"></a>content2 =<span class="st"> </span><span class="kw">content</span>(html2,<span class="dt">as=</span><span class="st">&quot;text&quot;</span>)</span>
+<span id="cb16-12"><a href="tool.html#cb16-12"></a>parsedHtml =<span class="st"> </span><span class="kw">htmlParse</span>(content2,<span class="dt">asText=</span><span class="ot">TRUE</span>)</span>
+<span id="cb16-13"><a href="tool.html#cb16-13"></a><span class="kw">xpathSApply</span>(parsedHtml, <span class="st">&quot;//title&quot;</span>, xmlValue)</span>
+<span id="cb16-14"><a href="tool.html#cb16-14"></a><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>)</span>
+<span id="cb16-15"><a href="tool.html#cb16-15"></a><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>,</span>
+<span id="cb16-16"><a href="tool.html#cb16-16"></a>    <span class="kw">authenticate</span>(<span class="st">&quot;user&quot;</span>,<span class="st">&quot;passwd&quot;</span>))</span>
+<span id="cb16-17"><a href="tool.html#cb16-17"></a>google =<span class="st"> </span><span class="kw">handle</span>(<span class="st">&quot;http://google.com&quot;</span>)</span>
+<span id="cb16-18"><a href="tool.html#cb16-18"></a>pg1 =<span class="st"> </span><span class="kw">GET</span>(<span class="dt">handle=</span>google,<span class="dt">path=</span><span class="st">&quot;/&quot;</span>)</span>
+<span id="cb16-19"><a href="tool.html#cb16-19"></a>pg2 =<span class="st"> </span><span class="kw">GET</span>(<span class="dt">handle=</span>google,<span class="dt">path=</span><span class="st">&quot;search&quot;</span>)</span></code></pre></div>
 </div>
 <div id="读取api" class="section level4">
 <h4><span class="header-section-number">2.7.7.8</span> 读取API</h4>
@@ -1042,14 +1048,14 @@ $ exit # 退出</code></pre>
 <li>通过接口授权后调用数据</li>
 <li>httr包</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">myapp =<span class="st"> </span><span class="kw">oauth_app</span>(<span class="st">&quot;twitter&quot;</span>,</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">                   <span class="dt">key=</span><span class="st">&quot;yourConsumerKeyHere&quot;</span>,<span class="dt">secret=</span><span class="st">&quot;yourConsumerSecretHere&quot;</span>)</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">sig =<span class="st"> </span><span class="kw">sign_oauth1.0</span>(myapp,</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">                     <span class="dt">token =</span> <span class="st">&quot;yourTokenHere&quot;</span>,</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">                      <span class="dt">token_secret =</span> <span class="st">&quot;yourTokenSecretHere&quot;</span>)</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6">homeTL =<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;https://api.twitter.com/1.1/statuses/home_timeline.json&quot;</span>, sig)</a>
-<a class="sourceLine" id="cb17-7" data-line-number="7">json1 =<span class="st"> </span><span class="kw">content</span>(homeTL)</a>
-<a class="sourceLine" id="cb17-8" data-line-number="8">json2 =<span class="st"> </span>jsonlite<span class="op">::</span><span class="kw">fromJSON</span>(<span class="kw">toJSON</span>(json1))</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="tool.html#cb17-1"></a>myapp =<span class="st"> </span><span class="kw">oauth_app</span>(<span class="st">&quot;twitter&quot;</span>,</span>
+<span id="cb17-2"><a href="tool.html#cb17-2"></a>                   <span class="dt">key=</span><span class="st">&quot;yourConsumerKeyHere&quot;</span>,<span class="dt">secret=</span><span class="st">&quot;yourConsumerSecretHere&quot;</span>)</span>
+<span id="cb17-3"><a href="tool.html#cb17-3"></a>sig =<span class="st"> </span><span class="kw">sign_oauth1.0</span>(myapp,</span>
+<span id="cb17-4"><a href="tool.html#cb17-4"></a>                     <span class="dt">token =</span> <span class="st">&quot;yourTokenHere&quot;</span>,</span>
+<span id="cb17-5"><a href="tool.html#cb17-5"></a>                      <span class="dt">token_secret =</span> <span class="st">&quot;yourTokenSecretHere&quot;</span>)</span>
+<span id="cb17-6"><a href="tool.html#cb17-6"></a>homeTL =<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;https://api.twitter.com/1.1/statuses/home_timeline.json&quot;</span>, sig)</span>
+<span id="cb17-7"><a href="tool.html#cb17-7"></a>json1 =<span class="st"> </span><span class="kw">content</span>(homeTL)</span>
+<span id="cb17-8"><a href="tool.html#cb17-8"></a>json2 =<span class="st"> </span>jsonlite<span class="op">::</span><span class="kw">fromJSON</span>(<span class="kw">toJSON</span>(json1))</span></code></pre></div>
 </div>
 <div id="读取其他资源" class="section level4">
 <h4><span class="header-section-number">2.7.7.9</span> 读取其他资源</h4>
@@ -1084,19 +1090,19 @@ $ exit # 退出</code></pre>
 <li><code>table</code> 按向量元素频数总结</li>
 <li><code>sum(is.na(data))</code> <code>any(is.na(data))</code> <code>all(data$x &gt; 0)</code> 异常值总结</li>
 <li><code>colSums(is.na(data))</code> 行列求和</li>
-<li><code>table(data$x %in% c(&quot;21212&quot;))</code>特定数值计数总结</li>
+<li><code>table(data$x %in% c("21212"))</code>特定数值计数总结</li>
 <li><code>xtabs</code> <code>ftable</code> 创建列联表</li>
-<li><code>print(object.size(fakeData),units=&quot;Mb&quot;)</code> 现实数据大小</li>
+<li><code>print(object.size(fakeData),units="Mb")</code> 现实数据大小</li>
 <li><code>cut</code> 通过设置<code>breaks</code>产生分类变量</li>
 <li>Hmisc包</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">library</span>(Hmisc)</a>
-<a class="sourceLine" id="cb18-2" data-line-number="2">data<span class="op">$</span>zipGroups =<span class="st"> </span><span class="kw">cut2</span>(data<span class="op">$</span>zipCode,<span class="dt">g=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw">table</span>(data<span class="op">$</span>zipGroups)</a>
-<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw">library</span>(plyr)</a>
-<a class="sourceLine" id="cb18-5" data-line-number="5"><span class="co"># mutate进行数据替换或生成</span></a>
-<a class="sourceLine" id="cb18-6" data-line-number="6">data2 =<span class="st"> </span><span class="kw">mutate</span>(data,<span class="dt">zipGroups=</span><span class="kw">cut2</span>(zipCode,<span class="dt">g=</span><span class="dv">4</span>))</a>
-<a class="sourceLine" id="cb18-7" data-line-number="7"><span class="kw">table</span>(data2<span class="op">$</span>zipGroups)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="tool.html#cb18-1"></a><span class="kw">library</span>(Hmisc)</span>
+<span id="cb18-2"><a href="tool.html#cb18-2"></a>data<span class="op">$</span>zipGroups =<span class="st"> </span><span class="kw">cut2</span>(data<span class="op">$</span>zipCode,<span class="dt">g=</span><span class="dv">4</span>)</span>
+<span id="cb18-3"><a href="tool.html#cb18-3"></a><span class="kw">table</span>(data<span class="op">$</span>zipGroups)</span>
+<span id="cb18-4"><a href="tool.html#cb18-4"></a><span class="kw">library</span>(plyr)</span>
+<span id="cb18-5"><a href="tool.html#cb18-5"></a><span class="co"># mutate进行数据替换或生成</span></span>
+<span id="cb18-6"><a href="tool.html#cb18-6"></a>data2 =<span class="st"> </span><span class="kw">mutate</span>(data,<span class="dt">zipGroups=</span><span class="kw">cut2</span>(zipCode,<span class="dt">g=</span><span class="dv">4</span>))</span>
+<span id="cb18-7"><a href="tool.html#cb18-7"></a><span class="kw">table</span>(data2<span class="op">$</span>zipGroups)</span></code></pre></div>
 </div>
 <div id="数据整理" class="section level3">
 <h3><span class="header-section-number">2.7.9</span> 数据整理</h3>
@@ -1163,23 +1169,23 @@ $ exit # 退出</code></pre>
 <li>通过<code>key</code>可指定因子变量并快速提取分组的行</li>
 <li>可在第二个参数是R表达式</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">DT[,<span class="kw">list</span>(<span class="kw">mean</span>(x),<span class="kw">sum</span>(z))]</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">DT[,<span class="kw">table</span>(y)]</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="tool.html#cb19-1"></a>DT[,<span class="kw">list</span>(<span class="kw">mean</span>(x),<span class="kw">sum</span>(z))]</span>
+<span id="cb19-2"><a href="tool.html#cb19-2"></a>DT[,<span class="kw">table</span>(y)]</span></code></pre></div>
 <ul>
 <li>可用<code>:</code>生成新变量 进行简单计算</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">DT[,w<span class="op">:</span><span class="er">=</span>z<span class="op">^</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb20-2" data-line-number="2">DT[,m<span class="op">:</span><span class="er">=</span><span class="st"> </span>{tmp &lt;-<span class="st"> </span>(x<span class="op">+</span>z); <span class="kw">log2</span>(tmp<span class="op">+</span><span class="dv">5</span>)}]</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="tool.html#cb20-1"></a>DT[,w<span class="op">:</span><span class="er">=</span>z<span class="op">^</span><span class="dv">2</span>]</span>
+<span id="cb20-2"><a href="tool.html#cb20-2"></a>DT[,m<span class="op">:</span><span class="er">=</span><span class="st"> </span>{tmp &lt;-<span class="st"> </span>(x<span class="op">+</span>z); <span class="kw">log2</span>(tmp<span class="op">+</span><span class="dv">5</span>)}]</span></code></pre></div>
 <ul>
 <li>进行数据条件截取</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">DT[,a<span class="op">:</span><span class="er">=</span>x<span class="op">&gt;</span><span class="dv">0</span>]</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">DT[,b<span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">mean</span>(x<span class="op">+</span>w),by=a]</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="tool.html#cb21-1"></a>DT[,a<span class="op">:</span><span class="er">=</span>x<span class="op">&gt;</span><span class="dv">0</span>]</span>
+<span id="cb21-2"><a href="tool.html#cb21-2"></a>DT[,b<span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">mean</span>(x<span class="op">+</span>w),by=a]</span></code></pre></div>
 <ul>
 <li>进行计数</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x=</span><span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="fl">1E5</span>, <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">DT[, .N, by=x]</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="tool.html#cb22-1"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x=</span><span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="fl">1E5</span>, <span class="ot">TRUE</span>))</span>
+<span id="cb22-2"><a href="tool.html#cb22-2"></a>DT[, .N, by=x]</span></code></pre></div>
 </div>
 <div id="文本处理" class="section level3">
 <h3><span class="header-section-number">2.7.11</span> 文本处理</h3>
@@ -1187,8 +1193,8 @@ $ exit # 退出</code></pre>
 <li>处理大小写<code>tolower</code> <code>toupper</code></li>
 <li>处理变量名<code>strsplit</code></li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">firstElement &lt;-<span class="st"> </span><span class="cf">function</span>(x){x[<span class="dv">1</span>]}</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="kw">sapply</span>(splitNames,firstElement)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="tool.html#cb23-1"></a>firstElement &lt;-<span class="st"> </span><span class="cf">function</span>(x){x[<span class="dv">1</span>]}</span>
+<span id="cb23-2"><a href="tool.html#cb23-2"></a><span class="kw">sapply</span>(splitNames,firstElement)</span></code></pre></div>
 <ul>
 <li>字符替换<code>sub</code> <code>gsub</code></li>
 <li>寻找变量<code>grep</code>(返回行号) <code>grepl</code>(返回逻辑值)</li>
@@ -1225,43 +1231,43 @@ $ exit # 退出</code></pre>
 <ul>
 <li><code>if else</code> 条件</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="cf">if</span>(<span class="op">&lt;</span>condition<span class="op">&gt;</span>) {</a>
-<a class="sourceLine" id="cb24-2" data-line-number="2">        <span class="co">## do something</span></a>
-<a class="sourceLine" id="cb24-3" data-line-number="3">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb24-4" data-line-number="4">        <span class="co">## do something else</span></a>
-<a class="sourceLine" id="cb24-5" data-line-number="5">}</a>
-<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="cf">if</span>(<span class="op">&lt;</span>condition1<span class="op">&gt;</span>) {</a>
-<a class="sourceLine" id="cb24-7" data-line-number="7">        <span class="co">## do something</span></a>
-<a class="sourceLine" id="cb24-8" data-line-number="8">} <span class="cf">else</span> <span class="cf">if</span>(<span class="op">&lt;</span>condition2<span class="op">&gt;</span>)  {</a>
-<a class="sourceLine" id="cb24-9" data-line-number="9">        <span class="co">## do something different</span></a>
-<a class="sourceLine" id="cb24-10" data-line-number="10">} <span class="cf">else</span> {</a>
-<a class="sourceLine" id="cb24-11" data-line-number="11">        <span class="co">## do something different</span></a>
-<a class="sourceLine" id="cb24-12" data-line-number="12">}</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="tool.html#cb24-1"></a><span class="cf">if</span>(<span class="op">&lt;</span>condition<span class="op">&gt;</span>) {</span>
+<span id="cb24-2"><a href="tool.html#cb24-2"></a>        <span class="co">## do something</span></span>
+<span id="cb24-3"><a href="tool.html#cb24-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb24-4"><a href="tool.html#cb24-4"></a>        <span class="co">## do something else</span></span>
+<span id="cb24-5"><a href="tool.html#cb24-5"></a>}</span>
+<span id="cb24-6"><a href="tool.html#cb24-6"></a><span class="cf">if</span>(<span class="op">&lt;</span>condition1<span class="op">&gt;</span>) {</span>
+<span id="cb24-7"><a href="tool.html#cb24-7"></a>        <span class="co">## do something</span></span>
+<span id="cb24-8"><a href="tool.html#cb24-8"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="op">&lt;</span>condition2<span class="op">&gt;</span>)  {</span>
+<span id="cb24-9"><a href="tool.html#cb24-9"></a>        <span class="co">## do something different</span></span>
+<span id="cb24-10"><a href="tool.html#cb24-10"></a>} <span class="cf">else</span> {</span>
+<span id="cb24-11"><a href="tool.html#cb24-11"></a>        <span class="co">## do something different</span></span>
+<span id="cb24-12"><a href="tool.html#cb24-12"></a>}</span></code></pre></div>
 <ul>
 <li>`for‵ 执行固定次数的循环 嵌套不超过2层</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">        <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb25-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="tool.html#cb25-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</span>
+<span id="cb25-2"><a href="tool.html#cb25-2"></a>        <span class="kw">print</span>(i)</span>
+<span id="cb25-3"><a href="tool.html#cb25-3"></a>}</span></code></pre></div>
 <ul>
 <li><code>while</code> 条件为真执行循环 条件从左到右执行</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">count &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="cf">while</span>(count <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>) {</a>
-<a class="sourceLine" id="cb26-3" data-line-number="3">        <span class="kw">print</span>(count)</a>
-<a class="sourceLine" id="cb26-4" data-line-number="4">        count &lt;-<span class="st"> </span>count <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb26-5" data-line-number="5">}</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="tool.html#cb26-1"></a>count &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb26-2"><a href="tool.html#cb26-2"></a><span class="cf">while</span>(count <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>) {</span>
+<span id="cb26-3"><a href="tool.html#cb26-3"></a>        <span class="kw">print</span>(count)</span>
+<span id="cb26-4"><a href="tool.html#cb26-4"></a>        count &lt;-<span class="st"> </span>count <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb26-5"><a href="tool.html#cb26-5"></a>}</span></code></pre></div>
 <ul>
 <li><code>repeat</code> 执行无限循环 配合<code>break</code> 中断并跳出循环</li>
 <li><code>next</code> 跳出当前循环继续执行</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</a>
-<a class="sourceLine" id="cb27-2" data-line-number="2">        <span class="cf">if</span>(i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">20</span>) {</a>
-<a class="sourceLine" id="cb27-3" data-line-number="3">                <span class="co">## Skip the first 20 iterations</span></a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">                <span class="cf">next</span> </a>
-<a class="sourceLine" id="cb27-5" data-line-number="5">        }</a>
-<a class="sourceLine" id="cb27-6" data-line-number="6">        <span class="co">## Do something here</span></a>
-<a class="sourceLine" id="cb27-7" data-line-number="7">}</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="tool.html#cb27-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
+<span id="cb27-2"><a href="tool.html#cb27-2"></a>        <span class="cf">if</span>(i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">20</span>) {</span>
+<span id="cb27-3"><a href="tool.html#cb27-3"></a>                <span class="co">## Skip the first 20 iterations</span></span>
+<span id="cb27-4"><a href="tool.html#cb27-4"></a>                <span class="cf">next</span> </span>
+<span id="cb27-5"><a href="tool.html#cb27-5"></a>        }</span>
+<span id="cb27-6"><a href="tool.html#cb27-6"></a>        <span class="co">## Do something here</span></span>
+<span id="cb27-7"><a href="tool.html#cb27-7"></a>}</span></code></pre></div>
 <ul>
 <li><code>return</code> 退出函数</li>
 <li>避免使用无限循环 可用<code>apply</code>替代</li>
@@ -1269,9 +1275,9 @@ $ exit # 退出</code></pre>
 </div>
 <div id="函数" class="section level3">
 <h3><span class="header-section-number">2.7.13</span> 函数</h3>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">f &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="op">&lt;</span>arguments<span class="op">&gt;</span>) {</a>
-<a class="sourceLine" id="cb28-2" data-line-number="2">        <span class="co">## Do something interesting</span></a>
-<a class="sourceLine" id="cb28-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="tool.html#cb28-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="op">&lt;</span>arguments<span class="op">&gt;</span>) {</span>
+<span id="cb28-2"><a href="tool.html#cb28-2"></a>        <span class="co">## Do something interesting</span></span>
+<span id="cb28-3"><a href="tool.html#cb28-3"></a>}</span></code></pre></div>
 <ul>
 <li>函数中参数默认值可用<code>formals()</code>显示</li>
 <li>参数匹配
@@ -1429,26 +1435,26 @@ $ exit # 退出</code></pre>
 <li><code>rgb</code>产生三原色颜色 <code>alpha</code> 控制透明度</li>
 <li>绘图时用<code>col</code>调用调色盘颜色</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">pal &lt;-<span class="st"> </span><span class="kw">colorRamp</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">pal</span>(<span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tool.html#cb29-1"></a>pal &lt;-<span class="st"> </span><span class="kw">colorRamp</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb29-2"><a href="tool.html#cb29-2"></a><span class="kw">pal</span>(<span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]  255    0    0</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">pal</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="tool.html#cb31-1"></a><span class="kw">pal</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0  255</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">pal</span>(<span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="tool.html#cb33-1"></a><span class="kw">pal</span>(<span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]  128    0  128</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co">#####</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2">pal &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</a>
-<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw">pal</span>(<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="tool.html#cb35-1"></a><span class="co">#####</span></span>
+<span id="cb35-2"><a href="tool.html#cb35-2"></a>pal &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</span>
+<span id="cb35-3"><a href="tool.html#cb35-3"></a><span class="kw">pal</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;#FF0000&quot; &quot;#FFFF00&quot;</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1"><span class="kw">pal</span>(<span class="dv">10</span>)</a></code></pre></div>
-<pre><code>##  [1] &quot;#FF0000&quot; &quot;#FF1C00&quot; &quot;#FF3800&quot; &quot;#FF5500&quot; &quot;#FF7100&quot; &quot;#FF8D00&quot; &quot;#FFAA00&quot; &quot;#FFC600&quot; &quot;#FFE200&quot;
-## [10] &quot;#FFFF00&quot;</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="co">#####</span></a>
-<a class="sourceLine" id="cb39-2" data-line-number="2"><span class="kw">library</span>(RColorBrewer)</a>
-<a class="sourceLine" id="cb39-3" data-line-number="3">cols &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>, <span class="st">&quot;BuGn&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="tool.html#cb37-1"></a><span class="kw">pal</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] &quot;#FF0000&quot; &quot;#FF1C00&quot; &quot;#FF3800&quot; &quot;#FF5500&quot; &quot;#FF7100&quot;
+##  [6] &quot;#FF8D00&quot; &quot;#FFAA00&quot; &quot;#FFC600&quot; &quot;#FFE200&quot; &quot;#FFFF00&quot;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="tool.html#cb39-1"></a><span class="co">#####</span></span>
+<span id="cb39-2"><a href="tool.html#cb39-2"></a><span class="kw">library</span>(RColorBrewer)</span>
+<span id="cb39-3"><a href="tool.html#cb39-3"></a>cols &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>, <span class="st">&quot;BuGn&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="日期与时间" class="section level3">
@@ -1492,28 +1498,28 @@ $ exit # 退出</code></pre>
 <li>对列表对象元素应用函数</li>
 <li>可配合匿名函数使用</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb40-2" data-line-number="2"><span class="kw">lapply</span>(x, mean)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="tool.html#cb40-1"></a>x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>))</span>
+<span id="cb40-2"><a href="tool.html#cb40-2"></a><span class="kw">lapply</span>(x, mean)</span></code></pre></div>
 <pre><code>## $a
 ## [1] 3
 ## 
 ## $b
-## [1] -0.514</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb42-2" data-line-number="2"><span class="kw">lapply</span>(x, runif, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">10</span>)</a></code></pre></div>
+## [1] -0.635</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="tool.html#cb42-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span></span>
+<span id="cb42-2"><a href="tool.html#cb42-2"></a><span class="kw">lapply</span>(x, runif, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] 7.59
+## [1] 4.1
 ## 
 ## [[2]]
-## [1] 4.86 2.90
+## [1] 4.04 1.84
 ## 
 ## [[3]]
-## [1] 4.66 5.02 6.88
+## [1] 7.58 8.88 5.22
 ## 
 ## [[4]]
-## [1] 8.61 1.22 2.55 5.65</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">b =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2"><span class="kw">lapply</span>(x, <span class="cf">function</span>(elt) elt[,<span class="dv">1</span>])</a></code></pre></div>
+## [1] 8.03 6.65 5.48 5.77</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tool.html#cb44-1"></a>x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">b =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb44-2"><a href="tool.html#cb44-2"></a><span class="kw">lapply</span>(x, <span class="cf">function</span>(elt) elt[,<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## $a
 ## [1] 1 2
 ## 
@@ -1528,10 +1534,10 @@ $ exit # 退出</code></pre>
 <li>如果结果是等长向量 转化为矩阵</li>
 <li>否则输出依旧为列表</li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>), <span class="dt">d =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb46-2" data-line-number="2"><span class="kw">sapply</span>(x, mean)</a></code></pre></div>
-<pre><code>##      a      b      c      d 
-##  2.500 -0.305  1.025  5.038</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="tool.html#cb46-1"></a>x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>), <span class="dt">d =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>))</span>
+<span id="cb46-2"><a href="tool.html#cb46-2"></a><span class="kw">sapply</span>(x, mean)</span></code></pre></div>
+<pre><code>##       a       b       c       d 
+##  2.5000 -0.0667  1.1163  4.8581</code></pre>
 </div>
 <div id="vapply" class="section level4">
 <h4><span class="header-section-number">2.7.19.3</span> <code>vapply</code></h4>
@@ -1558,27 +1564,30 @@ $ exit # 退出</code></pre>
 <li>行为1，列为2</li>
 <li>可用<code>rowSums</code> <code>rowMeans</code> <code>colSums</code> <code>colMeans</code> 来替代 大数据量更快</li>
 </ul>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">50</span>), <span class="dv">10</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb48-2" data-line-number="2"><span class="kw">apply</span>(x, <span class="dv">1</span>, quantile, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</a></code></pre></div>
-<pre><code>##       [,1]   [,2]   [,3]   [,4]  [,5]  [,6]  [,7]  [,8]   [,9]  [,10]
-## 25% -0.326 0.0426 -0.331 -0.220 0.202 0.164 0.311 0.379 0.0184 -0.353
-## 75%  0.714 0.5073 -0.223  0.131 0.849 0.524 1.351 0.710 1.0490  0.216</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1">a &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">rnorm</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="kw">apply</span>(a, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), mean)</a></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="tool.html#cb48-1"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">50</span>), <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb48-2"><a href="tool.html#cb48-2"></a><span class="kw">apply</span>(x, <span class="dv">1</span>, quantile, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code></pre></div>
+<pre><code>##       [,1]  [,2]    [,3]   [,4]     [,5]   [,6]   [,7]
+## 25% -1.205 0.807 -0.5852 -0.603 -0.62843 -0.735 -0.388
+## 75% -0.291 1.414 -0.0575 -0.189  0.00978  0.603  1.280
+##       [,8]    [,9]  [,10]
+## 25% -0.212 -0.8431 -0.211
+## 75%  0.382  0.0961  0.819</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="tool.html#cb50-1"></a>a &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">rnorm</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>))</span>
+<span id="cb50-2"><a href="tool.html#cb50-2"></a><span class="kw">apply</span>(a, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), mean)</span></code></pre></div>
 <pre><code>##         [,1]   [,2]
-## [1,] -0.0237 -0.115
-## [2,] -0.3981 -0.453</code></pre>
+## [1,] -0.0148 -0.148
+## [2,]  0.1297  0.256</code></pre>
 </div>
 <div id="tapply" class="section level4">
 <h4><span class="header-section-number">2.7.19.7</span> <code>tapply</code></h4>
 <ul>
 <li>对数据子集（因子变量区分）向量应用函数</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="kw">runif</span>(<span class="dv">10</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb52-2" data-line-number="2">f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb52-3" data-line-number="3"><span class="kw">tapply</span>(x, f, mean)</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tool.html#cb52-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="kw">runif</span>(<span class="dv">10</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
+<span id="cb52-2"><a href="tool.html#cb52-2"></a>f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</span>
+<span id="cb52-3"><a href="tool.html#cb52-3"></a><span class="kw">tapply</span>(x, f, mean)</span></code></pre></div>
 <pre><code>##     1     2     3 
-## 0.274 0.512 1.332</code></pre>
+## 0.354 0.681 1.463</code></pre>
 </div>
 <div id="by" class="section level4">
 <h4><span class="header-section-number">2.7.19.8</span> <code>by</code></h4>
@@ -1594,57 +1603,57 @@ $ exit # 退出</code></pre>
 <li>类似<code>tapply</code></li>
 <li>可用来生成分组 用<code>drop</code>来删除空分组</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="kw">runif</span>(<span class="dv">10</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb54-2" data-line-number="2">f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb54-3" data-line-number="3"><span class="kw">lapply</span>(<span class="kw">split</span>(x, f), mean)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tool.html#cb54-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="kw">runif</span>(<span class="dv">10</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
+<span id="cb54-2"><a href="tool.html#cb54-2"></a>f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</span>
+<span id="cb54-3"><a href="tool.html#cb54-3"></a><span class="kw">lapply</span>(<span class="kw">split</span>(x, f), mean)</span></code></pre></div>
 <pre><code>## $`1`
-## [1] -0.259
+## [1] 0.557
 ## 
 ## $`2`
-## [1] 0.413
+## [1] 0.523
 ## 
 ## $`3`
-## [1] 1.29</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb56-2" data-line-number="2">f1 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">2</span>, <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb56-3" data-line-number="3">f2 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">5</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb56-4" data-line-number="4"><span class="kw">str</span>(<span class="kw">split</span>(x, <span class="kw">list</span>(f1, f2), <span class="dt">drop =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+## [1] 1.16</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="tool.html#cb56-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb56-2"><a href="tool.html#cb56-2"></a>f1 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb56-3"><a href="tool.html#cb56-3"></a>f2 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">5</span>, <span class="dv">2</span>)</span>
+<span id="cb56-4"><a href="tool.html#cb56-4"></a><span class="kw">str</span>(<span class="kw">split</span>(x, <span class="kw">list</span>(f1, f2), <span class="dt">drop =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
 <pre><code>## List of 6
-##  $ 1.1: num [1:2] -0.187 1.554
-##  $ 1.2: num [1:2] 0.584 -0.215
-##  $ 1.3: num 1.15
-##  $ 2.3: num -0.26
-##  $ 2.4: num [1:2] 0.0881 -0.9575
-##  $ 2.5: num [1:2] -0.397 -1.117</code></pre>
+##  $ 1.1: num [1:2] -0.393 0.173
+##  $ 1.2: num [1:2] -0.997 -0.189
+##  $ 1.3: num -0.733
+##  $ 2.3: num -0.311
+##  $ 2.4: num [1:2] -0.29149 -0.00487
+##  $ 2.5: num [1:2] 0.277 -0.739</code></pre>
 </div>
 <div id="mapply" class="section level4">
 <h4><span class="header-section-number">2.7.19.10</span> <code>mapply</code></h4>
 <ul>
 <li>多变量版<code>apply</code> 从多个参数范围取值 并用函数得到结果</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1">noise &lt;-<span class="st"> </span><span class="cf">function</span>(n, mean, sd) {</a>
-<a class="sourceLine" id="cb58-2" data-line-number="2">  <span class="kw">rnorm</span>(n, mean, sd)</a>
-<a class="sourceLine" id="cb58-3" data-line-number="3">}</a>
-<a class="sourceLine" id="cb58-4" data-line-number="4"><span class="kw">mapply</span>(noise, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="tool.html#cb58-1"></a>noise &lt;-<span class="st"> </span><span class="cf">function</span>(n, mean, sd) {</span>
+<span id="cb58-2"><a href="tool.html#cb58-2"></a>  <span class="kw">rnorm</span>(n, mean, sd)</span>
+<span id="cb58-3"><a href="tool.html#cb58-3"></a>}</span>
+<span id="cb58-4"><a href="tool.html#cb58-4"></a><span class="kw">mapply</span>(noise, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] 1.14
+## [1] 2.38
 ## 
 ## [[2]]
-## [1] 2.06 4.97
+## [1] 4.350 0.744
 ## 
 ## [[3]]
-## [1]  4.565  2.052 -0.154
+## [1] 2.50 4.81 3.85
 ## 
 ## [[4]]
-## [1] 4.86 6.32 7.47 4.50
+## [1] 2.72 5.12 1.39 5.55
 ## 
 ## [[5]]
-## [1] 6.77 6.70 6.60 5.57 4.86</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co">#等同于如下循环</span></a>
-<a class="sourceLine" id="cb60-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="co">#list(noise(1, 1, 2), noise(2, 2, 2),</span></a>
-<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="co">#    noise(3, 3, 2), noise(4, 4, 2),</span></a>
-<a class="sourceLine" id="cb60-5" data-line-number="5"><span class="co">#    noise(5, 5, 2))</span></a></code></pre></div>
+## [1] 5.61 5.68 3.77 4.64 4.14</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="tool.html#cb60-1"></a><span class="co">#等同于如下循环</span></span>
+<span id="cb60-2"><a href="tool.html#cb60-2"></a></span>
+<span id="cb60-3"><a href="tool.html#cb60-3"></a><span class="co">#list(noise(1, 1, 2), noise(2, 2, 2),</span></span>
+<span id="cb60-4"><a href="tool.html#cb60-4"></a><span class="co">#    noise(3, 3, 2), noise(4, 4, 2),</span></span>
+<span id="cb60-5"><a href="tool.html#cb60-5"></a><span class="co">#    noise(5, 5, 2))</span></span></code></pre></div>
 </div>
 <div id="eapply" class="section level4">
 <h4><span class="header-section-number">2.7.19.11</span> <code>eapply</code></h4>
@@ -1664,10 +1673,10 @@ $ exit # 退出</code></pre>
 <li>q 分布分位数</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">dnorm</span>(x, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">log =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb61-2" data-line-number="2"><span class="kw">pnorm</span>(q, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>, <span class="dt">log.p =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="kw">qnorm</span>(p, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>, <span class="dt">log.p =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="tool.html#cb61-1"></a><span class="kw">dnorm</span>(x, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">log =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb61-2"><a href="tool.html#cb61-2"></a><span class="kw">pnorm</span>(q, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>, <span class="dt">log.p =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb61-3"><a href="tool.html#cb61-3"></a><span class="kw">qnorm</span>(p, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>, <span class="dt">log.p =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb61-4"><a href="tool.html#cb61-4"></a><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li><code>set.seed</code>保证重现性</li>
 <li><code>sample</code>对数据采样</li>

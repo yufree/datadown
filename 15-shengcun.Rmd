@@ -1,10 +1,5 @@
 # 生存分析 {#surv}
 
-```{r include=FALSE}
-library(knitr)
-opts_chunk$set(echo=T, eval = F, warning = FALSE, message = FALSE)
-```
-
 ## Concepts
 
 - examines and models the time it takes for events to occur
@@ -36,7 +31,7 @@ opts_chunk$set(echo=T, eval = F, warning = FALSE, message = FALSE)
 library(survival)
 library(car)
 # perform survival analysis
-Rossi <- read.table('http://ftp.auckland.ac.nz/software/CRAN/doc/contrib/Fox-Companion/Rossi.txt', header=T)
+data("Rossi")
 Rossi[1:5, 1:10]
 mod.allison <- coxph(Surv(week, arrest) ~ fin + age + race + wexp + mar + paro + prio, data=Rossi)
 summary(mod.allison)
@@ -56,9 +51,7 @@ plot(survfit(mod.allison), ylim=c(.7, 1), xlab='Weeks', ylab='Proportion Not Rea
 - new data frame with two rows, one for each value of fin; the other covariates are fixed to their average values
 
 ```{r}
-attach(Rossi)
-Rossi.fin <- data.frame(fin=c(0,1), age=rep(mean(age),2), race=rep(mean(race),2), wexp=rep(mean(wexp),2), mar=rep(mean(mar),2), paro=rep(mean(paro),2), prio=rep(mean(prio),2))
-detach()
+Rossi.fin <- data.frame(fin=c(0,1), age=rep(mean(Rossi$age),2), race=rep(mean(as.numeric(Rossi$race)),2), wexp=rep(mean(as.numeric(Rossi$wexp)),2), mar=rep(mean(as.numeric(Rossi$mar)),2), paro=rep(mean(as.numeric(Rossi$paro)),2), prio=rep(mean(as.numeric(Rossi$prio)),2))
 plot(survfit(mod.allison, newdata=Rossi.fin), conf.int=T, lty=c(1,2), ylim=c(.6, 1))
 legend("bottomleft", legend=c('fin = 0', 'fin = 1'), lty=c(1,2))
 ```

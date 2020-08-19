@@ -9,6 +9,12 @@ link-citations: yes
 description: "数据分析世界的清明上河图"
 ---
 
+```{r include=FALSE}
+library(knitr)
+opts_chunk$set(echo=T,cache = T, warning = FALSE, message = FALSE)
+options(digits = 3)
+```
+
 # 序 {-}
 
 学习都是从模仿开始的，而模仿则意味着不加区别的接受，若是混口饭吃，自然也就够了，但模仿多了便能看到这知识表象下的东西。如果还能提炼一下，变成了自己的经验，各种经验互相联系影响，便有了理论。所以学习大都从知识点开始，而以形成一家之言为终，倘若这一家之言可以得到别人的认可，知识就开始传承了。且不论有多少东西会被反复发现发明出来，但是世界在某种程度上是可知的便是智慧生物生存的福利。

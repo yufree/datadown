@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第5章 统计推断 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第5章 统计推断 | 数据分析残卷" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2020-01-02" />
+<meta name="date" content="2020-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -250,10 +253,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a><ul>
 <li class="chapter" data-level="7.1" data-path="opt.html"><a href="opt.html#数学本质"><i class="fa fa-check"></i><b>7.1</b> 数学本质</a></li>
 <li class="chapter" data-level="7.2" data-path="opt.html"><a href="opt.html#简史"><i class="fa fa-check"></i><b>7.2</b> 简史</a></li>
-<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#凸集"><i class="fa fa-check"></i><b>7.3</b> 凸集</a></li>
-<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.4</b> 最小二乘法</a></li>
-<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.5</b> 线性规划</a></li>
-<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.6</b> 凸优化</a></li>
+<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.3</b> 最小二乘法</a></li>
+<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.4</b> 线性规划</a></li>
+<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.5</b> 凸优化</a></li>
+<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#仿射集"><i class="fa fa-check"></i><b>7.6</b> 仿射集</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a><ul>
 <li class="chapter" data-level="8.1" data-path="mlsl.html"><a href="mlsl.html#统计学习概论"><i class="fa fa-check"></i><b>8.1</b> 统计学习概论</a></li>
@@ -283,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.18.1" data-path="mlsl.html"><a href="mlsl.html#简单线性回归"><i class="fa fa-check"></i><b>8.18.1</b> 简单线性回归</a></li>
 <li class="chapter" data-level="8.18.2" data-path="mlsl.html"><a href="mlsl.html#多元线性回归"><i class="fa fa-check"></i><b>8.18.2</b> 多元线性回归</a></li>
 <li class="chapter" data-level="8.18.3" data-path="mlsl.html"><a href="mlsl.html#线性模型延拓"><i class="fa fa-check"></i><b>8.18.3</b> 线性模型延拓</a></li>
-<li class="chapter" data-level="8.18.4" data-path="mlsl.html"><a href="mlsl.html#常见问题-1"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
+<li class="chapter" data-level="8.18.4" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
 <li class="chapter" data-level="8.18.5" data-path="mlsl.html"><a href="mlsl.html#线性回归与kmeans算法比较"><i class="fa fa-check"></i><b>8.18.5</b> 线性回归与kmeans算法比较</a></li>
 <li class="chapter" data-level="8.18.6" data-path="mlsl.html"><a href="mlsl.html#logistic回归"><i class="fa fa-check"></i><b>8.18.6</b> logistic回归</a></li>
 <li class="chapter" data-level="8.18.7" data-path="mlsl.html"><a href="mlsl.html#线性判别分析"><i class="fa fa-check"></i><b>8.18.7</b> 线性判别分析</a></li>
@@ -389,17 +392,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="why.html"><a href="why.html#yinguolink"><i class="fa fa-check"></i><b>11.5</b> 链接</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a><ul>
-<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#图论"><i class="fa fa-check"></i><b>12.1</b> 图论</a></li>
-<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.2</b> 随机网络模型</a></li>
-<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.3</b> 无尺度网络</a></li>
-<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.4</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
-<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.5</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
-<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#度相关"><i class="fa fa-check"></i><b>12.6</b> 度相关</a></li>
-<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.7</b> 网络稳健性</a></li>
-<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.8</b> 网络集群</a></li>
+<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#节点属性"><i class="fa fa-check"></i><b>12.1</b> 节点属性</a></li>
+<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.2</b> 网络集群</a></li>
+<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.3</b> 随机网络模型</a></li>
+<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.4</b> 无尺度网络</a></li>
+<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.5</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
+<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.6</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
+<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#度相关现象"><i class="fa fa-check"></i><b>12.7</b> 度相关现象</a></li>
+<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.8</b> 网络稳健性</a></li>
+<li class="chapter" data-level="12.9" data-path="neta.html"><a href="neta.html#网络回归"><i class="fa fa-check"></i><b>12.9</b> 网络回归</a></li>
+<li class="chapter" data-level="12.10" data-path="neta.html"><a href="neta.html#网络扩散行为"><i class="fa fa-check"></i><b>12.10</b> 网络扩散行为</a></li>
+<li class="chapter" data-level="12.11" data-path="neta.html"><a href="neta.html#网络可视化"><i class="fa fa-check"></i><b>12.11</b> 网络可视化</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a><ul>
-<li class="chapter" data-level="13.1" data-path="game.html"><a href="game.html#术语-1"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
+<li class="chapter" data-level="13.1" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
 <li class="chapter" data-level="13.2" data-path="game.html"><a href="game.html#支配策略dominate-strategy"><i class="fa fa-check"></i><b>13.2</b> 支配策略（dominate strategy）</a></li>
 <li class="chapter" data-level="13.3" data-path="game.html"><a href="game.html#最佳回应best-respinse"><i class="fa fa-check"></i><b>13.3</b> 最佳回应（Best respinse）</a></li>
 <li class="chapter" data-level="13.4" data-path="game.html"><a href="game.html#纳什均衡nash-equilibrium"><i class="fa fa-check"></i><b>13.4</b> 纳什均衡（Nash Equilibrium）</a></li>
@@ -525,7 +531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.21.4" data-path="epid.html"><a href="epid.html#有向无环图dags"><i class="fa fa-check"></i><b>16.21.4</b> 有向无环图（DAGs）</a></li>
 </ul></li>
 <li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a><ul>
-<li class="chapter" data-level="16.22.1" data-path="epid.html"><a href="epid.html#introduction-1"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.22.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.22.2" data-path="epid.html"><a href="epid.html#methods"><i class="fa fa-check"></i><b>16.22.2</b> Methods</a></li>
 <li class="chapter" data-level="16.22.3" data-path="epid.html"><a href="epid.html#results"><i class="fa fa-check"></i><b>16.22.3</b> Results</a></li>
 <li class="chapter" data-level="16.22.4" data-path="epid.html"><a href="epid.html#discussion"><i class="fa fa-check"></i><b>16.22.4</b> Discussion</a></li>
@@ -658,11 +664,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="期望" class="section level2">
 <h2><span class="header-section-number">5.3</span> 期望</h2>
 <ul>
-<li>离散随机变量均值 <span class="math inline">\(E[X] = \sum_x xp(x)\)</span></li>
-<li><span class="math inline">\(E[X]\)</span> 代表质量与位置的中心 <span class="math inline">\(\{x, p(x)\}\)</span></li>
-<li>连续随机变量均值 <span class="math inline">\(E[X] = \mbox{the area under the function}~~~ t f(t)\)</span></li>
-<li>期望值是线性可加的</li>
-<li>如果 <span class="math inline">\(a\)</span> 与 <span class="math inline">\(b\)</span> 不随机 <span class="math inline">\(X\)</span> 与 <span class="math inline">\(Y\)</span> 是随机变量
+<li><p>离散随机变量均值 <span class="math inline">\(E[X] = \sum_x xp(x)\)</span></p></li>
+<li><p><span class="math inline">\(E[X]\)</span> 代表质量与位置的中心 <span class="math inline">\(\{x, p(x)\}\)</span></p></li>
+<li><p>连续随机变量均值 <span class="math inline">\(E[X] = \mbox{the area under the function}~~~ t f(t)\)</span></p></li>
+<li><p>期望值是线性可加的</p></li>
+<li><p>如果 <span class="math inline">\(a\)</span> 与 <span class="math inline">\(b\)</span> 不随机 <span class="math inline">\(X\)</span> 与 <span class="math inline">\(Y\)</span> 是随机变量</p>
 <ul>
 <li><span class="math inline">\(E[aX + b] = a E[X] + b\)</span></li>
 <li><span class="math inline">\(E[X + Y] = E[X] + E[Y]\)</span></li>
@@ -694,21 +700,21 @@ P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}
 <div id="独立性" class="section level2">
 <h2><span class="header-section-number">5.5</span> 独立性</h2>
 <ul>
-<li>独立事件
+<li><p>独立事件</p>
 <ul>
 <li>两事件 <span class="math inline">\(A\)</span> 与 <span class="math inline">\(B\)</span> 在 <span class="math inline">\(P(A \cap B) = P(A)P(B)\)</span> 下独立</li>
 <li>在 <span class="math inline">\(P([X \in A] \cap [Y \in B]) = P(X\in A)P(Y\in B)\)</span> 下两随机变量 <span class="math inline">\(X\)</span> 与 <span class="math inline">\(Y\)</span> 独立</li>
 <li>对于一组随机独立变量<span class="math inline">\(X_1, X_2, \ldots, X_n\)</span>有 <span class="math inline">\(f(x_1,\ldots, x_n) = \prod_{i=1}^n f_i(x_i)\)</span></li>
 <li>iid随机变量（independent and identically distributed） 来自同一分布相互独立的随机变量</li>
 </ul></li>
-<li>协方差（covariance）
+<li><p>协方差（covariance）</p>
 <ul>
 <li><span class="math inline">\(Cov(X, Y) = E[(X - \mu_x)(Y - \mu_y)] = E[X Y] - E[X]E[Y]\)</span></li>
 <li><span class="math inline">\(Cov(X, Y) = Cov(Y, X)\)</span></li>
 <li><span class="math inline">\(Cov(X, Y)\)</span> 可以有正负</li>
 <li><span class="math inline">\(|Cov(X, Y)| \leq \sqrt{Var(X) Var(y)}\)</span></li>
 </ul></li>
-<li>相关性（correlation）
+<li><p>相关性（correlation）</p>
 <ul>
 <li><span class="math inline">\(X\)</span> 与 <span class="math inline">\(Y\)</span> 的相关性 <span class="math inline">\(Cor(X, Y) = Cov(X, Y) / \sqrt{Var(X) Var(y)}\)</span></li>
 <li><span class="math inline">\(-1 \leq Cor(X, Y) \leq 1\)</span></li>
@@ -734,7 +740,7 @@ P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}
 <li><span class="math inline">\(\sigma\)</span> 是一次观察分布的标准差</li>
 <li>样本均值要比一次观察变化小 因此除以<span class="math inline">\(\sqrt{n}\)</span></li>
 </ul></li>
-<li>样本方差
+<li><p>样本方差</p>
 <ul>
 <li><span class="math inline">\(S^2 = \frac{\sum_{i=1}^n (X_i - \bar X)^2}{n-1}\)</span></li>
 <li>总体方差 <span class="math inline">\(\sigma^2\)</span>的估计</li>
@@ -749,7 +755,7 @@ P(|X - \mu| \geq k\sigma) \leq \frac{1}{k^2}
   &amp; = &amp; n \sigma^2 + n \mu ^ 2 - \sigma^2 - n \mu^2 \\ \\
   &amp; = &amp; (n - 1) \sigma^2
 \end{eqnarray*}\]</span></p></li>
-<li>澄清
+<li><p>澄清</p>
 <ul>
 <li>假定 <span class="math inline">\(X_i\)</span> 是 iid 均值 <span class="math inline">\(\mu\)</span> 方差 <span class="math inline">\(\sigma^2\)</span></li>
 <li><span class="math inline">\(S^2\)</span> 估计 <span class="math inline">\(\sigma^2\)</span></li>
@@ -868,9 +874,9 @@ p^x(1 - p)^{n-x}
 \frac{(n-1)S^2}{\chi^2_{n-1,\alpha/2}} \right) \\
 \end{eqnarray*}\]</span></p>
 <ul>
-<li><span class="math inline">\(\left[\frac{(n-1)S^2}{\chi^2_{n-1,1-\alpha/2}}, \frac{(n-1)S^2}{\chi^2_{n-1,\alpha/2}}\right]\)</span> 是 <span class="math inline">\(\sigma^2\)</span> 的 <span class="math inline">\(100(1-\alpha)\%\)</span> 置信区间</li>
-<li>依赖正态性假设 开方后得到 <span class="math inline">\(\sigma\)</span> 的置信区间</li>
-<li>Gosset的 t 分布
+<li><p><span class="math inline">\(\left[\frac{(n-1)S^2}{\chi^2_{n-1,1-\alpha/2}}, \frac{(n-1)S^2}{\chi^2_{n-1,\alpha/2}}\right]\)</span> 是 <span class="math inline">\(\sigma^2\)</span> 的 <span class="math inline">\(100(1-\alpha)\%\)</span> 置信区间</p></li>
+<li><p>依赖正态性假设 开方后得到 <span class="math inline">\(\sigma\)</span> 的置信区间</p></li>
+<li><p>Gosset的 t 分布</p>
 <ul>
 <li>比正态分布尾厚</li>
 <li>考虑自由度 自由度大时接近正态分布</li>
@@ -890,7 +896,7 @@ p^x(1 - p)^{n-x}
 &amp; = &amp; P\left(\bar X - t_{n-1,1-\alpha/2} S / \sqrt{n} \leq \mu  
     \leq \bar X + t_{n-1,1-\alpha/2}S /\sqrt{n}\right)
 \end{eqnarray*}\]</span></p>
-<span class="math inline">\(t_{df,\alpha}\)</span> 是t分布的 <span class="math inline">\(\alpha^{th}\)</span> 分位数 自由度 <span class="math inline">\(df\)</span>
+<p><span class="math inline">\(t_{df,\alpha}\)</span> 是t分布的 <span class="math inline">\(\alpha^{th}\)</span> 分位数 自由度 <span class="math inline">\(df\)</span></p>
 <ul>
 <li>t检验不适合有偏分布 置信区间中心也不在均值上</li>
 </ul></li>
@@ -960,37 +966,37 @@ E[p ~|~ X] &amp; =   \frac{\tilde \alpha}{\tilde \alpha + \tilde \beta}\\ \\
 <div id="两独立样本t检验" class="section level2">
 <h2><span class="header-section-number">5.13</span> 两独立样本t检验</h2>
 <ul>
-<li><span class="math inline">\(X_1,\ldots,X_{n_x}\)</span> 为 iid <span class="math inline">\(N(\mu_x,\sigma^2)\)</span></li>
-<li><span class="math inline">\(Y_1,\ldots,Y_{n_y}\)</span> 为 iid <span class="math inline">\(N(\mu_y, \sigma^2)\)</span></li>
-<li><span class="math inline">\(\bar X\)</span>, <span class="math inline">\(\bar Y\)</span>, <span class="math inline">\(S_x\)</span>, <span class="math inline">\(S_y\)</span> 为均值与标准差</li>
-<li>根据均值与方差的线性组合 有 <span class="math inline">\(\bar Y - \bar X\)</span> 也是正态 均值 <span class="math inline">\(\mu_y - \mu_x\)</span> 方差 <span class="math inline">\(\sigma^2 (\frac{1}{n_x} + \frac{1}{n_y})\)</span></li>
-<li>混合方差为 <span class="math inline">\(S_p^2 = \{(n_x - 1) S_x^2 + (n_y - 1) S_y^2\}/(n_x + n_y - 2)\)</span> 为<span class="math inline">\(\sigma^2\)</span>的良好估计</li>
+<li><p><span class="math inline">\(X_1,\ldots,X_{n_x}\)</span> 为 iid <span class="math inline">\(N(\mu_x,\sigma^2)\)</span></p></li>
+<li><p><span class="math inline">\(Y_1,\ldots,Y_{n_y}\)</span> 为 iid <span class="math inline">\(N(\mu_y, \sigma^2)\)</span></p></li>
+<li><p><span class="math inline">\(\bar X\)</span>, <span class="math inline">\(\bar Y\)</span>, <span class="math inline">\(S_x\)</span>, <span class="math inline">\(S_y\)</span> 为均值与标准差</p></li>
+<li><p>根据均值与方差的线性组合 有 <span class="math inline">\(\bar Y - \bar X\)</span> 也是正态 均值 <span class="math inline">\(\mu_y - \mu_x\)</span> 方差 <span class="math inline">\(\sigma^2 (\frac{1}{n_x} + \frac{1}{n_y})\)</span></p></li>
+<li><p>混合方差为 <span class="math inline">\(S_p^2 = \{(n_x - 1) S_x^2 + (n_y - 1) S_y^2\}/(n_x + n_y - 2)\)</span> 为<span class="math inline">\(\sigma^2\)</span>的良好估计</p></li>
 <li><p>该估计为无偏估计</p>
 <p><span class="math display">\[\begin{eqnarray*}
   E[S_p^2] &amp; = &amp; \frac{(n_x - 1) E[S_x^2] + (n_y - 1) E[S_y^2]}{n_x + n_y - 2}\\
           &amp; = &amp; \frac{(n_x - 1)\sigma^2 + (n_y - 1)\sigma^2}{n_x + n_y - 2}
   \end{eqnarray*}\]</span></p></li>
-<li>该估计独立于 <span class="math inline">\(\bar Y - \bar X\)</span> 因为方差独立于均值</li>
+<li><p>该估计独立于 <span class="math inline">\(\bar Y - \bar X\)</span> 因为方差独立于均值</p></li>
 <li><p>两个独立的卡方变量之和是自由度之和的卡方值</p>
 <p><span class="math display">\[\begin{eqnarray*}
     (n_x + n_y - 2) S_p^2 / \sigma^2 &amp; = &amp; (n_x - 1)S_x^2 /\sigma^2 + (n_y - 1)S_y^2/\sigma^2 \\ \\
     &amp; = &amp; \chi^2_{n_x - 1} + \chi^2_{n_y-1} \\ \\
     &amp; = &amp; \chi^2_{n_x + n_y - 2}
   \end{eqnarray*}\]</span></p></li>
-<li>构建统计量
+<li><p>构建统计量
 <span class="math display">\[
   \frac{\frac{\bar Y - \bar X - (\mu_y - \mu_x)}{\sigma \left(\frac{1}{n_x} + \frac{1}{n_y}\right)^{1/2}}}{\sqrt{\frac{(n_x + n_y - 2) S_p^2}{(n_x + n_y - 2)\sigma^2}}}
   = \frac{\bar Y - \bar X - (\mu_y - \mu_x)}{S_p \left(\frac{1}{n_x} + \frac{1}{n_y}\right)^{1/2}}
-\]</span></li>
-<li>该统计量为符合自由度 <span class="math inline">\(n_x + n_y - 2\)</span> 的 <span class="math inline">\(t\)</span> 分布</li>
-<li>置信区间
+\]</span></p></li>
+<li><p>该统计量为符合自由度 <span class="math inline">\(n_x + n_y - 2\)</span> 的 <span class="math inline">\(t\)</span> 分布</p></li>
+<li><p>置信区间
 <span class="math display">\[
   \bar Y - \bar X \pm t_{n_x + n_y - 2, 1 - \alpha/2}S_p\left(\frac{1}{n_x} + \frac{1}{n_y}\right)^{1/2}
-\]</span></li>
-<li>方差不等
+\]</span></p></li>
+<li><p>方差不等
 <span class="math display">\[
   \bar Y - \bar X \sim N\left(\mu_y - \mu_x, \frac{s_x^2}{n_x} + \frac{s_y^2}{n_y}\right)
-\]</span></li>
+\]</span></p></li>
 <li><p>统计量
 <span class="math display">\[
   \frac{\bar Y - \bar X - (\mu_y - \mu_x)}{\left(\frac{s_x^2}{n_x} + \frac{s_y^2}{n_y}\right)^{1/2}}
@@ -1091,12 +1097,12 @@ P\left(\frac{\bar X - 30}{\sigma /\sqrt{n}} &gt; z_{1-\alpha} ~|~ \mu = \mu_a \r
 &amp; = P\left(\frac{\bar X - \mu_a}{\sigma /\sqrt{n}} &gt; z_{1-\alpha} - \frac{\mu_a - 30}{\sigma /\sqrt{n}} ~|~ \mu = \mu_a \right)\\ \\
 &amp; = P\left(Z &gt; z_{1-\alpha} - \frac{\mu_a - 30}{\sigma /\sqrt{n}} ~|~ \mu = \mu_a \right)\\ \\
 \end{align}\]</span></p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">sigma &lt;-<span class="st"> </span><span class="dv">10</span>; mu_<span class="dv">0</span> =<span class="st"> </span><span class="dv">0</span>; mu_a =<span class="st"> </span><span class="dv">2</span>; n &lt;-<span class="st"> </span><span class="dv">100</span>; alpha =<span class="st"> </span><span class="fl">.05</span></a>
-<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="kw">plot</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>),<span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">dnorm</span>(<span class="dv">0</span>)), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">frame =</span> F, <span class="dt">xlab =</span> <span class="st">&quot;Z value&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb63-3" data-line-number="3">xvals &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="kw">lines</span>(xvals, <span class="kw">dnorm</span>(xvals), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb63-5" data-line-number="5"><span class="kw">lines</span>(xvals, <span class="kw">dnorm</span>(xvals, <span class="dt">mean =</span> <span class="kw">sqrt</span>(n) <span class="op">*</span><span class="st"> </span>(mu_a <span class="op">-</span><span class="st"> </span>mu_<span class="dv">0</span>) <span class="op">/</span><span class="st"> </span>sigma), <span class="dt">lwd =</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb63-6" data-line-number="6"><span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">qnorm</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha))</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="infer.html#cb63-1"></a>sigma &lt;-<span class="st"> </span><span class="dv">10</span>; mu_<span class="dv">0</span> =<span class="st"> </span><span class="dv">0</span>; mu_a =<span class="st"> </span><span class="dv">2</span>; n &lt;-<span class="st"> </span><span class="dv">100</span>; alpha =<span class="st"> </span><span class="fl">.05</span></span>
+<span id="cb63-2"><a href="infer.html#cb63-2"></a><span class="kw">plot</span>(<span class="kw">c</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>),<span class="kw">c</span>(<span class="dv">0</span>, <span class="kw">dnorm</span>(<span class="dv">0</span>)), <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">frame =</span> F, <span class="dt">xlab =</span> <span class="st">&quot;Z value&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb63-3"><a href="infer.html#cb63-3"></a>xvals &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">3</span>, <span class="dv">6</span>, <span class="dt">length =</span> <span class="dv">1000</span>)</span>
+<span id="cb63-4"><a href="infer.html#cb63-4"></a><span class="kw">lines</span>(xvals, <span class="kw">dnorm</span>(xvals), <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">lwd =</span> <span class="dv">3</span>)</span>
+<span id="cb63-5"><a href="infer.html#cb63-5"></a><span class="kw">lines</span>(xvals, <span class="kw">dnorm</span>(xvals, <span class="dt">mean =</span> <span class="kw">sqrt</span>(n) <span class="op">*</span><span class="st"> </span>(mu_a <span class="op">-</span><span class="st"> </span>mu_<span class="dv">0</span>) <span class="op">/</span><span class="st"> </span>sigma), <span class="dt">lwd =</span><span class="dv">3</span>)</span>
+<span id="cb63-6"><a href="infer.html#cb63-6"></a><span class="kw">abline</span>(<span class="dt">v =</span> <span class="kw">qnorm</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha))</span></code></pre></div>
 <p><img src="datadown_files/figure-html/power-1.png" width="672" />
 - 计算步骤
 - 考虑 <span class="math inline">\(H_0 : \mu = \mu_0\)</span> 与 <span class="math inline">\(H_a : \mu &gt; \mu_0\)</span> 且在<span class="math inline">\(H_a\)</span>下 <span class="math inline">\(\mu = \mu_a\)</span>

@@ -1,11 +1,5 @@
 # 贝叶斯统计 {#bayes}
 
-```{r include=FALSE}
-library(knitr)
-opts_chunk$set(echo=T,cache = T, warning = FALSE, message = FALSE)
-options(digits = 3)
-```
-
 ## 贝塔分布
 
 - 贝塔分布的本质是概率分布的分布
@@ -621,7 +615,7 @@ mu_AB <- td$estimate[2]
 sigma <- exp(td$estimate[3])
 
 # 看看AB对先验概率的影响
-crossing(x = seq(0.08, .35, .001), AB = c(1, 10, 100, 1000, 10000)) %>%
+tidyr::crossing(x = seq(0.08, .35, .001), AB = c(1, 10, 100, 1000, 10000)) %>%
   mutate(density = dbeta(x, (mu_0 + mu_AB * log(AB)) / sigma,
                          (1 - (mu_0 + mu_AB * log(AB))) / sigma)) %>%
   mutate(AB = factor(AB)) %>%
@@ -695,11 +689,12 @@ fit2 <- gamlss(cbind(H, AB - H) ~ log(AB) + bats,
 # 观察参数
 tidy(fit2)
 sigma <- fitted(fit2, "sigma")[1]
-crossing(bats = c("L", "R"),
-         AB = c(1, 10, 100, 1000, 10000)) %>%
-  augment(fit2, newdata = .) %>%
-  rename(mu = .fitted) %>%
-  crossing(x = seq(.1, .36, .0005)) %>%
+df <- tidyr::crossing(bats = c("L", "R"),
+         AB = c(1, 10, 100, 1000, 10000))
+df$mu <- predict(fit2, what = "mu", newdata = df)
+df <- tidyr::crossing(df,
+         x = seq(.1, .36, .0005))
+df %>%
   mutate(alpha = mu / sigma,
          beta = (1 - mu) / sigma,
          density = dbeta(x, alpha, beta)) %>%
@@ -714,12 +709,14 @@ crossing(bats = c("L", "R"),
 - 存在先验概率的情况下，可以考虑考察随着击球数增长左右手的不同
 
 ```{r lrcom}
-crossing(bats = c("L", "R"),
-         AB = c(10, 100, 1000, 10000)) %>%
-  augment(fit2, newdata = .) %>%
+df <- tidyr::crossing(bats = c("L", "R"),
+         AB = c(10, 100, 1000, 10000))
+df %>%
   mutate(H = .3 * AB,
-         alpha0 = .fitted / sigma,
-         beta0 = (1 - .fitted) / sigma,
+         mu = predict(fit2, what = "mu", newdata = df),
+         sigma = predict(fit2, what = "sigma", newdata = df, type = "response"),
+         alpha0 = mu / sigma,
+         beta0 = (1 - mu) / sigma,
          alpha1 = alpha0 + H,
          beta1 = beta0 + AB - H,
          estimate = alpha1 / (alpha1 + beta1),
@@ -757,9 +754,8 @@ plot_gamlss_fit <- function(f) {
     distinct() %>%
     filter(bats != "B") %>%
     mutate(AB = 1000) %>%
-    augment(f, newdata = .) %>%
-    rename(mu = .fitted) %>%
-    mutate(sigma = fitted(fit3, "sigma")[1],
+    mutate(mu = predict(f, what = "mu", newdata = .),
+           sigma = predict(f, what = "sigma", newdata = ., type = "response"),
            alpha0 = mu / sigma,
            beta0 = (1 - mu) / sigma,
            conf_low = qbeta(.025, alpha0, beta0),
@@ -801,7 +797,7 @@ Pitching %>%
 - 左右手之间的差距伴随年份在逐渐减少
 
 ```{r yearcompare,eval=F}
-players <- crossing(year = c(1915, 1965, 2015),
+players <- tidyr::crossing(year = c(1915, 1965, 2015),
                     bats = c("L", "R"),
                     H = 30,
                     AB = 100)
@@ -814,7 +810,7 @@ players_posterior <- players %>%
          alpha1 = alpha0 + H,
          beta1 = beta0 + AB - H)
 players_posterior %>%
-  crossing(x = seq(.15, .3, .001)) %>%
+  tidyr::crossing(x = seq(.15, .3, .001)) %>%
   mutate(density = dbeta(x, alpha1, beta1)) %>%
   ggplot(aes(x, density, color = bats)) +
   geom_line() +
@@ -860,7 +856,6 @@ career <- Master %>%
 
 ```{r EM}
 set.seed(2017)
-
 # 先随机分为两组
 starting_data <- career %>%
   filter(AB >= 20) %>%
@@ -900,7 +895,7 @@ fits
 ```{r EMbayes}
 assignments <- starting_data %>%
   dplyr::select(-cluster) %>%
-  crossing(fits) %>%
+  tidyr::crossing(fits) %>%
   mutate(likelihood = prior * VGAM::dbetabinom.ab(H, AB, alpha, beta)) %>%
   group_by(playerID) %>%
   top_n(1, likelihood) %>%
@@ -926,7 +921,7 @@ iterate_em <- function(state, ...) {
 
   assignments <- assignments %>%
     dplyr::select(playerID:average) %>%
-    crossing(fits) %>%
+    tidyr::crossing(fits) %>%
     mutate(likelihood = prior * VGAM::dbetabinom.ab(H, AB, alpha, beta)) %>%
     group_by(playerID) %>%
     top_n(1, likelihood) %>%
@@ -952,7 +947,7 @@ fit_iterations <- iterations %>%
   map_df("fits", .id = "iteration")
 # 两个分布的收敛过程
 fit_iterations %>%
-  crossing(x = seq(.001, .4, .001)) %>%
+  tidyr::crossing(x = seq(.001, .4, .001)) %>%
   mutate(density = prior * dbeta(x, alpha, beta)) %>%
   ggplot(aes(x, density, color = iteration, group = iteration)) +
   geom_line() +
@@ -977,7 +972,7 @@ final_parameters <- fit_iterations %>%
 final_parameters
 # 观察球员位置
 final_parameters %>%
-  crossing(x = 0:45) %>%
+  tidyr::crossing(x = 0:45) %>%
   mutate(density = prior * VGAM::dbetabinom.ab(x, 100, alpha, beta)) %>%
   ggplot(aes(x, density)) +
   geom_line(aes(color = cluster)) +
@@ -989,7 +984,7 @@ final_parameters %>%
 # 根据贝叶斯理论，我们可以用在A分组的似然度比上两个分组似然度的和得到后验概率
 
 final_parameters %>%
-  crossing(H = 1:40) %>%
+  tidyr::crossing(H = 1:40) %>%
   transmute(H, cluster, likelihood = prior * VGAM::dbetabinom.ab(H, 100, alpha, beta)) %>%
   spread(cluster, likelihood) %>%
   mutate(probabilityA = A /(A + B)) %>%
@@ -1007,7 +1002,7 @@ final_parameters %>%
 ```{r groupbayes}
 career_likelihoods <- career %>%
   filter(AB > 20) %>%
-  crossing(final_parameters) %>%
+  tidyr::crossing(final_parameters) %>%
   mutate(likelihood = prior * VGAM::dbetabinom.ab(H, AB, alpha, beta)) %>%
   group_by(playerID) %>%
   mutate(posterior = likelihood / sum(likelihood))
@@ -1039,7 +1034,7 @@ batting_data <- career_likelihoods %>%
          beta1 = AB - H + beta)
 
 batting_data %>%
-  crossing(x = seq(0, .4, .001)) %>%
+  tidyr::crossing(x = seq(0, .4, .001)) %>%
   mutate(posterior_density = posterior * dbeta(x, alpha1, beta1)) %>%
   group_by(name, x) %>%
   summarize(posterior_density = sum(posterior_density)) %>%
@@ -1309,7 +1304,7 @@ data_frame(method = c("Flat prior", "Prior depending on AB"),
 set.seed(2019)
 
 sim_replications <- career %>%
-  crossing(replication = 1:50) %>%
+  tidyr::crossing(replication = 1:50) %>%
   mutate(p = rbeta(n(), alpha0, beta0),
          H = rbinom(n(), AB, p))
 

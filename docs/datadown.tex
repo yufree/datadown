@@ -1,39 +1,46 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[]{book}
+\documentclass[
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-            pdftitle={数据分析残卷},
-            pdfauthor={于淼},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+  pdftitle={数据分析残卷},
+  pdfauthor={于淼},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -75,8 +82,14 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -86,25 +99,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{xeCJK}
 \setCJKmainfont[BoldFont=STZhongsong, ItalicFont=STKaiti]{STSong}
@@ -117,7 +119,7 @@
 
 \title{数据分析残卷}
 \author{于淼}
-\date{2020-01-02}
+\date{2020-08-19}
 
 \begin{document}
 \maketitle
@@ -582,7 +584,7 @@ $ exit # 退出
 \begin{itemize}
 \item
   复制：cp 或 scp（安全复制）
-  \textgreater{} scp -i mykey.pem \textasciitilde{}/Desktop/logs.csv \href{mailto:ubuntu@ec2-184-73-72-150.compute-1.amazonaws.com}{\nolinkurl{ubuntu@ec2-184-73-72-150.compute-1.amazonaws.com}}:data
+  \textgreater{} scp -i mykey.pem \textasciitilde/Desktop/logs.csv \href{mailto:ubuntu@ec2-184-73-72-150.compute-1.amazonaws.com}{\nolinkurl{ubuntu@ec2-184-73-72-150.compute-1.amazonaws.com}}:data
 \item
   解压：unpack
   \textgreater{} unpack logs.tar.gz
@@ -709,7 +711,7 @@ $ exit # 退出
 \item
   对象可以有属性\texttt{attributes}
 \item
-  对象赋值符号为 \textless{}- 赋值同时展示加括号或直接输入对象名 可累加赋值 \texttt{a\ \textless{}-\ b\ \textless{}-\ c}
+  对象赋值符号为 \textless- 赋值同时展示加括号或直接输入对象名 可累加赋值 \texttt{a\ \textless{}-\ b\ \textless{}-\ c}
 \item
   \texttt{\#}表示注释 不执行
 \item
@@ -843,7 +845,7 @@ $ exit # 退出
 \begin{itemize}
 \tightlist
 \item
-  整型变量后面加上L x\textless{}-10L
+  整型变量后面加上L x\textless-10L
 \item
   Inf代表1/0 同样1/Inf运算结果为0
 \end{itemize}
@@ -2061,8 +2063,8 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "#FF0000" "#FF1C00" "#FF3800" "#FF5500" "#FF7100" "#FF8D00" "#FFAA00" "#FFC600" "#FFE200"
-## [10] "#FFFF00"
+##  [1] "#FF0000" "#FF1C00" "#FF3800" "#FF5500" "#FF7100"
+##  [6] "#FF8D00" "#FFAA00" "#FFC600" "#FFE200" "#FFFF00"
 \end{verbatim}
 
 \begin{Shaded}
@@ -2162,7 +2164,7 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 ## [1] 3
 ## 
 ## $b
-## [1] -0.514
+## [1] 0.423
 \end{verbatim}
 
 \begin{Shaded}
@@ -2174,16 +2176,16 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 
 \begin{verbatim}
 ## [[1]]
-## [1] 7.59
+## [1] 1.57
 ## 
 ## [[2]]
-## [1] 4.86 2.90
+## [1] 4.81 8.63
 ## 
 ## [[3]]
-## [1] 4.66 5.02 6.88
+## [1] 0.565 8.659 3.376
 ## 
 ## [[4]]
-## [1] 8.61 1.22 2.55 5.65
+## [1] 4.08 2.67 5.17 1.31
 \end{verbatim}
 
 \begin{Shaded}
@@ -2224,8 +2226,8 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 \end{Shaded}
 
 \begin{verbatim}
-##      a      b      c      d 
-##  2.500 -0.305  1.025  5.038
+##     a     b     c     d 
+## 2.500 0.496 0.910 5.018
 \end{verbatim}
 
 \hypertarget{vapply}{%
@@ -2276,9 +2278,12 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 \end{Shaded}
 
 \begin{verbatim}
-##       [,1]   [,2]   [,3]   [,4]  [,5]  [,6]  [,7]  [,8]   [,9]  [,10]
-## 25% -0.326 0.0426 -0.331 -0.220 0.202 0.164 0.311 0.379 0.0184 -0.353
-## 75%  0.714 0.5073 -0.223  0.131 0.849 0.524 1.351 0.710 1.0490  0.216
+##       [,1]   [,2]   [,3]  [,4]    [,5]    [,6]  [,7]   [,8]
+## 25% -0.209 -0.892 -0.641 0.239 -0.5147 -0.0594 -1.59 -0.187
+## 75%  0.876 -0.323  0.249 1.121  0.0276  0.6693 -0.70  0.111
+##        [,9]   [,10]
+## 25% -0.3328 -1.3408
+## 75% -0.0451  0.0637
 \end{verbatim}
 
 \begin{Shaded}
@@ -2289,9 +2294,9 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 \end{Shaded}
 
 \begin{verbatim}
-##         [,1]   [,2]
-## [1,] -0.0237 -0.115
-## [2,] -0.3981 -0.453
+##         [,1]    [,2]
+## [1,] -0.7922 -0.3966
+## [2,] -0.0852  0.0153
 \end{verbatim}
 
 \hypertarget{tapply}{%
@@ -2312,8 +2317,8 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 \end{Shaded}
 
 \begin{verbatim}
-##     1     2     3 
-## 0.274 0.512 1.332
+##      1      2      3 
+## 0.0639 0.4832 0.9960
 \end{verbatim}
 
 \hypertarget{by}{%
@@ -2350,13 +2355,13 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 
 \begin{verbatim}
 ## $`1`
-## [1] -0.259
+## [1] 0.188
 ## 
 ## $`2`
-## [1] 0.413
+## [1] 0.388
 ## 
 ## $`3`
-## [1] 1.29
+## [1] 0.778
 \end{verbatim}
 
 \begin{Shaded}
@@ -2370,12 +2375,12 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 
 \begin{verbatim}
 ## List of 6
-##  $ 1.1: num [1:2] -0.187 1.554
-##  $ 1.2: num [1:2] 0.584 -0.215
-##  $ 1.3: num 1.15
-##  $ 2.3: num -0.26
-##  $ 2.4: num [1:2] 0.0881 -0.9575
-##  $ 2.5: num [1:2] -0.397 -1.117
+##  $ 1.1: num [1:2] 1.98 1.57
+##  $ 1.2: num [1:2] -1.777 -0.582
+##  $ 1.3: num -0.799
+##  $ 2.3: num -0.727
+##  $ 2.4: num [1:2] -0.0117 -0.257
+##  $ 2.5: num [1:2] -1.02 0.99
 \end{verbatim}
 
 \hypertarget{mapply}{%
@@ -2398,19 +2403,19 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
 
 \begin{verbatim}
 ## [[1]]
-## [1] 1.14
+## [1] 1.95
 ## 
 ## [[2]]
-## [1] 2.06 4.97
+## [1]  1.997 -0.414
 ## 
 ## [[3]]
-## [1]  4.565  2.052 -0.154
+## [1] 0.824 2.413 5.534
 ## 
 ## [[4]]
-## [1] 4.86 6.32 7.47 4.50
+## [1] 2.6389 0.0967 6.0979 2.9654
 ## 
 ## [[5]]
-## [1] 6.77 6.70 6.60 5.57 4.86
+## [1] 7.51 2.24 6.56 8.47 5.14
 \end{verbatim}
 
 \begin{Shaded}
@@ -3029,17 +3034,17 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
   \begin{itemize}
   \tightlist
   \item
-    描述性的 \textless{}- 总体数据
+    描述性的 \textless- 总体数据
   \item
-    探索性的 \textless{}- 有属性测量的样本数据
+    探索性的 \textless- 有属性测量的样本数据
   \item
-    推断性的 \textless{}- 合适的总体 随机采样
+    推断性的 \textless- 合适的总体 随机采样
   \item
-    预测性的 \textless{}- 来自同一总体 有训练集与测试集的样本
+    预测性的 \textless- 来自同一总体 有训练集与测试集的样本
   \item
-    因果性的 \textless{}- 随机性研究
+    因果性的 \textless- 随机性研究
   \item
-    机械性的 \textless{}- 系统中所有组成部分的数据
+    机械性的 \textless- 系统中所有组成部分的数据
   \end{itemize}
 \item
   决定可获取数据
@@ -3053,7 +3058,7 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
   \item
     注意使用条款
   \item
-    数据不存在 自己创造 \textless{}- 实验
+    数据不存在 自己创造 \textless- 实验
   \end{itemize}
 \item
   获取数据
@@ -3079,7 +3084,7 @@ Raw data -\textgreater{} Processing script -\textgreater{} tidy data
   \item
     了解数据来源
   \item
-    需要重新格式化 采样 \textless{}- 记录步骤
+    需要重新格式化 采样 \textless- 记录步骤
   \item
     判断数据是否合适 不合适重新获取
   \end{itemize}
@@ -3613,7 +3618,7 @@ Look at (visualize!) initial emergenet variable relationships and subsets\strut
     连续随机变量取连续区间子集概率 \(P(X \in A)\)
   \end{itemize}
 \item
-  概率质量函数（PMF）\textless{}- 离散随机变量
+  概率质量函数（PMF）\textless- 离散随机变量
 
   \begin{enumerate}
   \def\labelenumi{\arabic{enumi}.}
@@ -3624,7 +3629,7 @@ Look at (visualize!) initial emergenet variable relationships and subsets\strut
     \(\sum_{x} p(x) = 1\)
   \end{enumerate}
 \item
-  概率密度函数（PDF）\textless{}- 连续随机变量
+  概率密度函数（PDF）\textless- 连续随机变量
 
   \begin{enumerate}
   \def\labelenumi{\arabic{enumi}.}
@@ -4019,7 +4024,6 @@ P(B ~|~ A) = \frac{P(A ~|~ B) P(B)}{P(A ~|~ B) P(B) + P(A ~|~ B^c)P(B^c)}.
 \end{eqnarray*}
 
 \begin{itemize}
-\tightlist
 \item
   \(\left[\frac{(n-1)S^2}{\chi^2_{n-1,1-\alpha/2}}, \frac{(n-1)S^2}{\chi^2_{n-1,\alpha/2}}\right]\) 是 \(\sigma^2\) 的 \(100(1-\alpha)\%\) 置信区间
 \item
@@ -4689,7 +4693,7 @@ P\left(\frac{\bar X - 30}{\sigma /\sqrt{n}} > z_{1-\alpha} ~|~ \mu = \mu_a \righ
 \item
   已知 \((\hat Y_i - \bar Y) = \hat \beta_1 (X_i - \bar X)\) \(\hat \beta_1 = Cor(Y, X)\frac{Sd(Y)}{Sd(X)}\) 有 \(R^2 = \frac{\sum_{i=1}^n (\hat Y_i - \bar Y)^2}{\sum_{i=1}^n (Y_i - \bar Y)^2}= \hat \beta_1^2 \frac{\sum_{i=1}^n(X_i - \bar X)^2}{\sum_{i=1}^n (Y_i - \bar Y)^2}= Cor(Y, X)^2\)
 \item
-  \(R^2\) 实际上是相关性 \(r\) 的平方 \textless{}- 线性模型的可解释性
+  \(R^2\) 实际上是相关性 \(r\) 的平方 \textless- 线性模型的可解释性
 \item
   \(R^2\) 会伴随样本数增加而增加 会因删除异常值而增加
 \item
@@ -4878,6 +4882,10 @@ There are known knowns. These are things we know that we know. There are known u
   平均响应 \(\hat \mu = g^{-1}(\hat \eta)\)
 \item
   系数解释 \(g(E[Y | X_k = x_k + 1, X_{\sim k} = x_{\sim k}]) - g(E[Y | X_k = x_k, X_{\sim k}=x_{\sim k}]) = \beta_k\)
+\item
+  贝叶斯视角下就是预设不同参数的分布，然后用数据更新参数的分布
+\item
+  如果每一个响应受到来自于一个分布的随机效应的影响，例如个体基线不同，那么就可以构建随机效应模型来模拟，有时参数的系数也可能来自于一个分布而非固定
 \end{itemize}
 
 \hypertarget{ux4e8cux5143ux54cdux5e94}{%
@@ -4940,29 +4948,21 @@ There are known knowns. These are things we know that we know. There are known u
 
 \begin{itemize}
 \item
+  1900-1970 理论发展期
+\item
   1947，Dantzig 提出线性规划的 simplex 算法
 \item
-  1960s，早期内点法
+  1960s，早期插值方法
 \item
   1970s，椭球法与其他亚梯度方法
 \item
-  1980s，线性规划的多项式时间内点法
+  1980s，线性规划的多项式时间插值法
 \item
   1990之前主要运筹学里用，后来用到工程里
 \item
+  1990年后，应用于工程
+\item
   现在，非线性凸优化的多项式时间内点法
-\end{itemize}
-
-\hypertarget{ux51f8ux96c6}{%
-\section{凸集}\label{ux51f8ux96c6}}
-
-\begin{itemize}
-\item
-  仿射集 \(x = \theta x_1 + (1-\theta)x_2\)，包含所有经过任意两个集合内点的线
-\item
-  凸集 包含所有集合内任意两点间线段
-\item
-  凸组合 \(x = \theta_1x_1+\theta_2x_2+...+\theta_kx_k\)，其中\(\theta_1+...+\theta_k = 1, \theta_i \geq 0\)
 \end{itemize}
 
 \hypertarget{ux6700ux5c0fux4e8cux4e58ux6cd5}{%
@@ -4981,6 +4981,27 @@ There are known knowns. These are things we know that we know. There are known u
 将问题转化为凸函数\(f_i(\alpha x+\beta y)\geq \alpha f_i(x)+\beta f_i(y)\) ，如果\(\alpha + \beta = 1\)，\(\alpha \geq 0, \beta\geq 0\)，最小二乘法与线性规划是凸优化的特殊形式。
 
 求解凸优化问题没有解析解，求解时间正比于 \(max\{ n^3,n^2m,F\}\)，\(F\)是求函数一阶与二阶导数的时间，实际问题转化为凸优化问题不容易发现但确实可以求解。
+
+\hypertarget{ux4effux5c04ux96c6}{%
+\section{仿射集}\label{ux4effux5c04ux96c6}}
+
+\begin{itemize}
+\tightlist
+\item
+  \[x = \theta x_1 + (1-\theta)x2\]
+\item
+  仿射集：穿过任意两点的线的集合
+\item
+  凸集：仿射集里的线性片段 \texttt{\$0\textbackslash{}leq\ \textbackslash{}theta\ \textbackslash{}leq\ 1\$}
+\item
+  凸组合 \[x = \theta_1 x_1 + \theta_2 x_2+...+\theta_kx_k, \theta_1+\theta_2+...+\theta_k = 1, \theta_i\geq0\]
+\item
+  超平面 \[{x|a^Tx = b}(a\neq 0)\]
+\item
+  半空间\[{x|a^Tx \leq b}(a\neq 0)\]
+\item
+  超平面与半空间都是凸的
+\end{itemize}
 
 \hypertarget{mlsl}{%
 \chapter{统计模型}\label{mlsl}}
@@ -5074,7 +5095,7 @@ There are known knowns. These are things we know that we know. There are known u
 \item
   参数方法与非参数方法
 \item
-  模型的欠拟合与过拟合
+  模型的欠拟合与过拟合，回归模型低方差高偏差，邻近聚类高方差低偏差
 \item
   权衡模型的准确性（预测）与可解释性（推断）
 \item
@@ -5434,8 +5455,8 @@ The combination of some data and an aching desire for an answer does not ensure 
   去掉线性：多项式回归
 \end{itemize}
 
-\hypertarget{ux5e38ux89c1ux95eeux9898-1}{%
-\subsection{常见问题}\label{ux5e38ux89c1ux95eeux9898-1}}
+\hypertarget{ux5e38ux89c1ux95eeux9898}{%
+\subsection{常见问题}\label{ux5e38ux89c1ux95eeux9898}}
 
 \begin{itemize}
 \tightlist
@@ -5545,7 +5566,7 @@ The combination of some data and an aching desire for an answer does not ensure 
 \item
   最小二乘法（OLS）容易解释，预测性能好，但不万能
 \item
-  预测准确性上，当p\textgreater{}n时，模型方差变大
+  预测准确性上，当p\textgreater n时，模型方差变大
 \item
   模型解释上，p过多需要去除，进行模型选择
 \end{itemize}
@@ -6153,8 +6174,8 @@ The combination of some data and an aching desire for an answer does not ensure 
   先对所有样本随机分类，然后每种分类取中心，选取里中心距离最近的点重新分类，重新计算中心，迭代得到聚类结果
 \end{itemize}
 
-\hypertarget{ux5206ux5c42ux805aux7c7b-1}{%
-\subsubsection{分层聚类}\label{ux5206ux5c42ux805aux7c7b-1}}
+\hypertarget{ux5206ux5c42ux805aux7c7b}{%
+\subsubsection{分层聚类}\label{ux5206ux5c42ux805aux7c7b}}
 
 \begin{itemize}
 \tightlist
@@ -6611,7 +6632,7 @@ sqrt(sum((combPred-testing$wage)^2))
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 9,670 x 4
+## # A tibble: 9,741 x 4
 ##    name                  H    AB average
 ##    <chr>             <int> <int>   <dbl>
 ##  1 Hank Aaron         3771 12364  0.305 
@@ -6624,7 +6645,7 @@ sqrt(sum((combPred-testing$wage)^2))
 ##  8 Kurt Abbott         523  2044  0.256 
 ##  9 Ody Abbott           13    70  0.186 
 ## 10 Frank Abercrombie     0     4  0     
-## # … with 9,660 more rows
+## # ... with 9,731 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -6979,9 +7000,11 @@ willibe02 & Bernie Williams & 2336 & 7869 & 0.297 & 0.286 & 0.305\\
 
 \begin{verbatim}
 ## # A tibble: 1 x 10
-##   playerID  name           H    AB average eb_estimate alpha1 beta1   low  high
-##   <chr>     <chr>      <int> <int>   <dbl>       <dbl>  <dbl> <dbl> <dbl> <dbl>
-## 1 aaronha01 Hank Aaron  3771 12364   0.305       0.304  3851. 8821. 0.296 0.312
+##   playerID name      H    AB average eb_estimate alpha1
+##   <chr>    <chr> <int> <int>   <dbl>       <dbl>  <dbl>
+## 1 aaronha~ Hank~  3771 12364   0.305       0.304  3850.
+## # ... with 3 more variables: beta1 <dbl>, low <dbl>,
+## #   high <dbl>
 \end{verbatim}
 
 \begin{Shaded}
@@ -7059,7 +7082,7 @@ willibe02 & Bernie Williams & 2336 & 7869 & 0.297 & 0.286 & 0.305\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 5.17
+## [1] 5.31
 \end{verbatim}
 
 \begin{Shaded}
@@ -7070,7 +7093,7 @@ willibe02 & Bernie Williams & 2336 & 7869 & 0.297 & 0.286 & 0.305\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.0517
+## [1] 0.0531
 \end{verbatim}
 
 \begin{Shaded}
@@ -7084,7 +7107,7 @@ willibe02 & Bernie Williams & 2336 & 7869 & 0.297 & 0.286 & 0.305\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.00189
+## [1] 0.00194
 \end{verbatim}
 
 \begin{Shaded}
@@ -7094,7 +7117,7 @@ willibe02 & Bernie Williams & 2336 & 7869 & 0.297 & 0.286 & 0.305\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.25
+## [1] 0.252
 \end{verbatim}
 
 \begin{itemize}
@@ -7248,7 +7271,7 @@ willibe02 & Bernie Williams & 2336 & 7869 & 0.297 & 0.286 & 0.305\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.603
+## [1] 0.605
 \end{verbatim}
 
 \hypertarget{ux6b63ux6001ux8fd1ux4f3cux6c42ux89e3}{%
@@ -7316,7 +7339,8 @@ Mike Piazza & 2127 & 4784\\
 
 \begin{verbatim}
 ## 
-##  2-sample test for equality of proportions with continuity correction
+## 	2-sample test for equality of proportions with
+## 	continuity correction
 ## 
 ## data:  two_players$H out of two_players$AB
 ## X-squared = 0.1, df = 1, p-value = 0.7
@@ -7429,20 +7453,20 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 9,670 x 4
+## # A tibble: 9,741 x 4
 ##    name                 posterior conf.low conf.high
 ##    <chr>                    <dbl>    <dbl>     <dbl>
 ##  1 Rogers Hornsby        2.84e-11   0.0345    0.0639
-##  2 Ed Delahanty          7.52e- 7   0.0217    0.0517
-##  3 Shoeless Joe Jackson  8.89e- 8   0.0278    0.0611
-##  4 Willie Keeler         4.62e- 6   0.0183    0.0472
+##  2 Ed Delahanty          7.51e- 7   0.0218    0.0517
+##  3 Shoeless Joe Jackson  8.87e- 8   0.0278    0.0611
+##  4 Willie Keeler         4.61e- 6   0.0183    0.0472
 ##  5 Nap Lajoie            1.55e- 5   0.0159    0.0441
 ##  6 Tony Gwynn            1.83e- 5   0.0157    0.0442
 ##  7 Harry Heilmann        7.19e- 6   0.0180    0.0476
 ##  8 Lou Gehrig            1.43e- 5   0.0167    0.0461
-##  9 Billy Hamilton        6.47e- 6   0.0191    0.0504
+##  9 Billy Hamilton        6.46e- 6   0.0191    0.0504
 ## 10 Eddie Collins         1.99e- 4   0.0113    0.0393
-## # … with 9,660 more rows
+## # ... with 9,731 more rows
 \end{verbatim}
 
 \begin{Shaded}
@@ -7462,19 +7486,19 @@ Mike Piazza & 2127 & 4784\\
 
 \begin{verbatim}
 ## # A tibble: 48 x 5
-##    name                 posterior conf.low conf.high   qvalue
-##    <chr>                    <dbl>    <dbl>     <dbl>    <dbl>
-##  1 Rogers Hornsby        2.84e-11   0.0345    0.0639 2.84e-11
-##  2 Shoeless Joe Jackson  8.89e- 8   0.0278    0.0611 4.45e- 8
-##  3 Ed Delahanty          7.52e- 7   0.0217    0.0517 2.80e- 7
-##  4 Willie Keeler         4.62e- 6   0.0183    0.0472 1.36e- 6
-##  5 Billy Hamilton        6.47e- 6   0.0191    0.0504 2.39e- 6
-##  6 Harry Heilmann        7.19e- 6   0.0180    0.0476 3.19e- 6
-##  7 Lou Gehrig            1.43e- 5   0.0167    0.0461 4.78e- 6
-##  8 Nap Lajoie            1.55e- 5   0.0159    0.0441 6.12e- 6
-##  9 Tony Gwynn            1.83e- 5   0.0157    0.0442 7.47e- 6
-## 10 Bill Terry            3.04e- 5   0.0162    0.0472 9.77e- 6
-## # … with 38 more rows
+##    name                posterior conf.low conf.high   qvalue
+##    <chr>                   <dbl>    <dbl>     <dbl>    <dbl>
+##  1 Rogers Hornsby       2.84e-11   0.0345    0.0639 2.84e-11
+##  2 Shoeless Joe Jacks~  8.87e- 8   0.0278    0.0611 4.44e- 8
+##  3 Ed Delahanty         7.51e- 7   0.0218    0.0517 2.80e- 7
+##  4 Willie Keeler        4.61e- 6   0.0183    0.0472 1.36e- 6
+##  5 Billy Hamilton       6.46e- 6   0.0191    0.0504 2.38e- 6
+##  6 Harry Heilmann       7.19e- 6   0.0180    0.0476 3.18e- 6
+##  7 Lou Gehrig           1.43e- 5   0.0167    0.0461 4.77e- 6
+##  8 Nap Lajoie           1.55e- 5   0.0159    0.0441 6.12e- 6
+##  9 Tony Gwynn           1.83e- 5   0.0157    0.0442 7.47e- 6
+## 10 Bill Terry           3.04e- 5   0.0162    0.0472 9.76e- 6
+## # ... with 38 more rows
 \end{verbatim}
 
 \begin{itemize}
@@ -7569,11 +7593,11 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## GAMLSS-RS iteration 1: Global Deviance = 94587 
-## GAMLSS-RS iteration 2: Global Deviance = 74795 
-## GAMLSS-RS iteration 3: Global Deviance = 70515 
-## GAMLSS-RS iteration 4: Global Deviance = 70509 
-## GAMLSS-RS iteration 5: Global Deviance = 70509
+## GAMLSS-RS iteration 1: Global Deviance = 95374 
+## GAMLSS-RS iteration 2: Global Deviance = 75427 
+## GAMLSS-RS iteration 3: Global Deviance = 71113 
+## GAMLSS-RS iteration 4: Global Deviance = 71107 
+## GAMLSS-RS iteration 5: Global Deviance = 71107
 \end{verbatim}
 
 \begin{Shaded}
@@ -7588,9 +7612,9 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 3 x 6
 ##   parameter term        estimate std.error statistic p.value
 ##   <chr>     <chr>          <dbl>     <dbl>     <dbl>   <dbl>
-## 1 mu        (Intercept)   0.144   0.00158       91.0       0
-## 2 mu        log(AB)       0.0151  0.000216      70.0       0
-## 3 sigma     (Intercept)  -6.35    0.0246      -258.        0
+## 1 mu        (Intercept)   0.144   0.00158       91.2       0
+## 2 mu        log(AB)       0.0151  0.000215      70.2       0
+## 3 sigma     (Intercept)  -6.34    0.0245      -259.        0
 \end{verbatim}
 
 \begin{Shaded}
@@ -7601,7 +7625,7 @@ Mike Piazza & 2127 & 4784\\
 \NormalTok{sigma <-}\StringTok{ }\KeywordTok{exp}\NormalTok{(td}\OperatorTok{$}\NormalTok{estimate[}\DecValTok{3}\NormalTok{])}
 
 \CommentTok{# 看看AB对先验概率的影响}
-\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(}\FloatTok{0.08}\NormalTok{, }\FloatTok{.35}\NormalTok{, }\FloatTok{.001}\NormalTok{), }\DataTypeTok{AB =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{)) }\OperatorTok{%>%}
+\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(}\FloatTok{0.08}\NormalTok{, }\FloatTok{.35}\NormalTok{, }\FloatTok{.001}\NormalTok{), }\DataTypeTok{AB =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{density =} \KeywordTok{dbeta}\NormalTok{(x, (mu_}\DecValTok{0} \OperatorTok{+}\StringTok{ }\NormalTok{mu_AB }\OperatorTok{*}\StringTok{ }\KeywordTok{log}\NormalTok{(AB)) }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
 \NormalTok{                         (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{(mu_}\DecValTok{0} \OperatorTok{+}\StringTok{ }\NormalTok{mu_AB }\OperatorTok{*}\StringTok{ }\KeywordTok{log}\NormalTok{(AB))) }\OperatorTok{/}\StringTok{ }\NormalTok{sigma)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{AB =} \KeywordTok{factor}\NormalTok{(AB)) }\OperatorTok{%>%}
@@ -7696,10 +7720,10 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 4 x 2
 ##   bats      n
 ##   <fct> <int>
-## 1 B       788
-## 2 L      2740
-## 3 R      5486
-## 4 <NA>    656
+## 1 B       797
+## 2 L      2769
+## 3 R      5520
+## 4 <NA>    655
 \end{verbatim}
 
 \begin{Shaded}
@@ -7716,11 +7740,11 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## GAMLSS-RS iteration 1: Global Deviance = 90843 
-## GAMLSS-RS iteration 2: Global Deviance = 71587 
-## GAMLSS-RS iteration 3: Global Deviance = 67295 
-## GAMLSS-RS iteration 4: Global Deviance = 67289 
-## GAMLSS-RS iteration 5: Global Deviance = 67289
+## GAMLSS-RS iteration 1: Global Deviance = 91642 
+## GAMLSS-RS iteration 2: Global Deviance = 72232 
+## GAMLSS-RS iteration 3: Global Deviance = 67908 
+## GAMLSS-RS iteration 4: Global Deviance = 67902 
+## GAMLSS-RS iteration 5: Global Deviance = 67902
 \end{verbatim}
 
 \begin{Shaded}
@@ -7732,23 +7756,24 @@ Mike Piazza & 2127 & 4784\\
 
 \begin{verbatim}
 ## # A tibble: 5 x 6
-##   parameter term        estimate std.error statistic  p.value
-##   <chr>     <chr>          <dbl>     <dbl>     <dbl>    <dbl>
-## 1 mu        (Intercept)  0.142    0.00162      87.6  0.      
-## 2 mu        log(AB)      0.0150   0.000219     68.3  0.      
-## 3 mu        batsB       -0.00158  0.000982     -1.61 1.07e- 1
-## 4 mu        batsL        0.00953  0.000630     15.1  5.11e-51
-## 5 sigma     (Intercept) -6.43     0.0251     -256.   0.
+##   parameter term       estimate std.error statistic  p.value
+##   <chr>     <chr>         <dbl>     <dbl>     <dbl>    <dbl>
+## 1 mu        (Intercep~  0.142    0.00162      87.8  0.      
+## 2 mu        log(AB)     0.0150   0.000219     68.5  0.      
+## 3 mu        batsB      -0.00150  0.000979     -1.53 1.27e- 1
+## 4 mu        batsL       0.00935  0.000628     14.9  1.42e-49
+## 5 sigma     (Intercep~ -6.42     0.0250     -257.   0.
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{sigma <-}\StringTok{ }\KeywordTok{fitted}\NormalTok{(fit2, }\StringTok{"sigma"}\NormalTok{)[}\DecValTok{1}\NormalTok{]}
-\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{bats =} \KeywordTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"R"}\NormalTok{),}
-         \DataTypeTok{AB =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{augment}\NormalTok{(fit2, }\DataTypeTok{newdata =}\NormalTok{ .) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{mu =}\NormalTok{ .fitted) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{, }\FloatTok{.36}\NormalTok{, }\FloatTok{.0005}\NormalTok{)) }\OperatorTok{%>%}
+\NormalTok{df <-}\StringTok{ }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{bats =} \KeywordTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"R"}\NormalTok{),}
+         \DataTypeTok{AB =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{))}
+\NormalTok{df}\OperatorTok{$}\NormalTok{mu <-}\StringTok{ }\KeywordTok{predict}\NormalTok{(fit2, }\DataTypeTok{what =} \StringTok{"mu"}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ df)}
+\NormalTok{df <-}\StringTok{ }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(df,}
+         \DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(.}\DecValTok{1}\NormalTok{, }\FloatTok{.36}\NormalTok{, }\FloatTok{.0005}\NormalTok{))}
+\NormalTok{df }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{alpha =}\NormalTok{ mu }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
          \DataTypeTok{beta =}\NormalTok{ (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{mu) }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
          \DataTypeTok{density =} \KeywordTok{dbeta}\NormalTok{(x, alpha, beta)) }\OperatorTok{%>%}
@@ -7771,12 +7796,14 @@ Mike Piazza & 2127 & 4784\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{bats =} \KeywordTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"R"}\NormalTok{),}
-         \DataTypeTok{AB =} \KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{)) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{augment}\NormalTok{(fit2, }\DataTypeTok{newdata =}\NormalTok{ .) }\OperatorTok{%>%}
+\NormalTok{df <-}\StringTok{ }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{bats =} \KeywordTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"R"}\NormalTok{),}
+         \DataTypeTok{AB =} \KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DecValTok{1000}\NormalTok{, }\DecValTok{10000}\NormalTok{))}
+\NormalTok{df }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{H =} \FloatTok{.3} \OperatorTok{*}\StringTok{ }\NormalTok{AB,}
-         \DataTypeTok{alpha0 =}\NormalTok{ .fitted }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
-         \DataTypeTok{beta0 =}\NormalTok{ (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{.fitted) }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
+         \DataTypeTok{mu =} \KeywordTok{predict}\NormalTok{(fit2, }\DataTypeTok{what =} \StringTok{"mu"}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ df),}
+         \DataTypeTok{sigma =} \KeywordTok{predict}\NormalTok{(fit2, }\DataTypeTok{what =} \StringTok{"sigma"}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ df, }\DataTypeTok{type =} \StringTok{"response"}\NormalTok{),}
+         \DataTypeTok{alpha0 =}\NormalTok{ mu }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
+         \DataTypeTok{beta0 =}\NormalTok{ (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{mu) }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
          \DataTypeTok{alpha1 =}\NormalTok{ alpha0 }\OperatorTok{+}\StringTok{ }\NormalTok{H,}
          \DataTypeTok{beta1 =}\NormalTok{ beta0 }\OperatorTok{+}\StringTok{ }\NormalTok{AB }\OperatorTok{-}\StringTok{ }\NormalTok{H,}
          \DataTypeTok{estimate =}\NormalTok{ alpha1 }\OperatorTok{/}\StringTok{ }\NormalTok{(alpha1 }\OperatorTok{+}\StringTok{ }\NormalTok{beta1),}
@@ -7822,9 +7849,8 @@ Mike Piazza & 2127 & 4784\\
 \StringTok{    }\KeywordTok{distinct}\NormalTok{() }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{filter}\NormalTok{(bats }\OperatorTok{!=}\StringTok{ "B"}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{AB =} \DecValTok{1000}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{augment}\NormalTok{(f, }\DataTypeTok{newdata =}\NormalTok{ .) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{rename}\NormalTok{(}\DataTypeTok{mu =}\NormalTok{ .fitted) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{sigma =} \KeywordTok{fitted}\NormalTok{(fit3, }\StringTok{"sigma"}\NormalTok{)[}\DecValTok{1}\NormalTok{],}
+\StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{mu =} \KeywordTok{predict}\NormalTok{(f, }\DataTypeTok{what =} \StringTok{"mu"}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ .),}
+           \DataTypeTok{sigma =} \KeywordTok{predict}\NormalTok{(f, }\DataTypeTok{what =} \StringTok{"sigma"}\NormalTok{, }\DataTypeTok{newdata =}\NormalTok{ ., }\DataTypeTok{type =} \StringTok{"response"}\NormalTok{),}
            \DataTypeTok{alpha0 =}\NormalTok{ mu }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
            \DataTypeTok{beta0 =}\NormalTok{ (}\DecValTok{1} \OperatorTok{-}\StringTok{ }\NormalTok{mu) }\OperatorTok{/}\StringTok{ }\NormalTok{sigma,}
            \DataTypeTok{conf_low =} \KeywordTok{qbeta}\NormalTok{(.}\DecValTok{025}\NormalTok{, alpha0, beta0),}
@@ -7878,7 +7904,7 @@ Mike Piazza & 2127 & 4784\\
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{players <-}\StringTok{ }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{year =} \KeywordTok{c}\NormalTok{(}\DecValTok{1915}\NormalTok{, }\DecValTok{1965}\NormalTok{, }\DecValTok{2015}\NormalTok{),}
+\NormalTok{players <-}\StringTok{ }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{year =} \KeywordTok{c}\NormalTok{(}\DecValTok{1915}\NormalTok{, }\DecValTok{1965}\NormalTok{, }\DecValTok{2015}\NormalTok{),}
                     \DataTypeTok{bats =} \KeywordTok{c}\NormalTok{(}\StringTok{"L"}\NormalTok{, }\StringTok{"R"}\NormalTok{),}
                     \DataTypeTok{H =} \DecValTok{30}\NormalTok{,}
                     \DataTypeTok{AB =} \DecValTok{100}\NormalTok{)}
@@ -7891,7 +7917,7 @@ Mike Piazza & 2127 & 4784\\
          \DataTypeTok{alpha1 =}\NormalTok{ alpha0 }\OperatorTok{+}\StringTok{ }\NormalTok{H,}
          \DataTypeTok{beta1 =}\NormalTok{ beta0 }\OperatorTok{+}\StringTok{ }\NormalTok{AB }\OperatorTok{-}\StringTok{ }\NormalTok{H)}
 \NormalTok{players_posterior }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(.}\DecValTok{15}\NormalTok{, }\FloatTok{.3}\NormalTok{, }\FloatTok{.001}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(.}\DecValTok{15}\NormalTok{, }\FloatTok{.3}\NormalTok{, }\FloatTok{.001}\NormalTok{)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{density =} \KeywordTok{dbeta}\NormalTok{(x, alpha1, beta1)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(x, density, }\DataTypeTok{color =}\NormalTok{ bats)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}
@@ -7955,7 +7981,6 @@ Mike Piazza & 2127 & 4784\\
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{set.seed}\NormalTok{(}\DecValTok{2017}\NormalTok{)}
-
 \CommentTok{# 先随机分为两组}
 \NormalTok{starting_data <-}\StringTok{ }\NormalTok{career }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{filter}\NormalTok{(AB }\OperatorTok{>=}\StringTok{ }\DecValTok{20}\NormalTok{) }\OperatorTok{%>%}
@@ -7993,7 +8018,7 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 1 x 3
 ##   alpha  beta number
 ##   <dbl> <dbl>  <int>
-## 1  12.4  44.5   3615
+## 1  12.3  44.3   3711
 \end{verbatim}
 
 \begin{Shaded}
@@ -8013,8 +8038,8 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 2 x 5
 ##   cluster alpha  beta number prior
 ##   <fct>   <dbl> <dbl>  <int> <dbl>
-## 1 A        12.6  45.0   1764 0.488
-## 2 B        12.2  44.0   1851 0.512
+## 1 A        11.7  42.2   1811 0.488
+## 2 B        13.0  46.5   1900 0.512
 \end{verbatim}
 
 \begin{itemize}
@@ -8027,7 +8052,7 @@ Mike Piazza & 2127 & 4784\\
 \begin{Highlighting}[]
 \NormalTok{assignments <-}\StringTok{ }\NormalTok{starting_data }\OperatorTok{%>%}
 \StringTok{  }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{cluster) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(fits) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(fits) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{likelihood =}\NormalTok{ prior }\OperatorTok{*}\StringTok{ }\NormalTok{VGAM}\OperatorTok{::}\KeywordTok{dbetabinom.ab}\NormalTok{(H, AB, alpha, beta)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(playerID) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{top_n}\NormalTok{(}\DecValTok{1}\NormalTok{, likelihood) }\OperatorTok{%>%}
@@ -8038,20 +8063,21 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 3,615 x 11
-##    playerID  name                   H    AB average cluster alpha  beta number prior likelihood
-##    <chr>     <chr>              <int> <int>   <dbl> <fct>   <dbl> <dbl>  <int> <dbl>      <dbl>
-##  1 abbotje01 Jeff Abbott           11    42  0.262  B        12.2  44.0   1851 0.512   0.0455  
-##  2 abbotji01 Jim Abbott             2    21  0.0952 B        12.2  44.0   1851 0.512   0.0570  
-##  3 abbotku01 Kurt Abbott          475  1860  0.255  B        12.2  44.0   1851 0.512   0.00140 
-##  4 abbotky01 Kyle Abbott            3    31  0.0968 B        12.2  44.0   1851 0.512   0.0356  
-##  5 abercre01 Reggie Abercrombie    86   386  0.223  B        12.2  44.0   1851 0.512   0.00873 
-##  6 abnersh01 Shawn Abner          110   531  0.207  B        12.2  44.0   1851 0.512   0.00672 
-##  7 abreubo01 Bobby Abreu         1607  5395  0.298  B        12.2  44.0   1851 0.512   0.000219
-##  8 abreuto01 Tony Abreu           129   509  0.253  B        12.2  44.0   1851 0.512   0.00516 
-##  9 acevejo01 Jose Acevedo           8   101  0.0792 B        12.2  44.0   1851 0.512   0.00293 
-## 10 aceveju01 Juan Acevedo           6    65  0.0923 B        12.2  44.0   1851 0.512   0.0106  
-## # … with 3,605 more rows
+## # A tibble: 3,711 x 11
+##    playerID name      H    AB average cluster alpha  beta
+##    <chr>    <chr> <int> <int>   <dbl> <fct>   <dbl> <dbl>
+##  1 abbotje~ Jeff~    11    42  0.262  B        13.0  46.5
+##  2 abbotji~ Jim ~     2    21  0.0952 B        13.0  46.5
+##  3 abbotku~ Kurt~   475  1860  0.255  B        13.0  46.5
+##  4 abbotky~ Kyle~     3    31  0.0968 B        13.0  46.5
+##  5 abercre~ Regg~    86   386  0.223  B        13.0  46.5
+##  6 abnersh~ Shaw~   110   531  0.207  B        13.0  46.5
+##  7 abreubo~ Bobb~  1607  5395  0.298  B        13.0  46.5
+##  8 abreuto~ Tony~   129   509  0.253  B        13.0  46.5
+##  9 acevejo~ Jose~     8   101  0.0792 A        11.7  42.2
+## 10 aceveju~ Juan~     6    65  0.0923 A        11.7  42.2
+## # ... with 3,701 more rows, and 3 more variables:
+## #   number <int>, prior <dbl>, likelihood <dbl>
 \end{verbatim}
 
 \begin{Shaded}
@@ -8083,7 +8109,7 @@ Mike Piazza & 2127 & 4784\\
 
 \NormalTok{  assignments <-}\StringTok{ }\NormalTok{assignments }\OperatorTok{%>%}
 \StringTok{    }\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{select}\NormalTok{(playerID}\OperatorTok{:}\NormalTok{average) }\OperatorTok{%>%}
-\StringTok{    }\KeywordTok{crossing}\NormalTok{(fits) }\OperatorTok{%>%}
+\StringTok{    }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(fits) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{likelihood =}\NormalTok{ prior }\OperatorTok{*}\StringTok{ }\NormalTok{VGAM}\OperatorTok{::}\KeywordTok{dbetabinom.ab}\NormalTok{(H, AB, alpha, beta)) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{group_by}\NormalTok{(playerID) }\OperatorTok{%>%}
 \StringTok{    }\KeywordTok{top_n}\NormalTok{(}\DecValTok{1}\NormalTok{, likelihood) }\OperatorTok{%>%}
@@ -8115,7 +8141,7 @@ Mike Piazza & 2127 & 4784\\
 \StringTok{  }\KeywordTok{map_df}\NormalTok{(}\StringTok{"fits"}\NormalTok{, }\DataTypeTok{.id =} \StringTok{"iteration"}\NormalTok{)}
 \CommentTok{# 两个分布的收敛过程}
 \NormalTok{fit_iterations }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(.}\DecValTok{001}\NormalTok{, }\FloatTok{.4}\NormalTok{, }\FloatTok{.001}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(.}\DecValTok{001}\NormalTok{, }\FloatTok{.4}\NormalTok{, }\FloatTok{.001}\NormalTok{)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{density =}\NormalTok{ prior }\OperatorTok{*}\StringTok{ }\KeywordTok{dbeta}\NormalTok{(x, alpha, beta)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(x, density, }\DataTypeTok{color =}\NormalTok{ iteration, }\DataTypeTok{group =}\NormalTok{ iteration)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}
@@ -8145,15 +8171,14 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 6 x 8
-##   playerID  name            bats      H    AB  year average isPitcher
-##   <chr>     <chr>           <fct> <int> <int> <dbl>   <dbl> <lgl>    
-## 1 dejesjo01 Jose de Jesus   R        11   100 1990.    0.11 TRUE     
-## 2 mahonmi02 Mike Mahoney    R        18   100 2002.    0.18 FALSE    
-## 3 cancero01 Robinson Cancel R        20   100 2007.    0.2  FALSE    
-## 4 buschmi01 Mike Busch      R        22   100 1996.    0.22 FALSE    
-## 5 verdual01 Alex Verdugo    L        24   100 2018.    0.24 FALSE    
-## 6 shealry01 Ryan Shealy     R        32   100 2006.    0.32 FALSE
+## # A tibble: 5 x 8
+##   playerID  name   bats      H    AB  year average isPitcher
+##   <chr>     <chr>  <fct> <int> <int> <dbl>   <dbl> <lgl>    
+## 1 dejesjo01 Jose ~ R        11   100 1990.    0.11 TRUE     
+## 2 mahonmi02 Mike ~ R        18   100 2002.    0.18 FALSE    
+## 3 cancero01 Robin~ R        20   100 2007.    0.2  FALSE    
+## 4 buschmi01 Mike ~ R        22   100 1996.    0.22 FALSE    
+## 5 shealry01 Ryan ~ R        32   100 2006.    0.32 FALSE
 \end{verbatim}
 
 \begin{Shaded}
@@ -8164,15 +8189,19 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 6 x 6
-##   iteration cluster alpha  beta number prior
-##   <chr>     <fct>   <dbl> <dbl>  <int> <dbl>
-## 1 1         A        12.6  45.0   1764 0.488
-## 2 1         B        12.2  44.0   1851 0.512
-## 3 2         B        12.4  44.5   3615 1    
-## 4 3         B        12.4  44.5   3615 1    
-## 5 4         B        12.4  44.5   3615 1    
-## 6 5         B        12.4  44.5   3615 1
+## # A tibble: 10 x 6
+##    iteration cluster alpha  beta number prior
+##    <chr>     <fct>   <dbl> <dbl>  <int> <dbl>
+##  1 1         A       11.7   42.2   1811 0.488
+##  2 1         B       13.0   46.5   1900 0.512
+##  3 2         A        9.05  75.8    523 0.141
+##  4 2         B       52.8  165.    3188 0.859
+##  5 3         A       36.9  296.     627 0.169
+##  6 3         B       67.3  206.    3084 0.831
+##  7 4         A       42.3  328.     725 0.195
+##  8 4         B       77.4  235.    2986 0.805
+##  9 5         A       40.2  305.     804 0.217
+## 10 5         B       86.5  260.    2907 0.783
 \end{verbatim}
 
 \begin{Shaded}
@@ -8188,15 +8217,15 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 2 x 6
 ##   iteration cluster alpha  beta number prior
 ##   <chr>     <fct>   <dbl> <dbl>  <int> <dbl>
-## 1 1         A        12.6  45.0   1764 0.488
-## 2 1         B        12.2  44.0   1851 0.512
+## 1 1         A        11.7  42.2   1811 0.488
+## 2 1         B        13.0  46.5   1900 0.512
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# 观察球员位置}
 \NormalTok{final_parameters }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\OperatorTok{:}\DecValTok{45}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \DecValTok{0}\OperatorTok{:}\DecValTok{45}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{density =}\NormalTok{ prior }\OperatorTok{*}\StringTok{ }\NormalTok{VGAM}\OperatorTok{::}\KeywordTok{dbetabinom.ab}\NormalTok{(x, }\DecValTok{100}\NormalTok{, alpha, beta)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(x, density)) }\OperatorTok{+}
 \StringTok{  }\KeywordTok{geom_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{color =}\NormalTok{ cluster)) }\OperatorTok{+}
@@ -8214,7 +8243,7 @@ Mike Piazza & 2127 & 4784\\
 \CommentTok{# 根据贝叶斯理论，我们可以用在A分组的似然度比上两个分组似然度的和得到后验概率}
 
 \NormalTok{final_parameters }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{H =} \DecValTok{1}\OperatorTok{:}\DecValTok{40}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{H =} \DecValTok{1}\OperatorTok{:}\DecValTok{40}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{transmute}\NormalTok{(H, cluster, }\DataTypeTok{likelihood =}\NormalTok{ prior }\OperatorTok{*}\StringTok{ }\NormalTok{VGAM}\OperatorTok{::}\KeywordTok{dbetabinom.ab}\NormalTok{(H, }\DecValTok{100}\NormalTok{, alpha, beta)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{spread}\NormalTok{(cluster, likelihood) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{probabilityA =}\NormalTok{ A }\OperatorTok{/}\NormalTok{(A }\OperatorTok{+}\StringTok{ }\NormalTok{B)) }\OperatorTok{%>%}
@@ -8240,7 +8269,7 @@ Mike Piazza & 2127 & 4784\\
 \begin{Highlighting}[]
 \NormalTok{career_likelihoods <-}\StringTok{ }\NormalTok{career }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{filter}\NormalTok{(AB }\OperatorTok{>}\StringTok{ }\DecValTok{20}\NormalTok{) }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(final_parameters) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(final_parameters) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{likelihood =}\NormalTok{ prior }\OperatorTok{*}\StringTok{ }\NormalTok{VGAM}\OperatorTok{::}\KeywordTok{dbetabinom.ab}\NormalTok{(H, AB, alpha, beta)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(playerID) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{posterior =}\NormalTok{ likelihood }\OperatorTok{/}\StringTok{ }\KeywordTok{sum}\NormalTok{(likelihood))}
@@ -8257,10 +8286,8 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 1 x 2
-##   isPitcher `<NA>`
-##   <lgl>      <int>
-## 1 NA             0
+## # A tibble: 0 x 1
+## # ... with 1 variable: isPitcher <lgl>
 \end{verbatim}
 
 \begin{itemize}
@@ -8290,7 +8317,7 @@ Mike Piazza & 2127 & 4784\\
          \DataTypeTok{beta1 =}\NormalTok{ AB }\OperatorTok{-}\StringTok{ }\NormalTok{H }\OperatorTok{+}\StringTok{ }\NormalTok{beta)}
 
 \NormalTok{batting_data }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.4}\NormalTok{, }\FloatTok{.001}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{.4}\NormalTok{, }\FloatTok{.001}\NormalTok{)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{posterior_density =}\NormalTok{ posterior }\OperatorTok{*}\StringTok{ }\KeywordTok{dbeta}\NormalTok{(x, alpha1, beta1)) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{group_by}\NormalTok{(name, x) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{summarize}\NormalTok{(}\DataTypeTok{posterior_density =} \KeywordTok{sum}\NormalTok{(posterior_density)) }\OperatorTok{%>%}
@@ -8370,7 +8397,7 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 1 x 2
 ##   alpha  beta
 ##   <dbl> <dbl>
-## 1  72.9  218.
+## 1  73.0  218.
 \end{verbatim}
 
 \begin{Shaded}
@@ -8410,20 +8437,20 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## # A tibble: 10,800 x 4
+## # A tibble: 10,893 x 4
 ##    playerID      H    AB     p
 ##    <chr>     <int> <int> <dbl>
-##  1 aaronha01  3665 12364 0.298
-##  2 aaronto01   249   944 0.249
-##  3 abadan01      6    21 0.273
-##  4 abadijo01    10    49 0.198
-##  5 abbated01   790  3044 0.249
-##  6 abbeych01   460  1756 0.264
-##  7 abbotda01     3     7 0.191
-##  8 abbotfr01   132   513 0.251
-##  9 abbotje01   151   596 0.243
-## 10 abbotku01   535  2044 0.261
-## # … with 10,790 more rows
+##  1 aaronha01  3672 12364 0.298
+##  2 aaronto01   255   944 0.249
+##  3 abadan01      7    21 0.273
+##  4 abadijo01    11    49 0.198
+##  5 abbated01   756  3044 0.249
+##  6 abbeych01   471  1756 0.264
+##  7 abbotda01     1     7 0.191
+##  8 abbotfr01   124   513 0.251
+##  9 abbotje01   141   596 0.243
+## 10 abbotku01   504  2044 0.261
+## # ... with 10,883 more rows
 \end{verbatim}
 
 \hypertarget{ux6a21ux62dfux5bf9ux5206ux5e03ux53c2ux6570ux7684ux4f30ux8ba1}{%
@@ -8482,8 +8509,8 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 2 x 2
 ##   type          mse
 ##   <chr>       <dbl>
-## 1 Raw      0.0152  
-## 2 Shrunken 0.000347
+## 1 Raw      0.0148  
+## 2 Shrunken 0.000343
 \end{verbatim}
 
 \begin{itemize}
@@ -8587,7 +8614,7 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 1 x 1
 ##   coverage
 ##      <dbl>
-## 1    0.945
+## 1    0.948
 \end{verbatim}
 
 \begin{itemize}
@@ -8646,7 +8673,7 @@ Mike Piazza & 2127 & 4784\\
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.157
+## [1] 0.0845
 \end{verbatim}
 
 \begin{Shaded}
@@ -8687,8 +8714,8 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 3 x 6
 ##   parameter term        estimate std.error statistic p.value
 ##   <chr>     <chr>          <dbl>     <dbl>     <dbl>   <dbl>
-## 1 mu        (Intercept)   -1.69    0.00885    -191.        0
-## 2 mu        log10(AB)      0.192   0.00273      70.2       0
+## 1 mu        (Intercept)   -1.69    0.00881    -192.        0
+## 2 mu        log10(AB)      0.192   0.00272      70.4       0
 ## 3 sigma     (Intercept)   -6.31    0.0227     -278.        0
 \end{verbatim}
 
@@ -8713,9 +8740,9 @@ Mike Piazza & 2127 & 4784\\
 ## # A tibble: 3 x 6
 ##   parameter term        estimate std.error statistic p.value
 ##   <chr>     <chr>          <dbl>     <dbl>     <dbl>   <dbl>
-## 1 mu        (Intercept)   -1.67    0.00880    -190.        0
-## 2 mu        log10(AB)      0.187   0.00272      69.0       0
-## 3 sigma     (Intercept)   -6.32    0.0267     -237.        0
+## 1 mu        (Intercept)   -1.69    0.00883    -191.        0
+## 2 mu        log10(AB)      0.191   0.00273      70.1       0
+## 3 sigma     (Intercept)   -6.29    0.0263     -240.        0
 \end{verbatim}
 
 \begin{Shaded}
@@ -8754,7 +8781,7 @@ Mike Piazza & 2127 & 4784\\
 \KeywordTok{set.seed}\NormalTok{(}\DecValTok{2019}\NormalTok{)}
 
 \NormalTok{sim_replications <-}\StringTok{ }\NormalTok{career }\OperatorTok{%>%}
-\StringTok{  }\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{replication =} \DecValTok{1}\OperatorTok{:}\DecValTok{50}\NormalTok{) }\OperatorTok{%>%}
+\StringTok{  }\NormalTok{tidyr}\OperatorTok{::}\KeywordTok{crossing}\NormalTok{(}\DataTypeTok{replication =} \DecValTok{1}\OperatorTok{:}\DecValTok{50}\NormalTok{) }\OperatorTok{%>%}
 \StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{p =} \KeywordTok{rbeta}\NormalTok{(}\KeywordTok{n}\NormalTok{(), alpha0, beta0),}
          \DataTypeTok{H =} \KeywordTok{rbinom}\NormalTok{(}\KeywordTok{n}\NormalTok{(), AB, p))}
 
@@ -9002,7 +9029,7 @@ practical framework for causal effect estimation in the context of policy assess
 \item
   A Node represents a variable in a domain, regardless of whether it is observable or unobservable
 \item
-  A Directed Arc has the appearance of an arrow and represents a potential causal effect. The arc direction indicates the assumed causal direction, i.e. ``A→B'' means ``A causes B.''
+  A Directed Arc has the appearance of an arrow and represents a potential causal effect. The arc direction indicates the assumed causal direction, i.e.~``A→B'' means ``A causes B.''
 \item
   A Missing Arc encodes the definitive absence of a direct causal effect, i.e.~no arc between A and B means that there exists no direct causal relationship between A and B and vice versa. As such, a missing arc repre- sents an assumption
 \end{itemize}
@@ -9057,8 +9084,8 @@ practical framework for causal effect estimation in the context of policy assess
 \hypertarget{neta}{%
 \chapter{网络分析}\label{neta}}
 
-\hypertarget{ux56feux8bba}{%
-\section{图论}\label{ux56feux8bba}}
+\hypertarget{ux8282ux70b9ux5c5eux6027}{%
+\section{节点属性}\label{ux8282ux70b9ux5c5eux6027}}
 
 \begin{itemize}
 \tightlist
@@ -9067,7 +9094,7 @@ practical framework for causal effect estimation in the context of policy assess
 \item
   网络里节点（node）与连接（link）对应图论里的交点（vertex）与边（edge）
 \item
-  (N,L)表示一个系统
+  (N,L)表示一个包含节点与连接的系统
 \item
   节点的度指的是节点对内对外的连接数
 \item
@@ -9089,9 +9116,62 @@ practical framework for causal effect estimation in the context of policy assess
 \item
   全连接网络 \(L_{max} = \frac{N(N-1)}{2}\) 平均度 \(<k> = N-1\)
 \item
+  密度，存在的边与可能存在边的比值
+\item
+  介数中心性，它代表了某节点与其他节点之间的互动程度，具有较高介数中心性的节点控制网络信息流
+\item
+  平均路径长度，表示网络的平均节点两两最短距离
+\item
+  半径，表示网络的最大的节点两两最短距离
+\item
+  组分，几个子网络
+\item
   二分图，顶点可分成互斥独立集U和V
 \item
-  聚集系数，邻居互相连接的比例 \(C_i = \frac{2e_i}{k_i(k_i-1)}\) \(C_i =1\) 表示全连接，0表示全不连接
+  聚集系数，邻居互相连接的比例 \(C_i = \frac{2e_i}{k_i(k_i-1)}\) \(C_i =1\) 表示全连接，0表示全不连接，你朋友互相认识的概率
+\end{itemize}
+
+\hypertarget{ux7f51ux7edcux96c6ux7fa4}{%
+\section{网络集群}\label{ux7f51ux7edcux96c6ux7fa4}}
+
+\begin{itemize}
+\tightlist
+\item
+  假设1:集群存在与节点的连接关系中
+\item
+  假设2:集群内部联通度高
+\item
+  假设3:随机网络里没有集群
+\item
+  假设4:最大模块假设 \(M=\sum_{c=1}^{n_c}[\frac{l_c}{L}-(\frac{k_c}{2L})^2]\)
+\item
+  集群是否存在无法验证，所以只有假设
+\item
+  集群存在共享节点
+\item
+  算法很多， Louvain 与 the Infomap 比较快（\(o(NlogN)\)），cfinder 比较慢(\(o(e^N)\))
+\item
+  集群也存在生成与进化问题
+\item
+  模块化指数（modularity index）群组内边的比例 \(Q = \frac{1}{2m}(A_{ij}-\frac{k_ik_j}{2m})\delta(c_i,c_j)\)
+\item
+  m 是总边数，\(\delta(c_i,c_j)\) 是Kroenecker delta function，当两个节点属于一个模块时为1，否则为0
+\item
+  寻找集群本质是最大化模块化指数，目前并无最优算法
+\item
+  Newman \& Girvan 2004 利用边介数来寻找社群
+\item
+  Clauset et al.~2004 分层算法，对大网络稀疏网络设计
+\item
+  Pons \& Latapy 2005 基于随机行走的凝聚算法
+\item
+  Reichardt \& Bornholdt 2006 基于磁子低能态算法
+\item
+  Newman 2006 基于模块矩阵与特征向量的算法
+\item
+  同质性（homophily 或 assortment），考虑节点性质的均一性
+\item
+  同质化系数（assortment coefficient）\(r=\frac{\sum_{ij}(A_{ij}-k_ik_j/2,)x_ix_j}{\sum_{ij}(k_i\delta_{ij}-k_ik_j/2,)x_ix_j}\)，其中\(k_i\delta_{ij}\) 是节点i排除与节点j相连后的度，类似皮尔逊相关系数，越大均质化程度越高
 \end{itemize}
 
 \hypertarget{ux968fux673aux7f51ux7edcux6a21ux578b}{%
@@ -9184,10 +9264,11 @@ practical framework for causal effect estimation in the context of policy assess
   还要考虑节点删除与老化
 \end{itemize}
 
-\hypertarget{ux5ea6ux76f8ux5173}{%
-\section{度相关}\label{ux5ea6ux76f8ux5173}}
+\hypertarget{ux5ea6ux76f8ux5173ux73b0ux8c61}{%
+\section{度相关现象}\label{ux5ea6ux76f8ux5173ux73b0ux8c61}}
 
 \begin{itemize}
+\tightlist
 \item
   大节点似乎不连接大节点，小节点总是连接小节点
 \item
@@ -9255,34 +9336,50 @@ practical framework for causal effect estimation in the context of policy assess
   拉萨路效应（Lazarus effect）：一个突变细菌继续敲除基因后会死而复生，继续繁殖，相当于林火模型里放任小火堆
 \end{itemize}
 
-\hypertarget{ux7f51ux7edcux96c6ux7fa4}{%
-\section{网络集群}\label{ux7f51ux7edcux96c6ux7fa4}}
+\hypertarget{ux7f51ux7edcux56deux5f52}{%
+\section{网络回归}\label{ux7f51ux7edcux56deux5f52}}
 
 \begin{itemize}
 \tightlist
 \item
-  假设1:集群存在与节点的连接关系中
+  网络间的回归分析
 \item
-  假设2:集群内部联通度高
+  Mantel Test 可用来检测矩阵相关性
 \item
-  假设3:随机网络里没有集群
+  Quadratic Assignment Procedure 是Mantel检测的回归版
 \item
-  假设4:最大模块假设 \(M=\sum_{c=1}^{n_c}[\frac{l_c}{L}-(\frac{k_c}{2L})^2]\)
+  The Multiple Regression Quadratic Assignment Procedure 是QAP的多元回归版
+\end{itemize}
+
+\hypertarget{ux7f51ux7edcux6269ux6563ux884cux4e3a}{%
+\section{网络扩散行为}\label{ux7f51ux7edcux6269ux6563ux884cux4e3a}}
+
+\begin{itemize}
+\tightlist
 \item
-  集群是否存在无法验证，所以只有假设
+  节点间连接存在系统意义，有利于物质能量信息的传输
 \item
-  集群存在共享节点
+  不合群传播通过试错，后面越来越慢
 \item
-  算法很多， Louvain 与 the Infomap 比较快（\(o(NlogN)\)），cfinder 比较慢(\(o(e^N)\))
+  社群传播通过模仿，S型学习曲线，存在高速增长
+\end{itemize}
+
+\hypertarget{ux7f51ux7edcux53efux89c6ux5316}{%
+\section{网络可视化}\label{ux7f51ux7edcux53efux89c6ux5316}}
+
+\begin{itemize}
+\tightlist
 \item
-  集群也存在生成与进化问题
+  force-directed algorithm 最优化布局：节点间距离最大，有连接的节点距离最小
+\item
+  常见的有 Fruchterman-Reingold (1991) 算法、Kamada \& Kawai (1989) 算法、Davidson \& Harel (1996) 算法及``GEM'' (Frick et al.~1995) 算法
 \end{itemize}
 
 \hypertarget{game}{%
 \chapter{博弈论}\label{game}}
 
-\hypertarget{ux672fux8bed-1}{%
-\section{术语}\label{ux672fux8bed-1}}
+\hypertarget{ux672fux8bed}{%
+\section{术语}\label{ux672fux8bed}}
 
 \begin{itemize}
 \tightlist
@@ -10224,8 +10321,8 @@ practical framework for causal effect estimation in the context of policy assess
   测定标记物光信号
 \end{itemize}
 
-\hypertarget{ux5e94ux7528-1}{%
-\subsubsection{应用}\label{ux5e94ux7528-1}}
+\hypertarget{ux5e94ux7528}{%
+\subsubsection{应用}\label{ux5e94ux7528}}
 
 \begin{itemize}
 \item
@@ -10277,7 +10374,7 @@ practical framework for causal effect estimation in the context of policy assess
 \begin{itemize}
 \tightlist
 \item
-  DNA打成50\textasciitilde{}70片段 一个样品片段上亿
+  DNA打成50\textasciitilde70片段 一个样品片段上亿
 \item
   加上adaptor 固定在板上后原位扩增成束
 \item
@@ -10286,8 +10383,8 @@ practical framework for causal effect estimation in the context of policy assess
   得到测序结果与强度
 \end{itemize}
 
-\hypertarget{ux5e94ux7528-2}{%
-\subsubsection{应用}\label{ux5e94ux7528-2}}
+\hypertarget{ux5e94ux7528-1}{%
+\subsubsection{应用}\label{ux5e94ux7528-1}}
 
 \begin{itemize}
 \tightlist
@@ -10444,7 +10541,7 @@ biocLite()
 \item
   exptData(se)\$MIAME 给出实验相关关键信息
 \item
-  Y \textless{}- log2(exprs(bottomly.eset) + 0.5) 对NGS数据加0.5取2为底的对数（防0）得-1，排除掉0后可得MAplot观察数值分布，一般为均值小差异大，均值大相对稳定
+  Y \textless- log2(exprs(bottomly.eset) + 0.5) 对NGS数据加0.5取2为底的对数（防0）得-1，排除掉0后可得MAplot观察数值分布，一般为均值小差异大，均值大相对稳定
 \item
   formula 用来定义公式
 \item
@@ -10609,8 +10706,8 @@ biocLite()
 \hypertarget{ux793aux4f8bux7532ux57faux5316ux6570ux636eux5206ux6790}{%
 \subsection{示例：甲基化数据分析}\label{ux793aux4f8bux7532ux57faux5316ux6570ux636eux5206ux6790}}
 
-\hypertarget{ux8bfbux53d6ux6570ux636e-1}{%
-\subsubsection{读取数据}\label{ux8bfbux53d6ux6570ux636e-1}}
+\hypertarget{ux8bfbux53d6ux6570ux636e}{%
+\subsubsection{读取数据}\label{ux8bfbux53d6ux6570ux636e}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10679,7 +10776,7 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 
 从上面可以得到有差异的甲基化数据所在的基因位置并提取相关样本数据信息。可根据差异作图，得到两组数据甲基化水平差异所在的基因位置。可对差异进行平滑操作，得到位置。这样就可以知道甲基化发生的序列位置与水平差异的信息了。
 
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 下面的例子是用人类基因组数据探索潜在的CpG岛。
 
@@ -10790,14 +10887,69 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \KeywordTok{library}\NormalTok{(survival)}
 \KeywordTok{library}\NormalTok{(car)}
 \CommentTok{# perform survival analysis}
-\NormalTok{Rossi <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{'http://ftp.auckland.ac.nz/software/CRAN/doc/contrib/Fox-Companion/Rossi.txt'}\NormalTok{, }\DataTypeTok{header=}\NormalTok{T)}
+\KeywordTok{data}\NormalTok{(}\StringTok{"Rossi"}\NormalTok{)}
 \NormalTok{Rossi[}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   week arrest fin age  race wexp         mar paro prio educ
+## 1   20      1  no  27 black   no not married  yes    3    3
+## 2   17      1  no  18 black   no not married  yes    8    4
+## 3   25      1  no  19 other  yes not married  yes   13    3
+## 4   52      0 yes  23 black  yes     married  yes    1    5
+## 5   52      0  no  19 other  yes not married  yes    3    3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{mod.allison <-}\StringTok{ }\KeywordTok{coxph}\NormalTok{(}\KeywordTok{Surv}\NormalTok{(week, arrest) }\OperatorTok{~}\StringTok{ }\NormalTok{fin }\OperatorTok{+}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{race }\OperatorTok{+}\StringTok{ }\NormalTok{wexp }\OperatorTok{+}\StringTok{ }\NormalTok{mar }\OperatorTok{+}\StringTok{ }\NormalTok{paro }\OperatorTok{+}\StringTok{ }\NormalTok{prio, }\DataTypeTok{data=}\NormalTok{Rossi)}
 \KeywordTok{summary}\NormalTok{(mod.allison)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Call:
+## coxph(formula = Surv(week, arrest) ~ fin + age + race + wexp + 
+##     mar + paro + prio, data = Rossi)
+## 
+##   n= 432, number of events= 114 
+## 
+##                   coef exp(coef) se(coef)     z Pr(>|z|)   
+## finyes         -0.3794    0.6843   0.1914 -1.98   0.0474 * 
+## age            -0.0574    0.9442   0.0220 -2.61   0.0090 **
+## raceother      -0.3139    0.7306   0.3080 -1.02   0.3081   
+## wexpyes        -0.1498    0.8609   0.2122 -0.71   0.4803   
+## marnot married  0.4337    1.5430   0.3819  1.14   0.2561   
+## paroyes        -0.0849    0.9186   0.1958 -0.43   0.6646   
+## prio            0.0915    1.0958   0.0286  3.19   0.0014 **
+## ---
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+##                exp(coef) exp(-coef) lower .95 upper .95
+## finyes             0.684      1.461     0.470     0.996
+## age                0.944      1.059     0.904     0.986
+## raceother          0.731      1.369     0.399     1.336
+## wexpyes            0.861      1.162     0.568     1.305
+## marnot married     1.543      0.648     0.730     3.261
+## paroyes            0.919      1.089     0.626     1.348
+## prio               1.096      0.913     1.036     1.159
+## 
+## Concordance= 0.64  (se = 0.027 )
+## Likelihood ratio test= 33.3  on 7 df,   p=2e-05
+## Wald test            = 32.1  on 7 df,   p=4e-05
+## Score (logrank) test = 33.5  on 7 df,   p=2e-05
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{# plot time vs survival prob}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{survfit}\NormalTok{(mod.allison), }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(.}\DecValTok{7}\NormalTok{, }\DecValTok{1}\NormalTok{), }\DataTypeTok{xlab=}\StringTok{'Weeks'}\NormalTok{, }\DataTypeTok{ylab=}\StringTok{'Proportion Not Rearrested'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{datadown_files/figure-latex/unnamed-chunk-39-1.pdf}
 
 \hypertarget{result}{%
 \subsection{result}\label{result}}
@@ -10825,13 +10977,13 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{attach}\NormalTok{(Rossi)}
-\NormalTok{Rossi.fin <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{fin=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{age=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(age),}\DecValTok{2}\NormalTok{), }\DataTypeTok{race=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(race),}\DecValTok{2}\NormalTok{), }\DataTypeTok{wexp=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(wexp),}\DecValTok{2}\NormalTok{), }\DataTypeTok{mar=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(mar),}\DecValTok{2}\NormalTok{), }\DataTypeTok{paro=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(paro),}\DecValTok{2}\NormalTok{), }\DataTypeTok{prio=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(prio),}\DecValTok{2}\NormalTok{))}
-\KeywordTok{detach}\NormalTok{()}
+\NormalTok{Rossi.fin <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{fin=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{age=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(Rossi}\OperatorTok{$}\NormalTok{age),}\DecValTok{2}\NormalTok{), }\DataTypeTok{race=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(}\KeywordTok{as.numeric}\NormalTok{(Rossi}\OperatorTok{$}\NormalTok{race)),}\DecValTok{2}\NormalTok{), }\DataTypeTok{wexp=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(}\KeywordTok{as.numeric}\NormalTok{(Rossi}\OperatorTok{$}\NormalTok{wexp)),}\DecValTok{2}\NormalTok{), }\DataTypeTok{mar=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(}\KeywordTok{as.numeric}\NormalTok{(Rossi}\OperatorTok{$}\NormalTok{mar)),}\DecValTok{2}\NormalTok{), }\DataTypeTok{paro=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(}\KeywordTok{as.numeric}\NormalTok{(Rossi}\OperatorTok{$}\NormalTok{paro)),}\DecValTok{2}\NormalTok{), }\DataTypeTok{prio=}\KeywordTok{rep}\NormalTok{(}\KeywordTok{mean}\NormalTok{(}\KeywordTok{as.numeric}\NormalTok{(Rossi}\OperatorTok{$}\NormalTok{prio)),}\DecValTok{2}\NormalTok{))}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{survfit}\NormalTok{(mod.allison, }\DataTypeTok{newdata=}\NormalTok{Rossi.fin), }\DataTypeTok{conf.int=}\NormalTok{T, }\DataTypeTok{lty=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(.}\DecValTok{6}\NormalTok{, }\DecValTok{1}\NormalTok{))}
 \KeywordTok{legend}\NormalTok{(}\StringTok{"bottomleft"}\NormalTok{, }\DataTypeTok{legend=}\KeywordTok{c}\NormalTok{(}\StringTok{'fin = 0'}\NormalTok{, }\StringTok{'fin = 1'}\NormalTok{), }\DataTypeTok{lty=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{datadown_files/figure-latex/unnamed-chunk-40-1.pdf}
 
 \begin{itemize}
 \tightlist
@@ -10851,6 +11003,15 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{sum}\NormalTok{(}\OperatorTok{!}\KeywordTok{is.na}\NormalTok{(Rossi[,}\DecValTok{11}\OperatorTok{:}\DecValTok{62}\NormalTok{])) }\CommentTok{# record count}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 19809
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{Rossi2 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{19809}\NormalTok{, }\DecValTok{14}\NormalTok{) }\CommentTok{# to hold new data set}
 \KeywordTok{colnames}\NormalTok{(Rossi2) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'start'}\NormalTok{, }\StringTok{'stop'}\NormalTok{, }\StringTok{'arresttime'}\NormalTok{, }\KeywordTok{names}\NormalTok{(Rossi)[}\DecValTok{1}\OperatorTok{:}\DecValTok{10}\NormalTok{], }\StringTok{'employed'}\NormalTok{)}
 
@@ -10874,6 +11035,42 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Call:
+## coxph(formula = Surv(start, stop, arresttime) ~ fin + age + race + 
+##     wexp + mar + paro + prio + employed, data = Rossi2)
+## 
+##   n= 19809, number of events= 114 
+## 
+##             coef exp(coef) se(coef)     z Pr(>|z|)    
+## fin      -0.3567    0.7000   0.1911 -1.87   0.0620 .  
+## age      -0.0463    0.9547   0.0217 -2.13   0.0330 *  
+## race     -0.3387    0.7127   0.3096 -1.09   0.2740    
+## wexp     -0.0256    0.9748   0.2114 -0.12   0.9038    
+## mar       0.2937    1.3414   0.3830  0.77   0.4431    
+## paro     -0.0642    0.9378   0.1947 -0.33   0.7416    
+## prio      0.0851    1.0889   0.0290  2.94   0.0033 ** 
+## employed -1.3283    0.2649   0.2507 -5.30  1.2e-07 ***
+## ---
+## Signif. codes:  
+## 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+##          exp(coef) exp(-coef) lower .95 upper .95
+## fin          0.700      1.429     0.481     1.018
+## age          0.955      1.047     0.915     0.996
+## race         0.713      1.403     0.388     1.308
+## wexp         0.975      1.026     0.644     1.475
+## mar          1.341      0.745     0.633     2.842
+## paro         0.938      1.066     0.640     1.374
+## prio         1.089      0.918     1.029     1.152
+## employed     0.265      3.775     0.162     0.433
+## 
+## Concordance= 0.708  (se = 0.023 )
+## Likelihood ratio test= 68.7  on 8 df,   p=9e-12
+## Wald test            = 56.1  on 8 df,   p=3e-09
+## Score (logrank) test = 64.5  on 8 df,   p=6e-11
+\end{verbatim}
+
 \hypertarget{model-diagnostics}{%
 \section{Model Diagnostics}\label{model-diagnostics}}
 
@@ -10887,11 +11084,44 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \begin{Highlighting}[]
 \NormalTok{modallison3 <-}\StringTok{ }\KeywordTok{coxph}\NormalTok{(}\KeywordTok{Surv}\NormalTok{(week, arrest) }\OperatorTok{~}\StringTok{ }\NormalTok{fin }\OperatorTok{+}\StringTok{ }\NormalTok{age }\OperatorTok{+}\StringTok{ }\NormalTok{prio, }\DataTypeTok{data=}\NormalTok{Rossi)}
 \NormalTok{modallison3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Call:
+## coxph(formula = Surv(week, arrest) ~ fin + age + prio, data = Rossi)
+## 
+##         coef exp(coef) se(coef)  z     p
+## finyes -0.35      0.71     0.19 -2 0.068
+## age    -0.07      0.94     0.02 -3 0.001
+## prio    0.10      1.10     0.03  4 4e-04
+## 
+## Likelihood ratio test=29  on 3 df, p=2e-06
+## n= 432, number of events= 114
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{cox.zph}\NormalTok{(modallison3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         chisq df     p
+## fin    0.0638  1 0.801
+## age    6.3255  1 0.012
+## prio   0.5187  1 0.471
+## GLOBAL 7.1367  3 0.068
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
 \KeywordTok{plot}\NormalTok{(}\KeywordTok{cox.zph}\NormalTok{(modallison3))}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics{datadown_files/figure-latex/unnamed-chunk-42-1.pdf}
 
 \begin{itemize}
 \tightlist
@@ -10905,6 +11135,21 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \NormalTok{modallison4}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Call:
+## coxph(formula = Surv(start, stop, arresttime) ~ fin + age + age:stop:stop + 
+##     prio, data = Rossi2)
+## 
+##            coef exp(coef) se(coef)    z     p
+## fin      -0.349     0.706    0.190 -1.8 0.067
+## age       0.032     1.033    0.039  0.8 0.413
+## prio      0.098     1.103    0.027  3.6 3e-04
+## age:stop -0.004     0.996    0.001 -2.6 0.009
+## 
+## Likelihood ratio test=36  on 4 df, p=3e-07
+## n= 19809, number of events= 114
+\end{verbatim}
 
 \begin{itemize}
 \item
@@ -11009,6 +11254,8 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics[width=20.86in]{images/Framingham1}
+
 \hypertarget{ux6d41ux884cux75c5ux5b66ux57faux672cux6982ux5ff5}{%
 \section{流行病学基本概念}\label{ux6d41ux884cux75c5ux5b66ux57faux672cux6982ux5ff5}}
 
@@ -11073,13 +11320,12 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{'images/epidemic%20curve.jpg'}\NormalTok{)}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{'images/epidemiccurve.jpg'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
+\includegraphics[width=7.94in]{images/epidemiccurve}
 - 持续源爆发：单峰，潜伏期持续出现
-\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11087,15 +11333,16 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
+\includegraphics[width=5.5in]{images/EpidemicCurve_Cholera}
 - 逐步流行：多峰，存在人对人传染
-\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{'images/EpidemicCurve_Measles.png'}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics[width=5.53in]{images/EpidemicCurve_Measles}
 
 \hypertarget{ux75beux75c5ux7206ux53d1ux7684ux7814ux7a76ux6b65ux9aa4}{%
 \subsection{疾病爆发的研究步骤}\label{ux75beux75c5ux7206ux53d1ux7684ux7814ux7a76ux6b65ux9aa4}}
@@ -11201,6 +11448,8 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \end{Highlighting}
 \end{Shaded}
 
+\includegraphics[width=7.76in]{images/paste_image47}
+
 \begin{itemize}
 \tightlist
 \item
@@ -11280,6 +11529,8 @@ meth为测序数据，pd为样本信息，gr测序片段信息。
 \NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"images/paste_image18.jpg"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\includegraphics[width=4.21in]{images/paste_image18}
 
 \hypertarget{ux98ceux9669risk}{%
 \subsection{风险（risk）}\label{ux98ceux9669risk}}
@@ -12003,8 +12254,8 @@ Kenneth Rothman 提出，认为健康效应的原因可看成一个饼图，缺�
   依次浏览摘要（概况），前言（问题的重要性），讨论（看结论与意义），方法（看实验设计），结果（看图表）并记录疑点
 \end{itemize}
 
-\hypertarget{introduction-1}{%
-\subsection{Introduction}\label{introduction-1}}
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
 
 \begin{itemize}
 \tightlist
@@ -12307,6 +12558,8 @@ What are the public health implications of the study?
   所谓风险控制就是通过对每只股票权重的调节优化来降低波动率，但结果不稳定
 \item
   通过风险控制就可以计算收益率，但毕竟有些因素是不可控的，解决的方法就是通过权重调整让其对总收益贡献为零或做空该因素对冲风险
+\item
+  风险价值VaR：在某个特定时间段内损失特定金额的概率。一项风险价值为一年5\%的总额为1万美元的投资，在一年结束时损失超过1万美元的可能性为5\%。简单公式\(2M\sqrt{N}\)，N次事件中2.5\%概率出现M变动的风险价值
 \end{itemize}
 
 \hypertarget{ux6536ux76ca}{%
@@ -12488,6 +12741,8 @@ What are the public health implications of the study?
   随机行走理论 \(x_t = x_{t-1}+error\)
 \item
   一阶自相关回归 因为自相关数据可能回归原点
+\item
+  Grossman and Stiglitz paradox：如果投资者相信有效市场假说，他们就会停止分析，从而导致市场效率低下；而如果投资者认为市场效率低下，他们就会应用模型进行分析，从而提高市场效率。
 \end{itemize}
 
 \hypertarget{ux884cux4e3aux7ecfux6d4eux5b66}{%

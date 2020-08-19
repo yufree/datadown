@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第14章 生物信息 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第14章 生物信息 | 数据分析残卷" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2020-01-02" />
+<meta name="date" content="2020-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -50,12 +50,13 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -64,14 +65,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -80,9 +83,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -250,10 +253,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a><ul>
 <li class="chapter" data-level="7.1" data-path="opt.html"><a href="opt.html#数学本质"><i class="fa fa-check"></i><b>7.1</b> 数学本质</a></li>
 <li class="chapter" data-level="7.2" data-path="opt.html"><a href="opt.html#简史"><i class="fa fa-check"></i><b>7.2</b> 简史</a></li>
-<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#凸集"><i class="fa fa-check"></i><b>7.3</b> 凸集</a></li>
-<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.4</b> 最小二乘法</a></li>
-<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.5</b> 线性规划</a></li>
-<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.6</b> 凸优化</a></li>
+<li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.3</b> 最小二乘法</a></li>
+<li class="chapter" data-level="7.4" data-path="opt.html"><a href="opt.html#线性规划"><i class="fa fa-check"></i><b>7.4</b> 线性规划</a></li>
+<li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.5</b> 凸优化</a></li>
+<li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#仿射集"><i class="fa fa-check"></i><b>7.6</b> 仿射集</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a><ul>
 <li class="chapter" data-level="8.1" data-path="mlsl.html"><a href="mlsl.html#统计学习概论"><i class="fa fa-check"></i><b>8.1</b> 统计学习概论</a></li>
@@ -283,7 +286,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.18.1" data-path="mlsl.html"><a href="mlsl.html#简单线性回归"><i class="fa fa-check"></i><b>8.18.1</b> 简单线性回归</a></li>
 <li class="chapter" data-level="8.18.2" data-path="mlsl.html"><a href="mlsl.html#多元线性回归"><i class="fa fa-check"></i><b>8.18.2</b> 多元线性回归</a></li>
 <li class="chapter" data-level="8.18.3" data-path="mlsl.html"><a href="mlsl.html#线性模型延拓"><i class="fa fa-check"></i><b>8.18.3</b> 线性模型延拓</a></li>
-<li class="chapter" data-level="8.18.4" data-path="mlsl.html"><a href="mlsl.html#常见问题-1"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
+<li class="chapter" data-level="8.18.4" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
 <li class="chapter" data-level="8.18.5" data-path="mlsl.html"><a href="mlsl.html#线性回归与kmeans算法比较"><i class="fa fa-check"></i><b>8.18.5</b> 线性回归与kmeans算法比较</a></li>
 <li class="chapter" data-level="8.18.6" data-path="mlsl.html"><a href="mlsl.html#logistic回归"><i class="fa fa-check"></i><b>8.18.6</b> logistic回归</a></li>
 <li class="chapter" data-level="8.18.7" data-path="mlsl.html"><a href="mlsl.html#线性判别分析"><i class="fa fa-check"></i><b>8.18.7</b> 线性判别分析</a></li>
@@ -389,17 +392,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.5" data-path="why.html"><a href="why.html#yinguolink"><i class="fa fa-check"></i><b>11.5</b> 链接</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a><ul>
-<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#图论"><i class="fa fa-check"></i><b>12.1</b> 图论</a></li>
-<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.2</b> 随机网络模型</a></li>
-<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.3</b> 无尺度网络</a></li>
-<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.4</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
-<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.5</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
-<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#度相关"><i class="fa fa-check"></i><b>12.6</b> 度相关</a></li>
-<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.7</b> 网络稳健性</a></li>
-<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.8</b> 网络集群</a></li>
+<li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#节点属性"><i class="fa fa-check"></i><b>12.1</b> 节点属性</a></li>
+<li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.2</b> 网络集群</a></li>
+<li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.3</b> 随机网络模型</a></li>
+<li class="chapter" data-level="12.4" data-path="neta.html"><a href="neta.html#无尺度网络"><i class="fa fa-check"></i><b>12.4</b> 无尺度网络</a></li>
+<li class="chapter" data-level="12.5" data-path="neta.html"><a href="neta.html#无尺度的生成---barabási-albert-模型"><i class="fa fa-check"></i><b>12.5</b> 无尺度的生成 - Barabási-Albert 模型</a></li>
+<li class="chapter" data-level="12.6" data-path="neta.html"><a href="neta.html#网络的进化---bianconi-barabási-模型"><i class="fa fa-check"></i><b>12.6</b> 网络的进化 - Bianconi-Barabási 模型</a></li>
+<li class="chapter" data-level="12.7" data-path="neta.html"><a href="neta.html#度相关现象"><i class="fa fa-check"></i><b>12.7</b> 度相关现象</a></li>
+<li class="chapter" data-level="12.8" data-path="neta.html"><a href="neta.html#网络稳健性"><i class="fa fa-check"></i><b>12.8</b> 网络稳健性</a></li>
+<li class="chapter" data-level="12.9" data-path="neta.html"><a href="neta.html#网络回归"><i class="fa fa-check"></i><b>12.9</b> 网络回归</a></li>
+<li class="chapter" data-level="12.10" data-path="neta.html"><a href="neta.html#网络扩散行为"><i class="fa fa-check"></i><b>12.10</b> 网络扩散行为</a></li>
+<li class="chapter" data-level="12.11" data-path="neta.html"><a href="neta.html#网络可视化"><i class="fa fa-check"></i><b>12.11</b> 网络可视化</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a><ul>
-<li class="chapter" data-level="13.1" data-path="game.html"><a href="game.html#术语-1"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
+<li class="chapter" data-level="13.1" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
 <li class="chapter" data-level="13.2" data-path="game.html"><a href="game.html#支配策略dominate-strategy"><i class="fa fa-check"></i><b>13.2</b> 支配策略（dominate strategy）</a></li>
 <li class="chapter" data-level="13.3" data-path="game.html"><a href="game.html#最佳回应best-respinse"><i class="fa fa-check"></i><b>13.3</b> 最佳回应（Best respinse）</a></li>
 <li class="chapter" data-level="13.4" data-path="game.html"><a href="game.html#纳什均衡nash-equilibrium"><i class="fa fa-check"></i><b>13.4</b> 纳什均衡（Nash Equilibrium）</a></li>
@@ -525,7 +531,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.21.4" data-path="epid.html"><a href="epid.html#有向无环图dags"><i class="fa fa-check"></i><b>16.21.4</b> 有向无环图（DAGs）</a></li>
 </ul></li>
 <li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a><ul>
-<li class="chapter" data-level="16.22.1" data-path="epid.html"><a href="epid.html#introduction-1"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.22.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.22.2" data-path="epid.html"><a href="epid.html#methods"><i class="fa fa-check"></i><b>16.22.2</b> Methods</a></li>
 <li class="chapter" data-level="16.22.3" data-path="epid.html"><a href="epid.html#results"><i class="fa fa-check"></i><b>16.22.3</b> Results</a></li>
 <li class="chapter" data-level="16.22.4" data-path="epid.html"><a href="epid.html#discussion"><i class="fa fa-check"></i><b>16.22.4</b> Discussion</a></li>
@@ -788,7 +794,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>测定标记物光信号</li>
 </ul>
 </div>
-<div id="应用-1" class="section level4">
+<div id="应用" class="section level4">
 <h4><span class="header-section-number">14.15.1.2</span> 应用</h4>
 <ul>
 <li><p>测定基因表达</p>
@@ -824,7 +830,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>得到测序结果与强度</li>
 </ul>
 </div>
-<div id="应用-2" class="section level4">
+<div id="应用-1" class="section level4">
 <h4><span class="header-section-number">14.15.2.2</span> 应用</h4>
 <ul>
 <li>寻找SNP</li>
@@ -882,7 +888,7 @@ biocLite()</code></pre>
 <h5><span class="header-section-number">14.15.4.1.2</span> 表型数据</h5>
 <ul>
 <li>S 行 V 列 V代表样本特征，为分类或连续变量</li>
-<li>如果表型数据解释不清，可以建立一个解释样本特征的labelDescription数据框，通过<code>phenoData &lt;- new(&quot;AnnotatedDataFrame&quot;,data=pData, varMetadata=metadata)</code> 建立AnnotatedDataFrame类型数据</li>
+<li>如果表型数据解释不清，可以建立一个解释样本特征的labelDescription数据框，通过<code>phenoData &lt;- new("AnnotatedDataFrame",data=pData, varMetadata=metadata)</code> 建立AnnotatedDataFrame类型数据</li>
 </ul>
 </div>
 <div id="实验描述" class="section level5">
@@ -896,9 +902,9 @@ biocLite()</code></pre>
 <h5><span class="header-section-number">14.15.4.1.4</span> 组装数据</h5>
 <ul>
 <li>将分析数据，表型数据，实验描述组装为一个ExpressionSet类型的对象</li>
-<li><code>exampleSet &lt;- ExpressionSet(assayData=exprs,phenoData=phenoData,experimentData=experimentData,annotation=&quot;hgu95av2&quot;)</code></li>
+<li><code>exampleSet &lt;- ExpressionSet(assayData=exprs,phenoData=phenoData,experimentData=experimentData,annotation="hgu95av2")</code></li>
 <li>annotation代表了一组相似实验设计的芯片数据的代号，通过相关代号可以索引到芯片特征信息并将其与其他数据如基因型，染色体位置等连接以便于分析</li>
-<li>从ExpressionSet里可以按照表型数据提取子集，也就是对 S 截取 V 中特定子集 <code>exampleSet[ , exampleSet$gender == &quot;Male&quot;]</code></li>
+<li>从ExpressionSet里可以按照表型数据提取子集，也就是对 S 截取 V 中特定子集 <code>exampleSet[ , exampleSet$gender == "Male"]</code></li>
 <li><code>esApply</code> 用来针对ExpressionSet应用函数</li>
 </ul>
 </div>
@@ -907,7 +913,7 @@ biocLite()</code></pre>
 <ul>
 <li><code>library(Biobase)</code></li>
 <li><code>library(GEOquery)</code></li>
-<li><code>geoq &lt;- getGEO(&quot;GSE9514&quot;)</code> 从基因表达精选集（GEO）上得到数据表达集</li>
+<li><code>geoq &lt;- getGEO("GSE9514")</code> 从基因表达精选集（GEO）上得到数据表达集</li>
 <li><code>names(geoq)</code> 得到文件名</li>
 <li><code>e &lt;- geoq[[1]]</code> 得到数据集</li>
 <li><code>dim(e)</code> 查看表达集维度 给出样本数与特征值，也就是测定序列数</li>
@@ -938,7 +944,7 @@ biocLite()</code></pre>
 <h6><span class="header-section-number">14.15.4.1.5.2</span> GRanges and GRangesList</h6>
 <ul>
 <li><code>library(GenomicRanges)</code> 基因范围</li>
-<li><code>gr &lt;- GRanges(&quot;chrZ&quot;, IRanges(start = c(5, 10), end = c(35, 45)), strand = &quot;+&quot;, seqlengths = c(chrZ = 100L))</code> 定义位于染色体chrZ上几个序列范围，认为这些范围共同定义一个基因</li>
+<li><code>gr &lt;- GRanges("chrZ", IRanges(start = c(5, 10), end = c(35, 45)), strand = "+", seqlengths = c(chrZ = 100L))</code> 定义位于染色体chrZ上几个序列范围，认为这些范围共同定义一个基因</li>
 <li>可以shift，可以定义长度后trim</li>
 <li><code>mcols(gr)$value &lt;- c(-1, 4)</code> 定义该基因类型中的列并赋值</li>
 <li><code>grl &lt;- GRangesList(gr, gr2)</code> 多个Granges定义一个基因库</li>
@@ -975,7 +981,7 @@ biocLite()</code></pre>
 <h5><span class="header-section-number">14.15.4.2.1</span> Affymterix CEL files</h5>
 <ul>
 <li><code>library(affy)</code></li>
-<li><code>tab &lt;- read.delim(&quot;sampleinfo.txt&quot;, check.names = FALSE, as.is = TRUE)</code> 读取样本信息</li>
+<li><code>tab &lt;- read.delim("sampleinfo.txt", check.names = FALSE, as.is = TRUE)</code> 读取样本信息</li>
 <li><code>ab &lt;- ReadAffy(phenoData = tab)</code> 读取样本数据，探针层次</li>
 <li><code>ejust &lt;- justRMA(filenames = tab[, 1], phenoData = tab)</code> 直接读取为基因层数据</li>
 <li><code>e &lt;- rma(ab)</code> 对样本进行背景校正与正则化，从探针层转化为基因层数据</li>
@@ -1021,64 +1027,64 @@ biocLite()</code></pre>
 </div>
 <div id="示例甲基化数据分析" class="section level3">
 <h3><span class="header-section-number">14.15.5</span> 示例：甲基化数据分析</h3>
-<div id="读取数据-1" class="section level4">
+<div id="读取数据" class="section level4">
 <h4><span class="header-section-number">14.15.5.1</span> 读取数据</h4>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;coloncancermeth&quot;</span>,<span class="st">&quot;genomicsclass&quot;</span>)</a>
-<a class="sourceLine" id="cb183-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb183-3" data-line-number="3"><span class="kw">library</span>(coloncancermeth)</a>
-<a class="sourceLine" id="cb183-4" data-line-number="4"><span class="kw">data</span>(coloncancermeth)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="bios.html#cb183-1"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;coloncancermeth&quot;</span>,<span class="st">&quot;genomicsclass&quot;</span>)</span>
+<span id="cb183-2"><a href="bios.html#cb183-2"></a></span>
+<span id="cb183-3"><a href="bios.html#cb183-3"></a><span class="kw">library</span>(coloncancermeth)</span>
+<span id="cb183-4"><a href="bios.html#cb183-4"></a><span class="kw">data</span>(coloncancermeth)</span></code></pre></div>
 <p>该数据集为结肠癌病人与对照的DNA甲基化数据集。</p>
 </div>
 <div id="数据说明" class="section level4">
 <h4><span class="header-section-number">14.15.5.2</span> 数据说明</h4>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">dim</span>(meth)</a>
-<a class="sourceLine" id="cb184-2" data-line-number="2"><span class="kw">dim</span>(pd)</a>
-<a class="sourceLine" id="cb184-3" data-line-number="3"><span class="kw">length</span>(gr)</a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="bios.html#cb184-1"></a><span class="kw">dim</span>(meth)</span>
+<span id="cb184-2"><a href="bios.html#cb184-2"></a><span class="kw">dim</span>(pd)</span>
+<span id="cb184-3"><a href="bios.html#cb184-3"></a><span class="kw">length</span>(gr)</span></code></pre></div>
 <p>meth为测序数据，pd为样本信息，gr测序片段信息。</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">colnames</span>(pd)</a>
-<a class="sourceLine" id="cb185-2" data-line-number="2"><span class="kw">table</span>(pd<span class="op">$</span>Status)</a>
-<a class="sourceLine" id="cb185-3" data-line-number="3">X =<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span>pd<span class="op">$</span>Status)</a></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="bios.html#cb185-1"></a><span class="kw">colnames</span>(pd)</span>
+<span id="cb185-2"><a href="bios.html#cb185-2"></a><span class="kw">table</span>(pd<span class="op">$</span>Status)</span>
+<span id="cb185-3"><a href="bios.html#cb185-3"></a>X =<span class="st"> </span><span class="kw">model.matrix</span>(<span class="op">~</span>pd<span class="op">$</span>Status)</span></code></pre></div>
 <p>查看病患与正常人的分组并构建模型。</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1">chr =<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">seqnames</span>(gr))</a>
-<a class="sourceLine" id="cb186-2" data-line-number="2">pos =<span class="st"> </span><span class="kw">start</span>(gr)</a>
-<a class="sourceLine" id="cb186-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb186-4" data-line-number="4"><span class="kw">library</span>(bumphunter)</a>
-<a class="sourceLine" id="cb186-5" data-line-number="5">cl =<span class="st"> </span><span class="kw">clusterMaker</span>(chr,pos,<span class="dt">maxGap=</span><span class="dv">500</span>)</a>
-<a class="sourceLine" id="cb186-6" data-line-number="6">res =<span class="st"> </span><span class="kw">bumphunter</span>(meth,X,<span class="dt">chr=</span>chr,<span class="dt">pos=</span>pos,<span class="dt">cluster=</span>cl,<span class="dt">cutoff=</span><span class="fl">0.1</span>,<span class="dt">B=</span><span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="bios.html#cb186-1"></a>chr =<span class="st"> </span><span class="kw">as.factor</span>(<span class="kw">seqnames</span>(gr))</span>
+<span id="cb186-2"><a href="bios.html#cb186-2"></a>pos =<span class="st"> </span><span class="kw">start</span>(gr)</span>
+<span id="cb186-3"><a href="bios.html#cb186-3"></a></span>
+<span id="cb186-4"><a href="bios.html#cb186-4"></a><span class="kw">library</span>(bumphunter)</span>
+<span id="cb186-5"><a href="bios.html#cb186-5"></a>cl =<span class="st"> </span><span class="kw">clusterMaker</span>(chr,pos,<span class="dt">maxGap=</span><span class="dv">500</span>)</span>
+<span id="cb186-6"><a href="bios.html#cb186-6"></a>res =<span class="st"> </span><span class="kw">bumphunter</span>(meth,X,<span class="dt">chr=</span>chr,<span class="dt">pos=</span>pos,<span class="dt">cluster=</span>cl,<span class="dt">cutoff=</span><span class="fl">0.1</span>,<span class="dt">B=</span><span class="dv">0</span>)</span></code></pre></div>
 <p>按染色体生成因子变量，找出基因起始位点，然后利用bumphunter包寻找甲基化数据中某个阈值（0.1）下甲基化基因聚类的后出现的位置，聚类号，聚类相关性等信息寻找问题基因，可从中提取相关信息</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">cols=<span class="kw">ifelse</span>(pd<span class="op">$</span>Status<span class="op">==</span><span class="st">&quot;normal&quot;</span>,<span class="dv">1</span>,<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb187-2" data-line-number="2">Index=(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">7</span>]<span class="op">-</span><span class="dv">3</span>)<span class="op">:</span>(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">8</span>]<span class="op">+</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb187-3" data-line-number="3"><span class="kw">matplot</span>(pos[Index],meth[Index,,<span class="dt">drop=</span><span class="ot">TRUE</span>],<span class="dt">col=</span>cols,<span class="dt">pch=</span><span class="dv">1</span>,<span class="dt">xlab=</span><span class="st">&quot;genomic location&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Methylation&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb187-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb187-5" data-line-number="5">Index=(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">7</span>])<span class="op">:</span>(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb187-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb187-7" data-line-number="7">test &lt;-<span class="st"> </span>meth[Index,,drop=T]</a>
-<a class="sourceLine" id="cb187-8" data-line-number="8"><span class="kw">colnames</span>(test) &lt;-<span class="st"> </span>pd<span class="op">$</span>bcr_patient_barcode</a>
-<a class="sourceLine" id="cb187-9" data-line-number="9">test1 &lt;-<span class="st"> </span>test[,cols<span class="op">==</span><span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb187-10" data-line-number="10">test2 &lt;-<span class="st"> </span>test[,cols<span class="op">==</span><span class="dv">2</span>]</a>
-<a class="sourceLine" id="cb187-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb187-12" data-line-number="12">test3 &lt;-<span class="st"> </span><span class="kw">apply</span>(test2, <span class="dv">2</span>, mean)</a>
-<a class="sourceLine" id="cb187-13" data-line-number="13"><span class="kw">apply</span>(matrix, <span class="dv">1</span>, rank)</a></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="bios.html#cb187-1"></a>cols=<span class="kw">ifelse</span>(pd<span class="op">$</span>Status<span class="op">==</span><span class="st">&quot;normal&quot;</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb187-2"><a href="bios.html#cb187-2"></a>Index=(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">7</span>]<span class="op">-</span><span class="dv">3</span>)<span class="op">:</span>(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">8</span>]<span class="op">+</span><span class="dv">3</span>)</span>
+<span id="cb187-3"><a href="bios.html#cb187-3"></a><span class="kw">matplot</span>(pos[Index],meth[Index,,<span class="dt">drop=</span><span class="ot">TRUE</span>],<span class="dt">col=</span>cols,<span class="dt">pch=</span><span class="dv">1</span>,<span class="dt">xlab=</span><span class="st">&quot;genomic location&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Methylation&quot;</span>,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb187-4"><a href="bios.html#cb187-4"></a></span>
+<span id="cb187-5"><a href="bios.html#cb187-5"></a>Index=(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">7</span>])<span class="op">:</span>(res<span class="op">$</span>table[<span class="dv">6</span>,<span class="dv">8</span>])</span>
+<span id="cb187-6"><a href="bios.html#cb187-6"></a></span>
+<span id="cb187-7"><a href="bios.html#cb187-7"></a>test &lt;-<span class="st"> </span>meth[Index,,drop=T]</span>
+<span id="cb187-8"><a href="bios.html#cb187-8"></a><span class="kw">colnames</span>(test) &lt;-<span class="st"> </span>pd<span class="op">$</span>bcr_patient_barcode</span>
+<span id="cb187-9"><a href="bios.html#cb187-9"></a>test1 &lt;-<span class="st"> </span>test[,cols<span class="op">==</span><span class="dv">1</span>]</span>
+<span id="cb187-10"><a href="bios.html#cb187-10"></a>test2 &lt;-<span class="st"> </span>test[,cols<span class="op">==</span><span class="dv">2</span>]</span>
+<span id="cb187-11"><a href="bios.html#cb187-11"></a></span>
+<span id="cb187-12"><a href="bios.html#cb187-12"></a>test3 &lt;-<span class="st"> </span><span class="kw">apply</span>(test2, <span class="dv">2</span>, mean)</span>
+<span id="cb187-13"><a href="bios.html#cb187-13"></a><span class="kw">apply</span>(matrix, <span class="dv">1</span>, rank)</span></code></pre></div>
 <p>从上面可以得到有差异的甲基化数据所在的基因位置并提取相关样本数据信息。可根据差异作图，得到两组数据甲基化水平差异所在的基因位置。可对差异进行平滑操作，得到位置。这样就可以知道甲基化发生的序列位置与水平差异的信息了。</p>
 <hr />
 <p>下面的例子是用人类基因组数据探索潜在的CpG岛。</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="kw">library</span>(BSgenome.Hsapiens.UCSC.hg19)</a>
-<a class="sourceLine" id="cb188-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb188-3" data-line-number="3">Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]</a>
-<a class="sourceLine" id="cb188-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb188-5" data-line-number="5"><span class="co"># 计算某染色体上潜在位点个数</span></a>
-<a class="sourceLine" id="cb188-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb188-7" data-line-number="7"><span class="kw">countPattern</span>(<span class="st">&#39;CG&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]) </a>
-<a class="sourceLine" id="cb188-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb188-9" data-line-number="9"><span class="co"># 计算某染色体上特定序列比例 观察与期望出现的比例</span></a>
-<a class="sourceLine" id="cb188-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb188-11" data-line-number="11">CG &lt;-<span class="st"> </span><span class="kw">countPattern</span>(<span class="st">&#39;CG&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])<span class="op">/</span><span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</a>
-<a class="sourceLine" id="cb188-12" data-line-number="12">GC &lt;-<span class="st"> </span><span class="kw">countPattern</span>(<span class="st">&#39;GC&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])<span class="op">/</span><span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</a>
-<a class="sourceLine" id="cb188-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb188-14" data-line-number="14">table &lt;-<span class="st"> </span><span class="kw">alphabetFrequency</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</a>
-<a class="sourceLine" id="cb188-15" data-line-number="15">expect &lt;-<span class="st"> </span>table[<span class="st">&#39;C&#39;</span>]<span class="op">%*%</span>table[<span class="st">&#39;G&#39;</span>]<span class="op">/</span>(<span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]))<span class="op">^</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb188-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb188-17" data-line-number="17">CG<span class="op">/</span>expect</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="bios.html#cb188-1"></a><span class="kw">library</span>(BSgenome.Hsapiens.UCSC.hg19)</span>
+<span id="cb188-2"><a href="bios.html#cb188-2"></a></span>
+<span id="cb188-3"><a href="bios.html#cb188-3"></a>Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]</span>
+<span id="cb188-4"><a href="bios.html#cb188-4"></a></span>
+<span id="cb188-5"><a href="bios.html#cb188-5"></a><span class="co"># 计算某染色体上潜在位点个数</span></span>
+<span id="cb188-6"><a href="bios.html#cb188-6"></a></span>
+<span id="cb188-7"><a href="bios.html#cb188-7"></a><span class="kw">countPattern</span>(<span class="st">&#39;CG&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]) </span>
+<span id="cb188-8"><a href="bios.html#cb188-8"></a></span>
+<span id="cb188-9"><a href="bios.html#cb188-9"></a><span class="co"># 计算某染色体上特定序列比例 观察与期望出现的比例</span></span>
+<span id="cb188-10"><a href="bios.html#cb188-10"></a></span>
+<span id="cb188-11"><a href="bios.html#cb188-11"></a>CG &lt;-<span class="st"> </span><span class="kw">countPattern</span>(<span class="st">&#39;CG&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])<span class="op">/</span><span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</span>
+<span id="cb188-12"><a href="bios.html#cb188-12"></a>GC &lt;-<span class="st"> </span><span class="kw">countPattern</span>(<span class="st">&#39;GC&#39;</span>,Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])<span class="op">/</span><span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</span>
+<span id="cb188-13"><a href="bios.html#cb188-13"></a></span>
+<span id="cb188-14"><a href="bios.html#cb188-14"></a>table &lt;-<span class="st"> </span><span class="kw">alphabetFrequency</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]])</span>
+<span id="cb188-15"><a href="bios.html#cb188-15"></a>expect &lt;-<span class="st"> </span>table[<span class="st">&#39;C&#39;</span>]<span class="op">%*%</span>table[<span class="st">&#39;G&#39;</span>]<span class="op">/</span>(<span class="kw">length</span>(Hsapiens[[<span class="st">&quot;chr1&quot;</span>]]))<span class="op">^</span><span class="dv">2</span></span>
+<span id="cb188-16"><a href="bios.html#cb188-16"></a></span>
+<span id="cb188-17"><a href="bios.html#cb188-17"></a>CG<span class="op">/</span>expect</span></code></pre></div>
 </div>
 </div>
 </div>
