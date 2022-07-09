@@ -1181,11 +1181,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="bayes.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取该球员数据</span></span>
 <span id="cb78-2"><a href="bayes.html#cb78-2" aria-hidden="true" tabindex="-1"></a>career_eb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">&quot;Hank Aaron&quot;</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 10
-##   playerID  name         H    AB average eb_estimate alpha1
-##   &lt;chr&gt;     &lt;chr&gt;    &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-## 1 aaronha01 Hank Aa…  3771 12364   0.305       0.304  3850.
-## # … with 3 more variables: beta1 &lt;dbl&gt;, low &lt;dbl&gt;,
-## #   high &lt;dbl&gt;</code></pre>
+##   playerID  name           H    AB average eb_estimate alpha1 beta1   low  high
+##   &lt;chr&gt;     &lt;chr&gt;      &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 aaronha01 Hank Aaron  3771 12364   0.305       0.304  3850. 8821. 0.296 0.312</code></pre>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="bayes.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 计算其不进入名人堂的概率</span></span>
 <span id="cb80-2"><a href="bayes.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pbeta</span>(.<span class="dv">3</span>, <span class="dv">3850</span>, <span class="dv">8818</span>)</span></code></pre></div>
 <pre><code>## [1] 0.169</code></pre>
@@ -1381,8 +1379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="bayes.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(two_players<span class="sc">$</span>H, two_players<span class="sc">$</span>AB)</span></code></pre></div>
 <pre><code>## 
-##  2-sample test for equality of proportions with
-##  continuity correction
+##  2-sample test for equality of proportions with continuity correction
 ## 
 ## data:  two_players$H out of two_players$AB
 ## X-squared = 0.1, df = 1, p-value = 0.7
@@ -1486,18 +1483,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb110-9"><a href="bayes.html#cb110-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb110-10"><a href="bayes.html#cb110-10" aria-hidden="true" tabindex="-1"></a>better</span></code></pre></div>
 <pre><code>## # A tibble: 48 × 5
-##    name               posterior conf.low conf.high   qvalue
-##    &lt;chr&gt;                  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-##  1 Rogers Hornsby      2.84e-11   0.0345    0.0639 2.84e-11
-##  2 Shoeless Joe Jack…  8.92e- 8   0.0277    0.0611 4.46e- 8
-##  3 Ed Delahanty        7.51e- 7   0.0217    0.0517 2.80e- 7
-##  4 Willie Keeler       4.61e- 6   0.0183    0.0472 1.36e- 6
-##  5 Billy Hamilton      6.47e- 6   0.0191    0.0504 2.38e- 6
-##  6 Harry Heilmann      7.19e- 6   0.0180    0.0476 3.18e- 6
-##  7 Lou Gehrig          1.43e- 5   0.0167    0.0461 4.77e- 6
-##  8 Nap Lajoie          1.55e- 5   0.0159    0.0441 6.11e- 6
-##  9 Tony Gwynn          1.82e- 5   0.0157    0.0442 7.46e- 6
-## 10 Bill Terry          3.04e- 5   0.0162    0.0472 9.76e- 6
+##    name                 posterior conf.low conf.high   qvalue
+##    &lt;chr&gt;                    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1 Rogers Hornsby        2.84e-11   0.0345    0.0639 2.84e-11
+##  2 Shoeless Joe Jackson  8.92e- 8   0.0277    0.0611 4.46e- 8
+##  3 Ed Delahanty          7.51e- 7   0.0217    0.0517 2.80e- 7
+##  4 Willie Keeler         4.61e- 6   0.0183    0.0472 1.36e- 6
+##  5 Billy Hamilton        6.47e- 6   0.0191    0.0504 2.38e- 6
+##  6 Harry Heilmann        7.19e- 6   0.0180    0.0476 3.18e- 6
+##  7 Lou Gehrig            1.43e- 5   0.0167    0.0461 4.77e- 6
+##  8 Nap Lajoie            1.55e- 5   0.0159    0.0441 6.11e- 6
+##  9 Tony Gwynn            1.82e- 5   0.0157    0.0442 7.46e- 6
+## 10 Bill Terry            3.04e- 5   0.0162    0.0472 9.76e- 6
 ## # … with 38 more rows</code></pre>
 <ul>
 <li>这样我们筛到一个可交易的群体，总和错误率不超过5%</li>
@@ -1847,20 +1844,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb133-8"><a href="bayes.html#cb133-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 去除掉原有分组，根据更新的后验概率重新分组</span></span>
 <span id="cb133-9"><a href="bayes.html#cb133-9" aria-hidden="true" tabindex="-1"></a>assignments</span></code></pre></div>
 <pre><code>## # A tibble: 3,860 × 11
-##    playerID  name       H    AB average cluster alpha  beta
-##    &lt;chr&gt;     &lt;chr&gt;  &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;
-##  1 abbotje01 Jeff …    11    42  0.262  B        12.3  44.2
-##  2 abbotji01 Jim A…     2    21  0.0952 B        12.3  44.2
-##  3 abbotku01 Kurt …   475  1860  0.255  B        12.3  44.2
-##  4 abbotky01 Kyle …     3    31  0.0968 B        12.3  44.2
-##  5 abercre01 Reggi…    86   386  0.223  B        12.3  44.2
-##  6 abnersh01 Shawn…   110   531  0.207  B        12.3  44.2
-##  7 abreubo01 Bobby…  1607  5395  0.298  B        12.3  44.2
-##  8 abreuto01 Tony …   129   509  0.253  B        12.3  44.2
-##  9 acevejo01 Jose …     8   101  0.0792 B        12.3  44.2
-## 10 aceveju01 Juan …     6    65  0.0923 B        12.3  44.2
-## # … with 3,850 more rows, and 3 more variables:
-## #   number &lt;int&gt;, prior &lt;dbl&gt;, likelihood &lt;dbl&gt;</code></pre>
+##    playerID  name               H    AB average cluster alpha  beta number prior
+##    &lt;chr&gt;     &lt;chr&gt;          &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;int&gt; &lt;dbl&gt;
+##  1 abbotje01 Jeff Abbott       11    42  0.262  B        12.3  44.2   1969 0.510
+##  2 abbotji01 Jim Abbott         2    21  0.0952 B        12.3  44.2   1969 0.510
+##  3 abbotku01 Kurt Abbott      475  1860  0.255  B        12.3  44.2   1969 0.510
+##  4 abbotky01 Kyle Abbott        3    31  0.0968 B        12.3  44.2   1969 0.510
+##  5 abercre01 Reggie Abercr…    86   386  0.223  B        12.3  44.2   1969 0.510
+##  6 abnersh01 Shawn Abner      110   531  0.207  B        12.3  44.2   1969 0.510
+##  7 abreubo01 Bobby Abreu     1607  5395  0.298  B        12.3  44.2   1969 0.510
+##  8 abreuto01 Tony Abreu       129   509  0.253  B        12.3  44.2   1969 0.510
+##  9 acevejo01 Jose Acevedo       8   101  0.0792 B        12.3  44.2   1969 0.510
+## 10 aceveju01 Juan Acevedo       6    65  0.0923 B        12.3  44.2   1969 0.510
+## # … with 3,850 more rows, and 1 more variable: likelihood &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="bayes.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 观察更新后概率分布</span></span>
 <span id="cb135-2"><a href="bayes.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(assignments, <span class="fu">aes</span>(average, <span class="at">fill =</span> cluster)) <span class="sc">+</span></span>
 <span id="cb135-3"><a href="bayes.html#cb135-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
@@ -1923,15 +1919,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb138-4"><a href="bayes.html#cb138-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(average)</span>
 <span id="cb138-5"><a href="bayes.html#cb138-5" aria-hidden="true" tabindex="-1"></a>batter100</span></code></pre></div>
 <pre><code>## # A tibble: 7 × 8
-##   playerID  name  bats      H    AB  year average isPitcher
-##   &lt;chr&gt;     &lt;chr&gt; &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;    
-## 1 dejesjo01 Jose… R        11   100 1990.    0.11 TRUE     
-## 2 gausmke01 Kevi… L        12   100 2019.    0.12 TRUE     
-## 3 mahonmi02 Mike… R        18   100 2002.    0.18 FALSE    
-## 4 uriasju01 Juli… L        19   100 2018.    0.19 TRUE     
-## 5 cancero01 Robi… R        20   100 2007.    0.2  FALSE    
-## 6 buschmi01 Mike… R        22   100 1996.    0.22 FALSE    
-## 7 shealry01 Ryan… R        32   100 2006.    0.32 FALSE</code></pre>
+##   playerID  name            bats      H    AB  year average isPitcher
+##   &lt;chr&gt;     &lt;chr&gt;           &lt;fct&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;lgl&gt;    
+## 1 dejesjo01 Jose de Jesus   R        11   100 1990.    0.11 TRUE     
+## 2 gausmke01 Kevin Gausman   L        12   100 2019.    0.12 TRUE     
+## 3 mahonmi02 Mike Mahoney    R        18   100 2002.    0.18 FALSE    
+## 4 uriasju01 Julio Urias     L        19   100 2018.    0.19 TRUE     
+## 5 cancero01 Robinson Cancel R        20   100 2007.    0.2  FALSE    
+## 6 buschmi01 Mike Busch      R        22   100 1996.    0.22 FALSE    
+## 7 shealry01 Ryan Shealy     R        32   100 2006.    0.32 FALSE</code></pre>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="bayes.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 前面算法得到的最终结果</span></span>
 <span id="cb140-2"><a href="bayes.html#cb140-2" aria-hidden="true" tabindex="-1"></a>fit_iterations</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
