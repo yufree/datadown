@@ -15,7 +15,9 @@ jobs:
       - name: Install pandoc
         run: brew install pandoc
       - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","rsconnect"))'
+        run:  |
+          R -e 'install.packages(c("renv","rsconnect"))'
+          R -e 'renv::restore()'
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
       - name: Update website
