@@ -89,7 +89,7 @@ career <- Batting %>%
   mutate(average = H / AB)
 
 # 把ID换成球员名字
-career <- Master %>%
+career <- People %>%
   tbl_df() %>%
   dplyr::select(playerID, nameFirst, nameLast) %>%
   unite(name, nameFirst, nameLast, sep = " ") %>%
@@ -187,7 +187,7 @@ career <- Batting %>%
   summarize(H = sum(H), AB = sum(AB)) %>%
   mutate(average = H / AB)
 
-career <- Master %>%
+career <- People %>%
   tbl_df() %>%
   dplyr::select(playerID, nameFirst, nameLast) %>%
   unite(name, nameFirst, nameLast, sep = " ") %>%
@@ -200,7 +200,7 @@ career0 <- Batting %>%
   summarize(H = sum(H), AB = sum(AB), year = mean(yearID)) %>%
   mutate(average = H / AB)
 
-career2 <- Master %>%
+career2 <- People %>%
   tbl_df() %>%
   dplyr::select(playerID, nameFirst, nameLast, bats) %>%
   unite(name, nameFirst, nameLast, sep = " ") %>%
@@ -604,25 +604,6 @@ library(gamlss)
 fit <- gamlss(cbind(H, AB - H) ~ log(AB),
               data = career_eb,
               family = BB(mu.link = "identity"))
-
-# 展示拟合参数
-td <- tidy(fit)
-td
-
-# 构建新的先验概率
-mu_0 <- td$estimate[1]
-mu_AB <- td$estimate[2]
-sigma <- exp(td$estimate[3])
-
-# 看看AB对先验概率的影响
-tidyr::crossing(x = seq(0.08, .35, .001), AB = c(1, 10, 100, 1000, 10000)) %>%
-  mutate(density = dbeta(x, (mu_0 + mu_AB * log(AB)) / sigma,
-                         (1 - (mu_0 + mu_AB * log(AB))) / sigma)) %>%
-  mutate(AB = factor(AB)) %>%
-  ggplot(aes(x, density, color = AB, group = AB)) +
-  geom_line() +
-  xlab("Batting average") +
-  ylab("Prior density")
 ```
 
 ### 求后验概率
@@ -686,8 +667,6 @@ career3 <- career2 %>%
 fit2 <- gamlss(cbind(H, AB - H) ~ log(AB) + bats,
                data = career3,
                family = BB(mu.link = "identity"))
-# 观察参数
-tidy(fit2)
 sigma <- fitted(fit2, "sigma")[1]
 df <- tidyr::crossing(bats = c("L", "R"),
          AB = c(1, 10, 100, 1000, 10000))
@@ -781,7 +760,7 @@ plot_gamlss_fit(fit4)
 Pitching %>%
   dplyr::select(playerID, yearID, GS) %>%
   distinct() %>%
-  inner_join(dplyr::select(Master, playerID, throws)) %>%
+  inner_join(dplyr::select(People, playerID, throws)) %>%
   count(yearID, throws, wt = GS) %>%
   filter(!is.na(throws)) %>%
   mutate(percent = n / sum(n)) %>%
@@ -843,7 +822,7 @@ career <- Batting %>%
          isPitcher = playerID %in% pitchers$playerID)
 
 # 链接上名字
-career <- Master %>%
+career <- People %>%
   tbl_df() %>%
   dplyr::select(playerID, nameFirst, nameLast, bats) %>%
   unite(name, nameFirst, nameLast, sep = " ") %>%
@@ -1255,47 +1234,6 @@ pt %>%
        y = "True FDR at this q-value threshold")
 ```
 
-### 贝塔二项回归
-
-- 看下影响因素
-
-```{r simbbreg}
-# 回归值
-bb_reg <- career %>%
-  ebb_fit_prior(H, AB, method = "gamlss", mu_predictors = ~ log10(AB))
-
-tidy(bb_reg)
-
-set.seed(2017)
-
-career_sim_ab <- augment(bb_reg, career) %>%
-  dplyr::select(playerID, AB, true_alpha0 = .alpha0, true_beta0 = .beta0) %>%
-  mutate(p = rbeta(n(), true_alpha0, true_beta0),
-         H = rbinom(n(), AB, p))
-# 真实值
-career_ab_prior <- career_sim_ab %>%
-  ebb_fit_prior(H, AB, method = "gamlss", mu_predictors = ~ log10(AB))
-
-# 对比
-tidy(career_ab_prior)
-
-# 观察击球数影响
-career_flat_prior <- career_sim_ab %>%
-  ebb_fit_prior(H, AB)
-
-data_frame(method = c("Flat prior", "Prior depending on AB"),
-           model = list(career_flat_prior, career_ab_prior)) %>%
-  mutate(model=map(model, augment, data = career_sim_ab)) %>%
-  unnest(model) %>%
-  ggplot(aes(p, .fitted, color = AB)) +
-  geom_point() +
-  scale_color_continuous(trans = "log") +
-  geom_abline(color = "red") +
-  facet_wrap(~ method) +
-  labs(x = "True batting average (p)",
-       y = "Shrunken batting average estimate")
-```
-
 ### 重复模拟
 
 - 为防止意外或运气可以重复模拟看看
@@ -1384,8 +1322,7 @@ sim_replication_intervals %>%
 
 sim_replication_prop_tests <- sim_replication_au %>%
    nest(-replication) %>%
-   mutate(model=map(data, add_ebb_prop_test, threshold = .3, sort = TRUE)) %>%
-   unnest(model)
+   mutate(model=map(data, add_ebb_prop_test, threshold = .3, sort = TRUE))
 
 sim_replication_prop_tests %>%
    group_by(replication) %>%

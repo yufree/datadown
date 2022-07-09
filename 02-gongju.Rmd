@@ -133,13 +133,10 @@ $ exit # 退出
 
 ### 获得帮助
 
-```{r,eval=FALSE}
-help()
-?command
-# 提问给出以下信息
-version
-str(.Platform)
-```
+- `help()`
+- ?command
+- 给出版本号与平台
+- 给一个简短的重现例子
 
 ### 数据类型及基本运算
 
@@ -157,10 +154,7 @@ str(.Platform)
 - 可使用`as.*`来强制转化数据类型
 - 对象可以用`names`命名
 - 变量名开头不能是数字和. 大小写敏感 下划线不要出现在名字里 分割用. 变量名中不能有空格
-- 保留字符
-```{r,eval=FALSE}
-FALSE Inf NA NaN NULL TRUE break else for function if in next repeat while
-```
+- 保留字符 `FALSE Inf NA NaN NULL TRUE break else for function if in next repeat while`
 - 清空`rm(list = ls())`
 - 矩阵
   - 带有`dimension`属性的向量为矩阵 矩阵的生成次序为upper-left
@@ -200,14 +194,6 @@ FALSE Inf NA NaN NULL TRUE break else for function if in next repeat while
 - `unique` 给出无重复的值
 - 向量操作 `union` 并集 `intersect` 交集 `setdiff` 除了交集的部分
 - `rep` 用向量循环生成向量
-
-```{r,eval=FALSE}
-x <- 1:4 # puts c(1,2,3,4) into x
-i <- rep(2, 4) # puts c(2,2,2,2) into i
-y <- rep(x, 2) # puts c(1,2,3,4,1,2,3,4) into y
-z <- rep(x, i) # puts c(1,1,2,2,3,3,4,4) into z
-w <- rep(x, x) # puts c(1,2,2,3,3,3,4,4,4,4) into w
-```
 - 整型变量后面加上L x<-10L
 - Inf代表1/0 同样1/Inf运算结果为0
 
