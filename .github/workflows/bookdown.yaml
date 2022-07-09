@@ -1,0 +1,35 @@
+on:
+  push:
+     branches:
+       - master
+name: renderbook
+
+jobs:
+  bookdown:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - name: Install pandoc
+        run: brew install pandoc
+      - name: Install rmarkdown
+        run: Rscript -e 'install.packages(c("rmarkdown","bookdown","rsconnect"))'
+      - name: Render Book
+        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+      - name: Update website
+        uses: actions-go/push@master
+        with:
+          commit-message: '[Auto] update github online book preview'
+          remote: origin
+      - name: Deploy book to bookdown.org
+        if: github.event_name == 'push'
+        env:
+          CONNECT_API_KEY: ${{ secrets.RSC_BOOKDOWN_ORG_TOKEN }}
+          CONTENT_ID: 1493
+        run: |
+          rsconnect::addConnectServer("https://bookdown.org", "bookdown.org")
+          rsconnect::connectApiUser(account = "yufree", server = "bookdown.org", apiKey = Sys.getenv("CONNECT_API_KEY"))
+          rsconnect::deploySite(appId = Sys.getenv("CONTENT_ID"), server = "bookdown.org", render = "none", logLevel = "verbose", forceUpdate = TRUE)
+        shell: Rscript {0}
