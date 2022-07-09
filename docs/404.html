@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>第4章 探索性数据分析 | 数据分析残卷</title>
+  <title>Page not found | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="第4章 探索性数据分析 | 数据分析残卷" />
+  <meta property="og:title" content="Page not found | 数据分析残卷" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="数据分析世界的清明上河图" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="第4章 探索性数据分析 | 数据分析残卷" />
+  <meta name="twitter:title" content="Page not found | 数据分析残卷" />
   
   <meta name="twitter:description" content="数据分析世界的清明上河图" />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="repro.html"/>
-<link rel="next" href="infer.html"/>
+
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -631,127 +631,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exp" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">第4章</span> 探索性数据分析<a href="exp.html#exp" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="aces-模型" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> ACES 模型<a href="exp.html#aces-模型" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<table>
-<colgroup>
-<col width="28%" />
-<col width="19%" />
-<col width="52%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Letter</th>
-<th>Step</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>A</td>
-<td>Acquire the data and Assemble the data frame</td>
-<td>Find data and import</td>
-</tr>
-<tr class="even">
-<td>C</td>
-<td>Clean the data frame</td>
-<td>Identify and limit columns, rows, indices, dates, etc.</td>
-</tr>
-<tr class="odd">
-<td>E</td>
-<td>Explore global properties</td>
-<td>Visualize! Basic plots and stats appropriate to the data set</td>
-</tr>
-<tr class="even">
-<td>S</td>
-<td>Subset comparisons</td>
-<td>Look at (visualize!) initial emergenet variable relationships and subsets</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="探索绘图原则" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> 探索绘图原则<a href="exp.html#探索绘图原则" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>表示可比的对比</li>
-<li>表示因果 解释 机制 系统结构</li>
-<li>表示多元变量（超过2）</li>
-<li>证据整合 目的驱动非工具驱动</li>
-<li>证据描述要标注限定恰当</li>
-<li>内容为王</li>
-</ul>
-</div>
-<div id="探索性绘图" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> 探索性绘图<a href="exp.html#探索性绘图" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>个人理解用</li>
-<li>不用过分关注细节</li>
-<li>基于问题或假设出发</li>
-</ul>
-</div>
-<div id="分层聚类" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> 分层聚类<a href="exp.html#分层聚类" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>找到最近的 聚到一起 找下个最近的</li>
-<li>给出距离范围与距离计算方法
-<ul>
-<li>欧氏距离 多维空间点距 开平方</li>
-<li>manhattan距离 出租车距离 绝对值</li>
-</ul></li>
-<li>给出变量间或样本间的关系</li>
-<li>图形可能不稳定 多少样本多少类</li>
-<li>结果是确定的</li>
-<li>选定cut点并不明显</li>
-<li>应该首先用来探索</li>
-</ul>
-</div>
-<div id="k-means聚类" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> k-means聚类<a href="exp.html#k-means聚类" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>固定聚类数 给出聚类中心 寻找最近的点 循环</li>
-<li>需要聚类数与聚类距离范围</li>
-<li>需要大量聚类 通过眼睛 交叉检验</li>
-<li>k的经验数值<span class="math inline">\(\sqrt{n/2}\)</span> 或者根据解释的变量变化多少来选取</li>
-<li>结果不确定 根据聚类数与迭代次数而变化</li>
-</ul>
-</div>
-<div id="维度还原" class="section level2 hasAnchor" number="4.6">
-<h2><span class="header-section-number">4.6</span> 维度还原<a href="exp.html#维度还原" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>找到最不相关的数来解释整体方差（统计）在这些数中选取个数最少的来解释原始数据（压缩）</li>
-<li>不一定是真实向量的叠加</li>
-<li>SVD是PCA的一种解法 UDV三个向量 其中U表示行变化模式 D表示方差 V表示列变换模式 这样有助于解释主成分变化</li>
-<li>标准化与否影响结果</li>
-<li>计算量大</li>
-<li>类似探索分析还有因子分析 独立成分分析 潜在语义分析</li>
-<li>impute包可补充缺失值</li>
-<li>t-sne</li>
-</ul>
-</div>
-<div id="可视化图形" class="section level2 hasAnchor" number="4.7">
-<h2><span class="header-section-number">4.7</span> 可视化图形<a href="exp.html#可视化图形" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><a href="https://github.com/thomasp85/tweenr">动态可视化</a></li>
-<li><a href="https://github.com/jokergoo/circlize">弦图</a></li>
-<li><a href="https://github.com/hafen/geofacet">示意地图</a></li>
-<li><a href="https://github.com/sjewo/cartogram">变形地图绘制</a></li>
-<li><a href="https://flowingdata.com/2018/07/09/how-to-visualize-recurring-patterns/">重复模式可视化</a></li>
-<li><a href="https://flowingdata.com/2018/01/08/visualizing-the-uncertainty-in-data/">不确定性可视化</a></li>
-<li>周期性作图需要画两个周期来观察其变化 相关</li>
-<li><a href="https://www.nature.com/articles/nbt.1567">生物数据可视化</a></li>
-</ul>
-
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="repro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="infer.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -782,7 +674,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/datadown/edit/master/04-tansuo.Rmd",
+"link": "https://github.com/yufree/datadown/edit/master/%s",
 "text": "Edit"
 },
 "history": {

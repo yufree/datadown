@@ -216,19 +216,19 @@ $ exit # 退出
 
 - 设定工作目录与数据存储目录
 
-```{r,eval=FALSE}
-if (!file.exists("data")) {
-    dir.create("data")
-}
+```{r}
+# if (!file.exists("data")) {
+#     dir.create("data")
+# }
 ```
 
 - url下载与时间记录
 
-```{r,eval=FALSE}
-fileUrl <- "yoururl"
-download.file(fileUrl, destfile = "./data/XXX.csv", method = "curl")
-list.files("./data")
-dateDownloaded <- date()
+```{r}
+# fileUrl <- "yoururl"
+# download.file(fileUrl, destfile = "./data/XXX.csv", method = "curl")
+# list.files("./data")
+# dateDownloaded <- date()
 ```
 
 

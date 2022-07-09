@@ -1,14 +1,15 @@
-base
-RColorBrewer
 knitr
+RColorBrewer
 ggplot2
 dplyr
 tidyr
 Lahman
-bindrcpp
 broom
 gamlss.data
+MASS
+gamlss.dist
 nlme
+gamlss
 VGAM
 purrr
 ebbr
@@ -16,7 +17,3 @@ scales
 survival
 carData
 car
-MASS
-gamlss.dist
-gamlss
-igraph

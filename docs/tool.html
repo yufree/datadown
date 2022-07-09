@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第2章 数据分析工具 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第2章 数据分析工具 | 数据分析残卷" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="数据分析世界的清明上河图" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2020-08-19" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,8 @@
   
 <link rel="prev" href="intro.html"/>
 <link rel="next" href="repro.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +49,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +86,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -135,7 +137,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a><ul>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#数据科学"><i class="fa fa-check"></i><b>1.1</b> 数据科学</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#基本问题"><i class="fa fa-check"></i><b>1.2</b> 基本问题</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#工作流程"><i class="fa fa-check"></i><b>1.3</b> 工作流程</a></li>
@@ -147,14 +150,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#应用"><i class="fa fa-check"></i><b>1.9</b> 应用</a></li>
 <li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#链接"><i class="fa fa-check"></i><b>1.10</b> 链接</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="tool.html"><a href="tool.html"><i class="fa fa-check"></i><b>2</b> 数据分析工具</a><ul>
+<li class="chapter" data-level="2" data-path="tool.html"><a href="tool.html"><i class="fa fa-check"></i><b>2</b> 数据分析工具</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="tool.html"><a href="tool.html#基础知识"><i class="fa fa-check"></i><b>2.1</b> 基础知识</a></li>
 <li class="chapter" data-level="2.2" data-path="tool.html"><a href="tool.html#命令行基础"><i class="fa fa-check"></i><b>2.2</b> 命令行基础</a></li>
 <li class="chapter" data-level="2.3" data-path="tool.html"><a href="tool.html#版本控制"><i class="fa fa-check"></i><b>2.3</b> 版本控制</a></li>
 <li class="chapter" data-level="2.4" data-path="tool.html"><a href="tool.html#数据获取"><i class="fa fa-check"></i><b>2.4</b> 数据获取</a></li>
 <li class="chapter" data-level="2.5" data-path="tool.html"><a href="tool.html#远程控制"><i class="fa fa-check"></i><b>2.5</b> 远程控制</a></li>
 <li class="chapter" data-level="2.6" data-path="tool.html"><a href="tool.html#高级命令"><i class="fa fa-check"></i><b>2.6</b> 高级命令</a></li>
-<li class="chapter" data-level="2.7" data-path="tool.html"><a href="tool.html#r"><i class="fa fa-check"></i><b>2.7</b> R</a><ul>
+<li class="chapter" data-level="2.7" data-path="tool.html"><a href="tool.html#r"><i class="fa fa-check"></i><b>2.7</b> R</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="tool.html"><a href="tool.html#语言导论"><i class="fa fa-check"></i><b>2.7.1</b> 语言导论</a></li>
 <li class="chapter" data-level="2.7.2" data-path="tool.html"><a href="tool.html#获得帮助"><i class="fa fa-check"></i><b>2.7.2</b> 获得帮助</a></li>
 <li class="chapter" data-level="2.7.3" data-path="tool.html"><a href="tool.html#数据类型及基本运算"><i class="fa fa-check"></i><b>2.7.3</b> 数据类型及基本运算</a></li>
@@ -184,16 +189,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7.27" data-path="tool.html"><a href="tool.html#异常值监测"><i class="fa fa-check"></i><b>2.7.27</b> 异常值监测</a></li>
 <li class="chapter" data-level="2.7.28" data-path="tool.html"><a href="tool.html#图片处理"><i class="fa fa-check"></i><b>2.7.28</b> 图片处理</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="tool.html"><a href="tool.html#python"><i class="fa fa-check"></i><b>2.8</b> Python</a><ul>
+<li class="chapter" data-level="2.8" data-path="tool.html"><a href="tool.html#python"><i class="fa fa-check"></i><b>2.8</b> Python</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="tool.html"><a href="tool.html#工具包"><i class="fa fa-check"></i><b>2.8.1</b> 工具包</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="tool.html"><a href="tool.html#tex"><i class="fa fa-check"></i><b>2.9</b> Tex</a><ul>
+<li class="chapter" data-level="2.9" data-path="tool.html"><a href="tool.html#tex"><i class="fa fa-check"></i><b>2.9</b> Tex</a>
+<ul>
 <li class="chapter" data-level="2.9.1" data-path="tool.html"><a href="tool.html#语言基础"><i class="fa fa-check"></i><b>2.9.1</b> 语言基础</a></li>
 <li class="chapter" data-level="2.9.2" data-path="tool.html"><a href="tool.html#关于xetex"><i class="fa fa-check"></i><b>2.9.2</b> 关于<code>xetex</code></a></li>
 <li class="chapter" data-level="2.9.3" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>2.9.3</b> 常见问题</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="repro.html"><a href="repro.html"><i class="fa fa-check"></i><b>3</b> 可复算性研究</a><ul>
+<li class="chapter" data-level="3" data-path="repro.html"><a href="repro.html"><i class="fa fa-check"></i><b>3</b> 可复算性研究</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="repro.html"><a href="repro.html#replication"><i class="fa fa-check"></i><b>3.1</b> Replication</a></li>
 <li class="chapter" data-level="3.2" data-path="repro.html"><a href="repro.html#reproducible"><i class="fa fa-check"></i><b>3.2</b> Reproducible</a></li>
 <li class="chapter" data-level="3.3" data-path="repro.html"><a href="repro.html#研究流程"><i class="fa fa-check"></i><b>3.3</b> 研究流程</a></li>
@@ -206,7 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10" data-path="repro.html"><a href="repro.html#结果可解释"><i class="fa fa-check"></i><b>3.10</b> 结果可解释</a></li>
 <li class="chapter" data-level="3.11" data-path="repro.html"><a href="repro.html#数据分析的理论"><i class="fa fa-check"></i><b>3.11</b> 数据分析的理论</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>4</b> 探索性数据分析</a><ul>
+<li class="chapter" data-level="4" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>4</b> 探索性数据分析</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="exp.html"><a href="exp.html#aces-模型"><i class="fa fa-check"></i><b>4.1</b> ACES 模型</a></li>
 <li class="chapter" data-level="4.2" data-path="exp.html"><a href="exp.html#探索绘图原则"><i class="fa fa-check"></i><b>4.2</b> 探索绘图原则</a></li>
 <li class="chapter" data-level="4.3" data-path="exp.html"><a href="exp.html#探索性绘图"><i class="fa fa-check"></i><b>4.3</b> 探索性绘图</a></li>
@@ -215,7 +224,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.6" data-path="exp.html"><a href="exp.html#维度还原"><i class="fa fa-check"></i><b>4.6</b> 维度还原</a></li>
 <li class="chapter" data-level="4.7" data-path="exp.html"><a href="exp.html#可视化图形"><i class="fa fa-check"></i><b>4.7</b> 可视化图形</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="infer.html"><a href="infer.html"><i class="fa fa-check"></i><b>5</b> 统计推断</a><ul>
+<li class="chapter" data-level="5" data-path="infer.html"><a href="infer.html"><i class="fa fa-check"></i><b>5</b> 统计推断</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="infer.html"><a href="infer.html#导论"><i class="fa fa-check"></i><b>5.1</b> 导论</a></li>
 <li class="chapter" data-level="5.2" data-path="infer.html"><a href="infer.html#概率"><i class="fa fa-check"></i><b>5.2</b> 概率</a></li>
 <li class="chapter" data-level="5.3" data-path="infer.html"><a href="infer.html#期望"><i class="fa fa-check"></i><b>5.3</b> 期望</a></li>
@@ -236,7 +246,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.18" data-path="infer.html"><a href="infer.html#重采样推断"><i class="fa fa-check"></i><b>5.18</b> 重采样推断</a></li>
 <li class="chapter" data-level="5.19" data-path="infer.html"><a href="infer.html#概念可视化"><i class="fa fa-check"></i><b>5.19</b> 概念可视化</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="reg.html"><a href="reg.html"><i class="fa fa-check"></i><b>6</b> 回归模型</a><ul>
+<li class="chapter" data-level="6" data-path="reg.html"><a href="reg.html"><i class="fa fa-check"></i><b>6</b> 回归模型</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="reg.html"><a href="reg.html#回归模型导论"><i class="fa fa-check"></i><b>6.1</b> 回归模型导论</a></li>
 <li class="chapter" data-level="6.2" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>6.2</b> 术语</a></li>
 <li class="chapter" data-level="6.3" data-path="reg.html"><a href="reg.html#回归线的最小二乘回归"><i class="fa fa-check"></i><b>6.3</b> 回归线的最小二乘回归</a></li>
@@ -250,7 +261,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.11" data-path="reg.html"><a href="reg.html#计数或速率响应"><i class="fa fa-check"></i><b>6.11</b> 计数或速率响应</a></li>
 <li class="chapter" data-level="6.12" data-path="reg.html"><a href="reg.html#分段平滑"><i class="fa fa-check"></i><b>6.12</b> 分段平滑</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a><ul>
+<li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="opt.html"><a href="opt.html#数学本质"><i class="fa fa-check"></i><b>7.1</b> 数学本质</a></li>
 <li class="chapter" data-level="7.2" data-path="opt.html"><a href="opt.html#简史"><i class="fa fa-check"></i><b>7.2</b> 简史</a></li>
 <li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.3</b> 最小二乘法</a></li>
@@ -258,21 +270,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.5</b> 凸优化</a></li>
 <li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#仿射集"><i class="fa fa-check"></i><b>7.6</b> 仿射集</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a><ul>
+<li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="mlsl.html"><a href="mlsl.html#统计学习概论"><i class="fa fa-check"></i><b>8.1</b> 统计学习概论</a></li>
 <li class="chapter" data-level="8.2" data-path="mlsl.html"><a href="mlsl.html#统计学习简史"><i class="fa fa-check"></i><b>8.2</b> 统计学习简史</a></li>
 <li class="chapter" data-level="8.3" data-path="mlsl.html"><a href="mlsl.html#统计学习定义"><i class="fa fa-check"></i><b>8.3</b> 统计学习定义</a></li>
 <li class="chapter" data-level="8.4" data-path="mlsl.html"><a href="mlsl.html#预测"><i class="fa fa-check"></i><b>8.4</b> 预测</a></li>
 <li class="chapter" data-level="8.5" data-path="mlsl.html"><a href="mlsl.html#推断"><i class="fa fa-check"></i><b>8.5</b> 推断</a></li>
 <li class="chapter" data-level="8.6" data-path="mlsl.html"><a href="mlsl.html#估计模型"><i class="fa fa-check"></i><b>8.6</b> 估计模型</a></li>
-<li class="chapter" data-level="8.7" data-path="mlsl.html"><a href="mlsl.html#评价模型"><i class="fa fa-check"></i><b>8.7</b> 评价模型</a><ul>
+<li class="chapter" data-level="8.7" data-path="mlsl.html"><a href="mlsl.html#评价模型"><i class="fa fa-check"></i><b>8.7</b> 评价模型</a>
+<ul>
 <li class="chapter" data-level="8.7.1" data-path="mlsl.html"><a href="mlsl.html#拟合质量测量"><i class="fa fa-check"></i><b>8.7.1</b> 拟合质量测量</a></li>
 <li class="chapter" data-level="8.7.2" data-path="mlsl.html"><a href="mlsl.html#聚类评价"><i class="fa fa-check"></i><b>8.7.2</b> 聚类评价</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="mlsl.html"><a href="mlsl.html#研究设计"><i class="fa fa-check"></i><b>8.8</b> 研究设计</a></li>
 <li class="chapter" data-level="8.9" data-path="mlsl.html"><a href="mlsl.html#错误率"><i class="fa fa-check"></i><b>8.9</b> 错误率</a></li>
 <li class="chapter" data-level="8.10" data-path="mlsl.html"><a href="mlsl.html#roc-曲线"><i class="fa fa-check"></i><b>8.10</b> ROC 曲线</a></li>
-<li class="chapter" data-level="8.11" data-path="mlsl.html"><a href="mlsl.html#重采样技术"><i class="fa fa-check"></i><b>8.11</b> 重采样技术</a><ul>
+<li class="chapter" data-level="8.11" data-path="mlsl.html"><a href="mlsl.html#重采样技术"><i class="fa fa-check"></i><b>8.11</b> 重采样技术</a>
+<ul>
 <li class="chapter" data-level="8.11.1" data-path="mlsl.html"><a href="mlsl.html#交叉检验"><i class="fa fa-check"></i><b>8.11.1</b> 交叉检验</a></li>
 <li class="chapter" data-level="8.11.2" data-path="mlsl.html"><a href="mlsl.html#bootstrap"><i class="fa fa-check"></i><b>8.11.2</b> bootstrap</a></li>
 </ul></li>
@@ -282,18 +297,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.15" data-path="mlsl.html"><a href="mlsl.html#预测变量作图"><i class="fa fa-check"></i><b>8.15</b> 预测变量作图</a></li>
 <li class="chapter" data-level="8.16" data-path="mlsl.html"><a href="mlsl.html#数据预处理"><i class="fa fa-check"></i><b>8.16</b> 数据预处理</a></li>
 <li class="chapter" data-level="8.17" data-path="mlsl.html"><a href="mlsl.html#协变量生成"><i class="fa fa-check"></i><b>8.17</b> 协变量生成</a></li>
-<li class="chapter" data-level="8.18" data-path="mlsl.html"><a href="mlsl.html#线性回归多元线性回归"><i class="fa fa-check"></i><b>8.18</b> 线性回归&amp;多元线性回归</a><ul>
+<li class="chapter" data-level="8.18" data-path="mlsl.html"><a href="mlsl.html#线性回归多元线性回归"><i class="fa fa-check"></i><b>8.18</b> 线性回归&amp;多元线性回归</a>
+<ul>
 <li class="chapter" data-level="8.18.1" data-path="mlsl.html"><a href="mlsl.html#简单线性回归"><i class="fa fa-check"></i><b>8.18.1</b> 简单线性回归</a></li>
 <li class="chapter" data-level="8.18.2" data-path="mlsl.html"><a href="mlsl.html#多元线性回归"><i class="fa fa-check"></i><b>8.18.2</b> 多元线性回归</a></li>
 <li class="chapter" data-level="8.18.3" data-path="mlsl.html"><a href="mlsl.html#线性模型延拓"><i class="fa fa-check"></i><b>8.18.3</b> 线性模型延拓</a></li>
-<li class="chapter" data-level="8.18.4" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
+<li class="chapter" data-level="8.18.4" data-path="mlsl.html"><a href="mlsl.html#常见问题-1"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
 <li class="chapter" data-level="8.18.5" data-path="mlsl.html"><a href="mlsl.html#线性回归与kmeans算法比较"><i class="fa fa-check"></i><b>8.18.5</b> 线性回归与kmeans算法比较</a></li>
 <li class="chapter" data-level="8.18.6" data-path="mlsl.html"><a href="mlsl.html#logistic回归"><i class="fa fa-check"></i><b>8.18.6</b> logistic回归</a></li>
 <li class="chapter" data-level="8.18.7" data-path="mlsl.html"><a href="mlsl.html#线性判别分析"><i class="fa fa-check"></i><b>8.18.7</b> 线性判别分析</a></li>
 <li class="chapter" data-level="8.18.8" data-path="mlsl.html"><a href="mlsl.html#二次判别分析qda及其它"><i class="fa fa-check"></i><b>8.18.8</b> 二次判别分析（QDA）及其它</a></li>
 <li class="chapter" data-level="8.18.9" data-path="mlsl.html"><a href="mlsl.html#线性模型选择与正则化"><i class="fa fa-check"></i><b>8.18.9</b> 线性模型选择与正则化</a></li>
 </ul></li>
-<li class="chapter" data-level="8.19" data-path="mlsl.html"><a href="mlsl.html#非线性"><i class="fa fa-check"></i><b>8.19</b> 非线性</a><ul>
+<li class="chapter" data-level="8.19" data-path="mlsl.html"><a href="mlsl.html#非线性"><i class="fa fa-check"></i><b>8.19</b> 非线性</a>
+<ul>
 <li class="chapter" data-level="8.19.1" data-path="mlsl.html"><a href="mlsl.html#多项式回归"><i class="fa fa-check"></i><b>8.19.1</b> 多项式回归</a></li>
 <li class="chapter" data-level="8.19.2" data-path="mlsl.html"><a href="mlsl.html#阶梯函数"><i class="fa fa-check"></i><b>8.19.2</b> 阶梯函数</a></li>
 <li class="chapter" data-level="8.19.3" data-path="mlsl.html"><a href="mlsl.html#基函数"><i class="fa fa-check"></i><b>8.19.3</b> 基函数</a></li>
@@ -302,20 +319,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.19.6" data-path="mlsl.html"><a href="mlsl.html#本地回归"><i class="fa fa-check"></i><b>8.19.6</b> 本地回归</a></li>
 <li class="chapter" data-level="8.19.7" data-path="mlsl.html"><a href="mlsl.html#广义加性模型"><i class="fa fa-check"></i><b>8.19.7</b> 广义加性模型</a></li>
 </ul></li>
-<li class="chapter" data-level="8.20" data-path="mlsl.html"><a href="mlsl.html#树"><i class="fa fa-check"></i><b>8.20</b> 树</a><ul>
+<li class="chapter" data-level="8.20" data-path="mlsl.html"><a href="mlsl.html#树"><i class="fa fa-check"></i><b>8.20</b> 树</a>
+<ul>
 <li class="chapter" data-level="8.20.1" data-path="mlsl.html"><a href="mlsl.html#回归树"><i class="fa fa-check"></i><b>8.20.1</b> 回归树</a></li>
 <li class="chapter" data-level="8.20.2" data-path="mlsl.html"><a href="mlsl.html#分类树"><i class="fa fa-check"></i><b>8.20.2</b> 分类树</a></li>
 <li class="chapter" data-level="8.20.3" data-path="mlsl.html"><a href="mlsl.html#bagging"><i class="fa fa-check"></i><b>8.20.3</b> Bagging</a></li>
 <li class="chapter" data-level="8.20.4" data-path="mlsl.html"><a href="mlsl.html#随机森林"><i class="fa fa-check"></i><b>8.20.4</b> 随机森林</a></li>
 <li class="chapter" data-level="8.20.5" data-path="mlsl.html"><a href="mlsl.html#boosting"><i class="fa fa-check"></i><b>8.20.5</b> Boosting</a></li>
 </ul></li>
-<li class="chapter" data-level="8.21" data-path="mlsl.html"><a href="mlsl.html#支持向量机"><i class="fa fa-check"></i><b>8.21</b> 支持向量机</a><ul>
+<li class="chapter" data-level="8.21" data-path="mlsl.html"><a href="mlsl.html#支持向量机"><i class="fa fa-check"></i><b>8.21</b> 支持向量机</a>
+<ul>
 <li class="chapter" data-level="8.21.1" data-path="mlsl.html"><a href="mlsl.html#最大边界分类器"><i class="fa fa-check"></i><b>8.21.1</b> 最大边界分类器</a></li>
 <li class="chapter" data-level="8.21.2" data-path="mlsl.html"><a href="mlsl.html#支持向量分类器"><i class="fa fa-check"></i><b>8.21.2</b> 支持向量分类器</a></li>
 <li class="chapter" data-level="8.21.3" data-path="mlsl.html"><a href="mlsl.html#支持向量机原理"><i class="fa fa-check"></i><b>8.21.3</b> 支持向量机原理</a></li>
 <li class="chapter" data-level="8.21.4" data-path="mlsl.html"><a href="mlsl.html#svm与logistic回归关系"><i class="fa fa-check"></i><b>8.21.4</b> svm与logistic回归关系</a></li>
 </ul></li>
-<li class="chapter" data-level="8.22" data-path="mlsl.html"><a href="mlsl.html#无监督学习"><i class="fa fa-check"></i><b>8.22</b> 无监督学习</a><ul>
+<li class="chapter" data-level="8.22" data-path="mlsl.html"><a href="mlsl.html#无监督学习"><i class="fa fa-check"></i><b>8.22</b> 无监督学习</a>
+<ul>
 <li class="chapter" data-level="8.22.1" data-path="mlsl.html"><a href="mlsl.html#主成分分析"><i class="fa fa-check"></i><b>8.22.1</b> 主成分分析</a></li>
 <li class="chapter" data-level="8.22.2" data-path="mlsl.html"><a href="mlsl.html#聚类方法"><i class="fa fa-check"></i><b>8.22.2</b> 聚类方法</a></li>
 </ul></li>
@@ -325,7 +345,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.26" data-path="mlsl.html"><a href="mlsl.html#模型预测"><i class="fa fa-check"></i><b>8.26</b> 模型预测</a></li>
 <li class="chapter" data-level="8.27" data-path="mlsl.html"><a href="mlsl.html#模型可视化"><i class="fa fa-check"></i><b>8.27</b> 模型可视化</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="product.html"><a href="product.html"><i class="fa fa-check"></i><b>9</b> 开发数据产品</a><ul>
+<li class="chapter" data-level="9" data-path="product.html"><a href="product.html"><i class="fa fa-check"></i><b>9</b> 开发数据产品</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="product.html"><a href="product.html#shiny"><i class="fa fa-check"></i><b>9.1</b> shiny</a></li>
 <li class="chapter" data-level="9.2" data-path="product.html"><a href="product.html#rcharts"><i class="fa fa-check"></i><b>9.2</b> rCharts</a></li>
 <li class="chapter" data-level="9.3" data-path="product.html"><a href="product.html#googlevis"><i class="fa fa-check"></i><b>9.3</b> GoogleVis</a></li>
@@ -334,7 +355,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="product.html"><a href="product.html#swagger"><i class="fa fa-check"></i><b>9.6</b> swagger</a></li>
 <li class="chapter" data-level="9.7" data-path="product.html"><a href="product.html#案例"><i class="fa fa-check"></i><b>9.7</b> 案例</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>10</b> 贝叶斯统计</a><ul>
+<li class="chapter" data-level="10" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>10</b> 贝叶斯统计</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="bayes.html"><a href="bayes.html#贝塔分布"><i class="fa fa-check"></i><b>10.1</b> 贝塔分布</a></li>
 <li class="chapter" data-level="10.2" data-path="bayes.html"><a href="bayes.html#为什么击球的概率分布符合贝塔分布"><i class="fa fa-check"></i><b>10.2</b> 为什么击球的概率分布符合贝塔分布？</a></li>
 <li class="chapter" data-level="10.3" data-path="bayes.html"><a href="bayes.html#先验与后验"><i class="fa fa-check"></i><b>10.3</b> 先验与后验</a></li>
@@ -344,7 +366,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="bayes.html"><a href="bayes.html#后验错误率"><i class="fa fa-check"></i><b>10.7</b> 后验错误率</a></li>
 <li class="chapter" data-level="10.8" data-path="bayes.html"><a href="bayes.html#错误发现率"><i class="fa fa-check"></i><b>10.8</b> 错误发现率</a></li>
 <li class="chapter" data-level="10.9" data-path="bayes.html"><a href="bayes.html#q值"><i class="fa fa-check"></i><b>10.9</b> q值</a></li>
-<li class="chapter" data-level="10.10" data-path="bayes.html"><a href="bayes.html#贝叶斯视角的假设检验"><i class="fa fa-check"></i><b>10.10</b> 贝叶斯视角的假设检验</a><ul>
+<li class="chapter" data-level="10.10" data-path="bayes.html"><a href="bayes.html#贝叶斯视角的假设检验"><i class="fa fa-check"></i><b>10.10</b> 贝叶斯视角的假设检验</a>
+<ul>
 <li class="chapter" data-level="10.10.1" data-path="bayes.html"><a href="bayes.html#模拟验证"><i class="fa fa-check"></i><b>10.10.1</b> 模拟验证</a></li>
 <li class="chapter" data-level="10.10.2" data-path="bayes.html"><a href="bayes.html#数值积分"><i class="fa fa-check"></i><b>10.10.2</b> 数值积分</a></li>
 <li class="chapter" data-level="10.10.3" data-path="bayes.html"><a href="bayes.html#解析解"><i class="fa fa-check"></i><b>10.10.3</b> 解析解</a></li>
@@ -352,37 +375,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="bayes.html"><a href="bayes.html#比例检验"><i class="fa fa-check"></i><b>10.11</b> 比例检验</a></li>
 <li class="chapter" data-level="10.12" data-path="bayes.html"><a href="bayes.html#错误率控制"><i class="fa fa-check"></i><b>10.12</b> 错误率控制</a></li>
-<li class="chapter" data-level="10.13" data-path="bayes.html"><a href="bayes.html#影响因子"><i class="fa fa-check"></i><b>10.13</b> 影响因子</a><ul>
+<li class="chapter" data-level="10.13" data-path="bayes.html"><a href="bayes.html#影响因子"><i class="fa fa-check"></i><b>10.13</b> 影响因子</a>
+<ul>
 <li class="chapter" data-level="10.13.1" data-path="bayes.html"><a href="bayes.html#拟合模型"><i class="fa fa-check"></i><b>10.13.1</b> 拟合模型</a></li>
 <li class="chapter" data-level="10.13.2" data-path="bayes.html"><a href="bayes.html#求后验概率"><i class="fa fa-check"></i><b>10.13.2</b> 求后验概率</a></li>
 <li class="chapter" data-level="10.13.3" data-path="bayes.html"><a href="bayes.html#考虑更多因素"><i class="fa fa-check"></i><b>10.13.3</b> 考虑更多因素</a></li>
 </ul></li>
-<li class="chapter" data-level="10.14" data-path="bayes.html"><a href="bayes.html#混合概率模型"><i class="fa fa-check"></i><b>10.14</b> 混合概率模型</a><ul>
+<li class="chapter" data-level="10.14" data-path="bayes.html"><a href="bayes.html#混合概率模型"><i class="fa fa-check"></i><b>10.14</b> 混合概率模型</a>
+<ul>
 <li class="chapter" data-level="10.14.1" data-path="bayes.html"><a href="bayes.html#期望最大算法"><i class="fa fa-check"></i><b>10.14.1</b> 期望最大算法</a></li>
 <li class="chapter" data-level="10.14.2" data-path="bayes.html"><a href="bayes.html#分配"><i class="fa fa-check"></i><b>10.14.2</b> 分配</a></li>
 <li class="chapter" data-level="10.14.3" data-path="bayes.html"><a href="bayes.html#经验贝叶斯收缩"><i class="fa fa-check"></i><b>10.14.3</b> 经验贝叶斯收缩</a></li>
 </ul></li>
-<li class="chapter" data-level="10.15" data-path="bayes.html"><a href="bayes.html#模拟验证结果"><i class="fa fa-check"></i><b>10.15</b> 模拟验证结果</a><ul>
+<li class="chapter" data-level="10.15" data-path="bayes.html"><a href="bayes.html#模拟验证结果"><i class="fa fa-check"></i><b>10.15</b> 模拟验证结果</a>
+<ul>
 <li class="chapter" data-level="10.15.1" data-path="bayes.html"><a href="bayes.html#模拟对分布参数的估计"><i class="fa fa-check"></i><b>10.15.1</b> 模拟对分布参数的估计</a></li>
 <li class="chapter" data-level="10.15.2" data-path="bayes.html"><a href="bayes.html#区间估计"><i class="fa fa-check"></i><b>10.15.2</b> 区间估计</a></li>
 <li class="chapter" data-level="10.15.3" data-path="bayes.html"><a href="bayes.html#错误发现率-1"><i class="fa fa-check"></i><b>10.15.3</b> 错误发现率</a></li>
-<li class="chapter" data-level="10.15.4" data-path="bayes.html"><a href="bayes.html#贝塔二项回归"><i class="fa fa-check"></i><b>10.15.4</b> 贝塔二项回归</a></li>
-<li class="chapter" data-level="10.15.5" data-path="bayes.html"><a href="bayes.html#重复模拟"><i class="fa fa-check"></i><b>10.15.5</b> 重复模拟</a></li>
+<li class="chapter" data-level="10.15.4" data-path="bayes.html"><a href="bayes.html#重复模拟"><i class="fa fa-check"></i><b>10.15.4</b> 重复模拟</a></li>
 </ul></li>
 <li class="chapter" data-level="10.16" data-path="bayes.html"><a href="bayes.html#bayeslink"><i class="fa fa-check"></i><b>10.16</b> 网络资源</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="why.html"><a href="why.html"><i class="fa fa-check"></i><b>11</b> 因果分析</a><ul>
+<li class="chapter" data-level="11" data-path="why.html"><a href="why.html"><i class="fa fa-check"></i><b>11</b> 因果分析</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
-<li class="chapter" data-level="11.2" data-path="why.html"><a href="why.html#causal-information"><i class="fa fa-check"></i><b>11.2</b> Causal Information</a><ul>
+<li class="chapter" data-level="11.2" data-path="why.html"><a href="why.html#causal-information"><i class="fa fa-check"></i><b>11.2</b> Causal Information</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="why.html"><a href="why.html#target"><i class="fa fa-check"></i><b>11.2.1</b> Target</a></li>
 <li class="chapter" data-level="11.2.2" data-path="why.html"><a href="why.html#causal-sources"><i class="fa fa-check"></i><b>11.2.2</b> Causal sources</a></li>
 <li class="chapter" data-level="11.2.3" data-path="why.html"><a href="why.html#identification-and-estimation-process"><i class="fa fa-check"></i><b>11.2.3</b> Identification and Estimation Process</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="why.html"><a href="why.html#theoretical-background"><i class="fa fa-check"></i><b>11.3</b> Theoretical Background</a><ul>
+<li class="chapter" data-level="11.3" data-path="why.html"><a href="why.html#theoretical-background"><i class="fa fa-check"></i><b>11.3</b> Theoretical Background</a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="why.html"><a href="why.html#potential-outcomes-framework"><i class="fa fa-check"></i><b>11.3.1</b> Potential Outcomes Framework</a></li>
 <li class="chapter" data-level="11.3.2" data-path="why.html"><a href="why.html#causal-identification"><i class="fa fa-check"></i><b>11.3.2</b> Causal Identification</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="why.html"><a href="why.html#methods-for-identification-and-estimation"><i class="fa fa-check"></i><b>11.4</b> Methods for Identification and Estimation</a><ul>
+<li class="chapter" data-level="11.4" data-path="why.html"><a href="why.html#methods-for-identification-and-estimation"><i class="fa fa-check"></i><b>11.4</b> Methods for Identification and Estimation</a>
+<ul>
 <li class="chapter" data-level="11.4.1" data-path="why.html"><a href="why.html#directed-acyclic-graphsdag-for-identification"><i class="fa fa-check"></i><b>11.4.1</b> Directed Acyclic Graphs(DAG) for Identification</a></li>
 <li class="chapter" data-level="11.4.2" data-path="why.html"><a href="why.html#indirect-connection"><i class="fa fa-check"></i><b>11.4.2</b> Indirect Connection</a></li>
 <li class="chapter" data-level="11.4.3" data-path="why.html"><a href="why.html#common-cause"><i class="fa fa-check"></i><b>11.4.3</b> Common Cause</a></li>
@@ -391,7 +420,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="why.html"><a href="why.html#yinguolink"><i class="fa fa-check"></i><b>11.5</b> 链接</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a><ul>
+<li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#节点属性"><i class="fa fa-check"></i><b>12.1</b> 节点属性</a></li>
 <li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.2</b> 网络集群</a></li>
 <li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.3</b> 随机网络模型</a></li>
@@ -404,8 +434,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.10" data-path="neta.html"><a href="neta.html#网络扩散行为"><i class="fa fa-check"></i><b>12.10</b> 网络扩散行为</a></li>
 <li class="chapter" data-level="12.11" data-path="neta.html"><a href="neta.html#网络可视化"><i class="fa fa-check"></i><b>12.11</b> 网络可视化</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a><ul>
-<li class="chapter" data-level="13.1" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
+<li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="game.html"><a href="game.html#术语-1"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
 <li class="chapter" data-level="13.2" data-path="game.html"><a href="game.html#支配策略dominate-strategy"><i class="fa fa-check"></i><b>13.2</b> 支配策略（dominate strategy）</a></li>
 <li class="chapter" data-level="13.3" data-path="game.html"><a href="game.html#最佳回应best-respinse"><i class="fa fa-check"></i><b>13.3</b> 最佳回应（Best respinse）</a></li>
 <li class="chapter" data-level="13.4" data-path="game.html"><a href="game.html#纳什均衡nash-equilibrium"><i class="fa fa-check"></i><b>13.4</b> 纳什均衡（Nash Equilibrium）</a></li>
@@ -432,7 +463,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.25" data-path="game.html"><a href="game.html#vcg机制"><i class="fa fa-check"></i><b>13.25</b> VCG机制</a></li>
 <li class="chapter" data-level="13.26" data-path="game.html"><a href="game.html#拍卖"><i class="fa fa-check"></i><b>13.26</b> 拍卖</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="bios.html"><a href="bios.html"><i class="fa fa-check"></i><b>14</b> 生物信息</a><ul>
+<li class="chapter" data-level="14" data-path="bios.html"><a href="bios.html"><i class="fa fa-check"></i><b>14</b> 生物信息</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="bios.html"><a href="bios.html#数据结构"><i class="fa fa-check"></i><b>14.1</b> 数据结构</a></li>
 <li class="chapter" data-level="14.2" data-path="bios.html"><a href="bios.html#pubmed-搜索"><i class="fa fa-check"></i><b>14.2</b> Pubmed 搜索</a></li>
 <li class="chapter" data-level="14.3" data-path="bios.html"><a href="bios.html#动态规划"><i class="fa fa-check"></i><b>14.3</b> 动态规划</a></li>
@@ -447,7 +479,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.12" data-path="bios.html"><a href="bios.html#真核基因预测"><i class="fa fa-check"></i><b>14.12</b> 真核基因预测</a></li>
 <li class="chapter" data-level="14.13" data-path="bios.html"><a href="bios.html#dna指纹"><i class="fa fa-check"></i><b>14.13</b> DNA指纹</a></li>
 <li class="chapter" data-level="14.14" data-path="bios.html"><a href="bios.html#ensembl"><i class="fa fa-check"></i><b>14.14</b> Ensembl</a></li>
-<li class="chapter" data-level="14.15" data-path="bios.html"><a href="bios.html#基因组学数据分析"><i class="fa fa-check"></i><b>14.15</b> 基因组学数据分析</a><ul>
+<li class="chapter" data-level="14.15" data-path="bios.html"><a href="bios.html#基因组学数据分析"><i class="fa fa-check"></i><b>14.15</b> 基因组学数据分析</a>
+<ul>
 <li class="chapter" data-level="14.15.1" data-path="bios.html"><a href="bios.html#microarrays"><i class="fa fa-check"></i><b>14.15.1</b> microarrays</a></li>
 <li class="chapter" data-level="14.15.2" data-path="bios.html"><a href="bios.html#ngs"><i class="fa fa-check"></i><b>14.15.2</b> NGS</a></li>
 <li class="chapter" data-level="14.15.3" data-path="bios.html"><a href="bios.html#数据分析应用背景"><i class="fa fa-check"></i><b>14.15.3</b> 数据分析应用背景</a></li>
@@ -456,11 +489,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14.16" data-path="bios.html"><a href="bios.html#biolink"><i class="fa fa-check"></i><b>14.16</b> 链接</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="surv.html"><a href="surv.html"><i class="fa fa-check"></i><b>15</b> 生存分析</a><ul>
+<li class="chapter" data-level="15" data-path="surv.html"><a href="surv.html"><i class="fa fa-check"></i><b>15</b> 生存分析</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="surv.html"><a href="surv.html#concepts"><i class="fa fa-check"></i><b>15.1</b> Concepts</a></li>
 <li class="chapter" data-level="15.2" data-path="surv.html"><a href="surv.html#notation"><i class="fa fa-check"></i><b>15.2</b> Notation</a></li>
 <li class="chapter" data-level="15.3" data-path="surv.html"><a href="surv.html#cox-proportional-hazards-regression-model"><i class="fa fa-check"></i><b>15.3</b> Cox proportional-hazards regression model</a></li>
-<li class="chapter" data-level="15.4" data-path="surv.html"><a href="surv.html#case-recidivism"><i class="fa fa-check"></i><b>15.4</b> Case: Recidivism</a><ul>
+<li class="chapter" data-level="15.4" data-path="surv.html"><a href="surv.html#case-recidivism"><i class="fa fa-check"></i><b>15.4</b> Case: Recidivism</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="surv.html"><a href="surv.html#result"><i class="fa fa-check"></i><b>15.4.1</b> result</a></li>
 </ul></li>
 <li class="chapter" data-level="15.5" data-path="surv.html"><a href="surv.html#further"><i class="fa fa-check"></i><b>15.5</b> further</a></li>
@@ -468,30 +503,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.7" data-path="surv.html"><a href="surv.html#model-diagnostics"><i class="fa fa-check"></i><b>15.7</b> Model Diagnostics</a></li>
 <li class="chapter" data-level="15.8" data-path="surv.html"><a href="surv.html#reference"><i class="fa fa-check"></i><b>15.8</b> Reference</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="epid.html"><a href="epid.html"><i class="fa fa-check"></i><b>16</b> 流行病学</a><ul>
+<li class="chapter" data-level="16" data-path="epid.html"><a href="epid.html"><i class="fa fa-check"></i><b>16</b> 流行病学</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="epid.html"><a href="epid.html#声明"><i class="fa fa-check"></i><b>16.1</b> 声明</a></li>
 <li class="chapter" data-level="16.2" data-path="epid.html"><a href="epid.html#早期疾病的概念"><i class="fa fa-check"></i><b>16.2</b> 早期疾病的概念</a></li>
 <li class="chapter" data-level="16.3" data-path="epid.html"><a href="epid.html#近代流行病学关键人物"><i class="fa fa-check"></i><b>16.3</b> 近代流行病学关键人物</a></li>
 <li class="chapter" data-level="16.4" data-path="epid.html"><a href="epid.html#现代慢性病流行病学"><i class="fa fa-check"></i><b>16.4</b> 现代慢性病流行病学</a></li>
-<li class="chapter" data-level="16.5" data-path="epid.html"><a href="epid.html#流行病学基本概念"><i class="fa fa-check"></i><b>16.5</b> 流行病学基本概念</a><ul>
+<li class="chapter" data-level="16.5" data-path="epid.html"><a href="epid.html#流行病学基本概念"><i class="fa fa-check"></i><b>16.5</b> 流行病学基本概念</a>
+<ul>
 <li class="chapter" data-level="16.5.1" data-path="epid.html"><a href="epid.html#基本假设"><i class="fa fa-check"></i><b>16.5.1</b> 基本假设</a></li>
 <li class="chapter" data-level="16.5.2" data-path="epid.html"><a href="epid.html#定义"><i class="fa fa-check"></i><b>16.5.2</b> 定义</a></li>
 </ul></li>
-<li class="chapter" data-level="16.6" data-path="epid.html"><a href="epid.html#描述性流行病学"><i class="fa fa-check"></i><b>16.6</b> 描述性流行病学</a><ul>
+<li class="chapter" data-level="16.6" data-path="epid.html"><a href="epid.html#描述性流行病学"><i class="fa fa-check"></i><b>16.6</b> 描述性流行病学</a>
+<ul>
 <li class="chapter" data-level="16.6.1" data-path="epid.html"><a href="epid.html#疾病爆发的研究步骤"><i class="fa fa-check"></i><b>16.6.1</b> 疾病爆发的研究步骤</a></li>
 <li class="chapter" data-level="16.6.2" data-path="epid.html"><a href="epid.html#慢性病的描述性流行病学"><i class="fa fa-check"></i><b>16.6.2</b> 慢性病的描述性流行病学</a></li>
 <li class="chapter" data-level="16.6.3" data-path="epid.html"><a href="epid.html#描述流行病学分类"><i class="fa fa-check"></i><b>16.6.3</b> 描述流行病学分类</a></li>
 </ul></li>
 <li class="chapter" data-level="16.7" data-path="epid.html"><a href="epid.html#分析流行病学"><i class="fa fa-check"></i><b>16.7</b> 分析流行病学</a></li>
 <li class="chapter" data-level="16.8" data-path="epid.html"><a href="epid.html#疾病监控"><i class="fa fa-check"></i><b>16.8</b> 疾病监控</a></li>
-<li class="chapter" data-level="16.9" data-path="epid.html"><a href="epid.html#疾病频率的测量"><i class="fa fa-check"></i><b>16.9</b> 疾病频率的测量</a><ul>
+<li class="chapter" data-level="16.9" data-path="epid.html"><a href="epid.html#疾病频率的测量"><i class="fa fa-check"></i><b>16.9</b> 疾病频率的测量</a>
+<ul>
 <li class="chapter" data-level="16.9.1" data-path="epid.html"><a href="epid.html#人群"><i class="fa fa-check"></i><b>16.9.1</b> 人群</a></li>
 <li class="chapter" data-level="16.9.2" data-path="epid.html"><a href="epid.html#患病率prevalence"><i class="fa fa-check"></i><b>16.9.2</b> 患病率（prevalence）</a></li>
 <li class="chapter" data-level="16.9.3" data-path="epid.html"><a href="epid.html#风险risk"><i class="fa fa-check"></i><b>16.9.3</b> 风险（risk）</a></li>
 <li class="chapter" data-level="16.9.4" data-path="epid.html"><a href="epid.html#比率rate"><i class="fa fa-check"></i><b>16.9.4</b> 比率（rate）</a></li>
 <li class="chapter" data-level="16.9.5" data-path="epid.html"><a href="epid.html#其他频率测量"><i class="fa fa-check"></i><b>16.9.5</b> 其他频率测量</a></li>
 </ul></li>
-<li class="chapter" data-level="16.10" data-path="epid.html"><a href="epid.html#联系测量"><i class="fa fa-check"></i><b>16.10</b> 联系测量</a><ul>
+<li class="chapter" data-level="16.10" data-path="epid.html"><a href="epid.html#联系测量"><i class="fa fa-check"></i><b>16.10</b> 联系测量</a>
+<ul>
 <li class="chapter" data-level="16.10.1" data-path="epid.html"><a href="epid.html#风险比与比率比risk-ratio-rate-ratio"><i class="fa fa-check"></i><b>16.10.1</b> 风险比与比率比（risk ratio rate ratio）</a></li>
 <li class="chapter" data-level="16.10.2" data-path="epid.html"><a href="epid.html#对照组"><i class="fa fa-check"></i><b>16.10.2</b> 对照组</a></li>
 <li class="chapter" data-level="16.10.3" data-path="epid.html"><a href="epid.html#风险差risk-difference"><i class="fa fa-check"></i><b>16.10.3</b> 风险差（risk difference）</a></li>
@@ -501,12 +541,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16.11" data-path="epid.html"><a href="epid.html#随机误差"><i class="fa fa-check"></i><b>16.11</b> 随机误差</a></li>
 <li class="chapter" data-level="16.12" data-path="epid.html"><a href="epid.html#研究道德"><i class="fa fa-check"></i><b>16.12</b> 研究道德</a></li>
-<li class="chapter" data-level="16.13" data-path="epid.html"><a href="epid.html#临床实验"><i class="fa fa-check"></i><b>16.13</b> 临床实验</a><ul>
+<li class="chapter" data-level="16.13" data-path="epid.html"><a href="epid.html#临床实验"><i class="fa fa-check"></i><b>16.13</b> 临床实验</a>
+<ul>
 <li class="chapter" data-level="16.13.1" data-path="epid.html"><a href="epid.html#研究对象"><i class="fa fa-check"></i><b>16.13.1</b> 研究对象</a></li>
 <li class="chapter" data-level="16.13.2" data-path="epid.html"><a href="epid.html#对照组与控制组"><i class="fa fa-check"></i><b>16.13.2</b> 对照组与控制组</a></li>
 <li class="chapter" data-level="16.13.3" data-path="epid.html"><a href="epid.html#临床分析中的问题"><i class="fa fa-check"></i><b>16.13.3</b> 临床分析中的问题</a></li>
 </ul></li>
-<li class="chapter" data-level="16.14" data-path="epid.html"><a href="epid.html#队列研究"><i class="fa fa-check"></i><b>16.14</b> 队列研究</a><ul>
+<li class="chapter" data-level="16.14" data-path="epid.html"><a href="epid.html#队列研究"><i class="fa fa-check"></i><b>16.14</b> 队列研究</a>
+<ul>
 <li class="chapter" data-level="16.14.1" data-path="epid.html"><a href="epid.html#前瞻性队列研究"><i class="fa fa-check"></i><b>16.14.1</b> 前瞻性队列研究</a></li>
 <li class="chapter" data-level="16.14.2" data-path="epid.html"><a href="epid.html#回顾性队列研究"><i class="fa fa-check"></i><b>16.14.2</b> 回顾性队列研究</a></li>
 <li class="chapter" data-level="16.14.3" data-path="epid.html"><a href="epid.html#双向队列研究"><i class="fa fa-check"></i><b>16.14.3</b> 双向队列研究</a></li>
@@ -524,14 +566,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.18" data-path="epid.html"><a href="epid.html#效应修饰emm"><i class="fa fa-check"></i><b>16.18</b> 效应修饰（EMM）</a></li>
 <li class="chapter" data-level="16.19" data-path="epid.html"><a href="epid.html#多变量方法"><i class="fa fa-check"></i><b>16.19</b> 多变量方法</a></li>
 <li class="chapter" data-level="16.20" data-path="epid.html"><a href="epid.html#筛选"><i class="fa fa-check"></i><b>16.20</b> 筛选</a></li>
-<li class="chapter" data-level="16.21" data-path="epid.html"><a href="epid.html#因果推断"><i class="fa fa-check"></i><b>16.21</b> 因果推断</a><ul>
+<li class="chapter" data-level="16.21" data-path="epid.html"><a href="epid.html#因果推断"><i class="fa fa-check"></i><b>16.21</b> 因果推断</a>
+<ul>
 <li class="chapter" data-level="16.21.1" data-path="epid.html"><a href="epid.html#hill-因果标准"><i class="fa fa-check"></i><b>16.21.1</b> Hill 因果标准</a></li>
 <li class="chapter" data-level="16.21.2" data-path="epid.html"><a href="epid.html#部分原因理论"><i class="fa fa-check"></i><b>16.21.2</b> 部分原因理论</a></li>
 <li class="chapter" data-level="16.21.3" data-path="epid.html"><a href="epid.html#逆向模型counterfactual-models"><i class="fa fa-check"></i><b>16.21.3</b> 逆向模型（Counterfactual models）</a></li>
 <li class="chapter" data-level="16.21.4" data-path="epid.html"><a href="epid.html#有向无环图dags"><i class="fa fa-check"></i><b>16.21.4</b> 有向无环图（DAGs）</a></li>
 </ul></li>
-<li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a><ul>
-<li class="chapter" data-level="16.22.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a>
+<ul>
+<li class="chapter" data-level="16.22.1" data-path="epid.html"><a href="epid.html#introduction-1"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.22.2" data-path="epid.html"><a href="epid.html#methods"><i class="fa fa-check"></i><b>16.22.2</b> Methods</a></li>
 <li class="chapter" data-level="16.22.3" data-path="epid.html"><a href="epid.html#results"><i class="fa fa-check"></i><b>16.22.3</b> Results</a></li>
 <li class="chapter" data-level="16.22.4" data-path="epid.html"><a href="epid.html#discussion"><i class="fa fa-check"></i><b>16.22.4</b> Discussion</a></li>
@@ -544,7 +588,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>17</b> 自然语言处理</a></li>
-<li class="chapter" data-level="18" data-path="qi.html"><a href="qi.html"><i class="fa fa-check"></i><b>18</b> 量化投资</a><ul>
+<li class="chapter" data-level="18" data-path="qi.html"><a href="qi.html"><i class="fa fa-check"></i><b>18</b> 量化投资</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="qi.html"><a href="qi.html#股票收益模型"><i class="fa fa-check"></i><b>18.1</b> 股票收益模型</a></li>
 <li class="chapter" data-level="18.2" data-path="qi.html"><a href="qi.html#风险"><i class="fa fa-check"></i><b>18.2</b> 风险</a></li>
 <li class="chapter" data-level="18.3" data-path="qi.html"><a href="qi.html#收益"><i class="fa fa-check"></i><b>18.3</b> 收益</a></li>
@@ -586,17 +631,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tool" class="section level1">
-<h1><span class="header-section-number">第2章</span> 数据分析工具</h1>
-<div id="基础知识" class="section level2">
-<h2><span class="header-section-number">2.1</span> 基础知识</h2>
+<div id="tool" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">第2章</span> 数据分析工具<a href="tool.html#tool" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="基础知识" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> 基础知识<a href="tool.html#基础知识" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>层次：操作系统 - shell - 终端 - 命令行工具</li>
 <li>分类：可执行文件、shell 内置命令、脚本、shell 函数、宏</li>
 </ul>
 </div>
-<div id="命令行基础" class="section level2">
-<h2><span class="header-section-number">2.2</span> 命令行基础</h2>
+<div id="命令行基础" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> 命令行基础<a href="tool.html#命令行基础" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>name of root is represented by a slash: /</p></li>
 <li><p>home directory is represented by a tilde: ~</p></li>
@@ -626,8 +671,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>date will print today’s date</p></li>
 </ul>
 </div>
-<div id="版本控制" class="section level2">
-<h2><span class="header-section-number">2.3</span> 版本控制</h2>
+<div id="版本控制" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> 版本控制<a href="tool.html#版本控制" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <pre><code>$ git config --global user.name &quot;Your Name Here&quot; # 输入用户名
 $ git config --global user.email &quot;your_email@example.com&quot; # 输入邮箱
 $ git config --list # 检查
@@ -647,8 +692,8 @@ $ exit # 退出</code></pre>
 <li>Git = Local (on your computer); GitHub = Remote (on the web)</li>
 </ul>
 </div>
-<div id="数据获取" class="section level2">
-<h2><span class="header-section-number">2.4</span> 数据获取</h2>
+<div id="数据获取" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> 数据获取<a href="tool.html#数据获取" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>复制：cp 或 scp（安全复制）
 &gt; scp -i mykey.pem ~/Desktop/logs.csv <a href="mailto:ubuntu@ec2-184-73-72-150.compute-1.amazonaws.com" class="email">ubuntu@ec2-184-73-72-150.compute-1.amazonaws.com</a>:data</p></li>
@@ -665,8 +710,8 @@ $ exit # 退出</code></pre>
 <li><p>API：curlicue 来进行认证</p></li>
 </ul>
 </div>
-<div id="远程控制" class="section level2">
-<h2><span class="header-section-number">2.5</span> 远程控制</h2>
+<div id="远程控制" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> 远程控制<a href="tool.html#远程控制" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>ssh 远程登录22端口</li>
 <li>scp 对服务器拷贝 scp -r local/data host:/data/</li>
@@ -675,8 +720,8 @@ $ exit # 退出</code></pre>
 <li>du 查看磁盘使用状况 du -h</li>
 </ul>
 </div>
-<div id="高级命令" class="section level2">
-<h2><span class="header-section-number">2.6</span> 高级命令</h2>
+<div id="高级命令" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> 高级命令<a href="tool.html#高级命令" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>!! 可重复上次命令</p></li>
 <li><p>chmod 增加权限</p></li>
@@ -684,10 +729,10 @@ $ exit # 退出</code></pre>
 <li><p>NUM_WORDS=“$1” 增加参数</p></li>
 </ul>
 </div>
-<div id="r" class="section level2">
-<h2><span class="header-section-number">2.7</span> R</h2>
-<div id="语言导论" class="section level3">
-<h3><span class="header-section-number">2.7.1</span> 语言导论</h3>
+<div id="r" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> R<a href="tool.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="语言导论" class="section level3 hasAnchor" number="2.7.1">
+<h3><span class="header-section-number">2.7.1</span> 语言导论<a href="tool.html#语言导论" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>R语言是S语言的一种方言</li>
 <li>1976年S是John Chambers等在贝尔实验室作为Fortran的扩展库开发出来的</li>
@@ -710,16 +755,17 @@ $ exit # 退出</code></pre>
 <li><a href="http://kbroman.org/hipsteR/">过时的R包</a></li>
 </ul>
 </div>
-<div id="获得帮助" class="section level3">
-<h3><span class="header-section-number">2.7.2</span> 获得帮助</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tool.html#cb2-1"></a><span class="kw">help</span>()</span>
-<span id="cb2-2"><a href="tool.html#cb2-2"></a>?command</span>
-<span id="cb2-3"><a href="tool.html#cb2-3"></a><span class="co"># 提问给出以下信息</span></span>
-<span id="cb2-4"><a href="tool.html#cb2-4"></a>version</span>
-<span id="cb2-5"><a href="tool.html#cb2-5"></a><span class="kw">str</span>(.Platform)</span></code></pre></div>
+<div id="获得帮助" class="section level3 hasAnchor" number="2.7.2">
+<h3><span class="header-section-number">2.7.2</span> 获得帮助<a href="tool.html#获得帮助" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><code>help()</code></li>
+<li>?command</li>
+<li>给出版本号与平台</li>
+<li>给一个简短的重现例子</li>
+</ul>
 </div>
-<div id="数据类型及基本运算" class="section level3">
-<h3><span class="header-section-number">2.7.3</span> 数据类型及基本运算</h3>
+<div id="数据类型及基本运算" class="section level3 hasAnchor" number="2.7.3">
+<h3><span class="header-section-number">2.7.3</span> 数据类型及基本运算<a href="tool.html#数据类型及基本运算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>所有数据都是对象 所有对象都有类型</li>
 <li>基本类型包括：字符“” 数字 整数L 复数(<code>Re</code>实部 <code>Im</code>虚部) 逻辑</li>
@@ -735,10 +781,7 @@ $ exit # 退出</code></pre>
 <li>可使用<code>as.*</code>来强制转化数据类型</li>
 <li>对象可以用<code>names</code>命名</li>
 <li>变量名开头不能是数字和. 大小写敏感 下划线不要出现在名字里 分割用. 变量名中不能有空格</li>
-<li>保留字符</li>
-</ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="tool.html#cb3-1"></a><span class="ot">FALSE</span> <span class="ot">Inf</span> <span class="ot">NA</span> <span class="ot">NaN</span> <span class="ot">NULL</span> <span class="ot">TRUE</span> <span class="cf">break</span> <span class="cf">else</span> <span class="cf">for</span> <span class="cf">function</span> <span class="cf">if</span> <span class="cf">in</span> <span class="cf">next</span> <span class="cf">repeat</span> <span class="cf">while</span></span></code></pre></div>
-<ul>
+<li>保留字符 <code>FALSE Inf NA NaN NULL TRUE break else for function if in next repeat while</code></li>
 <li>清空<code>rm(list = ls())</code></li>
 <li>矩阵
 <ul>
@@ -784,19 +827,12 @@ $ exit # 退出</code></pre>
 <li><code>unique</code> 给出无重复的值</li>
 <li>向量操作 <code>union</code> 并集 <code>intersect</code> 交集 <code>setdiff</code> 除了交集的部分</li>
 <li><code>rep</code> 用向量循环生成向量</li>
-</ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tool.html#cb4-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span> <span class="co"># puts c(1,2,3,4) into x</span></span>
-<span id="cb4-2"><a href="tool.html#cb4-2"></a>i &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">2</span>, <span class="dv">4</span>) <span class="co"># puts c(2,2,2,2) into i</span></span>
-<span id="cb4-3"><a href="tool.html#cb4-3"></a>y &lt;-<span class="st"> </span><span class="kw">rep</span>(x, <span class="dv">2</span>) <span class="co"># puts c(1,2,3,4,1,2,3,4) into y</span></span>
-<span id="cb4-4"><a href="tool.html#cb4-4"></a>z &lt;-<span class="st"> </span><span class="kw">rep</span>(x, i) <span class="co"># puts c(1,1,2,2,3,3,4,4) into z</span></span>
-<span id="cb4-5"><a href="tool.html#cb4-5"></a>w &lt;-<span class="st"> </span><span class="kw">rep</span>(x, x) <span class="co"># puts c(1,2,2,3,3,3,4,4,4,4) into w</span></span></code></pre></div>
-<ul>
 <li>整型变量后面加上L x&lt;-10L</li>
 <li>Inf代表1/0 同样1/Inf运算结果为0</li>
 </ul>
 </div>
-<div id="环境文件操作" class="section level3">
-<h3><span class="header-section-number">2.7.4</span> 环境／文件操作</h3>
+<div id="环境文件操作" class="section level3 hasAnchor" number="2.7.4">
+<h3><span class="header-section-number">2.7.4</span> 环境／文件操作<a href="tool.html#环境文件操作" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>getwd()</code> <code>setwd()</code> 设置工作目录</li>
 <li><code>ls()</code> 列举环境中bianliang</li>
@@ -812,24 +848,24 @@ $ exit # 退出</code></pre>
 <li><code>unlink()</code> 删除文件</li>
 </ul>
 </div>
-<div id="下载" class="section level3">
-<h3><span class="header-section-number">2.7.5</span> 下载</h3>
+<div id="下载" class="section level3 hasAnchor" number="2.7.5">
+<h3><span class="header-section-number">2.7.5</span> 下载<a href="tool.html#下载" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>设定工作目录与数据存储目录</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="tool.html#cb5-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;data&quot;</span>)) {</span>
-<span id="cb5-2"><a href="tool.html#cb5-2"></a>    <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span>
-<span id="cb5-3"><a href="tool.html#cb5-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tool.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if (!file.exists(&quot;data&quot;)) {</span></span>
+<span id="cb2-2"><a href="tool.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#     dir.create(&quot;data&quot;)</span></span>
+<span id="cb2-3"><a href="tool.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># }</span></span></code></pre></div>
 <ul>
 <li>url下载与时间记录</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="tool.html#cb6-1"></a>fileUrl &lt;-<span class="st"> &quot;yoururl&quot;</span></span>
-<span id="cb6-2"><a href="tool.html#cb6-2"></a><span class="kw">download.file</span>(fileUrl, <span class="dt">destfile =</span> <span class="st">&quot;./data/XXX.csv&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;curl&quot;</span>)</span>
-<span id="cb6-3"><a href="tool.html#cb6-3"></a><span class="kw">list.files</span>(<span class="st">&quot;./data&quot;</span>)</span>
-<span id="cb6-4"><a href="tool.html#cb6-4"></a>dateDownloaded &lt;-<span class="st"> </span><span class="kw">date</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="tool.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># fileUrl &lt;- &quot;yoururl&quot;</span></span>
+<span id="cb3-2"><a href="tool.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># download.file(fileUrl, destfile = &quot;./data/XXX.csv&quot;, method = &quot;curl&quot;)</span></span>
+<span id="cb3-3"><a href="tool.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># list.files(&quot;./data&quot;)</span></span>
+<span id="cb3-4"><a href="tool.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># dateDownloaded &lt;- date()</span></span></code></pre></div>
 </div>
-<div id="截取数据" class="section level3">
-<h3><span class="header-section-number">2.7.6</span> 截取数据</h3>
+<div id="截取数据" class="section level3 hasAnchor" number="2.7.6">
+<h3><span class="header-section-number">2.7.6</span> 截取数据<a href="tool.html#截取数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>可以用<code>[x,y]</code>提取特定数值</li>
 <li><code>[-1,-2]</code>可剔除第一行第二列</li>
@@ -853,12 +889,12 @@ $ exit # 退出</code></pre>
 <li>排序数据框(多向量)用<code>order</code></li>
 <li><a href="http://plyr.had.co.nz/09-user/">plyl包</a>排序</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="tool.html#cb7-1"></a><span class="kw">library</span>(plyr)</span>
-<span id="cb7-2"><a href="tool.html#cb7-2"></a><span class="kw">arrange</span>(X,var1)</span>
-<span id="cb7-3"><a href="tool.html#cb7-3"></a><span class="kw">arrange</span>(X,<span class="kw">desc</span>(var1))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tool.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb4-2"><a href="tool.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(X,var1)</span>
+<span id="cb4-3"><a href="tool.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(X,<span class="fu">desc</span>(var1))</span></code></pre></div>
 </div>
-<div id="读取数据" class="section level3">
-<h3><span class="header-section-number">2.7.7</span> 读取数据</h3>
+<div id="读取数据" class="section level3 hasAnchor" number="2.7.7">
+<h3><span class="header-section-number">2.7.7</span> 读取数据<a href="tool.html#读取数据" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>read.table</code> <code>read.csv</code> 读取表格 反之<code>write.table</code></li>
 <li><code>readLines</code> 读取文本行 反之<code>writeLines</code></li>
@@ -875,15 +911,15 @@ $ exit # 退出</code></pre>
 <li>设定<code>colClasses</code></li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="tool.html#cb8-1"></a>initial &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>, <span class="dt">nrows =</span> <span class="dv">100</span>)</span>
-<span id="cb8-2"><a href="tool.html#cb8-2"></a>classes &lt;-<span class="st"> </span><span class="kw">sapply</span>(initial, class)</span>
-<span id="cb8-3"><a href="tool.html#cb8-3"></a>tabAll &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>,</span>
-<span id="cb8-4"><a href="tool.html#cb8-4"></a>                     <span class="dt">colClasses =</span> classes)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="tool.html#cb5-1" aria-hidden="true" tabindex="-1"></a>initial <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>, <span class="at">nrows =</span> <span class="dv">100</span>)</span>
+<span id="cb5-2"><a href="tool.html#cb5-2" aria-hidden="true" tabindex="-1"></a>classes <span class="ot">&lt;-</span> <span class="fu">sapply</span>(initial, class)</span>
+<span id="cb5-3"><a href="tool.html#cb5-3" aria-hidden="true" tabindex="-1"></a>tabAll <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;datatable.txt&quot;</span>,</span>
+<span id="cb5-4"><a href="tool.html#cb5-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">colClasses =</span> classes)</span></code></pre></div>
 <ul>
 <li>使用<code>connections</code>与<code>file</code>等保存外部文件指向</li>
 </ul>
-<div id="读取本地文件" class="section level4">
-<h4><span class="header-section-number">2.7.7.1</span> 读取本地文件</h4>
+<div id="读取本地文件" class="section level4 hasAnchor" number="2.7.7.1">
+<h4><span class="header-section-number">2.7.7.1</span> 读取本地文件<a href="tool.html#读取本地文件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><code>read.table</code></li>
 <li><code>read.csv</code> 默认<code>sep=",", header=TRUE</code></li>
@@ -893,46 +929,46 @@ $ exit # 退出</code></pre>
 <li><code>skip</code> 跳过开始行数</li>
 </ul>
 </div>
-<div id="读取excle文件" class="section level4">
-<h4><span class="header-section-number">2.7.7.2</span> 读取excle文件</h4>
+<div id="读取excle文件" class="section level4 hasAnchor" number="2.7.7.2">
+<h4><span class="header-section-number">2.7.7.2</span> 读取excle文件<a href="tool.html#读取excle文件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>xlsx包</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="tool.html#cb9-1"></a><span class="kw">library</span>(xlsx)</span>
-<span id="cb9-2"><a href="tool.html#cb9-2"></a>cameraData &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&quot;./data/cameras.xlsx&quot;</span>,<span class="dt">sheetIndex=</span><span class="dv">1</span>,<span class="dt">header=</span><span class="ot">TRUE</span>)</span>
-<span id="cb9-3"><a href="tool.html#cb9-3"></a><span class="kw">head</span>(cameraData)</span>
-<span id="cb9-4"><a href="tool.html#cb9-4"></a><span class="co"># read.xlsx2更快不过选行读取时会不稳定</span></span>
-<span id="cb9-5"><a href="tool.html#cb9-5"></a><span class="co"># 支持底层读取 如字体等</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="tool.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xlsx)</span>
+<span id="cb6-2"><a href="tool.html#cb6-2" aria-hidden="true" tabindex="-1"></a>cameraData <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;./data/cameras.xlsx&quot;</span>,<span class="at">sheetIndex=</span><span class="dv">1</span>,<span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb6-3"><a href="tool.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cameraData)</span>
+<span id="cb6-4"><a href="tool.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># read.xlsx2更快不过选行读取时会不稳定</span></span>
+<span id="cb6-5"><a href="tool.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 支持底层读取 如字体等</span></span></code></pre></div>
 <ul>
 <li>XLConnect包</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="tool.html#cb10-1"></a><span class="kw">library</span>(XLConnect)</span>
-<span id="cb10-2"><a href="tool.html#cb10-2"></a>wb &lt;-<span class="st"> </span><span class="kw">loadWorkbook</span>(<span class="st">&quot;XLConnectExample1.xlsx&quot;</span>, <span class="dt">create =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb10-3"><a href="tool.html#cb10-3"></a><span class="kw">createSheet</span>(wb, <span class="dt">name =</span> <span class="st">&quot;chickSheet&quot;</span>)</span>
-<span id="cb10-4"><a href="tool.html#cb10-4"></a><span class="kw">writeWorksheet</span>(wb, ChickWeight, <span class="dt">sheet =</span> <span class="st">&quot;chickSheet&quot;</span>, <span class="dt">startRow =</span> <span class="dv">3</span>, <span class="dt">startCol =</span> <span class="dv">4</span>)</span>
-<span id="cb10-5"><a href="tool.html#cb10-5"></a><span class="kw">saveWorkbook</span>(wb)</span>
-<span id="cb10-6"><a href="tool.html#cb10-6"></a><span class="co"># 支持区域操作 生成报告 图片等</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="tool.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XLConnect)</span>
+<span id="cb7-2"><a href="tool.html#cb7-2" aria-hidden="true" tabindex="-1"></a>wb <span class="ot">&lt;-</span> <span class="fu">loadWorkbook</span>(<span class="st">&quot;XLConnectExample1.xlsx&quot;</span>, <span class="at">create =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-3"><a href="tool.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">createSheet</span>(wb, <span class="at">name =</span> <span class="st">&quot;chickSheet&quot;</span>)</span>
+<span id="cb7-4"><a href="tool.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">writeWorksheet</span>(wb, ChickWeight, <span class="at">sheet =</span> <span class="st">&quot;chickSheet&quot;</span>, <span class="at">startRow =</span> <span class="dv">3</span>, <span class="at">startCol =</span> <span class="dv">4</span>)</span>
+<span id="cb7-5"><a href="tool.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWorkbook</span>(wb)</span>
+<span id="cb7-6"><a href="tool.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 支持区域操作 生成报告 图片等</span></span></code></pre></div>
 </div>
-<div id="读取xml文件" class="section level4">
-<h4><span class="header-section-number">2.7.7.3</span> 读取XML文件</h4>
+<div id="读取xml文件" class="section level4 hasAnchor" number="2.7.7.3">
+<h4><span class="header-section-number">2.7.7.3</span> 读取XML文件<a href="tool.html#读取xml文件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>网页常用格式</li>
 <li>形式与内容分开</li>
 <li>形式包括标签 元素 属性等</li>
 <li>XML包</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="tool.html#cb11-1"></a><span class="kw">library</span>(XML)</span>
-<span id="cb11-2"><a href="tool.html#cb11-2"></a>fileUrl &lt;-<span class="st"> &quot;http://www.w3schools.com/xml/simple.xml&quot;</span></span>
-<span id="cb11-3"><a href="tool.html#cb11-3"></a><span class="co"># 读取xml结构</span></span>
-<span id="cb11-4"><a href="tool.html#cb11-4"></a>doc &lt;-<span class="st"> </span><span class="kw">xmlTreeParse</span>(fileUrl,<span class="dt">useInternal=</span><span class="ot">TRUE</span>)</span>
-<span id="cb11-5"><a href="tool.html#cb11-5"></a><span class="co"># 提取节点</span></span>
-<span id="cb11-6"><a href="tool.html#cb11-6"></a>rootNode &lt;-<span class="st"> </span><span class="kw">xmlRoot</span>(doc)</span>
-<span id="cb11-7"><a href="tool.html#cb11-7"></a><span class="co"># 提取根节点名</span></span>
-<span id="cb11-8"><a href="tool.html#cb11-8"></a><span class="kw">xmlName</span>(rootNode)</span>
-<span id="cb11-9"><a href="tool.html#cb11-9"></a><span class="co"># 提取子节点名</span></span>
-<span id="cb11-10"><a href="tool.html#cb11-10"></a><span class="kw">names</span>(rootNode) </span>
-<span id="cb11-11"><a href="tool.html#cb11-11"></a><span class="co"># 提取节点数值</span></span>
-<span id="cb11-12"><a href="tool.html#cb11-12"></a><span class="kw">xmlSApply</span>(rootNode,xmlValue)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="tool.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
+<span id="cb8-2"><a href="tool.html#cb8-2" aria-hidden="true" tabindex="-1"></a>fileUrl <span class="ot">&lt;-</span> <span class="st">&quot;http://www.w3schools.com/xml/simple.xml&quot;</span></span>
+<span id="cb8-3"><a href="tool.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取xml结构</span></span>
+<span id="cb8-4"><a href="tool.html#cb8-4" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">xmlTreeParse</span>(fileUrl,<span class="at">useInternal=</span><span class="cn">TRUE</span>)</span>
+<span id="cb8-5"><a href="tool.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取节点</span></span>
+<span id="cb8-6"><a href="tool.html#cb8-6" aria-hidden="true" tabindex="-1"></a>rootNode <span class="ot">&lt;-</span> <span class="fu">xmlRoot</span>(doc)</span>
+<span id="cb8-7"><a href="tool.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取根节点名</span></span>
+<span id="cb8-8"><a href="tool.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">xmlName</span>(rootNode)</span>
+<span id="cb8-9"><a href="tool.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取子节点名</span></span>
+<span id="cb8-10"><a href="tool.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(rootNode) </span>
+<span id="cb8-11"><a href="tool.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取节点数值</span></span>
+<span id="cb8-12"><a href="tool.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">xmlSApply</span>(rootNode,xmlValue)</span></code></pre></div>
 <ul>
 <li>XPath XML的一种查询语法
 <ul>
@@ -942,27 +978,27 @@ $ exit # 退出</code></pre>
 <li>node<span class="citation">[@attr-name='bob']</span> 属性名为bob的节点</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="tool.html#cb12-1"></a><span class="co"># 提取节点下属性名为name的数值</span></span>
-<span id="cb12-2"><a href="tool.html#cb12-2"></a><span class="kw">xpathSApply</span>(rootNode,<span class="st">&quot;//name&quot;</span>,xmlValue)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="tool.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 提取节点下属性名为name的数值</span></span>
+<span id="cb9-2"><a href="tool.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xpathSApply</span>(rootNode,<span class="st">&quot;//name&quot;</span>,xmlValue)</span></code></pre></div>
 </div>
-<div id="读取json文件" class="section level4">
-<h4><span class="header-section-number">2.7.7.4</span> 读取json文件</h4>
+<div id="读取json文件" class="section level4 hasAnchor" number="2.7.7.4">
+<h4><span class="header-section-number">2.7.7.4</span> 读取json文件<a href="tool.html#读取json文件" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>js对象符号 结构化 常作为API输出格式</li>
 <li>jsonlite包</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tool.html#cb13-1"></a><span class="kw">library</span>(jsonlite)</span>
-<span id="cb13-2"><a href="tool.html#cb13-2"></a><span class="co"># 读取json文件</span></span>
-<span id="cb13-3"><a href="tool.html#cb13-3"></a>jsonData &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(<span class="st">&quot;https://api.github.com/users/jtleek/repos&quot;</span>)</span>
-<span id="cb13-4"><a href="tool.html#cb13-4"></a><span class="co"># 列出文件名</span></span>
-<span id="cb13-5"><a href="tool.html#cb13-5"></a><span class="kw">names</span>(jsonData)</span>
-<span id="cb13-6"><a href="tool.html#cb13-6"></a><span class="co"># 可嵌套截取</span></span>
-<span id="cb13-7"><a href="tool.html#cb13-7"></a>jsonData<span class="op">$</span>owner<span class="op">$</span>login</span>
-<span id="cb13-8"><a href="tool.html#cb13-8"></a><span class="co"># 可将R对象写成json文件</span></span>
-<span id="cb13-9"><a href="tool.html#cb13-9"></a>myjson &lt;-<span class="st"> </span><span class="kw">toJSON</span>(iris, <span class="dt">pretty=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="tool.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb10-2"><a href="tool.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取json文件</span></span>
+<span id="cb10-3"><a href="tool.html#cb10-3" aria-hidden="true" tabindex="-1"></a>jsonData <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">&quot;https://api.github.com/users/jtleek/repos&quot;</span>)</span>
+<span id="cb10-4"><a href="tool.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 列出文件名</span></span>
+<span id="cb10-5"><a href="tool.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(jsonData)</span>
+<span id="cb10-6"><a href="tool.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 可嵌套截取</span></span>
+<span id="cb10-7"><a href="tool.html#cb10-7" aria-hidden="true" tabindex="-1"></a>jsonData<span class="sc">$</span>owner<span class="sc">$</span>login</span>
+<span id="cb10-8"><a href="tool.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 可将R对象写成json文件</span></span>
+<span id="cb10-9"><a href="tool.html#cb10-9" aria-hidden="true" tabindex="-1"></a>myjson <span class="ot">&lt;-</span> <span class="fu">toJSON</span>(iris, <span class="at">pretty=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 </div>
-<div id="读取mysql数据库" class="section level4">
-<h4><span class="header-section-number">2.7.7.5</span> 读取MySQL数据库</h4>
+<div id="读取mysql数据库" class="section level4 hasAnchor" number="2.7.7.5">
+<h4><span class="header-section-number">2.7.7.5</span> 读取MySQL数据库<a href="tool.html#读取mysql数据库" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>网络应用常见数据库软件</li>
 <li>一行一记录</li>
@@ -971,94 +1007,94 @@ $ exit # 退出</code></pre>
 <li><a href="http://www.r-bloggers.com/mysql-and-r/">指南</a></li>
 <li>RMySQL包</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="tool.html#cb14-1"></a><span class="kw">library</span>(RMySQL)</span>
-<span id="cb14-2"><a href="tool.html#cb14-2"></a><span class="co"># 读取数据库</span></span>
-<span id="cb14-3"><a href="tool.html#cb14-3"></a>ucscDb &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">MySQL</span>(),<span class="dt">user=</span><span class="st">&quot;genome&quot;</span>, </span>
-<span id="cb14-4"><a href="tool.html#cb14-4"></a>                    <span class="dt">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</span>
-<span id="cb14-5"><a href="tool.html#cb14-5"></a>result &lt;-<span class="st"> </span><span class="kw">dbGetQuery</span>(ucscDb,<span class="st">&quot;show databases;&quot;</span>); </span>
-<span id="cb14-6"><a href="tool.html#cb14-6"></a><span class="co"># 断开链接</span></span>
-<span id="cb14-7"><a href="tool.html#cb14-7"></a><span class="kw">dbDisconnect</span>(ucscDb);</span>
-<span id="cb14-8"><a href="tool.html#cb14-8"></a><span class="co"># 读取指定数据库</span></span>
-<span id="cb14-9"><a href="tool.html#cb14-9"></a>hg19 &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">MySQL</span>(),<span class="dt">user=</span><span class="st">&quot;genome&quot;</span>, <span class="dt">db=</span><span class="st">&quot;hg19&quot;</span>,</span>
-<span id="cb14-10"><a href="tool.html#cb14-10"></a>                    <span class="dt">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</span>
-<span id="cb14-11"><a href="tool.html#cb14-11"></a>allTables &lt;-<span class="st"> </span><span class="kw">dbListTables</span>(hg19)</span>
-<span id="cb14-12"><a href="tool.html#cb14-12"></a><span class="kw">length</span>(allTables)</span>
-<span id="cb14-13"><a href="tool.html#cb14-13"></a><span class="co"># mysql语句查询</span></span>
-<span id="cb14-14"><a href="tool.html#cb14-14"></a><span class="kw">dbGetQuery</span>(hg19, <span class="st">&quot;select count(*) from affyU133Plus2&quot;</span>)</span>
-<span id="cb14-15"><a href="tool.html#cb14-15"></a><span class="co"># 选择子集</span></span>
-<span id="cb14-16"><a href="tool.html#cb14-16"></a>query &lt;-<span class="st"> </span><span class="kw">dbSendQuery</span>(hg19, <span class="st">&quot;select * from affyU133Plus2 where misMatches between 1 and 3&quot;</span>)</span>
-<span id="cb14-17"><a href="tool.html#cb14-17"></a>affyMis &lt;-<span class="st"> </span><span class="kw">fetch</span>(query); <span class="kw">quantile</span>(affyMis<span class="op">$</span>misMatches)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="tool.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb11-2"><a href="tool.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取数据库</span></span>
+<span id="cb11-3"><a href="tool.html#cb11-3" aria-hidden="true" tabindex="-1"></a>ucscDb <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),<span class="at">user=</span><span class="st">&quot;genome&quot;</span>, </span>
+<span id="cb11-4"><a href="tool.html#cb11-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</span>
+<span id="cb11-5"><a href="tool.html#cb11-5" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(ucscDb,<span class="st">&quot;show databases;&quot;</span>); </span>
+<span id="cb11-6"><a href="tool.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 断开链接</span></span>
+<span id="cb11-7"><a href="tool.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(ucscDb);</span>
+<span id="cb11-8"><a href="tool.html#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取指定数据库</span></span>
+<span id="cb11-9"><a href="tool.html#cb11-9" aria-hidden="true" tabindex="-1"></a>hg19 <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">MySQL</span>(),<span class="at">user=</span><span class="st">&quot;genome&quot;</span>, <span class="at">db=</span><span class="st">&quot;hg19&quot;</span>,</span>
+<span id="cb11-10"><a href="tool.html#cb11-10" aria-hidden="true" tabindex="-1"></a>                    <span class="at">host=</span><span class="st">&quot;genome-mysql.cse.ucsc.edu&quot;</span>)</span>
+<span id="cb11-11"><a href="tool.html#cb11-11" aria-hidden="true" tabindex="-1"></a>allTables <span class="ot">&lt;-</span> <span class="fu">dbListTables</span>(hg19)</span>
+<span id="cb11-12"><a href="tool.html#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(allTables)</span>
+<span id="cb11-13"><a href="tool.html#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># mysql语句查询</span></span>
+<span id="cb11-14"><a href="tool.html#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(hg19, <span class="st">&quot;select count(*) from affyU133Plus2&quot;</span>)</span>
+<span id="cb11-15"><a href="tool.html#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 选择子集</span></span>
+<span id="cb11-16"><a href="tool.html#cb11-16" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(hg19, <span class="st">&quot;select * from affyU133Plus2 where misMatches between 1 and 3&quot;</span>)</span>
+<span id="cb11-17"><a href="tool.html#cb11-17" aria-hidden="true" tabindex="-1"></a>affyMis <span class="ot">&lt;-</span> <span class="fu">fetch</span>(query); <span class="fu">quantile</span>(affyMis<span class="sc">$</span>misMatches)</span></code></pre></div>
 </div>
-<div id="读取hdf5数据" class="section level4">
-<h4><span class="header-section-number">2.7.7.6</span> 读取HDF5数据</h4>
+<div id="读取hdf5数据" class="section level4 hasAnchor" number="2.7.7.6">
+<h4><span class="header-section-number">2.7.7.6</span> 读取HDF5数据<a href="tool.html#读取hdf5数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>分层分组读取大量数据的格式</li>
 <li>rhdf5包</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="tool.html#cb15-1"></a><span class="kw">library</span>(rhdf5)</span>
-<span id="cb15-2"><a href="tool.html#cb15-2"></a>created =<span class="st"> </span><span class="kw">h5createFile</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
-<span id="cb15-3"><a href="tool.html#cb15-3"></a>created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo&quot;</span>)</span>
-<span id="cb15-4"><a href="tool.html#cb15-4"></a>created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;baa&quot;</span>)</span>
-<span id="cb15-5"><a href="tool.html#cb15-5"></a>created =<span class="st"> </span><span class="kw">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa&quot;</span>)</span>
-<span id="cb15-6"><a href="tool.html#cb15-6"></a><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
-<span id="cb15-7"><a href="tool.html#cb15-7"></a>A =<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dt">nr=</span><span class="dv">5</span>,<span class="dt">nc=</span><span class="dv">2</span>)</span>
-<span id="cb15-8"><a href="tool.html#cb15-8"></a><span class="kw">h5write</span>(A, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</span>
-<span id="cb15-9"><a href="tool.html#cb15-9"></a>B =<span class="st"> </span><span class="kw">array</span>(<span class="kw">seq</span>(<span class="fl">0.1</span>,<span class="fl">2.0</span>,<span class="dt">by=</span><span class="fl">0.1</span>),<span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
-<span id="cb15-10"><a href="tool.html#cb15-10"></a><span class="kw">attr</span>(B, <span class="st">&quot;scale&quot;</span>) &lt;-<span class="st"> &quot;liter&quot;</span></span>
-<span id="cb15-11"><a href="tool.html#cb15-11"></a><span class="kw">h5write</span>(B, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</span>
-<span id="cb15-12"><a href="tool.html#cb15-12"></a><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
-<span id="cb15-13"><a href="tool.html#cb15-13"></a>df =<span class="st"> </span><span class="kw">data.frame</span>(1L<span class="op">:</span>5L,<span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dt">length.out=</span><span class="dv">5</span>),</span>
-<span id="cb15-14"><a href="tool.html#cb15-14"></a>  <span class="kw">c</span>(<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;cde&quot;</span>,<span class="st">&quot;fghi&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;s&quot;</span>), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</span>
-<span id="cb15-15"><a href="tool.html#cb15-15"></a><span class="kw">h5write</span>(df, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</span>
-<span id="cb15-16"><a href="tool.html#cb15-16"></a><span class="kw">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
-<span id="cb15-17"><a href="tool.html#cb15-17"></a>readA =<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</span>
-<span id="cb15-18"><a href="tool.html#cb15-18"></a>readB =<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</span>
-<span id="cb15-19"><a href="tool.html#cb15-19"></a>readdf=<span class="st"> </span><span class="kw">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="tool.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rhdf5)</span>
+<span id="cb12-2"><a href="tool.html#cb12-2" aria-hidden="true" tabindex="-1"></a>created <span class="ot">=</span> <span class="fu">h5createFile</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb12-3"><a href="tool.html#cb12-3" aria-hidden="true" tabindex="-1"></a>created <span class="ot">=</span> <span class="fu">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo&quot;</span>)</span>
+<span id="cb12-4"><a href="tool.html#cb12-4" aria-hidden="true" tabindex="-1"></a>created <span class="ot">=</span> <span class="fu">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;baa&quot;</span>)</span>
+<span id="cb12-5"><a href="tool.html#cb12-5" aria-hidden="true" tabindex="-1"></a>created <span class="ot">=</span> <span class="fu">h5createGroup</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa&quot;</span>)</span>
+<span id="cb12-6"><a href="tool.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb12-7"><a href="tool.html#cb12-7" aria-hidden="true" tabindex="-1"></a>A <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,<span class="at">nr=</span><span class="dv">5</span>,<span class="at">nc=</span><span class="dv">2</span>)</span>
+<span id="cb12-8"><a href="tool.html#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">h5write</span>(A, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</span>
+<span id="cb12-9"><a href="tool.html#cb12-9" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">array</span>(<span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="fl">2.0</span>,<span class="at">by=</span><span class="fl">0.1</span>),<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb12-10"><a href="tool.html#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(B, <span class="st">&quot;scale&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;liter&quot;</span></span>
+<span id="cb12-11"><a href="tool.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">h5write</span>(B, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</span>
+<span id="cb12-12"><a href="tool.html#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb12-13"><a href="tool.html#cb12-13" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(1L<span class="sc">:</span>5L,<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">length.out=</span><span class="dv">5</span>),</span>
+<span id="cb12-14"><a href="tool.html#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">&quot;ab&quot;</span>,<span class="st">&quot;cde&quot;</span>,<span class="st">&quot;fghi&quot;</span>,<span class="st">&quot;a&quot;</span>,<span class="st">&quot;s&quot;</span>), <span class="at">stringsAsFactors=</span><span class="cn">FALSE</span>)</span>
+<span id="cb12-15"><a href="tool.html#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="fu">h5write</span>(df, <span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</span>
+<span id="cb12-16"><a href="tool.html#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="fu">h5ls</span>(<span class="st">&quot;example.h5&quot;</span>)</span>
+<span id="cb12-17"><a href="tool.html#cb12-17" aria-hidden="true" tabindex="-1"></a>readA <span class="ot">=</span> <span class="fu">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/A&quot;</span>)</span>
+<span id="cb12-18"><a href="tool.html#cb12-18" aria-hidden="true" tabindex="-1"></a>readB <span class="ot">=</span> <span class="fu">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;foo/foobaa/B&quot;</span>)</span>
+<span id="cb12-19"><a href="tool.html#cb12-19" aria-hidden="true" tabindex="-1"></a>readdf<span class="ot">=</span> <span class="fu">h5read</span>(<span class="st">&quot;example.h5&quot;</span>,<span class="st">&quot;df&quot;</span>)</span></code></pre></div>
 </div>
-<div id="读取网页数据" class="section level4">
-<h4><span class="header-section-number">2.7.7.7</span> 读取网页数据</h4>
+<div id="读取网页数据" class="section level4 hasAnchor" number="2.7.7.7">
+<h4><span class="header-section-number">2.7.7.7</span> 读取网页数据<a href="tool.html#读取网页数据" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>网页抓取HTML数据</li>
 <li>读完了一定关链接</li>
 <li>httr包</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="tool.html#cb16-1"></a>con =<span class="st"> </span><span class="kw">url</span>(<span class="st">&quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span>)</span>
-<span id="cb16-2"><a href="tool.html#cb16-2"></a>htmlCode =<span class="st"> </span><span class="kw">readLines</span>(con)</span>
-<span id="cb16-3"><a href="tool.html#cb16-3"></a><span class="kw">close</span>(con)</span>
-<span id="cb16-4"><a href="tool.html#cb16-4"></a>htmlCode</span>
-<span id="cb16-5"><a href="tool.html#cb16-5"></a><span class="kw">library</span>(XML)</span>
-<span id="cb16-6"><a href="tool.html#cb16-6"></a>url &lt;-<span class="st"> &quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span></span>
-<span id="cb16-7"><a href="tool.html#cb16-7"></a>html &lt;-<span class="st"> </span><span class="kw">htmlTreeParse</span>(url, <span class="dt">useInternalNodes=</span>T)</span>
-<span id="cb16-8"><a href="tool.html#cb16-8"></a><span class="kw">xpathSApply</span>(html, <span class="st">&quot;//title&quot;</span>, xmlValue)</span>
-<span id="cb16-9"><a href="tool.html#cb16-9"></a><span class="kw">library</span>(httr)</span>
-<span id="cb16-10"><a href="tool.html#cb16-10"></a>html2 =<span class="st"> </span><span class="kw">GET</span>(url)</span>
-<span id="cb16-11"><a href="tool.html#cb16-11"></a>content2 =<span class="st"> </span><span class="kw">content</span>(html2,<span class="dt">as=</span><span class="st">&quot;text&quot;</span>)</span>
-<span id="cb16-12"><a href="tool.html#cb16-12"></a>parsedHtml =<span class="st"> </span><span class="kw">htmlParse</span>(content2,<span class="dt">asText=</span><span class="ot">TRUE</span>)</span>
-<span id="cb16-13"><a href="tool.html#cb16-13"></a><span class="kw">xpathSApply</span>(parsedHtml, <span class="st">&quot;//title&quot;</span>, xmlValue)</span>
-<span id="cb16-14"><a href="tool.html#cb16-14"></a><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>)</span>
-<span id="cb16-15"><a href="tool.html#cb16-15"></a><span class="kw">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>,</span>
-<span id="cb16-16"><a href="tool.html#cb16-16"></a>    <span class="kw">authenticate</span>(<span class="st">&quot;user&quot;</span>,<span class="st">&quot;passwd&quot;</span>))</span>
-<span id="cb16-17"><a href="tool.html#cb16-17"></a>google =<span class="st"> </span><span class="kw">handle</span>(<span class="st">&quot;http://google.com&quot;</span>)</span>
-<span id="cb16-18"><a href="tool.html#cb16-18"></a>pg1 =<span class="st"> </span><span class="kw">GET</span>(<span class="dt">handle=</span>google,<span class="dt">path=</span><span class="st">&quot;/&quot;</span>)</span>
-<span id="cb16-19"><a href="tool.html#cb16-19"></a>pg2 =<span class="st"> </span><span class="kw">GET</span>(<span class="dt">handle=</span>google,<span class="dt">path=</span><span class="st">&quot;search&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tool.html#cb13-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">url</span>(<span class="st">&quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span>)</span>
+<span id="cb13-2"><a href="tool.html#cb13-2" aria-hidden="true" tabindex="-1"></a>htmlCode <span class="ot">=</span> <span class="fu">readLines</span>(con)</span>
+<span id="cb13-3"><a href="tool.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">close</span>(con)</span>
+<span id="cb13-4"><a href="tool.html#cb13-4" aria-hidden="true" tabindex="-1"></a>htmlCode</span>
+<span id="cb13-5"><a href="tool.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XML)</span>
+<span id="cb13-6"><a href="tool.html#cb13-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">&quot;http://scholar.google.com/citations?user=HI-I6C0AAAAJ&amp;hl=en&quot;</span></span>
+<span id="cb13-7"><a href="tool.html#cb13-7" aria-hidden="true" tabindex="-1"></a>html <span class="ot">&lt;-</span> <span class="fu">htmlTreeParse</span>(url, <span class="at">useInternalNodes=</span>T)</span>
+<span id="cb13-8"><a href="tool.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">xpathSApply</span>(html, <span class="st">&quot;//title&quot;</span>, xmlValue)</span>
+<span id="cb13-9"><a href="tool.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb13-10"><a href="tool.html#cb13-10" aria-hidden="true" tabindex="-1"></a>html2 <span class="ot">=</span> <span class="fu">GET</span>(url)</span>
+<span id="cb13-11"><a href="tool.html#cb13-11" aria-hidden="true" tabindex="-1"></a>content2 <span class="ot">=</span> <span class="fu">content</span>(html2,<span class="at">as=</span><span class="st">&quot;text&quot;</span>)</span>
+<span id="cb13-12"><a href="tool.html#cb13-12" aria-hidden="true" tabindex="-1"></a>parsedHtml <span class="ot">=</span> <span class="fu">htmlParse</span>(content2,<span class="at">asText=</span><span class="cn">TRUE</span>)</span>
+<span id="cb13-13"><a href="tool.html#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="fu">xpathSApply</span>(parsedHtml, <span class="st">&quot;//title&quot;</span>, xmlValue)</span>
+<span id="cb13-14"><a href="tool.html#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>)</span>
+<span id="cb13-15"><a href="tool.html#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">GET</span>(<span class="st">&quot;http://httpbin.org/basic-auth/user/passwd&quot;</span>,</span>
+<span id="cb13-16"><a href="tool.html#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">authenticate</span>(<span class="st">&quot;user&quot;</span>,<span class="st">&quot;passwd&quot;</span>))</span>
+<span id="cb13-17"><a href="tool.html#cb13-17" aria-hidden="true" tabindex="-1"></a>google <span class="ot">=</span> <span class="fu">handle</span>(<span class="st">&quot;http://google.com&quot;</span>)</span>
+<span id="cb13-18"><a href="tool.html#cb13-18" aria-hidden="true" tabindex="-1"></a>pg1 <span class="ot">=</span> <span class="fu">GET</span>(<span class="at">handle=</span>google,<span class="at">path=</span><span class="st">&quot;/&quot;</span>)</span>
+<span id="cb13-19"><a href="tool.html#cb13-19" aria-hidden="true" tabindex="-1"></a>pg2 <span class="ot">=</span> <span class="fu">GET</span>(<span class="at">handle=</span>google,<span class="at">path=</span><span class="st">&quot;search&quot;</span>)</span></code></pre></div>
 </div>
-<div id="读取api" class="section level4">
-<h4><span class="header-section-number">2.7.7.8</span> 读取API</h4>
+<div id="读取api" class="section level4 hasAnchor" number="2.7.7.8">
+<h4><span class="header-section-number">2.7.7.8</span> 读取API<a href="tool.html#读取api" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>通过接口授权后调用数据</li>
 <li>httr包</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="tool.html#cb17-1"></a>myapp =<span class="st"> </span><span class="kw">oauth_app</span>(<span class="st">&quot;twitter&quot;</span>,</span>
-<span id="cb17-2"><a href="tool.html#cb17-2"></a>                   <span class="dt">key=</span><span class="st">&quot;yourConsumerKeyHere&quot;</span>,<span class="dt">secret=</span><span class="st">&quot;yourConsumerSecretHere&quot;</span>)</span>
-<span id="cb17-3"><a href="tool.html#cb17-3"></a>sig =<span class="st"> </span><span class="kw">sign_oauth1.0</span>(myapp,</span>
-<span id="cb17-4"><a href="tool.html#cb17-4"></a>                     <span class="dt">token =</span> <span class="st">&quot;yourTokenHere&quot;</span>,</span>
-<span id="cb17-5"><a href="tool.html#cb17-5"></a>                      <span class="dt">token_secret =</span> <span class="st">&quot;yourTokenSecretHere&quot;</span>)</span>
-<span id="cb17-6"><a href="tool.html#cb17-6"></a>homeTL =<span class="st"> </span><span class="kw">GET</span>(<span class="st">&quot;https://api.twitter.com/1.1/statuses/home_timeline.json&quot;</span>, sig)</span>
-<span id="cb17-7"><a href="tool.html#cb17-7"></a>json1 =<span class="st"> </span><span class="kw">content</span>(homeTL)</span>
-<span id="cb17-8"><a href="tool.html#cb17-8"></a>json2 =<span class="st"> </span>jsonlite<span class="op">::</span><span class="kw">fromJSON</span>(<span class="kw">toJSON</span>(json1))</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="tool.html#cb14-1" aria-hidden="true" tabindex="-1"></a>myapp <span class="ot">=</span> <span class="fu">oauth_app</span>(<span class="st">&quot;twitter&quot;</span>,</span>
+<span id="cb14-2"><a href="tool.html#cb14-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">key=</span><span class="st">&quot;yourConsumerKeyHere&quot;</span>,<span class="at">secret=</span><span class="st">&quot;yourConsumerSecretHere&quot;</span>)</span>
+<span id="cb14-3"><a href="tool.html#cb14-3" aria-hidden="true" tabindex="-1"></a>sig <span class="ot">=</span> <span class="fu">sign_oauth1.0</span>(myapp,</span>
+<span id="cb14-4"><a href="tool.html#cb14-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">token =</span> <span class="st">&quot;yourTokenHere&quot;</span>,</span>
+<span id="cb14-5"><a href="tool.html#cb14-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">token_secret =</span> <span class="st">&quot;yourTokenSecretHere&quot;</span>)</span>
+<span id="cb14-6"><a href="tool.html#cb14-6" aria-hidden="true" tabindex="-1"></a>homeTL <span class="ot">=</span> <span class="fu">GET</span>(<span class="st">&quot;https://api.twitter.com/1.1/statuses/home_timeline.json&quot;</span>, sig)</span>
+<span id="cb14-7"><a href="tool.html#cb14-7" aria-hidden="true" tabindex="-1"></a>json1 <span class="ot">=</span> <span class="fu">content</span>(homeTL)</span>
+<span id="cb14-8"><a href="tool.html#cb14-8" aria-hidden="true" tabindex="-1"></a>json2 <span class="ot">=</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="fu">toJSON</span>(json1))</span></code></pre></div>
 </div>
-<div id="读取其他资源" class="section level4">
-<h4><span class="header-section-number">2.7.7.9</span> 读取其他资源</h4>
+<div id="读取其他资源" class="section level4 hasAnchor" number="2.7.7.9">
+<h4><span class="header-section-number">2.7.7.9</span> 读取其他资源<a href="tool.html#读取其他资源" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>图片
 <ul>
@@ -1081,8 +1117,8 @@ $ exit # 退出</code></pre>
 </ul>
 </div>
 </div>
-<div id="数据总结" class="section level3">
-<h3><span class="header-section-number">2.7.8</span> 数据总结</h3>
+<div id="数据总结" class="section level3 hasAnchor" number="2.7.8">
+<h3><span class="header-section-number">2.7.8</span> 数据总结<a href="tool.html#数据总结" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>head</code> <code>tail</code>查看数据</li>
 <li><code>summary</code> <code>str</code>总结数据</li>
@@ -1096,16 +1132,16 @@ $ exit # 退出</code></pre>
 <li><code>cut</code> 通过设置<code>breaks</code>产生分类变量</li>
 <li>Hmisc包</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="tool.html#cb18-1"></a><span class="kw">library</span>(Hmisc)</span>
-<span id="cb18-2"><a href="tool.html#cb18-2"></a>data<span class="op">$</span>zipGroups =<span class="st"> </span><span class="kw">cut2</span>(data<span class="op">$</span>zipCode,<span class="dt">g=</span><span class="dv">4</span>)</span>
-<span id="cb18-3"><a href="tool.html#cb18-3"></a><span class="kw">table</span>(data<span class="op">$</span>zipGroups)</span>
-<span id="cb18-4"><a href="tool.html#cb18-4"></a><span class="kw">library</span>(plyr)</span>
-<span id="cb18-5"><a href="tool.html#cb18-5"></a><span class="co"># mutate进行数据替换或生成</span></span>
-<span id="cb18-6"><a href="tool.html#cb18-6"></a>data2 =<span class="st"> </span><span class="kw">mutate</span>(data,<span class="dt">zipGroups=</span><span class="kw">cut2</span>(zipCode,<span class="dt">g=</span><span class="dv">4</span>))</span>
-<span id="cb18-7"><a href="tool.html#cb18-7"></a><span class="kw">table</span>(data2<span class="op">$</span>zipGroups)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="tool.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Hmisc)</span>
+<span id="cb15-2"><a href="tool.html#cb15-2" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>zipGroups <span class="ot">=</span> <span class="fu">cut2</span>(data<span class="sc">$</span>zipCode,<span class="at">g=</span><span class="dv">4</span>)</span>
+<span id="cb15-3"><a href="tool.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data<span class="sc">$</span>zipGroups)</span>
+<span id="cb15-4"><a href="tool.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plyr)</span>
+<span id="cb15-5"><a href="tool.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mutate进行数据替换或生成</span></span>
+<span id="cb15-6"><a href="tool.html#cb15-6" aria-hidden="true" tabindex="-1"></a>data2 <span class="ot">=</span> <span class="fu">mutate</span>(data,<span class="at">zipGroups=</span><span class="fu">cut2</span>(zipCode,<span class="at">g=</span><span class="dv">4</span>))</span>
+<span id="cb15-7"><a href="tool.html#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data2<span class="sc">$</span>zipGroups)</span></code></pre></div>
 </div>
-<div id="数据整理" class="section level3">
-<h3><span class="header-section-number">2.7.9</span> 数据整理</h3>
+<div id="数据整理" class="section level3 hasAnchor" number="2.7.9">
+<h3><span class="header-section-number">2.7.9</span> 数据整理<a href="tool.html#数据整理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <blockquote>
 <p>Raw data -&gt; Processing script -&gt; tidy data</p>
 </blockquote>
@@ -1161,40 +1197,40 @@ $ exit # 退出</code></pre>
 <li>plyr包的<code>join</code>函数也可实现合并</li>
 </ul>
 </div>
-<div id="数据操作data.table包" class="section level3">
-<h3><span class="header-section-number">2.7.10</span> <a href="https://github.com/raphg/Biostat-578/blob/master/Advanced_data_manipulation.Rpres"><em>数据操作data.table包</em></a></h3>
+<div id="数据操作data.table包" class="section level3 hasAnchor" number="2.7.10">
+<h3><span class="header-section-number">2.7.10</span> <a href="https://github.com/raphg/Biostat-578/blob/master/Advanced_data_manipulation.Rpres"><em>数据操作data.table包</em></a><a href="tool.html#数据操作data.table包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>基本兼容<code>data.frame</code></li>
 <li>速度更快</li>
 <li>通过<code>key</code>可指定因子变量并快速提取分组的行</li>
 <li>可在第二个参数是R表达式</li>
 </ul>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="tool.html#cb19-1"></a>DT[,<span class="kw">list</span>(<span class="kw">mean</span>(x),<span class="kw">sum</span>(z))]</span>
-<span id="cb19-2"><a href="tool.html#cb19-2"></a>DT[,<span class="kw">table</span>(y)]</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="tool.html#cb16-1" aria-hidden="true" tabindex="-1"></a>DT[,<span class="fu">list</span>(<span class="fu">mean</span>(x),<span class="fu">sum</span>(z))]</span>
+<span id="cb16-2"><a href="tool.html#cb16-2" aria-hidden="true" tabindex="-1"></a>DT[,<span class="fu">table</span>(y)]</span></code></pre></div>
 <ul>
 <li>可用<code>:</code>生成新变量 进行简单计算</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="tool.html#cb20-1"></a>DT[,w<span class="op">:</span><span class="er">=</span>z<span class="op">^</span><span class="dv">2</span>]</span>
-<span id="cb20-2"><a href="tool.html#cb20-2"></a>DT[,m<span class="op">:</span><span class="er">=</span><span class="st"> </span>{tmp &lt;-<span class="st"> </span>(x<span class="op">+</span>z); <span class="kw">log2</span>(tmp<span class="op">+</span><span class="dv">5</span>)}]</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="tool.html#cb17-1" aria-hidden="true" tabindex="-1"></a>DT[,w<span class="sc">:</span><span class="er">=</span>z<span class="sc">^</span><span class="dv">2</span>]</span>
+<span id="cb17-2"><a href="tool.html#cb17-2" aria-hidden="true" tabindex="-1"></a>DT[,m<span class="sc">:</span><span class="er">=</span> {tmp <span class="ot">&lt;-</span> (x<span class="sc">+</span>z); <span class="fu">log2</span>(tmp<span class="sc">+</span><span class="dv">5</span>)}]</span></code></pre></div>
 <ul>
 <li>进行数据条件截取</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="tool.html#cb21-1"></a>DT[,a<span class="op">:</span><span class="er">=</span>x<span class="op">&gt;</span><span class="dv">0</span>]</span>
-<span id="cb21-2"><a href="tool.html#cb21-2"></a>DT[,b<span class="op">:</span><span class="er">=</span><span class="st"> </span><span class="kw">mean</span>(x<span class="op">+</span>w),by=a]</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="tool.html#cb18-1" aria-hidden="true" tabindex="-1"></a>DT[,a<span class="sc">:</span><span class="er">=</span>x<span class="sc">&gt;</span><span class="dv">0</span>]</span>
+<span id="cb18-2"><a href="tool.html#cb18-2" aria-hidden="true" tabindex="-1"></a>DT[,b<span class="sc">:</span><span class="er">=</span> <span class="fu">mean</span>(x<span class="sc">+</span>w),by<span class="ot">=</span>a]</span></code></pre></div>
 <ul>
 <li>进行计数</li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="tool.html#cb22-1"></a>DT &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">x=</span><span class="kw">sample</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>], <span class="fl">1E5</span>, <span class="ot">TRUE</span>))</span>
-<span id="cb22-2"><a href="tool.html#cb22-2"></a>DT[, .N, by=x]</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="tool.html#cb19-1" aria-hidden="true" tabindex="-1"></a>DT <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">x=</span><span class="fu">sample</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>], <span class="fl">1E5</span>, <span class="cn">TRUE</span>))</span>
+<span id="cb19-2"><a href="tool.html#cb19-2" aria-hidden="true" tabindex="-1"></a>DT[, .N, by<span class="ot">=</span>x]</span></code></pre></div>
 </div>
-<div id="文本处理" class="section level3">
-<h3><span class="header-section-number">2.7.11</span> 文本处理</h3>
+<div id="文本处理" class="section level3 hasAnchor" number="2.7.11">
+<h3><span class="header-section-number">2.7.11</span> 文本处理<a href="tool.html#文本处理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>处理大小写<code>tolower</code> <code>toupper</code></li>
 <li>处理变量名<code>strsplit</code></li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="tool.html#cb23-1"></a>firstElement &lt;-<span class="st"> </span><span class="cf">function</span>(x){x[<span class="dv">1</span>]}</span>
-<span id="cb23-2"><a href="tool.html#cb23-2"></a><span class="kw">sapply</span>(splitNames,firstElement)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="tool.html#cb20-1" aria-hidden="true" tabindex="-1"></a>firstElement <span class="ot">&lt;-</span> <span class="cf">function</span>(x){x[<span class="dv">1</span>]}</span>
+<span id="cb20-2"><a href="tool.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(splitNames,firstElement)</span></code></pre></div>
 <ul>
 <li>字符替换<code>sub</code> <code>gsub</code></li>
 <li>寻找变量<code>grep</code>(返回行号) <code>grepl</code>(返回逻辑值)</li>
@@ -1226,58 +1262,58 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="控制结构" class="section level3">
-<h3><span class="header-section-number">2.7.12</span> 控制结构</h3>
+<div id="控制结构" class="section level3 hasAnchor" number="2.7.12">
+<h3><span class="header-section-number">2.7.12</span> 控制结构<a href="tool.html#控制结构" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>if else</code> 条件</li>
 </ul>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="tool.html#cb24-1"></a><span class="cf">if</span>(<span class="op">&lt;</span>condition<span class="op">&gt;</span>) {</span>
-<span id="cb24-2"><a href="tool.html#cb24-2"></a>        <span class="co">## do something</span></span>
-<span id="cb24-3"><a href="tool.html#cb24-3"></a>} <span class="cf">else</span> {</span>
-<span id="cb24-4"><a href="tool.html#cb24-4"></a>        <span class="co">## do something else</span></span>
-<span id="cb24-5"><a href="tool.html#cb24-5"></a>}</span>
-<span id="cb24-6"><a href="tool.html#cb24-6"></a><span class="cf">if</span>(<span class="op">&lt;</span>condition1<span class="op">&gt;</span>) {</span>
-<span id="cb24-7"><a href="tool.html#cb24-7"></a>        <span class="co">## do something</span></span>
-<span id="cb24-8"><a href="tool.html#cb24-8"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="op">&lt;</span>condition2<span class="op">&gt;</span>)  {</span>
-<span id="cb24-9"><a href="tool.html#cb24-9"></a>        <span class="co">## do something different</span></span>
-<span id="cb24-10"><a href="tool.html#cb24-10"></a>} <span class="cf">else</span> {</span>
-<span id="cb24-11"><a href="tool.html#cb24-11"></a>        <span class="co">## do something different</span></span>
-<span id="cb24-12"><a href="tool.html#cb24-12"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="tool.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">&lt;</span>condition<span class="sc">&gt;</span>) {</span>
+<span id="cb21-2"><a href="tool.html#cb21-2" aria-hidden="true" tabindex="-1"></a>        <span class="do">## do something</span></span>
+<span id="cb21-3"><a href="tool.html#cb21-3" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb21-4"><a href="tool.html#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="do">## do something else</span></span>
+<span id="cb21-5"><a href="tool.html#cb21-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-6"><a href="tool.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">&lt;</span>condition1<span class="sc">&gt;</span>) {</span>
+<span id="cb21-7"><a href="tool.html#cb21-7" aria-hidden="true" tabindex="-1"></a>        <span class="do">## do something</span></span>
+<span id="cb21-8"><a href="tool.html#cb21-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="sc">&lt;</span>condition2<span class="sc">&gt;</span>)  {</span>
+<span id="cb21-9"><a href="tool.html#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="do">## do something different</span></span>
+<span id="cb21-10"><a href="tool.html#cb21-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb21-11"><a href="tool.html#cb21-11" aria-hidden="true" tabindex="-1"></a>        <span class="do">## do something different</span></span>
+<span id="cb21-12"><a href="tool.html#cb21-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>`for‵ 执行固定次数的循环 嵌套不超过2层</li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="tool.html#cb25-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) {</span>
-<span id="cb25-2"><a href="tool.html#cb25-2"></a>        <span class="kw">print</span>(i)</span>
-<span id="cb25-3"><a href="tool.html#cb25-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="tool.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>) {</span>
+<span id="cb22-2"><a href="tool.html#cb22-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(i)</span>
+<span id="cb22-3"><a href="tool.html#cb22-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>while</code> 条件为真执行循环 条件从左到右执行</li>
 </ul>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="tool.html#cb26-1"></a>count &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb26-2"><a href="tool.html#cb26-2"></a><span class="cf">while</span>(count <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>) {</span>
-<span id="cb26-3"><a href="tool.html#cb26-3"></a>        <span class="kw">print</span>(count)</span>
-<span id="cb26-4"><a href="tool.html#cb26-4"></a>        count &lt;-<span class="st"> </span>count <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb26-5"><a href="tool.html#cb26-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="tool.html#cb23-1" aria-hidden="true" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb23-2"><a href="tool.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span>(count <span class="sc">&lt;</span> <span class="dv">10</span>) {</span>
+<span id="cb23-3"><a href="tool.html#cb23-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">print</span>(count)</span>
+<span id="cb23-4"><a href="tool.html#cb23-4" aria-hidden="true" tabindex="-1"></a>        count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb23-5"><a href="tool.html#cb23-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>repeat</code> 执行无限循环 配合<code>break</code> 中断并跳出循环</li>
 <li><code>next</code> 跳出当前循环继续执行</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="tool.html#cb27-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">100</span>) {</span>
-<span id="cb27-2"><a href="tool.html#cb27-2"></a>        <span class="cf">if</span>(i <span class="op">&lt;=</span><span class="st"> </span><span class="dv">20</span>) {</span>
-<span id="cb27-3"><a href="tool.html#cb27-3"></a>                <span class="co">## Skip the first 20 iterations</span></span>
-<span id="cb27-4"><a href="tool.html#cb27-4"></a>                <span class="cf">next</span> </span>
-<span id="cb27-5"><a href="tool.html#cb27-5"></a>        }</span>
-<span id="cb27-6"><a href="tool.html#cb27-6"></a>        <span class="co">## Do something here</span></span>
-<span id="cb27-7"><a href="tool.html#cb27-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="tool.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb24-2"><a href="tool.html#cb24-2" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(i <span class="sc">&lt;=</span> <span class="dv">20</span>) {</span>
+<span id="cb24-3"><a href="tool.html#cb24-3" aria-hidden="true" tabindex="-1"></a>                <span class="do">## Skip the first 20 iterations</span></span>
+<span id="cb24-4"><a href="tool.html#cb24-4" aria-hidden="true" tabindex="-1"></a>                <span class="cf">next</span> </span>
+<span id="cb24-5"><a href="tool.html#cb24-5" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb24-6"><a href="tool.html#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="do">## Do something here</span></span>
+<span id="cb24-7"><a href="tool.html#cb24-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li><code>return</code> 退出函数</li>
 <li>避免使用无限循环 可用<code>apply</code>替代</li>
 </ul>
 </div>
-<div id="函数" class="section level3">
-<h3><span class="header-section-number">2.7.13</span> 函数</h3>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="tool.html#cb28-1"></a>f &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="op">&lt;</span>arguments<span class="op">&gt;</span>) {</span>
-<span id="cb28-2"><a href="tool.html#cb28-2"></a>        <span class="co">## Do something interesting</span></span>
-<span id="cb28-3"><a href="tool.html#cb28-3"></a>}</span></code></pre></div>
+<div id="函数" class="section level3 hasAnchor" number="2.7.13">
+<h3><span class="header-section-number">2.7.13</span> 函数<a href="tool.html#函数" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="tool.html#cb25-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="sc">&lt;</span>arguments<span class="sc">&gt;</span>) {</span>
+<span id="cb25-2"><a href="tool.html#cb25-2" aria-hidden="true" tabindex="-1"></a>        <span class="do">## Do something interesting</span></span>
+<span id="cb25-3"><a href="tool.html#cb25-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
 <li>函数中参数默认值可用<code>formals()</code>显示</li>
 <li>参数匹配
@@ -1291,8 +1327,8 @@ $ exit # 退出</code></pre>
 <li><code>...</code> 向其他函数传参 之后参数不可部分匹配</li>
 </ul>
 </div>
-<div id="编程标准" class="section level3">
-<h3><span class="header-section-number">2.7.14</span> 编程标准</h3>
+<div id="编程标准" class="section level3 hasAnchor" number="2.7.14">
+<h3><span class="header-section-number">2.7.14</span> 编程标准<a href="tool.html#编程标准" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>使用文本文档与文本编辑器</li>
 <li>使用缩进</li>
@@ -1300,8 +1336,8 @@ $ exit # 退出</code></pre>
 <li>限制单个函数长度</li>
 </ul>
 </div>
-<div id="范围规则" class="section level3">
-<h3><span class="header-section-number">2.7.15</span> 范围规则</h3>
+<div id="范围规则" class="section level3 hasAnchor" number="2.7.15">
+<h3><span class="header-section-number">2.7.15</span> 范围规则<a href="tool.html#范围规则" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>自由变量采用静态搜索</li>
 <li>环境是由数值符号对组成 每个环境都有母环境</li>
@@ -1315,17 +1351,17 @@ $ exit # 退出</code></pre>
 <li>S都存在工作区 函数定义一致 R存在内存 可根据需要调用函数环境</li>
 </ul>
 </div>
-<div id="向量化操作" class="section level3">
-<h3><span class="header-section-number">2.7.16</span> 向量化操作</h3>
+<div id="向量化操作" class="section level3 hasAnchor" number="2.7.16">
+<h3><span class="header-section-number">2.7.16</span> 向量化操作<a href="tool.html#向量化操作" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>向量操作针对元素</li>
 <li>矩阵操作也针对元素 <code>%*%</code> 表示矩阵操作</li>
 </ul>
 </div>
-<div id="绘图系统" class="section level3">
-<h3><span class="header-section-number">2.7.17</span> 绘图系统</h3>
-<div id="基础绘图" class="section level4">
-<h4><span class="header-section-number">2.7.17.1</span> 基础绘图</h4>
+<div id="绘图系统" class="section level3 hasAnchor" number="2.7.17">
+<h3><span class="header-section-number">2.7.17</span> 绘图系统<a href="tool.html#绘图系统" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="基础绘图" class="section level4 hasAnchor" number="2.7.17.1">
+<h4><span class="header-section-number">2.7.17.1</span> 基础绘图<a href="tool.html#基础绘图" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>艺术家绘画模式</li>
 <li>graphics 包括基础包的绘图函数如plot, hist, boxplot</li>
@@ -1368,8 +1404,8 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="lattice" class="section level4">
-<h4><span class="header-section-number">2.7.17.2</span> lattice</h4>
+<div id="lattice" class="section level4 hasAnchor" number="2.7.17.2">
+<h4><span class="header-section-number">2.7.17.2</span> lattice<a href="tool.html#lattice" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>一站式解决</li>
 <li>lattice 包括框架图函数如xyplot, bwplot, levelplot</li>
@@ -1394,8 +1430,8 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="ggplot2" class="section level4">
-<h4><span class="header-section-number">2.7.17.3</span> ggplot2</h4>
+<div id="ggplot2" class="section level4 hasAnchor" number="2.7.17.3">
+<h4><span class="header-section-number">2.7.17.3</span> ggplot2<a href="tool.html#ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>基于图形语法理念</li>
 <li>图形属性映射数据问题</li>
@@ -1417,16 +1453,16 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="数学绘图" class="section level4">
-<h4><span class="header-section-number">2.7.17.4</span> 数学绘图</h4>
+<div id="数学绘图" class="section level4 hasAnchor" number="2.7.17.4">
+<h4><span class="header-section-number">2.7.17.4</span> 数学绘图<a href="tool.html#数学绘图" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>Tex语法</li>
 <li>使用<code>expression()</code></li>
 <li><code>?plotmath</code></li>
 </ul>
 </div>
-<div id="色彩管理" class="section level4">
-<h4><span class="header-section-number">2.7.17.5</span> 色彩管理</h4>
+<div id="色彩管理" class="section level4 hasAnchor" number="2.7.17.5">
+<h4><span class="header-section-number">2.7.17.5</span> 色彩管理<a href="tool.html#色彩管理" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><code>colorRamp</code> 返回01间数值 表示颜色过度</li>
 <li><code>colorRampPalette</code> 返回8位颜色代码调色盘</li>
@@ -1435,30 +1471,30 @@ $ exit # 退出</code></pre>
 <li><code>rgb</code>产生三原色颜色 <code>alpha</code> 控制透明度</li>
 <li>绘图时用<code>col</code>调用调色盘颜色</li>
 </ul>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tool.html#cb29-1"></a>pal &lt;-<span class="st"> </span><span class="kw">colorRamp</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
-<span id="cb29-2"><a href="tool.html#cb29-2"></a><span class="kw">pal</span>(<span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="tool.html#cb26-1" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorRamp</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span>
+<span id="cb26-2"><a href="tool.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pal</span>(<span class="dv">0</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]  255    0    0</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="tool.html#cb31-1"></a><span class="kw">pal</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="tool.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pal</span>(<span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    0    0  255</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="tool.html#cb33-1"></a><span class="kw">pal</span>(<span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="tool.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pal</span>(<span class="fl">0.5</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]  128    0  128</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="tool.html#cb35-1"></a><span class="co">#####</span></span>
-<span id="cb35-2"><a href="tool.html#cb35-2"></a>pal &lt;-<span class="st"> </span><span class="kw">colorRampPalette</span>(<span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</span>
-<span id="cb35-3"><a href="tool.html#cb35-3"></a><span class="kw">pal</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="tool.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">#####</span></span>
+<span id="cb32-2"><a href="tool.html#cb32-2" aria-hidden="true" tabindex="-1"></a>pal <span class="ot">&lt;-</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>))</span>
+<span id="cb32-3"><a href="tool.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">pal</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;#FF0000&quot; &quot;#FFFF00&quot;</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="tool.html#cb37-1"></a><span class="kw">pal</span>(<span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="tool.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pal</span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;#FF0000&quot; &quot;#FF1C00&quot; &quot;#FF3800&quot; &quot;#FF5500&quot; &quot;#FF7100&quot;
 ##  [6] &quot;#FF8D00&quot; &quot;#FFAA00&quot; &quot;#FFC600&quot; &quot;#FFE200&quot; &quot;#FFFF00&quot;</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="tool.html#cb39-1"></a><span class="co">#####</span></span>
-<span id="cb39-2"><a href="tool.html#cb39-2"></a><span class="kw">library</span>(RColorBrewer)</span>
-<span id="cb39-3"><a href="tool.html#cb39-3"></a>cols &lt;-<span class="st"> </span><span class="kw">brewer.pal</span>(<span class="dv">3</span>, <span class="st">&quot;BuGn&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="tool.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">#####</span></span>
+<span id="cb36-2"><a href="tool.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb36-3"><a href="tool.html#cb36-3" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">brewer.pal</span>(<span class="dv">3</span>, <span class="st">&quot;BuGn&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="日期与时间" class="section level3">
-<h3><span class="header-section-number">2.7.18</span> 日期与时间</h3>
+<div id="日期与时间" class="section level3 hasAnchor" number="2.7.18">
+<h3><span class="header-section-number">2.7.18</span> 日期与时间<a href="tool.html#日期与时间" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>日期以<code>data</code>类型存储</li>
 <li>时间以<code>POSIXct</code> 或 <code>POSIXlt</code> 类型存储</li>
@@ -1490,180 +1526,180 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="循环" class="section level3">
-<h3><span class="header-section-number">2.7.19</span> 循环</h3>
-<div id="lapply" class="section level4">
-<h4><span class="header-section-number">2.7.19.1</span> <code>lapply</code></h4>
+<div id="循环" class="section level3 hasAnchor" number="2.7.19">
+<h3><span class="header-section-number">2.7.19</span> 循环<a href="tool.html#循环" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="lapply" class="section level4 hasAnchor" number="2.7.19.1">
+<h4><span class="header-section-number">2.7.19.1</span> <code>lapply</code><a href="tool.html#lapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>对列表对象元素应用函数</li>
 <li>可配合匿名函数使用</li>
 </ul>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="tool.html#cb40-1"></a>x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>))</span>
-<span id="cb40-2"><a href="tool.html#cb40-2"></a><span class="kw">lapply</span>(x, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="tool.html#cb37-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>))</span>
+<span id="cb37-2"><a href="tool.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, mean)</span></code></pre></div>
 <pre><code>## $a
 ## [1] 3
 ## 
 ## $b
-## [1] -0.635</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="tool.html#cb42-1"></a>x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">4</span></span>
-<span id="cb42-2"><a href="tool.html#cb42-2"></a><span class="kw">lapply</span>(x, runif, <span class="dt">min =</span> <span class="dv">0</span>, <span class="dt">max =</span> <span class="dv">10</span>)</span></code></pre></div>
+## [1] 0.0124</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="tool.html#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb39-2"><a href="tool.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, runif, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] 4.1
+## [1] 0.428
 ## 
 ## [[2]]
-## [1] 4.04 1.84
+## [1] 3.45 9.20
 ## 
 ## [[3]]
-## [1] 7.58 8.88 5.22
+## [1] 5.11 6.53 2.51
 ## 
 ## [[4]]
-## [1] 8.03 6.65 5.48 5.77</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tool.html#cb44-1"></a>x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="dt">b =</span> <span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span>
-<span id="cb44-2"><a href="tool.html#cb44-2"></a><span class="kw">lapply</span>(x, <span class="cf">function</span>(elt) elt[,<span class="dv">1</span>])</span></code></pre></div>
+## [1] 9.599 2.337 5.124 0.472</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="tool.html#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>), <span class="at">b =</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">2</span>))</span>
+<span id="cb41-2"><a href="tool.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(x, <span class="cf">function</span>(elt) elt[,<span class="dv">1</span>])</span></code></pre></div>
 <pre><code>## $a
 ## [1] 1 2
 ## 
 ## $b
 ## [1] 1 2 3</code></pre>
 </div>
-<div id="sapply" class="section level4">
-<h4><span class="header-section-number">2.7.19.2</span> <code>sapply</code></h4>
+<div id="sapply" class="section level4 hasAnchor" number="2.7.19.2">
+<h4><span class="header-section-number">2.7.19.2</span> <code>sapply</code><a href="tool.html#sapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><code>lapply</code>的精简版</li>
 <li>如果结果是单元素列表 转化为向量</li>
 <li>如果结果是等长向量 转化为矩阵</li>
 <li>否则输出依旧为列表</li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="tool.html#cb46-1"></a>x &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">b =</span> <span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="dt">c =</span> <span class="kw">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>), <span class="dt">d =</span> <span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>))</span>
-<span id="cb46-2"><a href="tool.html#cb46-2"></a><span class="kw">sapply</span>(x, mean)</span></code></pre></div>
-<pre><code>##       a       b       c       d 
-##  2.5000 -0.0667  1.1163  4.8581</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="tool.html#cb43-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="dv">1</span>), <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">5</span>))</span>
+<span id="cb43-2"><a href="tool.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(x, mean)</span></code></pre></div>
+<pre><code>##      a      b      c      d 
+##  2.500 -0.051  0.697  5.060</code></pre>
 </div>
-<div id="vapply" class="section level4">
-<h4><span class="header-section-number">2.7.19.3</span> <code>vapply</code></h4>
+<div id="vapply" class="section level4 hasAnchor" number="2.7.19.3">
+<h4><span class="header-section-number">2.7.19.3</span> <code>vapply</code><a href="tool.html#vapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>类似<code>lapply</code>可用更复杂函数 返回矩阵</li>
 </ul>
 </div>
-<div id="replicate" class="section level4">
-<h4><span class="header-section-number">2.7.19.4</span> <code>replicate</code></h4>
+<div id="replicate" class="section level4 hasAnchor" number="2.7.19.4">
+<h4><span class="header-section-number">2.7.19.4</span> <code>replicate</code><a href="tool.html#replicate" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>用于将函数循环使用 如返回随机矩阵</li>
 </ul>
 </div>
-<div id="rapply" class="section level4">
-<h4><span class="header-section-number">2.7.19.5</span> <code>rapply</code></h4>
+<div id="rapply" class="section level4 hasAnchor" number="2.7.19.5">
+<h4><span class="header-section-number">2.7.19.5</span> <code>rapply</code><a href="tool.html#rapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>用<code>how</code>来调整输出方法 如选取某列表中类型数据进行迭代</li>
 </ul>
 </div>
-<div id="apply" class="section level4">
-<h4><span class="header-section-number">2.7.19.6</span> <code>apply</code></h4>
+<div id="apply" class="section level4 hasAnchor" number="2.7.19.6">
+<h4><span class="header-section-number">2.7.19.6</span> <code>apply</code><a href="tool.html#apply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>数组边际函数 常用于矩阵的行列处理</li>
 <li>行为1，列为2</li>
 <li>可用<code>rowSums</code> <code>rowMeans</code> <code>colSums</code> <code>colMeans</code> 来替代 大数据量更快</li>
 </ul>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="tool.html#cb48-1"></a>x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">50</span>), <span class="dv">10</span>, <span class="dv">5</span>)</span>
-<span id="cb48-2"><a href="tool.html#cb48-2"></a><span class="kw">apply</span>(x, <span class="dv">1</span>, quantile, <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code></pre></div>
-<pre><code>##       [,1]  [,2]    [,3]   [,4]     [,5]   [,6]   [,7]
-## 25% -1.205 0.807 -0.5852 -0.603 -0.62843 -0.735 -0.388
-## 75% -0.291 1.414 -0.0575 -0.189  0.00978  0.603  1.280
-##       [,8]    [,9]  [,10]
-## 25% -0.212 -0.8431 -0.211
-## 75%  0.382  0.0961  0.819</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="tool.html#cb50-1"></a>a &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="kw">rnorm</span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">10</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>))</span>
-<span id="cb50-2"><a href="tool.html#cb50-2"></a><span class="kw">apply</span>(a, <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), mean)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="tool.html#cb45-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>), <span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb45-2"><a href="tool.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(x, <span class="dv">1</span>, quantile, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))</span></code></pre></div>
+<pre><code>##       [,1]   [,2]   [,3]   [,4]   [,5]   [,6]   [,7]
+## 25% -0.350 -0.661 -0.797 -0.159 -0.452 -1.151 -1.004
+## 75%  0.484 -0.390  0.897  0.932  0.452 -0.643 -0.154
+##        [,8]   [,9]  [,10]
+## 25% -0.5786 -1.186 -0.250
+## 75% -0.0609 -0.336  0.428</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="tool.html#cb47-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">rnorm</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span> <span class="sc">*</span> <span class="dv">10</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">10</span>))</span>
+<span id="cb47-2"><a href="tool.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(a, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), mean)</span></code></pre></div>
 <pre><code>##         [,1]   [,2]
-## [1,] -0.0148 -0.148
-## [2,]  0.1297  0.256</code></pre>
+## [1,] -0.3603 -0.267
+## [2,] -0.0263  0.428</code></pre>
 </div>
-<div id="tapply" class="section level4">
-<h4><span class="header-section-number">2.7.19.7</span> <code>tapply</code></h4>
+<div id="tapply" class="section level4 hasAnchor" number="2.7.19.7">
+<h4><span class="header-section-number">2.7.19.7</span> <code>tapply</code><a href="tool.html#tapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>对数据子集（因子变量区分）向量应用函数</li>
 </ul>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tool.html#cb52-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="kw">runif</span>(<span class="dv">10</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
-<span id="cb52-2"><a href="tool.html#cb52-2"></a>f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</span>
-<span id="cb52-3"><a href="tool.html#cb52-3"></a><span class="kw">tapply</span>(x, f, mean)</span></code></pre></div>
-<pre><code>##     1     2     3 
-## 0.354 0.681 1.463</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="tool.html#cb49-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="fu">runif</span>(<span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
+<span id="cb49-2"><a href="tool.html#cb49-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</span>
+<span id="cb49-3"><a href="tool.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(x, f, mean)</span></code></pre></div>
+<pre><code>##      1      2      3 
+## -0.260  0.434  1.368</code></pre>
 </div>
-<div id="by" class="section level4">
-<h4><span class="header-section-number">2.7.19.8</span> <code>by</code></h4>
+<div id="by" class="section level4 hasAnchor" number="2.7.19.8">
+<h4><span class="header-section-number">2.7.19.8</span> <code>by</code><a href="tool.html#by" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>对数据按照因子变量应用函数 类似<code>tapply</code></li>
 <li>按照某个分类变量a分类求均值 <code>by(x[,-a],a,mean)</code></li>
 </ul>
 </div>
-<div id="split" class="section level4">
-<h4><span class="header-section-number">2.7.19.9</span> <code>split</code></h4>
+<div id="split" class="section level4 hasAnchor" number="2.7.19.9">
+<h4><span class="header-section-number">2.7.19.9</span> <code>split</code><a href="tool.html#split" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>将数据按因子分割为列表 常配合<code>lapply</code>使用</li>
 <li>类似<code>tapply</code></li>
 <li>可用来生成分组 用<code>drop</code>来删除空分组</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tool.html#cb54-1"></a>x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>), <span class="kw">runif</span>(<span class="dv">10</span>), <span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
-<span id="cb54-2"><a href="tool.html#cb54-2"></a>f &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</span>
-<span id="cb54-3"><a href="tool.html#cb54-3"></a><span class="kw">lapply</span>(<span class="kw">split</span>(x, f), mean)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="tool.html#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>), <span class="fu">runif</span>(<span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">1</span>))</span>
+<span id="cb51-2"><a href="tool.html#cb51-2" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">3</span>, <span class="dv">10</span>)</span>
+<span id="cb51-3"><a href="tool.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">split</span>(x, f), mean)</span></code></pre></div>
 <pre><code>## $`1`
-## [1] 0.557
+## [1] 0.358
 ## 
 ## $`2`
-## [1] 0.523
+## [1] 0.69
 ## 
 ## $`3`
-## [1] 1.16</code></pre>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="tool.html#cb56-1"></a>x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</span>
-<span id="cb56-2"><a href="tool.html#cb56-2"></a>f1 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">2</span>, <span class="dv">5</span>)</span>
-<span id="cb56-3"><a href="tool.html#cb56-3"></a>f2 &lt;-<span class="st"> </span><span class="kw">gl</span>(<span class="dv">5</span>, <span class="dv">2</span>)</span>
-<span id="cb56-4"><a href="tool.html#cb56-4"></a><span class="kw">str</span>(<span class="kw">split</span>(x, <span class="kw">list</span>(f1, f2), <span class="dt">drop =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
+## [1] 1.37</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="tool.html#cb53-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">10</span>)</span>
+<span id="cb53-2"><a href="tool.html#cb53-2" aria-hidden="true" tabindex="-1"></a>f1 <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">2</span>, <span class="dv">5</span>)</span>
+<span id="cb53-3"><a href="tool.html#cb53-3" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> <span class="fu">gl</span>(<span class="dv">5</span>, <span class="dv">2</span>)</span>
+<span id="cb53-4"><a href="tool.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">split</span>(x, <span class="fu">list</span>(f1, f2), <span class="at">drop =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## List of 6
-##  $ 1.1: num [1:2] -0.393 0.173
-##  $ 1.2: num [1:2] -0.997 -0.189
-##  $ 1.3: num -0.733
-##  $ 2.3: num -0.311
-##  $ 2.4: num [1:2] -0.29149 -0.00487
-##  $ 2.5: num [1:2] 0.277 -0.739</code></pre>
+##  $ 1.1: num [1:2] -0.859 -0.686
+##  $ 1.2: num [1:2] -0.261 -1.142
+##  $ 1.3: num 1.11
+##  $ 2.3: num 1.28
+##  $ 2.4: num [1:2] 0.422 -1.998
+##  $ 2.5: num [1:2] 0.67 -0.808</code></pre>
 </div>
-<div id="mapply" class="section level4">
-<h4><span class="header-section-number">2.7.19.10</span> <code>mapply</code></h4>
+<div id="mapply" class="section level4 hasAnchor" number="2.7.19.10">
+<h4><span class="header-section-number">2.7.19.10</span> <code>mapply</code><a href="tool.html#mapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>多变量版<code>apply</code> 从多个参数范围取值 并用函数得到结果</li>
 </ul>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="tool.html#cb58-1"></a>noise &lt;-<span class="st"> </span><span class="cf">function</span>(n, mean, sd) {</span>
-<span id="cb58-2"><a href="tool.html#cb58-2"></a>  <span class="kw">rnorm</span>(n, mean, sd)</span>
-<span id="cb58-3"><a href="tool.html#cb58-3"></a>}</span>
-<span id="cb58-4"><a href="tool.html#cb58-4"></a><span class="kw">mapply</span>(noise, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="tool.html#cb55-1" aria-hidden="true" tabindex="-1"></a>noise <span class="ot">&lt;-</span> <span class="cf">function</span>(n, mean, sd) {</span>
+<span id="cb55-2"><a href="tool.html#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rnorm</span>(n, mean, sd)</span>
+<span id="cb55-3"><a href="tool.html#cb55-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb55-4"><a href="tool.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mapply</span>(noise, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [[1]]
-## [1] 2.38
+## [1] 1.43
 ## 
 ## [[2]]
-## [1] 4.350 0.744
+## [1] 4.35 3.42
 ## 
 ## [[3]]
-## [1] 2.50 4.81 3.85
+## [1] 4.44 3.51 3.92
 ## 
 ## [[4]]
-## [1] 2.72 5.12 1.39 5.55
+## [1] 3.28 2.92 1.57 4.43
 ## 
 ## [[5]]
-## [1] 5.61 5.68 3.77 4.64 4.14</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="tool.html#cb60-1"></a><span class="co">#等同于如下循环</span></span>
-<span id="cb60-2"><a href="tool.html#cb60-2"></a></span>
-<span id="cb60-3"><a href="tool.html#cb60-3"></a><span class="co">#list(noise(1, 1, 2), noise(2, 2, 2),</span></span>
-<span id="cb60-4"><a href="tool.html#cb60-4"></a><span class="co">#    noise(3, 3, 2), noise(4, 4, 2),</span></span>
-<span id="cb60-5"><a href="tool.html#cb60-5"></a><span class="co">#    noise(5, 5, 2))</span></span></code></pre></div>
+## [1] 2.32 4.22 6.57 6.22 5.30</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="tool.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#等同于如下循环</span></span>
+<span id="cb57-2"><a href="tool.html#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="tool.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#list(noise(1, 1, 2), noise(2, 2, 2),</span></span>
+<span id="cb57-4"><a href="tool.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    noise(3, 3, 2), noise(4, 4, 2),</span></span>
+<span id="cb57-5"><a href="tool.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    noise(5, 5, 2))</span></span></code></pre></div>
 </div>
-<div id="eapply" class="section level4">
-<h4><span class="header-section-number">2.7.19.11</span> <code>eapply</code></h4>
+<div id="eapply" class="section level4 hasAnchor" number="2.7.19.11">
+<h4><span class="header-section-number">2.7.19.11</span> <code>eapply</code><a href="tool.html#eapply" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li>对环境变量应用函数 用于包</li>
 </ul>
 </div>
 </div>
-<div id="模拟" class="section level3">
-<h3><span class="header-section-number">2.7.20</span> 模拟</h3>
+<div id="模拟" class="section level3 hasAnchor" number="2.7.20">
+<h3><span class="header-section-number">2.7.20</span> 模拟<a href="tool.html#模拟" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>在某分布下产生随机数
 <ul>
@@ -1673,17 +1709,17 @@ $ exit # 退出</code></pre>
 <li>q 分布分位数</li>
 </ul></li>
 </ul>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="tool.html#cb61-1"></a><span class="kw">dnorm</span>(x, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">log =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb61-2"><a href="tool.html#cb61-2"></a><span class="kw">pnorm</span>(q, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>, <span class="dt">log.p =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb61-3"><a href="tool.html#cb61-3"></a><span class="kw">qnorm</span>(p, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">lower.tail =</span> <span class="ot">TRUE</span>, <span class="dt">log.p =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb61-4"><a href="tool.html#cb61-4"></a><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="tool.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">log =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-2"><a href="tool.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(q, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>, <span class="at">log.p =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-3"><a href="tool.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(p, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>, <span class="at">log.p =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb58-4"><a href="tool.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li><code>set.seed</code>保证重现性</li>
 <li><code>sample</code>对数据采样</li>
 </ul>
 </div>
-<div id="调试" class="section level3">
-<h3><span class="header-section-number">2.7.21</span> 调试</h3>
+<div id="调试" class="section level3 hasAnchor" number="2.7.21">
+<h3><span class="header-section-number">2.7.21</span> 调试<a href="tool.html#调试" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>三种提示 <code>message</code> <code>warning</code> <code>error</code> 只有<code>error</code>致命</li>
 <li>关注重现性</li>
@@ -1691,8 +1727,8 @@ $ exit # 退出</code></pre>
 <li>三思而行</li>
 </ul>
 </div>
-<div id="分析代码" class="section level3">
-<h3><span class="header-section-number">2.7.22</span> 分析代码</h3>
+<div id="分析代码" class="section level3 hasAnchor" number="2.7.22">
+<h3><span class="header-section-number">2.7.22</span> 分析代码<a href="tool.html#分析代码" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>先设计 后优化</li>
 <li><code>system.time</code> 计算代码运行时间 返回对象类型<code>proc_time</code>
@@ -1713,8 +1749,8 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="包开发" class="section level3">
-<h3><span class="header-section-number">2.7.23</span> 包开发</h3>
+<div id="包开发" class="section level3 hasAnchor" number="2.7.23">
+<h3><span class="header-section-number">2.7.23</span> 包开发<a href="tool.html#包开发" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><code>DESCRIPTION</code> 指明包内容
 <ul>
@@ -1737,8 +1773,8 @@ $ exit # 退出</code></pre>
 <li><code>roxygen2</code> 源文件注释文档</li>
 </ul>
 </div>
-<div id="方法与类型" class="section level3">
-<h3><span class="header-section-number">2.7.24</span> 方法与类型</h3>
+<div id="方法与类型" class="section level3 hasAnchor" number="2.7.24">
+<h3><span class="header-section-number">2.7.24</span> 方法与类型<a href="tool.html#方法与类型" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>R 面向对象编程</li>
 <li>对象用<code>setClass</code>指定类型 用<code>setMethod</code>指定处理类型的方法</li>
@@ -1748,8 +1784,8 @@ $ exit # 退出</code></pre>
 <li><code>stats4</code> 有很多针对性的极大似然估计的对象定义与方法</li>
 </ul>
 </div>
-<div id="并行计算" class="section level3">
-<h3><span class="header-section-number">2.7.25</span> 并行计算</h3>
+<div id="并行计算" class="section level3 hasAnchor" number="2.7.25">
+<h3><span class="header-section-number">2.7.25</span> 并行计算<a href="tool.html#并行计算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>任务切分后多线程/多核/多机同时执行，然后汇总，需要调用配置管理</li>
 <li>并行计算的优势在于利用独立计算单元同时计算汇总</li>
@@ -1768,27 +1804,27 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="分布式计算" class="section level3">
-<h3><span class="header-section-number">2.7.26</span> 分布式计算</h3>
+<div id="分布式计算" class="section level3 hasAnchor" number="2.7.26">
+<h3><span class="header-section-number">2.7.26</span> 分布式计算<a href="tool.html#分布式计算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Sparkly</li>
 </ul>
 </div>
-<div id="异常值监测" class="section level3">
-<h3><span class="header-section-number">2.7.27</span> 异常值监测</h3>
+<div id="异常值监测" class="section level3 hasAnchor" number="2.7.27">
+<h3><span class="header-section-number">2.7.27</span> 异常值监测<a href="tool.html#异常值监测" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><a href="https://github.com/twitter/BreakoutDetection">twitter的断点检测</a></li>
 </ul>
 </div>
-<div id="图片处理" class="section level3">
-<h3><span class="header-section-number">2.7.28</span> 图片处理</h3>
+<div id="图片处理" class="section level3 hasAnchor" number="2.7.28">
+<h3><span class="header-section-number">2.7.28</span> 图片处理<a href="tool.html#图片处理" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><a href="https://github.com/dahtah/imager">imager</a></li>
 </ul>
 </div>
 </div>
-<div id="python" class="section level2">
-<h2><span class="header-section-number">2.8</span> Python</h2>
+<div id="python" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Python<a href="tool.html#python" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>基础数据类型 NULL</li>
 <li>数值类型
@@ -1815,8 +1851,8 @@ $ exit # 退出</code></pre>
 </ul></li>
 <li>python中对象均有类型 可自定义</li>
 </ul>
-<div id="工具包" class="section level3">
-<h3><span class="header-section-number">2.8.1</span> 工具包</h3>
+<div id="工具包" class="section level3 hasAnchor" number="2.8.1">
+<h3><span class="header-section-number">2.8.1</span> 工具包<a href="tool.html#工具包" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Numpy 数值计算包</li>
 <li>Pandas 数据清洗 缺失值 切分</li>
@@ -1825,10 +1861,10 @@ $ exit # 退出</code></pre>
 </ul>
 </div>
 </div>
-<div id="tex" class="section level2">
-<h2><span class="header-section-number">2.9</span> Tex</h2>
-<div id="语言基础" class="section level3">
-<h3><span class="header-section-number">2.9.1</span> 语言基础</h3>
+<div id="tex" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Tex<a href="tool.html#tex" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="语言基础" class="section level3 hasAnchor" number="2.9.1">
+<h3><span class="header-section-number">2.9.1</span> 语言基础<a href="tool.html#语言基础" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>作者 Donald Knuth</p></li>
 <li><p><code>tex</code> 排版引擎 圆周率</p></li>
@@ -1870,14 +1906,14 @@ $ exit # 退出</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="关于xetex" class="section level3">
-<h3><span class="header-section-number">2.9.2</span> 关于<code>xetex</code></h3>
+<div id="关于xetex" class="section level3 hasAnchor" number="2.9.2">
+<h3><span class="header-section-number">2.9.2</span> 关于<code>xetex</code><a href="tool.html#关于xetex" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><code>xeCJK</code> 使用<code>xelatex</code>引擎的中文宏包 纠正了<code>xelatex</code>一些缩进等的不美观</p></li>
 <li><p><code>ctex</code> 包含早期<code>CTT</code> <code>CJK</code> 及 <code>xeCJK</code> 可用<code>\setCJKmainfont{SimSun}</code> 来调用系统字体 下面是底层调用中英文混排</p></li>
 </ul>
-<div id="实例讲解" class="section level4">
-<h4><span class="header-section-number">2.9.2.1</span> 实例讲解</h4>
+<div id="实例讲解" class="section level4 hasAnchor" number="2.9.2.1">
+<h4><span class="header-section-number">2.9.2.1</span> 实例讲解<a href="tool.html#实例讲解" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <pre><code>\documentclass[12pt,a4paper]{article}
 \usepackage{xltxtra,fontspec,xunicode}
 \usepackage[slantfont,boldfont]{xeCJK} % 允许斜体和粗体
@@ -1888,8 +1924,8 @@ $ exit # 退出</code></pre>
 \setsansfont{Trebuchet MS} % 英文无衬线字体</code></pre>
 </div>
 </div>
-<div id="常见问题" class="section level3">
-<h3><span class="header-section-number">2.9.3</span> 常见问题</h3>
+<div id="常见问题" class="section level3 hasAnchor" number="2.9.3">
+<h3><span class="header-section-number">2.9.3</span> 常见问题<a href="tool.html#常见问题" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>空白 tab与多个空白认为是一个空白 空行表示段落结束</p></li>
 <li><p>保留字符 <code># $ % ^ &amp; _ { } ~ \</code> 可使用<code>\#</code> <code>\$</code> <code>\%</code> <code>\^{}</code> <code>\&amp;</code> <code>\_</code> <code>\{</code> <code>\}</code> <code>\~{}</code> 来表示 <code>\\</code> 表示断行 <code>$\backslash$</code>生成反斜杠</p></li>
@@ -1979,7 +2015,6 @@ $ exit # 退出</code></pre>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1998,6 +2033,7 @@ gitbook.start({
 "weibo": true,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -2018,6 +2054,10 @@ gitbook.start({
 "text": null
 },
 "download": ["datadown.pdf", "datadown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

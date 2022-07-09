@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>第13章 博弈论 | 数据分析残卷</title>
   <meta name="description" content="数据分析世界的清明上河图" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="第13章 博弈论 | 数据分析残卷" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="数据分析世界的清明上河图" />
   
@@ -24,7 +23,7 @@
 <meta name="author" content="于淼" />
 
 
-<meta name="date" content="2020-08-19" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +32,8 @@
   
 <link rel="prev" href="neta.html"/>
 <link rel="next" href="bios.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,23 +49,24 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +86,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -135,7 +137,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>序</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a><ul>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> 导论</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#数据科学"><i class="fa fa-check"></i><b>1.1</b> 数据科学</a></li>
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#基本问题"><i class="fa fa-check"></i><b>1.2</b> 基本问题</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#工作流程"><i class="fa fa-check"></i><b>1.3</b> 工作流程</a></li>
@@ -147,14 +150,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.9" data-path="intro.html"><a href="intro.html#应用"><i class="fa fa-check"></i><b>1.9</b> 应用</a></li>
 <li class="chapter" data-level="1.10" data-path="intro.html"><a href="intro.html#链接"><i class="fa fa-check"></i><b>1.10</b> 链接</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="tool.html"><a href="tool.html"><i class="fa fa-check"></i><b>2</b> 数据分析工具</a><ul>
+<li class="chapter" data-level="2" data-path="tool.html"><a href="tool.html"><i class="fa fa-check"></i><b>2</b> 数据分析工具</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="tool.html"><a href="tool.html#基础知识"><i class="fa fa-check"></i><b>2.1</b> 基础知识</a></li>
 <li class="chapter" data-level="2.2" data-path="tool.html"><a href="tool.html#命令行基础"><i class="fa fa-check"></i><b>2.2</b> 命令行基础</a></li>
 <li class="chapter" data-level="2.3" data-path="tool.html"><a href="tool.html#版本控制"><i class="fa fa-check"></i><b>2.3</b> 版本控制</a></li>
 <li class="chapter" data-level="2.4" data-path="tool.html"><a href="tool.html#数据获取"><i class="fa fa-check"></i><b>2.4</b> 数据获取</a></li>
 <li class="chapter" data-level="2.5" data-path="tool.html"><a href="tool.html#远程控制"><i class="fa fa-check"></i><b>2.5</b> 远程控制</a></li>
 <li class="chapter" data-level="2.6" data-path="tool.html"><a href="tool.html#高级命令"><i class="fa fa-check"></i><b>2.6</b> 高级命令</a></li>
-<li class="chapter" data-level="2.7" data-path="tool.html"><a href="tool.html#r"><i class="fa fa-check"></i><b>2.7</b> R</a><ul>
+<li class="chapter" data-level="2.7" data-path="tool.html"><a href="tool.html#r"><i class="fa fa-check"></i><b>2.7</b> R</a>
+<ul>
 <li class="chapter" data-level="2.7.1" data-path="tool.html"><a href="tool.html#语言导论"><i class="fa fa-check"></i><b>2.7.1</b> 语言导论</a></li>
 <li class="chapter" data-level="2.7.2" data-path="tool.html"><a href="tool.html#获得帮助"><i class="fa fa-check"></i><b>2.7.2</b> 获得帮助</a></li>
 <li class="chapter" data-level="2.7.3" data-path="tool.html"><a href="tool.html#数据类型及基本运算"><i class="fa fa-check"></i><b>2.7.3</b> 数据类型及基本运算</a></li>
@@ -184,16 +189,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.7.27" data-path="tool.html"><a href="tool.html#异常值监测"><i class="fa fa-check"></i><b>2.7.27</b> 异常值监测</a></li>
 <li class="chapter" data-level="2.7.28" data-path="tool.html"><a href="tool.html#图片处理"><i class="fa fa-check"></i><b>2.7.28</b> 图片处理</a></li>
 </ul></li>
-<li class="chapter" data-level="2.8" data-path="tool.html"><a href="tool.html#python"><i class="fa fa-check"></i><b>2.8</b> Python</a><ul>
+<li class="chapter" data-level="2.8" data-path="tool.html"><a href="tool.html#python"><i class="fa fa-check"></i><b>2.8</b> Python</a>
+<ul>
 <li class="chapter" data-level="2.8.1" data-path="tool.html"><a href="tool.html#工具包"><i class="fa fa-check"></i><b>2.8.1</b> 工具包</a></li>
 </ul></li>
-<li class="chapter" data-level="2.9" data-path="tool.html"><a href="tool.html#tex"><i class="fa fa-check"></i><b>2.9</b> Tex</a><ul>
+<li class="chapter" data-level="2.9" data-path="tool.html"><a href="tool.html#tex"><i class="fa fa-check"></i><b>2.9</b> Tex</a>
+<ul>
 <li class="chapter" data-level="2.9.1" data-path="tool.html"><a href="tool.html#语言基础"><i class="fa fa-check"></i><b>2.9.1</b> 语言基础</a></li>
 <li class="chapter" data-level="2.9.2" data-path="tool.html"><a href="tool.html#关于xetex"><i class="fa fa-check"></i><b>2.9.2</b> 关于<code>xetex</code></a></li>
 <li class="chapter" data-level="2.9.3" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>2.9.3</b> 常见问题</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="repro.html"><a href="repro.html"><i class="fa fa-check"></i><b>3</b> 可复算性研究</a><ul>
+<li class="chapter" data-level="3" data-path="repro.html"><a href="repro.html"><i class="fa fa-check"></i><b>3</b> 可复算性研究</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="repro.html"><a href="repro.html#replication"><i class="fa fa-check"></i><b>3.1</b> Replication</a></li>
 <li class="chapter" data-level="3.2" data-path="repro.html"><a href="repro.html#reproducible"><i class="fa fa-check"></i><b>3.2</b> Reproducible</a></li>
 <li class="chapter" data-level="3.3" data-path="repro.html"><a href="repro.html#研究流程"><i class="fa fa-check"></i><b>3.3</b> 研究流程</a></li>
@@ -206,7 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10" data-path="repro.html"><a href="repro.html#结果可解释"><i class="fa fa-check"></i><b>3.10</b> 结果可解释</a></li>
 <li class="chapter" data-level="3.11" data-path="repro.html"><a href="repro.html#数据分析的理论"><i class="fa fa-check"></i><b>3.11</b> 数据分析的理论</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>4</b> 探索性数据分析</a><ul>
+<li class="chapter" data-level="4" data-path="exp.html"><a href="exp.html"><i class="fa fa-check"></i><b>4</b> 探索性数据分析</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="exp.html"><a href="exp.html#aces-模型"><i class="fa fa-check"></i><b>4.1</b> ACES 模型</a></li>
 <li class="chapter" data-level="4.2" data-path="exp.html"><a href="exp.html#探索绘图原则"><i class="fa fa-check"></i><b>4.2</b> 探索绘图原则</a></li>
 <li class="chapter" data-level="4.3" data-path="exp.html"><a href="exp.html#探索性绘图"><i class="fa fa-check"></i><b>4.3</b> 探索性绘图</a></li>
@@ -215,7 +224,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.6" data-path="exp.html"><a href="exp.html#维度还原"><i class="fa fa-check"></i><b>4.6</b> 维度还原</a></li>
 <li class="chapter" data-level="4.7" data-path="exp.html"><a href="exp.html#可视化图形"><i class="fa fa-check"></i><b>4.7</b> 可视化图形</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="infer.html"><a href="infer.html"><i class="fa fa-check"></i><b>5</b> 统计推断</a><ul>
+<li class="chapter" data-level="5" data-path="infer.html"><a href="infer.html"><i class="fa fa-check"></i><b>5</b> 统计推断</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="infer.html"><a href="infer.html#导论"><i class="fa fa-check"></i><b>5.1</b> 导论</a></li>
 <li class="chapter" data-level="5.2" data-path="infer.html"><a href="infer.html#概率"><i class="fa fa-check"></i><b>5.2</b> 概率</a></li>
 <li class="chapter" data-level="5.3" data-path="infer.html"><a href="infer.html#期望"><i class="fa fa-check"></i><b>5.3</b> 期望</a></li>
@@ -236,7 +246,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.18" data-path="infer.html"><a href="infer.html#重采样推断"><i class="fa fa-check"></i><b>5.18</b> 重采样推断</a></li>
 <li class="chapter" data-level="5.19" data-path="infer.html"><a href="infer.html#概念可视化"><i class="fa fa-check"></i><b>5.19</b> 概念可视化</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="reg.html"><a href="reg.html"><i class="fa fa-check"></i><b>6</b> 回归模型</a><ul>
+<li class="chapter" data-level="6" data-path="reg.html"><a href="reg.html"><i class="fa fa-check"></i><b>6</b> 回归模型</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="reg.html"><a href="reg.html#回归模型导论"><i class="fa fa-check"></i><b>6.1</b> 回归模型导论</a></li>
 <li class="chapter" data-level="6.2" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>6.2</b> 术语</a></li>
 <li class="chapter" data-level="6.3" data-path="reg.html"><a href="reg.html#回归线的最小二乘回归"><i class="fa fa-check"></i><b>6.3</b> 回归线的最小二乘回归</a></li>
@@ -250,7 +261,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.11" data-path="reg.html"><a href="reg.html#计数或速率响应"><i class="fa fa-check"></i><b>6.11</b> 计数或速率响应</a></li>
 <li class="chapter" data-level="6.12" data-path="reg.html"><a href="reg.html#分段平滑"><i class="fa fa-check"></i><b>6.12</b> 分段平滑</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a><ul>
+<li class="chapter" data-level="7" data-path="opt.html"><a href="opt.html"><i class="fa fa-check"></i><b>7</b> 最优化</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="opt.html"><a href="opt.html#数学本质"><i class="fa fa-check"></i><b>7.1</b> 数学本质</a></li>
 <li class="chapter" data-level="7.2" data-path="opt.html"><a href="opt.html#简史"><i class="fa fa-check"></i><b>7.2</b> 简史</a></li>
 <li class="chapter" data-level="7.3" data-path="opt.html"><a href="opt.html#最小二乘法"><i class="fa fa-check"></i><b>7.3</b> 最小二乘法</a></li>
@@ -258,21 +270,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5" data-path="opt.html"><a href="opt.html#凸优化"><i class="fa fa-check"></i><b>7.5</b> 凸优化</a></li>
 <li class="chapter" data-level="7.6" data-path="opt.html"><a href="opt.html#仿射集"><i class="fa fa-check"></i><b>7.6</b> 仿射集</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a><ul>
+<li class="chapter" data-level="8" data-path="mlsl.html"><a href="mlsl.html"><i class="fa fa-check"></i><b>8</b> 统计模型</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="mlsl.html"><a href="mlsl.html#统计学习概论"><i class="fa fa-check"></i><b>8.1</b> 统计学习概论</a></li>
 <li class="chapter" data-level="8.2" data-path="mlsl.html"><a href="mlsl.html#统计学习简史"><i class="fa fa-check"></i><b>8.2</b> 统计学习简史</a></li>
 <li class="chapter" data-level="8.3" data-path="mlsl.html"><a href="mlsl.html#统计学习定义"><i class="fa fa-check"></i><b>8.3</b> 统计学习定义</a></li>
 <li class="chapter" data-level="8.4" data-path="mlsl.html"><a href="mlsl.html#预测"><i class="fa fa-check"></i><b>8.4</b> 预测</a></li>
 <li class="chapter" data-level="8.5" data-path="mlsl.html"><a href="mlsl.html#推断"><i class="fa fa-check"></i><b>8.5</b> 推断</a></li>
 <li class="chapter" data-level="8.6" data-path="mlsl.html"><a href="mlsl.html#估计模型"><i class="fa fa-check"></i><b>8.6</b> 估计模型</a></li>
-<li class="chapter" data-level="8.7" data-path="mlsl.html"><a href="mlsl.html#评价模型"><i class="fa fa-check"></i><b>8.7</b> 评价模型</a><ul>
+<li class="chapter" data-level="8.7" data-path="mlsl.html"><a href="mlsl.html#评价模型"><i class="fa fa-check"></i><b>8.7</b> 评价模型</a>
+<ul>
 <li class="chapter" data-level="8.7.1" data-path="mlsl.html"><a href="mlsl.html#拟合质量测量"><i class="fa fa-check"></i><b>8.7.1</b> 拟合质量测量</a></li>
 <li class="chapter" data-level="8.7.2" data-path="mlsl.html"><a href="mlsl.html#聚类评价"><i class="fa fa-check"></i><b>8.7.2</b> 聚类评价</a></li>
 </ul></li>
 <li class="chapter" data-level="8.8" data-path="mlsl.html"><a href="mlsl.html#研究设计"><i class="fa fa-check"></i><b>8.8</b> 研究设计</a></li>
 <li class="chapter" data-level="8.9" data-path="mlsl.html"><a href="mlsl.html#错误率"><i class="fa fa-check"></i><b>8.9</b> 错误率</a></li>
 <li class="chapter" data-level="8.10" data-path="mlsl.html"><a href="mlsl.html#roc-曲线"><i class="fa fa-check"></i><b>8.10</b> ROC 曲线</a></li>
-<li class="chapter" data-level="8.11" data-path="mlsl.html"><a href="mlsl.html#重采样技术"><i class="fa fa-check"></i><b>8.11</b> 重采样技术</a><ul>
+<li class="chapter" data-level="8.11" data-path="mlsl.html"><a href="mlsl.html#重采样技术"><i class="fa fa-check"></i><b>8.11</b> 重采样技术</a>
+<ul>
 <li class="chapter" data-level="8.11.1" data-path="mlsl.html"><a href="mlsl.html#交叉检验"><i class="fa fa-check"></i><b>8.11.1</b> 交叉检验</a></li>
 <li class="chapter" data-level="8.11.2" data-path="mlsl.html"><a href="mlsl.html#bootstrap"><i class="fa fa-check"></i><b>8.11.2</b> bootstrap</a></li>
 </ul></li>
@@ -282,18 +297,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.15" data-path="mlsl.html"><a href="mlsl.html#预测变量作图"><i class="fa fa-check"></i><b>8.15</b> 预测变量作图</a></li>
 <li class="chapter" data-level="8.16" data-path="mlsl.html"><a href="mlsl.html#数据预处理"><i class="fa fa-check"></i><b>8.16</b> 数据预处理</a></li>
 <li class="chapter" data-level="8.17" data-path="mlsl.html"><a href="mlsl.html#协变量生成"><i class="fa fa-check"></i><b>8.17</b> 协变量生成</a></li>
-<li class="chapter" data-level="8.18" data-path="mlsl.html"><a href="mlsl.html#线性回归多元线性回归"><i class="fa fa-check"></i><b>8.18</b> 线性回归&amp;多元线性回归</a><ul>
+<li class="chapter" data-level="8.18" data-path="mlsl.html"><a href="mlsl.html#线性回归多元线性回归"><i class="fa fa-check"></i><b>8.18</b> 线性回归&amp;多元线性回归</a>
+<ul>
 <li class="chapter" data-level="8.18.1" data-path="mlsl.html"><a href="mlsl.html#简单线性回归"><i class="fa fa-check"></i><b>8.18.1</b> 简单线性回归</a></li>
 <li class="chapter" data-level="8.18.2" data-path="mlsl.html"><a href="mlsl.html#多元线性回归"><i class="fa fa-check"></i><b>8.18.2</b> 多元线性回归</a></li>
 <li class="chapter" data-level="8.18.3" data-path="mlsl.html"><a href="mlsl.html#线性模型延拓"><i class="fa fa-check"></i><b>8.18.3</b> 线性模型延拓</a></li>
-<li class="chapter" data-level="8.18.4" data-path="tool.html"><a href="tool.html#常见问题"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
+<li class="chapter" data-level="8.18.4" data-path="mlsl.html"><a href="mlsl.html#常见问题-1"><i class="fa fa-check"></i><b>8.18.4</b> 常见问题</a></li>
 <li class="chapter" data-level="8.18.5" data-path="mlsl.html"><a href="mlsl.html#线性回归与kmeans算法比较"><i class="fa fa-check"></i><b>8.18.5</b> 线性回归与kmeans算法比较</a></li>
 <li class="chapter" data-level="8.18.6" data-path="mlsl.html"><a href="mlsl.html#logistic回归"><i class="fa fa-check"></i><b>8.18.6</b> logistic回归</a></li>
 <li class="chapter" data-level="8.18.7" data-path="mlsl.html"><a href="mlsl.html#线性判别分析"><i class="fa fa-check"></i><b>8.18.7</b> 线性判别分析</a></li>
 <li class="chapter" data-level="8.18.8" data-path="mlsl.html"><a href="mlsl.html#二次判别分析qda及其它"><i class="fa fa-check"></i><b>8.18.8</b> 二次判别分析（QDA）及其它</a></li>
 <li class="chapter" data-level="8.18.9" data-path="mlsl.html"><a href="mlsl.html#线性模型选择与正则化"><i class="fa fa-check"></i><b>8.18.9</b> 线性模型选择与正则化</a></li>
 </ul></li>
-<li class="chapter" data-level="8.19" data-path="mlsl.html"><a href="mlsl.html#非线性"><i class="fa fa-check"></i><b>8.19</b> 非线性</a><ul>
+<li class="chapter" data-level="8.19" data-path="mlsl.html"><a href="mlsl.html#非线性"><i class="fa fa-check"></i><b>8.19</b> 非线性</a>
+<ul>
 <li class="chapter" data-level="8.19.1" data-path="mlsl.html"><a href="mlsl.html#多项式回归"><i class="fa fa-check"></i><b>8.19.1</b> 多项式回归</a></li>
 <li class="chapter" data-level="8.19.2" data-path="mlsl.html"><a href="mlsl.html#阶梯函数"><i class="fa fa-check"></i><b>8.19.2</b> 阶梯函数</a></li>
 <li class="chapter" data-level="8.19.3" data-path="mlsl.html"><a href="mlsl.html#基函数"><i class="fa fa-check"></i><b>8.19.3</b> 基函数</a></li>
@@ -302,20 +319,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.19.6" data-path="mlsl.html"><a href="mlsl.html#本地回归"><i class="fa fa-check"></i><b>8.19.6</b> 本地回归</a></li>
 <li class="chapter" data-level="8.19.7" data-path="mlsl.html"><a href="mlsl.html#广义加性模型"><i class="fa fa-check"></i><b>8.19.7</b> 广义加性模型</a></li>
 </ul></li>
-<li class="chapter" data-level="8.20" data-path="mlsl.html"><a href="mlsl.html#树"><i class="fa fa-check"></i><b>8.20</b> 树</a><ul>
+<li class="chapter" data-level="8.20" data-path="mlsl.html"><a href="mlsl.html#树"><i class="fa fa-check"></i><b>8.20</b> 树</a>
+<ul>
 <li class="chapter" data-level="8.20.1" data-path="mlsl.html"><a href="mlsl.html#回归树"><i class="fa fa-check"></i><b>8.20.1</b> 回归树</a></li>
 <li class="chapter" data-level="8.20.2" data-path="mlsl.html"><a href="mlsl.html#分类树"><i class="fa fa-check"></i><b>8.20.2</b> 分类树</a></li>
 <li class="chapter" data-level="8.20.3" data-path="mlsl.html"><a href="mlsl.html#bagging"><i class="fa fa-check"></i><b>8.20.3</b> Bagging</a></li>
 <li class="chapter" data-level="8.20.4" data-path="mlsl.html"><a href="mlsl.html#随机森林"><i class="fa fa-check"></i><b>8.20.4</b> 随机森林</a></li>
 <li class="chapter" data-level="8.20.5" data-path="mlsl.html"><a href="mlsl.html#boosting"><i class="fa fa-check"></i><b>8.20.5</b> Boosting</a></li>
 </ul></li>
-<li class="chapter" data-level="8.21" data-path="mlsl.html"><a href="mlsl.html#支持向量机"><i class="fa fa-check"></i><b>8.21</b> 支持向量机</a><ul>
+<li class="chapter" data-level="8.21" data-path="mlsl.html"><a href="mlsl.html#支持向量机"><i class="fa fa-check"></i><b>8.21</b> 支持向量机</a>
+<ul>
 <li class="chapter" data-level="8.21.1" data-path="mlsl.html"><a href="mlsl.html#最大边界分类器"><i class="fa fa-check"></i><b>8.21.1</b> 最大边界分类器</a></li>
 <li class="chapter" data-level="8.21.2" data-path="mlsl.html"><a href="mlsl.html#支持向量分类器"><i class="fa fa-check"></i><b>8.21.2</b> 支持向量分类器</a></li>
 <li class="chapter" data-level="8.21.3" data-path="mlsl.html"><a href="mlsl.html#支持向量机原理"><i class="fa fa-check"></i><b>8.21.3</b> 支持向量机原理</a></li>
 <li class="chapter" data-level="8.21.4" data-path="mlsl.html"><a href="mlsl.html#svm与logistic回归关系"><i class="fa fa-check"></i><b>8.21.4</b> svm与logistic回归关系</a></li>
 </ul></li>
-<li class="chapter" data-level="8.22" data-path="mlsl.html"><a href="mlsl.html#无监督学习"><i class="fa fa-check"></i><b>8.22</b> 无监督学习</a><ul>
+<li class="chapter" data-level="8.22" data-path="mlsl.html"><a href="mlsl.html#无监督学习"><i class="fa fa-check"></i><b>8.22</b> 无监督学习</a>
+<ul>
 <li class="chapter" data-level="8.22.1" data-path="mlsl.html"><a href="mlsl.html#主成分分析"><i class="fa fa-check"></i><b>8.22.1</b> 主成分分析</a></li>
 <li class="chapter" data-level="8.22.2" data-path="mlsl.html"><a href="mlsl.html#聚类方法"><i class="fa fa-check"></i><b>8.22.2</b> 聚类方法</a></li>
 </ul></li>
@@ -325,7 +345,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.26" data-path="mlsl.html"><a href="mlsl.html#模型预测"><i class="fa fa-check"></i><b>8.26</b> 模型预测</a></li>
 <li class="chapter" data-level="8.27" data-path="mlsl.html"><a href="mlsl.html#模型可视化"><i class="fa fa-check"></i><b>8.27</b> 模型可视化</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="product.html"><a href="product.html"><i class="fa fa-check"></i><b>9</b> 开发数据产品</a><ul>
+<li class="chapter" data-level="9" data-path="product.html"><a href="product.html"><i class="fa fa-check"></i><b>9</b> 开发数据产品</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="product.html"><a href="product.html#shiny"><i class="fa fa-check"></i><b>9.1</b> shiny</a></li>
 <li class="chapter" data-level="9.2" data-path="product.html"><a href="product.html#rcharts"><i class="fa fa-check"></i><b>9.2</b> rCharts</a></li>
 <li class="chapter" data-level="9.3" data-path="product.html"><a href="product.html#googlevis"><i class="fa fa-check"></i><b>9.3</b> GoogleVis</a></li>
@@ -334,7 +355,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="product.html"><a href="product.html#swagger"><i class="fa fa-check"></i><b>9.6</b> swagger</a></li>
 <li class="chapter" data-level="9.7" data-path="product.html"><a href="product.html#案例"><i class="fa fa-check"></i><b>9.7</b> 案例</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>10</b> 贝叶斯统计</a><ul>
+<li class="chapter" data-level="10" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>10</b> 贝叶斯统计</a>
+<ul>
 <li class="chapter" data-level="10.1" data-path="bayes.html"><a href="bayes.html#贝塔分布"><i class="fa fa-check"></i><b>10.1</b> 贝塔分布</a></li>
 <li class="chapter" data-level="10.2" data-path="bayes.html"><a href="bayes.html#为什么击球的概率分布符合贝塔分布"><i class="fa fa-check"></i><b>10.2</b> 为什么击球的概率分布符合贝塔分布？</a></li>
 <li class="chapter" data-level="10.3" data-path="bayes.html"><a href="bayes.html#先验与后验"><i class="fa fa-check"></i><b>10.3</b> 先验与后验</a></li>
@@ -344,7 +366,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7" data-path="bayes.html"><a href="bayes.html#后验错误率"><i class="fa fa-check"></i><b>10.7</b> 后验错误率</a></li>
 <li class="chapter" data-level="10.8" data-path="bayes.html"><a href="bayes.html#错误发现率"><i class="fa fa-check"></i><b>10.8</b> 错误发现率</a></li>
 <li class="chapter" data-level="10.9" data-path="bayes.html"><a href="bayes.html#q值"><i class="fa fa-check"></i><b>10.9</b> q值</a></li>
-<li class="chapter" data-level="10.10" data-path="bayes.html"><a href="bayes.html#贝叶斯视角的假设检验"><i class="fa fa-check"></i><b>10.10</b> 贝叶斯视角的假设检验</a><ul>
+<li class="chapter" data-level="10.10" data-path="bayes.html"><a href="bayes.html#贝叶斯视角的假设检验"><i class="fa fa-check"></i><b>10.10</b> 贝叶斯视角的假设检验</a>
+<ul>
 <li class="chapter" data-level="10.10.1" data-path="bayes.html"><a href="bayes.html#模拟验证"><i class="fa fa-check"></i><b>10.10.1</b> 模拟验证</a></li>
 <li class="chapter" data-level="10.10.2" data-path="bayes.html"><a href="bayes.html#数值积分"><i class="fa fa-check"></i><b>10.10.2</b> 数值积分</a></li>
 <li class="chapter" data-level="10.10.3" data-path="bayes.html"><a href="bayes.html#解析解"><i class="fa fa-check"></i><b>10.10.3</b> 解析解</a></li>
@@ -352,37 +375,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.11" data-path="bayes.html"><a href="bayes.html#比例检验"><i class="fa fa-check"></i><b>10.11</b> 比例检验</a></li>
 <li class="chapter" data-level="10.12" data-path="bayes.html"><a href="bayes.html#错误率控制"><i class="fa fa-check"></i><b>10.12</b> 错误率控制</a></li>
-<li class="chapter" data-level="10.13" data-path="bayes.html"><a href="bayes.html#影响因子"><i class="fa fa-check"></i><b>10.13</b> 影响因子</a><ul>
+<li class="chapter" data-level="10.13" data-path="bayes.html"><a href="bayes.html#影响因子"><i class="fa fa-check"></i><b>10.13</b> 影响因子</a>
+<ul>
 <li class="chapter" data-level="10.13.1" data-path="bayes.html"><a href="bayes.html#拟合模型"><i class="fa fa-check"></i><b>10.13.1</b> 拟合模型</a></li>
 <li class="chapter" data-level="10.13.2" data-path="bayes.html"><a href="bayes.html#求后验概率"><i class="fa fa-check"></i><b>10.13.2</b> 求后验概率</a></li>
 <li class="chapter" data-level="10.13.3" data-path="bayes.html"><a href="bayes.html#考虑更多因素"><i class="fa fa-check"></i><b>10.13.3</b> 考虑更多因素</a></li>
 </ul></li>
-<li class="chapter" data-level="10.14" data-path="bayes.html"><a href="bayes.html#混合概率模型"><i class="fa fa-check"></i><b>10.14</b> 混合概率模型</a><ul>
+<li class="chapter" data-level="10.14" data-path="bayes.html"><a href="bayes.html#混合概率模型"><i class="fa fa-check"></i><b>10.14</b> 混合概率模型</a>
+<ul>
 <li class="chapter" data-level="10.14.1" data-path="bayes.html"><a href="bayes.html#期望最大算法"><i class="fa fa-check"></i><b>10.14.1</b> 期望最大算法</a></li>
 <li class="chapter" data-level="10.14.2" data-path="bayes.html"><a href="bayes.html#分配"><i class="fa fa-check"></i><b>10.14.2</b> 分配</a></li>
 <li class="chapter" data-level="10.14.3" data-path="bayes.html"><a href="bayes.html#经验贝叶斯收缩"><i class="fa fa-check"></i><b>10.14.3</b> 经验贝叶斯收缩</a></li>
 </ul></li>
-<li class="chapter" data-level="10.15" data-path="bayes.html"><a href="bayes.html#模拟验证结果"><i class="fa fa-check"></i><b>10.15</b> 模拟验证结果</a><ul>
+<li class="chapter" data-level="10.15" data-path="bayes.html"><a href="bayes.html#模拟验证结果"><i class="fa fa-check"></i><b>10.15</b> 模拟验证结果</a>
+<ul>
 <li class="chapter" data-level="10.15.1" data-path="bayes.html"><a href="bayes.html#模拟对分布参数的估计"><i class="fa fa-check"></i><b>10.15.1</b> 模拟对分布参数的估计</a></li>
 <li class="chapter" data-level="10.15.2" data-path="bayes.html"><a href="bayes.html#区间估计"><i class="fa fa-check"></i><b>10.15.2</b> 区间估计</a></li>
 <li class="chapter" data-level="10.15.3" data-path="bayes.html"><a href="bayes.html#错误发现率-1"><i class="fa fa-check"></i><b>10.15.3</b> 错误发现率</a></li>
-<li class="chapter" data-level="10.15.4" data-path="bayes.html"><a href="bayes.html#贝塔二项回归"><i class="fa fa-check"></i><b>10.15.4</b> 贝塔二项回归</a></li>
-<li class="chapter" data-level="10.15.5" data-path="bayes.html"><a href="bayes.html#重复模拟"><i class="fa fa-check"></i><b>10.15.5</b> 重复模拟</a></li>
+<li class="chapter" data-level="10.15.4" data-path="bayes.html"><a href="bayes.html#重复模拟"><i class="fa fa-check"></i><b>10.15.4</b> 重复模拟</a></li>
 </ul></li>
 <li class="chapter" data-level="10.16" data-path="bayes.html"><a href="bayes.html#bayeslink"><i class="fa fa-check"></i><b>10.16</b> 网络资源</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="why.html"><a href="why.html"><i class="fa fa-check"></i><b>11</b> 因果分析</a><ul>
+<li class="chapter" data-level="11" data-path="why.html"><a href="why.html"><i class="fa fa-check"></i><b>11</b> 因果分析</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
-<li class="chapter" data-level="11.2" data-path="why.html"><a href="why.html#causal-information"><i class="fa fa-check"></i><b>11.2</b> Causal Information</a><ul>
+<li class="chapter" data-level="11.2" data-path="why.html"><a href="why.html#causal-information"><i class="fa fa-check"></i><b>11.2</b> Causal Information</a>
+<ul>
 <li class="chapter" data-level="11.2.1" data-path="why.html"><a href="why.html#target"><i class="fa fa-check"></i><b>11.2.1</b> Target</a></li>
 <li class="chapter" data-level="11.2.2" data-path="why.html"><a href="why.html#causal-sources"><i class="fa fa-check"></i><b>11.2.2</b> Causal sources</a></li>
 <li class="chapter" data-level="11.2.3" data-path="why.html"><a href="why.html#identification-and-estimation-process"><i class="fa fa-check"></i><b>11.2.3</b> Identification and Estimation Process</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="why.html"><a href="why.html#theoretical-background"><i class="fa fa-check"></i><b>11.3</b> Theoretical Background</a><ul>
+<li class="chapter" data-level="11.3" data-path="why.html"><a href="why.html#theoretical-background"><i class="fa fa-check"></i><b>11.3</b> Theoretical Background</a>
+<ul>
 <li class="chapter" data-level="11.3.1" data-path="why.html"><a href="why.html#potential-outcomes-framework"><i class="fa fa-check"></i><b>11.3.1</b> Potential Outcomes Framework</a></li>
 <li class="chapter" data-level="11.3.2" data-path="why.html"><a href="why.html#causal-identification"><i class="fa fa-check"></i><b>11.3.2</b> Causal Identification</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="why.html"><a href="why.html#methods-for-identification-and-estimation"><i class="fa fa-check"></i><b>11.4</b> Methods for Identification and Estimation</a><ul>
+<li class="chapter" data-level="11.4" data-path="why.html"><a href="why.html#methods-for-identification-and-estimation"><i class="fa fa-check"></i><b>11.4</b> Methods for Identification and Estimation</a>
+<ul>
 <li class="chapter" data-level="11.4.1" data-path="why.html"><a href="why.html#directed-acyclic-graphsdag-for-identification"><i class="fa fa-check"></i><b>11.4.1</b> Directed Acyclic Graphs(DAG) for Identification</a></li>
 <li class="chapter" data-level="11.4.2" data-path="why.html"><a href="why.html#indirect-connection"><i class="fa fa-check"></i><b>11.4.2</b> Indirect Connection</a></li>
 <li class="chapter" data-level="11.4.3" data-path="why.html"><a href="why.html#common-cause"><i class="fa fa-check"></i><b>11.4.3</b> Common Cause</a></li>
@@ -391,7 +420,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="why.html"><a href="why.html#yinguolink"><i class="fa fa-check"></i><b>11.5</b> 链接</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a><ul>
+<li class="chapter" data-level="12" data-path="neta.html"><a href="neta.html"><i class="fa fa-check"></i><b>12</b> 网络分析</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="neta.html"><a href="neta.html#节点属性"><i class="fa fa-check"></i><b>12.1</b> 节点属性</a></li>
 <li class="chapter" data-level="12.2" data-path="neta.html"><a href="neta.html#网络集群"><i class="fa fa-check"></i><b>12.2</b> 网络集群</a></li>
 <li class="chapter" data-level="12.3" data-path="neta.html"><a href="neta.html#随机网络模型"><i class="fa fa-check"></i><b>12.3</b> 随机网络模型</a></li>
@@ -404,8 +434,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.10" data-path="neta.html"><a href="neta.html#网络扩散行为"><i class="fa fa-check"></i><b>12.10</b> 网络扩散行为</a></li>
 <li class="chapter" data-level="12.11" data-path="neta.html"><a href="neta.html#网络可视化"><i class="fa fa-check"></i><b>12.11</b> 网络可视化</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a><ul>
-<li class="chapter" data-level="13.1" data-path="reg.html"><a href="reg.html#术语"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
+<li class="chapter" data-level="13" data-path="game.html"><a href="game.html"><i class="fa fa-check"></i><b>13</b> 博弈论</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="game.html"><a href="game.html#术语-1"><i class="fa fa-check"></i><b>13.1</b> 术语</a></li>
 <li class="chapter" data-level="13.2" data-path="game.html"><a href="game.html#支配策略dominate-strategy"><i class="fa fa-check"></i><b>13.2</b> 支配策略（dominate strategy）</a></li>
 <li class="chapter" data-level="13.3" data-path="game.html"><a href="game.html#最佳回应best-respinse"><i class="fa fa-check"></i><b>13.3</b> 最佳回应（Best respinse）</a></li>
 <li class="chapter" data-level="13.4" data-path="game.html"><a href="game.html#纳什均衡nash-equilibrium"><i class="fa fa-check"></i><b>13.4</b> 纳什均衡（Nash Equilibrium）</a></li>
@@ -432,7 +463,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.25" data-path="game.html"><a href="game.html#vcg机制"><i class="fa fa-check"></i><b>13.25</b> VCG机制</a></li>
 <li class="chapter" data-level="13.26" data-path="game.html"><a href="game.html#拍卖"><i class="fa fa-check"></i><b>13.26</b> 拍卖</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="bios.html"><a href="bios.html"><i class="fa fa-check"></i><b>14</b> 生物信息</a><ul>
+<li class="chapter" data-level="14" data-path="bios.html"><a href="bios.html"><i class="fa fa-check"></i><b>14</b> 生物信息</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="bios.html"><a href="bios.html#数据结构"><i class="fa fa-check"></i><b>14.1</b> 数据结构</a></li>
 <li class="chapter" data-level="14.2" data-path="bios.html"><a href="bios.html#pubmed-搜索"><i class="fa fa-check"></i><b>14.2</b> Pubmed 搜索</a></li>
 <li class="chapter" data-level="14.3" data-path="bios.html"><a href="bios.html#动态规划"><i class="fa fa-check"></i><b>14.3</b> 动态规划</a></li>
@@ -447,7 +479,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14.12" data-path="bios.html"><a href="bios.html#真核基因预测"><i class="fa fa-check"></i><b>14.12</b> 真核基因预测</a></li>
 <li class="chapter" data-level="14.13" data-path="bios.html"><a href="bios.html#dna指纹"><i class="fa fa-check"></i><b>14.13</b> DNA指纹</a></li>
 <li class="chapter" data-level="14.14" data-path="bios.html"><a href="bios.html#ensembl"><i class="fa fa-check"></i><b>14.14</b> Ensembl</a></li>
-<li class="chapter" data-level="14.15" data-path="bios.html"><a href="bios.html#基因组学数据分析"><i class="fa fa-check"></i><b>14.15</b> 基因组学数据分析</a><ul>
+<li class="chapter" data-level="14.15" data-path="bios.html"><a href="bios.html#基因组学数据分析"><i class="fa fa-check"></i><b>14.15</b> 基因组学数据分析</a>
+<ul>
 <li class="chapter" data-level="14.15.1" data-path="bios.html"><a href="bios.html#microarrays"><i class="fa fa-check"></i><b>14.15.1</b> microarrays</a></li>
 <li class="chapter" data-level="14.15.2" data-path="bios.html"><a href="bios.html#ngs"><i class="fa fa-check"></i><b>14.15.2</b> NGS</a></li>
 <li class="chapter" data-level="14.15.3" data-path="bios.html"><a href="bios.html#数据分析应用背景"><i class="fa fa-check"></i><b>14.15.3</b> 数据分析应用背景</a></li>
@@ -456,11 +489,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14.16" data-path="bios.html"><a href="bios.html#biolink"><i class="fa fa-check"></i><b>14.16</b> 链接</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="surv.html"><a href="surv.html"><i class="fa fa-check"></i><b>15</b> 生存分析</a><ul>
+<li class="chapter" data-level="15" data-path="surv.html"><a href="surv.html"><i class="fa fa-check"></i><b>15</b> 生存分析</a>
+<ul>
 <li class="chapter" data-level="15.1" data-path="surv.html"><a href="surv.html#concepts"><i class="fa fa-check"></i><b>15.1</b> Concepts</a></li>
 <li class="chapter" data-level="15.2" data-path="surv.html"><a href="surv.html#notation"><i class="fa fa-check"></i><b>15.2</b> Notation</a></li>
 <li class="chapter" data-level="15.3" data-path="surv.html"><a href="surv.html#cox-proportional-hazards-regression-model"><i class="fa fa-check"></i><b>15.3</b> Cox proportional-hazards regression model</a></li>
-<li class="chapter" data-level="15.4" data-path="surv.html"><a href="surv.html#case-recidivism"><i class="fa fa-check"></i><b>15.4</b> Case: Recidivism</a><ul>
+<li class="chapter" data-level="15.4" data-path="surv.html"><a href="surv.html#case-recidivism"><i class="fa fa-check"></i><b>15.4</b> Case: Recidivism</a>
+<ul>
 <li class="chapter" data-level="15.4.1" data-path="surv.html"><a href="surv.html#result"><i class="fa fa-check"></i><b>15.4.1</b> result</a></li>
 </ul></li>
 <li class="chapter" data-level="15.5" data-path="surv.html"><a href="surv.html#further"><i class="fa fa-check"></i><b>15.5</b> further</a></li>
@@ -468,30 +503,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.7" data-path="surv.html"><a href="surv.html#model-diagnostics"><i class="fa fa-check"></i><b>15.7</b> Model Diagnostics</a></li>
 <li class="chapter" data-level="15.8" data-path="surv.html"><a href="surv.html#reference"><i class="fa fa-check"></i><b>15.8</b> Reference</a></li>
 </ul></li>
-<li class="chapter" data-level="16" data-path="epid.html"><a href="epid.html"><i class="fa fa-check"></i><b>16</b> 流行病学</a><ul>
+<li class="chapter" data-level="16" data-path="epid.html"><a href="epid.html"><i class="fa fa-check"></i><b>16</b> 流行病学</a>
+<ul>
 <li class="chapter" data-level="16.1" data-path="epid.html"><a href="epid.html#声明"><i class="fa fa-check"></i><b>16.1</b> 声明</a></li>
 <li class="chapter" data-level="16.2" data-path="epid.html"><a href="epid.html#早期疾病的概念"><i class="fa fa-check"></i><b>16.2</b> 早期疾病的概念</a></li>
 <li class="chapter" data-level="16.3" data-path="epid.html"><a href="epid.html#近代流行病学关键人物"><i class="fa fa-check"></i><b>16.3</b> 近代流行病学关键人物</a></li>
 <li class="chapter" data-level="16.4" data-path="epid.html"><a href="epid.html#现代慢性病流行病学"><i class="fa fa-check"></i><b>16.4</b> 现代慢性病流行病学</a></li>
-<li class="chapter" data-level="16.5" data-path="epid.html"><a href="epid.html#流行病学基本概念"><i class="fa fa-check"></i><b>16.5</b> 流行病学基本概念</a><ul>
+<li class="chapter" data-level="16.5" data-path="epid.html"><a href="epid.html#流行病学基本概念"><i class="fa fa-check"></i><b>16.5</b> 流行病学基本概念</a>
+<ul>
 <li class="chapter" data-level="16.5.1" data-path="epid.html"><a href="epid.html#基本假设"><i class="fa fa-check"></i><b>16.5.1</b> 基本假设</a></li>
 <li class="chapter" data-level="16.5.2" data-path="epid.html"><a href="epid.html#定义"><i class="fa fa-check"></i><b>16.5.2</b> 定义</a></li>
 </ul></li>
-<li class="chapter" data-level="16.6" data-path="epid.html"><a href="epid.html#描述性流行病学"><i class="fa fa-check"></i><b>16.6</b> 描述性流行病学</a><ul>
+<li class="chapter" data-level="16.6" data-path="epid.html"><a href="epid.html#描述性流行病学"><i class="fa fa-check"></i><b>16.6</b> 描述性流行病学</a>
+<ul>
 <li class="chapter" data-level="16.6.1" data-path="epid.html"><a href="epid.html#疾病爆发的研究步骤"><i class="fa fa-check"></i><b>16.6.1</b> 疾病爆发的研究步骤</a></li>
 <li class="chapter" data-level="16.6.2" data-path="epid.html"><a href="epid.html#慢性病的描述性流行病学"><i class="fa fa-check"></i><b>16.6.2</b> 慢性病的描述性流行病学</a></li>
 <li class="chapter" data-level="16.6.3" data-path="epid.html"><a href="epid.html#描述流行病学分类"><i class="fa fa-check"></i><b>16.6.3</b> 描述流行病学分类</a></li>
 </ul></li>
 <li class="chapter" data-level="16.7" data-path="epid.html"><a href="epid.html#分析流行病学"><i class="fa fa-check"></i><b>16.7</b> 分析流行病学</a></li>
 <li class="chapter" data-level="16.8" data-path="epid.html"><a href="epid.html#疾病监控"><i class="fa fa-check"></i><b>16.8</b> 疾病监控</a></li>
-<li class="chapter" data-level="16.9" data-path="epid.html"><a href="epid.html#疾病频率的测量"><i class="fa fa-check"></i><b>16.9</b> 疾病频率的测量</a><ul>
+<li class="chapter" data-level="16.9" data-path="epid.html"><a href="epid.html#疾病频率的测量"><i class="fa fa-check"></i><b>16.9</b> 疾病频率的测量</a>
+<ul>
 <li class="chapter" data-level="16.9.1" data-path="epid.html"><a href="epid.html#人群"><i class="fa fa-check"></i><b>16.9.1</b> 人群</a></li>
 <li class="chapter" data-level="16.9.2" data-path="epid.html"><a href="epid.html#患病率prevalence"><i class="fa fa-check"></i><b>16.9.2</b> 患病率（prevalence）</a></li>
 <li class="chapter" data-level="16.9.3" data-path="epid.html"><a href="epid.html#风险risk"><i class="fa fa-check"></i><b>16.9.3</b> 风险（risk）</a></li>
 <li class="chapter" data-level="16.9.4" data-path="epid.html"><a href="epid.html#比率rate"><i class="fa fa-check"></i><b>16.9.4</b> 比率（rate）</a></li>
 <li class="chapter" data-level="16.9.5" data-path="epid.html"><a href="epid.html#其他频率测量"><i class="fa fa-check"></i><b>16.9.5</b> 其他频率测量</a></li>
 </ul></li>
-<li class="chapter" data-level="16.10" data-path="epid.html"><a href="epid.html#联系测量"><i class="fa fa-check"></i><b>16.10</b> 联系测量</a><ul>
+<li class="chapter" data-level="16.10" data-path="epid.html"><a href="epid.html#联系测量"><i class="fa fa-check"></i><b>16.10</b> 联系测量</a>
+<ul>
 <li class="chapter" data-level="16.10.1" data-path="epid.html"><a href="epid.html#风险比与比率比risk-ratio-rate-ratio"><i class="fa fa-check"></i><b>16.10.1</b> 风险比与比率比（risk ratio rate ratio）</a></li>
 <li class="chapter" data-level="16.10.2" data-path="epid.html"><a href="epid.html#对照组"><i class="fa fa-check"></i><b>16.10.2</b> 对照组</a></li>
 <li class="chapter" data-level="16.10.3" data-path="epid.html"><a href="epid.html#风险差risk-difference"><i class="fa fa-check"></i><b>16.10.3</b> 风险差（risk difference）</a></li>
@@ -501,12 +541,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16.11" data-path="epid.html"><a href="epid.html#随机误差"><i class="fa fa-check"></i><b>16.11</b> 随机误差</a></li>
 <li class="chapter" data-level="16.12" data-path="epid.html"><a href="epid.html#研究道德"><i class="fa fa-check"></i><b>16.12</b> 研究道德</a></li>
-<li class="chapter" data-level="16.13" data-path="epid.html"><a href="epid.html#临床实验"><i class="fa fa-check"></i><b>16.13</b> 临床实验</a><ul>
+<li class="chapter" data-level="16.13" data-path="epid.html"><a href="epid.html#临床实验"><i class="fa fa-check"></i><b>16.13</b> 临床实验</a>
+<ul>
 <li class="chapter" data-level="16.13.1" data-path="epid.html"><a href="epid.html#研究对象"><i class="fa fa-check"></i><b>16.13.1</b> 研究对象</a></li>
 <li class="chapter" data-level="16.13.2" data-path="epid.html"><a href="epid.html#对照组与控制组"><i class="fa fa-check"></i><b>16.13.2</b> 对照组与控制组</a></li>
 <li class="chapter" data-level="16.13.3" data-path="epid.html"><a href="epid.html#临床分析中的问题"><i class="fa fa-check"></i><b>16.13.3</b> 临床分析中的问题</a></li>
 </ul></li>
-<li class="chapter" data-level="16.14" data-path="epid.html"><a href="epid.html#队列研究"><i class="fa fa-check"></i><b>16.14</b> 队列研究</a><ul>
+<li class="chapter" data-level="16.14" data-path="epid.html"><a href="epid.html#队列研究"><i class="fa fa-check"></i><b>16.14</b> 队列研究</a>
+<ul>
 <li class="chapter" data-level="16.14.1" data-path="epid.html"><a href="epid.html#前瞻性队列研究"><i class="fa fa-check"></i><b>16.14.1</b> 前瞻性队列研究</a></li>
 <li class="chapter" data-level="16.14.2" data-path="epid.html"><a href="epid.html#回顾性队列研究"><i class="fa fa-check"></i><b>16.14.2</b> 回顾性队列研究</a></li>
 <li class="chapter" data-level="16.14.3" data-path="epid.html"><a href="epid.html#双向队列研究"><i class="fa fa-check"></i><b>16.14.3</b> 双向队列研究</a></li>
@@ -524,14 +566,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.18" data-path="epid.html"><a href="epid.html#效应修饰emm"><i class="fa fa-check"></i><b>16.18</b> 效应修饰（EMM）</a></li>
 <li class="chapter" data-level="16.19" data-path="epid.html"><a href="epid.html#多变量方法"><i class="fa fa-check"></i><b>16.19</b> 多变量方法</a></li>
 <li class="chapter" data-level="16.20" data-path="epid.html"><a href="epid.html#筛选"><i class="fa fa-check"></i><b>16.20</b> 筛选</a></li>
-<li class="chapter" data-level="16.21" data-path="epid.html"><a href="epid.html#因果推断"><i class="fa fa-check"></i><b>16.21</b> 因果推断</a><ul>
+<li class="chapter" data-level="16.21" data-path="epid.html"><a href="epid.html#因果推断"><i class="fa fa-check"></i><b>16.21</b> 因果推断</a>
+<ul>
 <li class="chapter" data-level="16.21.1" data-path="epid.html"><a href="epid.html#hill-因果标准"><i class="fa fa-check"></i><b>16.21.1</b> Hill 因果标准</a></li>
 <li class="chapter" data-level="16.21.2" data-path="epid.html"><a href="epid.html#部分原因理论"><i class="fa fa-check"></i><b>16.21.2</b> 部分原因理论</a></li>
 <li class="chapter" data-level="16.21.3" data-path="epid.html"><a href="epid.html#逆向模型counterfactual-models"><i class="fa fa-check"></i><b>16.21.3</b> 逆向模型（Counterfactual models）</a></li>
 <li class="chapter" data-level="16.21.4" data-path="epid.html"><a href="epid.html#有向无环图dags"><i class="fa fa-check"></i><b>16.21.4</b> 有向无环图（DAGs）</a></li>
 </ul></li>
-<li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a><ul>
-<li class="chapter" data-level="16.22.1" data-path="why.html"><a href="why.html#introduction"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.22" data-path="epid.html"><a href="epid.html#论文研读"><i class="fa fa-check"></i><b>16.22</b> 论文研读</a>
+<ul>
+<li class="chapter" data-level="16.22.1" data-path="epid.html"><a href="epid.html#introduction-1"><i class="fa fa-check"></i><b>16.22.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.22.2" data-path="epid.html"><a href="epid.html#methods"><i class="fa fa-check"></i><b>16.22.2</b> Methods</a></li>
 <li class="chapter" data-level="16.22.3" data-path="epid.html"><a href="epid.html#results"><i class="fa fa-check"></i><b>16.22.3</b> Results</a></li>
 <li class="chapter" data-level="16.22.4" data-path="epid.html"><a href="epid.html#discussion"><i class="fa fa-check"></i><b>16.22.4</b> Discussion</a></li>
@@ -544,7 +588,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="nlp.html"><a href="nlp.html"><i class="fa fa-check"></i><b>17</b> 自然语言处理</a></li>
-<li class="chapter" data-level="18" data-path="qi.html"><a href="qi.html"><i class="fa fa-check"></i><b>18</b> 量化投资</a><ul>
+<li class="chapter" data-level="18" data-path="qi.html"><a href="qi.html"><i class="fa fa-check"></i><b>18</b> 量化投资</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="qi.html"><a href="qi.html#股票收益模型"><i class="fa fa-check"></i><b>18.1</b> 股票收益模型</a></li>
 <li class="chapter" data-level="18.2" data-path="qi.html"><a href="qi.html#风险"><i class="fa fa-check"></i><b>18.2</b> 风险</a></li>
 <li class="chapter" data-level="18.3" data-path="qi.html"><a href="qi.html#收益"><i class="fa fa-check"></i><b>18.3</b> 收益</a></li>
@@ -586,10 +631,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="game" class="section level1">
-<h1><span class="header-section-number">第13章</span> 博弈论</h1>
-<div id="术语" class="section level2">
-<h2><span class="header-section-number">13.1</span> 术语</h2>
+<div id="game" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">第13章</span> 博弈论<a href="game.html#game" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="术语-1" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> 术语<a href="game.html#术语-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>博弈论说白了就是讲两方势力在一件事上为了自己的最大利益所采取的行动或决策的理论</li>
 <li>参与者（players） <span class="math inline">\(N= {1,...,n}\)</span></li>
@@ -600,23 +645,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>纯竞争博弈（Games of Pure competition）：两个参与者收益对立且对于所有行动集合 <span class="math inline">\(a \in A, u_1(a)+u_2(a) = c\)</span>，<span class="math inline">\(c\)</span>是常数，零和博弈是一个常数为0的纯竞争博弈，此时我们只用考虑一个参与者的收益函数就可以了</li>
 </ul>
 </div>
-<div id="支配策略dominate-strategy" class="section level2">
-<h2><span class="header-section-number">13.2</span> 支配策略（dominate strategy）</h2>
+<div id="支配策略dominate-strategy" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> 支配策略（dominate strategy）<a href="game.html#支配策略dominate-strategy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>行动单一称为纯策略（pure strategies）有一定概率分布的行动策略称为混合策略（mixed strategies）</li>
 <li>对于一个参与者，不论其它参与者采取任何策略，某策略都会得到最大的收益</li>
 <li><span class="math inline">\(a_i \in a_i\)</span> 为强支配策略当且仅当参与者<span class="math inline">\(i\)</span> 的收益 <span class="math inline">\(u_i(a_i,a_{-i}) &gt; u_i(a&#39;_i,a_{-i})\)</span>，如果 <span class="math inline">\(a&#39;_i = a_i\)</span>，那么为弱支配策略</li>
 </ul>
 </div>
-<div id="最佳回应best-respinse" class="section level2">
-<h2><span class="header-section-number">13.3</span> 最佳回应（Best respinse）</h2>
+<div id="最佳回应best-respinse" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> 最佳回应（Best respinse）<a href="game.html#最佳回应best-respinse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>对于一个参与者，当已知其他参与者的行为后，收益最大的策略</li>
 <li>参与者<span class="math inline">\(i\)</span>，对于其它参与者的策略<span class="math inline">\(a_{-i} \in a_{-i}\)</span> 的策略如果<span class="math inline">\(u_i(a_i,a_{-i}) \geqslant u_i(a&#39;_i,a_{-i})\)</span></li>
 </ul>
 </div>
-<div id="纳什均衡nash-equilibrium" class="section level2">
-<h2><span class="header-section-number">13.4</span> 纳什均衡（Nash Equilibrium）</h2>
+<div id="纳什均衡nash-equilibrium" class="section level2 hasAnchor" number="13.4">
+<h2><span class="header-section-number">13.4</span> 纳什均衡（Nash Equilibrium）<a href="game.html#纳什均衡nash-equilibrium" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><span class="math inline">\(a = \langle a_1,...,a_n\rangle\)</span> 是一个纯策略纳什均衡当且仅当对于任何一个行为i，有<span class="math inline">\(a_i \in BR(a_{-i})\)</span></li>
 <li>如果任何参与者改变行为的收益都不会增加，那么此时进入纳什均衡</li>
@@ -625,16 +670,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>任何有限博弈都存在一个纳什均衡（纳什1950年提出）</li>
 </ul>
 </div>
-<div id="帕累托最优pareto-optimality" class="section level2">
-<h2><span class="header-section-number">13.5</span> 帕累托最优（Pareto Optimality）</h2>
+<div id="帕累托最优pareto-optimality" class="section level2 hasAnchor" number="13.5">
+<h2><span class="header-section-number">13.5</span> 帕累托最优（Pareto Optimality）<a href="game.html#帕累托最优pareto-optimality" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>某个结果是帕累托最优当且仅当没有其他结果可以全局帕累托支配这个结果</li>
 <li>帕累托最优表示某个博弈结果不差于其他博弈结果</li>
 <li>纳什均衡不一定是帕累托最优（囚徒困境）</li>
 </ul>
 </div>
-<div id="混合策略mixed-stratergies" class="section level2">
-<h2><span class="header-section-number">13.6</span> 混合策略（Mixed stratergies）</h2>
+<div id="混合策略mixed-stratergies" class="section level2 hasAnchor" number="13.6">
+<h2><span class="header-section-number">13.6</span> 混合策略（Mixed stratergies）<a href="game.html#混合策略mixed-stratergies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>策略<span class="math inline">\(S_i\)</span>指对于每个参与者行动的概率分布集合</li>
 <li>概率 <span class="math inline">\(Pr(a|s) = \prod_{j \in N}s_j(a_j)\)</span></li>
@@ -677,8 +722,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 - 要达到混合策略纳什均衡，博弈双方的行动概率主要参考对方的行动收益差；同时因为概率已知，我们也可以给出纳什均衡时双方的期望收益
 - 应用：守门员博弈，当攻守双方达到纳什均衡时，其概率分布十分接近现实的统计数据，通过策略调整，博弈双方收益会逐渐收敛到纳什均衡，然后就不再变化</p>
 </div>
-<div id="寻找纳什均衡" class="section level2">
-<h2><span class="header-section-number">13.7</span> 寻找纳什均衡</h2>
+<div id="寻找纳什均衡" class="section level2 hasAnchor" number="13.7">
+<h2><span class="header-section-number">13.7</span> 寻找纳什均衡<a href="game.html#寻找纳什均衡" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>两人博弈可以用线性互补算法（Linear Complementarity）求解</li>
 <li>严格说因为一定存在纳什均衡，寻找它不是NPC问题，但是是PPAD问题，后来人证明纳什均衡是PPAD问题</li>
@@ -689,16 +734,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>NP-hard问题指NP问题的归约问题，但不一定是NP问题</li>
 </ul>
 </div>
-<div id="被支配策略dominated-strategy" class="section level2">
-<h2><span class="header-section-number">13.8</span> 被支配策略（dominated strategy）</h2>
+<div id="被支配策略dominated-strategy" class="section level2 hasAnchor" number="13.8">
+<h2><span class="header-section-number">13.8</span> 被支配策略（dominated strategy）<a href="game.html#被支配策略dominated-strategy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>指不论其他参与者采取任何策略，该策略劣于其他策略</li>
 <li>被支配策略永远不会是最佳回应</li>
 <li>排除法：把被支配策略删除，从剩下的行动方案中选择，交互地去除掉每个选手的被支配策略</li>
 </ul>
 </div>
-<div id="最大最小策略maxmin-strategies" class="section level2">
-<h2><span class="header-section-number">13.9</span> 最大最小策略（Maxmin strategies）</h2>
+<div id="最大最小策略maxmin-strategies" class="section level2 hasAnchor" number="13.9">
+<h2><span class="header-section-number">13.9</span> 最大最小策略（Maxmin strategies）<a href="game.html#最大最小策略maxmin-strategies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>指其他参与者对某参与者最小收益策略下的最大收益策略<span class="math inline">\(arg max_{s_i}min_{s_{-i}}u_i(s_1,s_2)\)</span></li>
 <li>最小最大策略指让对方收益最大而自己收益最小的策略<span class="math inline">\(arg min_{s_i}max_{s_{-i}}u_{-i}i(s_1,s_2)\)</span></li>
@@ -706,8 +751,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>最大最小可用来线性求解纳什均衡</li>
 </ul>
 </div>
-<div id="扩展形式博弈" class="section level2">
-<h2><span class="header-section-number">13.10</span> 扩展形式博弈</h2>
+<div id="扩展形式博弈" class="section level2 hasAnchor" number="13.10">
+<h2><span class="header-section-number">13.10</span> 扩展形式博弈<a href="game.html#扩展形式博弈" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>正常形式博弈不涉及行动顺序与时间</li>
 <li>扩展形式博弈考虑时序影响，是一个层级结构，双方根据对方已经使用的策略来使用自己的策略，包括信息对称与不对称两种</li>
@@ -726,8 +771,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>求解扩展形式博弈要从完美子博弈开始，从最小的分支倒推，记录策略，实际上也是最小最大值的求解</li>
 </ul>
 </div>
-<div id="完美子博弈" class="section level2">
-<h2><span class="header-section-number">13.11</span> 完美子博弈</h2>
+<div id="完美子博弈" class="section level2 hasAnchor" number="13.11">
+<h2><span class="header-section-number">13.11</span> 完美子博弈<a href="game.html#完美子博弈" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>在节点h的子博弈G是节点集合H对博弈G的限制</li>
 <li>完美子博弈均衡也是纳什均衡，但不考虑无信用恐吓</li>
@@ -735,23 +780,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>对于零和博弈，倒推法实际就是最小最大算法</li>
 </ul>
 </div>
-<div id="信息不对称扩展形式博弈" class="section level2">
-<h2><span class="header-section-number">13.12</span> 信息不对称扩展形式博弈</h2>
+<div id="信息不对称扩展形式博弈" class="section level2 hasAnchor" number="13.12">
+<h2><span class="header-section-number">13.12</span> 信息不对称扩展形式博弈<a href="game.html#信息不对称扩展形式博弈" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>参与者选择节点被分配到不同信息集合里，个体无法区分选择节点</li>
 <li>信息不对称博弈用（N, A, H, Z, χ, ρ, σ, u, I）来表示</li>
 <li>对于 <span class="math inline">\(I = (I_1,...,I_n)\)</span>，<span class="math inline">\(I_i = (I_{i,1},...,I_{i,k_i})\)</span> 是依赖于 <span class="math inline">\({h\in H: \phi (h) = i}\)</span> 的平衡，具有当存在j在节点 <span class="math inline">\(h\in I_{i,j}\)</span>与<span class="math inline">\(h&#39;\in I_{i,j}\)</span> 时，有 <span class="math inline">\(\chi(h) = \chi(h&#39;)\)</span> 与 <span class="math inline">\(\rho(h) = \rho(h&#39;)\)</span> 的属性</li>
 </ul>
 </div>
-<div id="混合与行为策略" class="section level2">
-<h2><span class="header-section-number">13.13</span> 混合与行为策略</h2>
+<div id="混合与行为策略" class="section level2 hasAnchor" number="13.13">
+<h2><span class="header-section-number">13.13</span> 混合与行为策略<a href="game.html#混合与行为策略" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>混合策略随机化纯策略</li>
 <li>行为策略是遇到每个信息集后的抛硬币</li>
 </ul>
 </div>
-<div id="重复博弈" class="section level2">
-<h2><span class="header-section-number">13.14</span> 重复博弈</h2>
+<div id="重复博弈" class="section level2 hasAnchor" number="13.14">
+<h2><span class="header-section-number">13.14</span> 重复博弈<a href="game.html#重复博弈" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>参与者<span class="math inline">\(i\)</span>给定一个无限序列<span class="math inline">\(r_1,r_2,...\)</span>，其平均回报是<span class="math inline">\(\lim_{k\rightarrow\infty}\sum_{j=1}^k\frac{r_j}{k}\)</span></li>
 <li>考虑折扣因子<span class="math inline">\(\beta\)</span>，未来折扣回报是<span class="math inline">\(\sum_{j=1}^{\infty}\beta^jr_j\)</span>，一般人会更关注当下，对未来关注不会超过当下，但以<span class="math inline">\(1-\beta\)</span>的概率终止博弈</li>
@@ -762,8 +807,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>无限重复博弈要分别计算不同策略下收益，当无限重复博弈概率不断增加，有可能打破子博弈均衡，此时会发生偏移</li>
 </ul>
 </div>
-<div id="随机博弈stochastic-game" class="section level2">
-<h2><span class="header-section-number">13.15</span> 随机博弈（stochastic game）</h2>
+<div id="随机博弈stochastic-game" class="section level2 hasAnchor" number="13.15">
+<h2><span class="header-section-number">13.15</span> 随机博弈（stochastic game）<a href="game.html#随机博弈stochastic-game" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>随机博弈是重复博弈的泛化，每一次都取决于上一次博弈结果</li>
 <li>用(Q, N, A, P, R)来表示</li>
@@ -774,16 +819,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><span class="math inline">\(R = r_1,...,r_n\)</span>中<span class="math inline">\(r_i:Q\times A\rightarrow R\)</span> 表示参与者i的效用函数</li>
 </ul>
 </div>
-<div id="虚拟行动fictitious-play" class="section level2">
-<h2><span class="header-section-number">13.16</span> 虚拟行动（fictitious play）</h2>
+<div id="虚拟行动fictitious-play" class="section level2 hasAnchor" number="13.16">
+<h2><span class="header-section-number">13.16</span> 虚拟行动（fictitious play）<a href="game.html#虚拟行动fictitious-play" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>对于行动<span class="math inline">\(a\in A\)</span>，用<span class="math inline">\(w(a)\)</span>表示对手行动次数，可以非零初始化</li>
 <li>用这个数字评价对手策略 <span class="math inline">\(\sigma(a) = \frac{w(a)}{\sum_{a&#39; \in A}w(a&#39;)}\)</span></li>
 <li>在虚拟行动中每一个参与者的策略经验分布收敛，那么一定收敛到纳什均衡</li>
 </ul>
 </div>
-<div id="无悔学习no-regret-learning" class="section level2">
-<h2><span class="header-section-number">13.17</span> 无悔学习（No-regret learning）</h2>
+<div id="无悔学习no-regret-learning" class="section level2 hasAnchor" number="13.17">
+<h2><span class="header-section-number">13.17</span> 无悔学习（No-regret learning）<a href="game.html#无悔学习no-regret-learning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>后悔表示参与者在时间t上没有采用策略s<span class="math inline">\(R^t(s) = max(\alpha^t(s)-\alpha^t,0)\)</span></li>
 <li>无悔学习表现出对任何纯策略有<span class="math inline">\(Pr([\lim \inf R^t(s)]\leq0)\)</span></li>
@@ -791,8 +836,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>对有限博弈收敛到均衡</li>
 </ul>
 </div>
-<div id="无限重复博弈的平衡" class="section level2">
-<h2><span class="header-section-number">13.18</span> 无限重复博弈的平衡</h2>
+<div id="无限重复博弈的平衡" class="section level2 hasAnchor" number="13.18">
+<h2><span class="header-section-number">13.18</span> 无限重复博弈的平衡<a href="game.html#无限重复博弈的平衡" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>著名的策略包括以牙还牙（tit-for-tat）跟扳机（trigger）</li>
 <li>纳什均衡只适用于有限博弈</li>
@@ -803,8 +848,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>无名氏定理（folk theorem）：如果收益向量对无限博弈的纳什均衡是平均回报，那么对每个参与者都是增强的，如果可行且增强，收益向量就是有平均回报的无限纳什均衡</li>
 </ul>
 </div>
-<div id="贝叶斯博弈" class="section level2">
-<h2><span class="header-section-number">13.19</span> 贝叶斯博弈</h2>
+<div id="贝叶斯博弈" class="section level2 hasAnchor" number="13.19">
+<h2><span class="header-section-number">13.19</span> 贝叶斯博弈<a href="game.html#贝叶斯博弈" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>贝叶斯博弈<span class="math inline">\((N,G,P,I)\)</span>里，N代表参与者集合，G代表博弈集合，P代表对某个博弈集合的先验概率，I代表G里面对每个参与者的组成部分</li>
 <li>也可以用认知类型来定义<span class="math inline">\(N,A,\Theta,p,u\)</span>，A表示行为集合，<span class="math inline">\(\Theta\)</span>表示对参与者i的类型空间，p表示没中类型的先验概率，u表示某类型某行动对参与者i的收益</li>
@@ -818,16 +863,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>计算不同行动的收益期望，求解概率，如果认为概率高于某个值，则选择对应行动，此时达到收益与概率的均衡</li>
 </ul>
 </div>
-<div id="联盟博弈" class="section level2">
-<h2><span class="header-section-number">13.20</span> 联盟博弈</h2>
+<div id="联盟博弈" class="section level2 hasAnchor" number="13.20">
+<h2><span class="header-section-number">13.20</span> 联盟博弈<a href="game.html#联盟博弈" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>收益可转移的联盟博弈（N,v）N代表有限的参与者，<span class="math inline">\(v:2^N \rightarrow R\)</span> 里每个联盟 <span class="math inline">\(S\subseteq N\)</span> 里的能够分配的收益，假定<span class="math inline">\(v(\varnothing)=0\)</span></li>
 <li>联盟博弈解决的问题是哪些联盟会生成及收益如何分配</li>
 <li>超加性博弈<span class="math inline">\(G=(N,v)\)</span>表示对于所有的<span class="math inline">\(S,T\subset N\)</span>，如果<span class="math inline">\(S\cap T = \varnothing\)</span>，那么有<span class="math inline">\(v(S\cup T\geq v(S)+v(T))\)</span>，这种情况下整体绑定为一个联盟收益最高</li>
 </ul>
 </div>
-<div id="夏普利值shapley-value" class="section level2">
-<h2><span class="header-section-number">13.21</span> 夏普利值（Shapley Value）</h2>
+<div id="夏普利值shapley-value" class="section level2 hasAnchor" number="13.21">
+<h2><span class="header-section-number">13.21</span> 夏普利值（Shapley Value）<a href="game.html#夏普利值shapley-value" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>如何公平分割收益，Lloyd Shapley认为参与者要按照边际贡献的比例获得收益</p></li>
 <li><p>公理
@@ -837,8 +882,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>夏普利值按照 <span class="math inline">\(\psi_i(N,v) = \frac{1}{N!}\sum_{S\subseteq N_i} |S|!(|N|-|S|-1![v(S\cup \{i\})-v(S)])\)</span> 分配收益，也就是满足上面三个公理的分配方式</p></li>
 </ul>
 </div>
-<div id="核心" class="section level2">
-<h2><span class="header-section-number">13.22</span> 核心</h2>
+<div id="核心" class="section level2 hasAnchor" number="13.22">
+<h2><span class="header-section-number">13.22</span> 核心<a href="game.html#核心" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>夏普利值分配比较公平，但不一定稳定，不容易形成大联盟</li>
 <li>核心指对于<span class="math inline">\(S\subseteq N\)</span>，有<span class="math inline">\(\sum_{i\in S} x_i \geq v(S)\)</span> ，总和收益至少不低于内部小联盟收益</li>
@@ -847,8 +892,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>凸博弈：<span class="math inline">\(v(S\cup T)\geq v(S)+v(T)-v(S\cap T)\)</span>，每个凸博弈有一个非空核心且是夏普利值</li>
 </ul>
 </div>
-<div id="选举" class="section level2">
-<h2><span class="header-section-number">13.23</span> 选举</h2>
+<div id="选举" class="section level2 hasAnchor" number="13.23">
+<h2><span class="header-section-number">13.23</span> 选举<a href="game.html#选举" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>选举结果<span class="math inline">\(O\)</span></li>
 <li>参与者的选择 <span class="math inline">\(\succ\)</span></li>
@@ -874,8 +919,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>单峰选择：每个投票的人都有最想选跟最不想选的候选人，选择上会避免极端</li>
 </ul>
 </div>
-<div id="机制设计" class="section level2">
-<h2><span class="header-section-number">13.24</span> 机制设计</h2>
+<div id="机制设计" class="section level2 hasAnchor" number="13.24">
+<h2><span class="header-section-number">13.24</span> 机制设计<a href="game.html#机制设计" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>直接形式：参与者同时传递信息到中心</li>
 <li>间接形式：参与者传递一系列信息，这些信息前后相关</li>
@@ -893,8 +938,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>设计政策时要考虑支出补贴税收对所有人都无害或达到均衡</li>
 </ul>
 </div>
-<div id="vcg机制" class="section level2">
-<h2><span class="header-section-number">13.25</span> VCG机制</h2>
+<div id="vcg机制" class="section level2 hasAnchor" number="13.25">
+<h2><span class="header-section-number">13.25</span> VCG机制<a href="game.html#vcg机制" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>存在货币补偿时自私参与者选择社会福利最大化的通用方法</li>
 <li>一个直接机制包括选择规则跟补偿规则，VCG作为支配策略是真实有效的，在额外假设下可以满足弱预算平衡跟个体理性</li>
@@ -915,8 +960,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>价值隐私信息需要损失效率，是动机效率的平衡</li>
 </ul>
 </div>
-<div id="拍卖" class="section level2">
-<h2><span class="header-section-number">13.26</span> 拍卖</h2>
+<div id="拍卖" class="section level2 hasAnchor" number="13.26">
+<h2><span class="header-section-number">13.26</span> 拍卖<a href="game.html#拍卖" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>自私参与者分配资源的机制</li>
 <li>英国人拍卖：从保留值开始拍卖，参与人喊价，价高的得到物品并付出对应价格</li>
@@ -947,7 +992,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -966,6 +1010,7 @@ gitbook.start({
 "weibo": true,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -986,6 +1031,10 @@ gitbook.start({
 "text": null
 },
 "download": ["datadown.pdf", "datadown.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
