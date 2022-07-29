@@ -7,46 +7,46 @@
 
 ## 命令行基础
 
-- name of root is represented by a slash: /
-- home directory is represented by a tilde: ~
-- pwd print working directory
-- recipe: command -flags arguments
-- clear: clear out the commands in your current CLI window
-- ls lists files and folders in the current directory
+- 根目录用斜线，在绝对路径时使用: `/`
+- 主目录（home directory）用波浪线替代: `~`
+- 命令行命令通常需要传递参数标志及参数，用空格隔开 （recipe）: `command -flags arguments`
+- 打印当前目录 `pwd` （print working directory）
+- 清除当前命令行窗口的命令 `clear`
+- 列出当前目录下文件与文件夹 `ls`
+
+    `ls -a` 列举隐藏文件
+    `ls -l` 列举文件文件夹细节
+    `ls -h` 列举更易懂的文件细节
+
+- 列出当前目录下文件大小 `du` （display disk usage statistics）
+
+    `du -h` 列举更易懂的文件文件夹大小
+    `du -d 1` 列举一级目录文件文件夹大小
     
-    -a lists hidden and unhidden files and folders
-    - al lists details for hidden and unhidden files and folders
-    
-- cd stands for "change directory"
+- 换目录 `cd` （change directory）
   
-    cd takes as an argument the directory you want to visit
+    `cd` 后面接路径会转当前目录
+    `cd` 留空会会主目录
+    `cd` .. 转上一级目录
     
-    cd with no argument takes you to your home directory
-    
-    cd .. allows you to chnage directory to one level above your current directory
-    
-- mkdir stands for "make directory"
-- touch creates an empty file
-- cp stands for "copy"
+- 新建目录 `mkdir`（make directory）
+- 新建文件或修改文件时间戳 `touch` 
+- 复制文件 `cp` （copy）
   
-    cp takes as its first argument a file, and as its second argument the path to where you want the file to be copied
+    `cp` 第一个参数是文件，第二个参数是新文件路径
+    `cp -r` 第一个参数可以是路径，所有文件会复制到第二个参数路径
+  
+- 删除 `rm` （remove）
+  
+    `rm -r` 可删除整个目录
     
-    cp can also be used for copying the contents of directories, but you must use the -r flag
-  
-- rm stands for "remove"
-  
-    use rm to delete entire directories and their contents by using the -r flag
-    
-- mv stands for "move"
-  
-    move files between directories
-    
-    use mv to rename files
-  
-- echo will print whatever arguments you provide
-- date will print today's date
+- 移动/重命名 `mv` （move）
+- `echo` 打印输入的参数
+- `date` 打印当天日期
 
 ## 版本控制
+
+使用 git 来进行版本控制
 
 ~~~
 $ git config --global user.name "Your Name Here" # 输入用户名
@@ -57,6 +57,8 @@ $ git add . # 添加新文件
 $ git add -u # 更新改名或删除的文件
 $ git add -A|git add --all # 添加所有改动
 $ git commit -m "your message goes here" # 描述并缓存本地工作区改动到上一次commit
+$ git reset --hard HEAD^/commitid  # 回退前一次commit 如果soft会放到暂存区
+$ git revert -n commitid  # 删掉某一次修改
 $ git log # 查看commit记录 用Q退出
 $ git status # 查看状态
 $ git remote add # 添加服务器端地址
@@ -66,7 +68,8 @@ $ git pull|fetch|merge|clone # 本地获取远端repo
 $ exit # 退出
 ~~~
 
-  - Git = Local (on your computer); GitHub = Remote (on the web)
+  - Git = Local （本地版本控制）
+  - GitHub = Remote （远程版本控制）
 
 ## 数据获取
 
