@@ -350,7 +350,6 @@ biocLite()
 
 #### 读取数据
 
-
 ```r
 devtools::install_github("coloncancermeth","genomicsclass")
 
@@ -361,7 +360,6 @@ data(coloncancermeth)
 该数据集为结肠癌病人与对照的DNA甲基化数据集。
 
 #### 数据说明
-
 
 ```r
 dim(meth)
